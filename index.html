@@ -67,6 +67,10 @@
   [data-arrow] { display: inline-block; transition: transform .35s cubic-bezier(.16,1,.3,1); }
   a:hover [data-arrow], button:hover [data-arrow] { transform: translateX(5px); }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; } }
+  /* Grain SVG : coûteux à peindre → masqué sur mobile et en reduced-motion, visible seulement sur grand écran. */
+  [data-noise] { display: none; }
+  @media (min-width: 901px) { [data-noise] { display: block; } }
+  @media (prefers-reduced-motion: reduce) { [data-noise] { display: none; } }
 </style>
 </head>
 <body>
@@ -158,8 +162,8 @@
   </div>
 
   <section style="position:relative;overflow:hidden;padding:clamp(80px,12vh,150px) clamp(20px,5vw,64px);">
-    <svg aria-hidden="true" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.32;mix-blend-mode:screen;pointer-events:none;">
-      <filter id="lk-static"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"><animate attributeName="seed" values="2;13;5;18;9;1;15;7" dur="0.4s" repeatCount="indefinite" calcMode="discrete"></animate></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+    <svg data-noise aria-hidden="true" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.32;mix-blend-mode:screen;pointer-events:none;">
+      <filter id="lk-static"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
       <rect width="100%" height="100%" filter="url(#lk-static)"></rect>
     </svg>
     <div style="width:min(1360px,100%);margin:0 auto;position:relative;z-index:1;">
@@ -284,8 +288,8 @@
   </section>
 
   <section id="process" style="position:relative;overflow:hidden;padding:clamp(80px,12vh,150px) clamp(20px,5vw,64px);border-top:1px solid rgba(244,242,236,.09);">
-    <svg aria-hidden="true" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.32;mix-blend-mode:screen;pointer-events:none;">
-      <filter id="lk-static-p"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"><animate attributeName="seed" values="2;13;5;18;9;1;15;7" dur="0.4s" repeatCount="indefinite" calcMode="discrete"></animate></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+    <svg data-noise aria-hidden="true" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.32;mix-blend-mode:screen;pointer-events:none;">
+      <filter id="lk-static-p"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
       <rect width="100%" height="100%" filter="url(#lk-static-p)"></rect>
     </svg>
     <div style="width:min(1360px,100%);margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,5vw,80px);align-items:start;">
@@ -299,8 +303,8 @@
   </section>
 
   <section id="avis-m" style="display:none;position:relative;overflow:hidden;padding:clamp(80px,12vh,150px) clamp(20px,5vw,64px);border-top:1px solid rgba(244,242,236,.09);">
-    <svg aria-hidden="true" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.32;mix-blend-mode:screen;pointer-events:none;">
-      <filter id="lk-static-am"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"><animate attributeName="seed" values="2;13;5;18;9;1;15;7" dur="0.4s" repeatCount="indefinite" calcMode="discrete"></animate></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+    <svg data-noise aria-hidden="true" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.32;mix-blend-mode:screen;pointer-events:none;">
+      <filter id="lk-static-am"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
       <rect width="100%" height="100%" filter="url(#lk-static-am)"></rect>
     </svg>
     <div style="width:min(1360px,100%);margin:0 auto;position:relative;z-index:1;">
@@ -312,8 +316,8 @@
   </section>
 
   <section id="avis" style="position:relative;overflow:hidden;padding:clamp(80px,12vh,150px) clamp(20px,5vw,64px);border-top:1px solid rgba(244,242,236,.09);">
-    <svg aria-hidden="true" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.32;mix-blend-mode:screen;pointer-events:none;">
-      <filter id="lk-static-a"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"><animate attributeName="seed" values="2;13;5;18;9;1;15;7" dur="0.4s" repeatCount="indefinite" calcMode="discrete"></animate></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+    <svg data-noise aria-hidden="true" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.32;mix-blend-mode:screen;pointer-events:none;">
+      <filter id="lk-static-a"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
       <rect width="100%" height="100%" filter="url(#lk-static-a)"></rect>
     </svg>
     <div style="width:min(1360px,100%);margin:0 auto;position:relative;z-index:1;">
@@ -509,8 +513,12 @@
   var GAP_TEXT = "La plupart des entreprises ont un site qui ne leur ressemble pas — et qui ne leur rapporte rien. Je crée l'inverse : un site à ton image, pensé pour attirer et fidéliser tes clients.";
 
   /* ---------- Hero background: animated flow lines ---------- */
+  var LK_SMALL = window.innerWidth < 700;
+  var LK_REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   function flowPaths(svg, position) {
-    for (var i = 0; i < 36; i++) {
+    var animate = !LK_REDUCE;                 // animation gardée aussi sur mobile (coupée seulement en reduced-motion)
+    var count = LK_SMALL ? 14 : 36;           // moins de traits sur téléphone = fluide, mais toujours animé
+    for (var i = 0; i < count; i++) {
       var a = 380 - i * 5 * position, b = 189 + i * 6, c = 312 - i * 5 * position,
           d = 216 - i * 6, e = 152 - i * 5 * position, f = 343 - i * 6,
           g = 616 - i * 5 * position, h = 470 - i * 6, j = 684 - i * 5 * position, k = 875 - i * 6;
@@ -521,8 +529,10 @@
       p.setAttribute('stroke-opacity', 0.05 + i * 0.02);
       p.setAttribute('fill', 'none');
       p.setAttribute('pathLength', '1');
-      p.style.strokeDasharray = '0.35 0.65';
-      p.style.animation = 'lkFlow ' + (16 + (i % 12) * 1.4) + 's linear infinite';
+      if (animate) {
+        p.style.strokeDasharray = '0.35 0.65';
+        p.style.animation = 'lkFlow ' + (16 + (i % 12) * 1.4) + 's linear infinite';
+      }
       svg.appendChild(p);
     }
   }

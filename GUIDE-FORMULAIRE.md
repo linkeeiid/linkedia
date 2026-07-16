@@ -1,12 +1,23 @@
 # Brancher le formulaire de contact — LinkedIA
 
-Objectif : quand quelqu'un remplit le formulaire du site, tu reçois la demande
-**par email**. C'est 100 % gratuit (Brevo 300 emails/jour + Cloudflare Worker).
+> ✅ **ÉTAT ACTUEL (fonctionnel) : le formulaire passe par Web3Forms** (gratuit,
+> livré en boîte de réception). Le Worker `linkedia-contact` relaie vers Web3Forms,
+> avec la variable Cloudflare `WEB3FORMS_KEY` (clé créée avec `jeremyhproo@gmail.com`).
+> Le code actif est celui de `cloudflare-worker.js`.
+>
+> La méthode **Brevo décrite ci-dessous** est gardée pour **plus tard, avec un vrai
+> domaine** (envoi pro `contact@tondomaine`, 0 spam). Elle ne marche PAS avec une
+> adresse @gmail.com comme expéditeur (Gmail bloque — c'est pour ça qu'on est passé
+> par Web3Forms en attendant le domaine).
 
-Tant que ce n'est pas fait, le formulaire ouvre le logiciel de mail du visiteur
-(repli automatique) — donc rien n'est perdu, mais c'est moins pro qu'un vrai envoi.
+---
 
-Il y a **3 étapes**. Compte ~20 min la première fois.
+## (Plus tard, avec un domaine) Passer par Brevo
+
+Objectif : quand quelqu'un remplit le formulaire, tu reçois la demande **par email**.
+100 % gratuit (Brevo 300 emails/jour + Cloudflare Worker).
+
+Il y a **3 étapes**. Compte ~20 min.
 
 ---
 
