@@ -198,6 +198,17 @@
           <h2 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:clamp(2.2rem,6vw,4.6rem);line-height:1;letter-spacing:-.03em;">Des sites qui bossent<br>pour leurs clients.</h2>
         </div>
       </div>
+      <!-- Vitrine 3D : le cadre arrive incliné et se redresse au fil du scroll -->
+      <div data-showcase style="perspective:1000px;margin-bottom:clamp(48px,7vh,84px);">
+        <div data-showcase-card style="max-width:1040px;margin:0 auto;border:4px solid #26261f;background:#141416;border-radius:30px;padding:clamp(6px,.9vw,14px);box-shadow:0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026,0 149px 60px #0000000a;will-change:transform;transform:rotateX(20deg) scale(1.05);">
+          <div style="position:relative;aspect-ratio:2/1;overflow:hidden;border-radius:18px;background:#0d0d0f;">
+            <img data-showcase-img src="assets/img/blade-1.jpg" alt="Blade Society — aperçu du site" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;opacity:1;transition:opacity .8s ease;">
+            <img data-showcase-img src="assets/img/parfumerie-1.jpg" alt="La Parfumerie de Carlito — aperçu du site" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;opacity:0;transition:opacity .8s ease;">
+            <img data-showcase-img src="assets/img/namal-1.jpg" alt="Le Namal — aperçu du site" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;opacity:0;transition:opacity .8s ease;">
+          </div>
+        </div>
+      </div>
+
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(24px,3vw,40px);">
 
         <article data-reveal style="display:flex;flex-direction:column;">
@@ -760,6 +771,53 @@
     });
   }
 
+  /* ---------- Vitrine 3D : cadre incliné qui se redresse au scroll ----------
+     Équivalent natif de l'effet "container scroll" (rotateX + scale pilotés par
+     la position du cadre dans la fenêtre). Transform uniquement → fluide sur mobile. */
+  function initShowcase() {
+    var wrap = q('[data-showcase]')[0];
+    if (!wrap) return;
+    var card = wrap.querySelector('[data-showcase-card]');
+    if (!card) return;
+
+    var fromScale = window.innerWidth < 700 ? 0.92 : 1.05;
+    var toScale = 1;
+    var fromRot = 20;
+    var ticking = false;
+
+    function paint() {
+      var rect = wrap.getBoundingClientRect();
+      var vh = window.innerHeight || 800;
+      // 0 = le cadre entre par le bas de l'écran ; 1 = il est installé en haut (à plat)
+      var p = (vh - rect.top) / (vh * 0.85);
+      p = Math.min(1, Math.max(0, p));
+      var rot = fromRot - fromRot * p;
+      var sc = fromScale + (toScale - fromScale) * p;
+      card.style.transform = 'rotateX(' + rot.toFixed(2) + 'deg) scale(' + sc.toFixed(3) + ')';
+    }
+    function on() {
+      if (!ticking) { ticking = true; requestAnimationFrame(function () { paint(); ticking = false; }); }
+    }
+
+    paint();
+    window.addEventListener('scroll', on, { passive: true });
+    window.addEventListener('resize', function () {
+      fromScale = window.innerWidth < 700 ? 0.92 : 1.05;
+      on();
+    });
+
+    // Défilement des aperçus des 3 sites à l'intérieur du cadre
+    var imgs = Array.prototype.slice.call(wrap.querySelectorAll('[data-showcase-img]'));
+    if (imgs.length > 1 && !LK_REDUCE) {
+      var i = 0;
+      setInterval(function () {
+        imgs[i].style.opacity = '0';
+        i = (i + 1) % imgs.length;
+        imgs[i].style.opacity = '1';
+      }, 3200);
+    }
+  }
+
   /* ---------- Menu overlay ---------- */
   function setMenu(open) {
     var m = q('[data-menu]')[0];
@@ -1076,6 +1134,7 @@
     try { renderFaqs(); } catch (e) {}
     try { initStyleHover(); } catch (e) {}
     try { initCards(); } catch (e) {}
+    try { initShowcase(); } catch (e) {}
     try { initMenu(); } catch (e) {}
     try { initAbout(); } catch (e) {}
     try { initAvisNav(); } catch (e) {}
