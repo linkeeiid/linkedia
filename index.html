@@ -552,7 +552,7 @@
   var LK_REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   function flowPaths(svg, position) {
     var animate = !LK_REDUCE;                 // animation gardée aussi sur mobile (coupée seulement en reduced-motion)
-    var count = LK_SMALL ? 14 : 36;           // moins de traits sur téléphone = fluide, mais toujours animé
+    var count = 36;                           // toutes les lignes, partout (mobile compris)
     for (var i = 0; i < count; i++) {
       var a = 380 - i * 5 * position, b = 189 + i * 6, c = 312 - i * 5 * position,
           d = 216 - i * 6, e = 152 - i * 5 * position, f = 343 - i * 6,
@@ -574,12 +574,21 @@
   function initHeroBg() {
     var host = q('[data-herobg]')[0];
     if (!host) return;
+    // Sur mobile/tablette : on dessine la couche de lignes à résolution réduite,
+    // puis le GPU la réagrandit (transform scale). Toutes les lignes sont conservées,
+    // mais ~4x moins de pixels à redessiner par image → animation fluide.
+    var lowRes = window.innerWidth <= 1024;
+    var r = window.innerWidth <= 768 ? 0.5 : 0.62;
     [1, -1].forEach(function (pos) {
       var svg = document.createElementNS(SVG, 'svg');
       svg.setAttribute('viewBox', '0 0 696 316');
       svg.setAttribute('fill', 'none');
       svg.setAttribute('preserveAspectRatio', 'none');
-      svg.style.cssText = 'width:100%;height:100%;position:absolute;inset:0;';
+      if (lowRes) {
+        svg.style.cssText = 'position:absolute;top:0;left:0;width:' + (r * 100) + '%;height:' + (r * 100) + '%;transform:scale(' + (1 / r) + ');transform-origin:0 0;will-change:transform;backface-visibility:hidden;';
+      } else {
+        svg.style.cssText = 'width:100%;height:100%;position:absolute;inset:0;';
+      }
       flowPaths(svg, pos);
       host.appendChild(svg);
     });
