@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>Carnet de tournée</title>
 
-<meta name="description" content="Carnet de prospection terrain : tournée en cours et tournées passées.">
+<meta name="description" content="Carnet de prospection terrain : tournée en cours, tournées passées et fiches clients.">
 <meta name="theme-color" content="#eeeeea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14181c" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -29,13 +29,17 @@
   <nav class="tabs" aria-label="Sections">
     <a class="tab" id="tab-actuelle" href="#/actuelle">Actuelle <span class="n"></span></a>
     <a class="tab" id="tab-archives" href="#/archives">Passées <span class="n"></span></a>
+    <a class="tab" id="tab-fiches" href="#/fiches">Fiches <span class="n"></span></a>
   </nav>
   <div class="gauge"><div class="gauge__fill" id="gauge"></div></div>
 </div>
 
 <main class="wrap" id="view"></main>
 
+<div id="toast" role="status" aria-live="polite"></div>
+
 <script src="data/tournees.js"></script>
+<script src="data/fiche.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
