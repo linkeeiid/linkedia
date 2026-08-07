@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Immersion Sucrée — Pâtisserie artisanale à Chalamont</title>
+<meta name="description" content="Immersion Sucrée, pâtisserie artisanale place du Marché à Chalamont (01320). Entremets, viennoiserie pur beurre, glaces artisanales et gâteaux sur commande, façonnés à la main chaque matin.">
+<meta name="theme-color" content="#14110F">
+<!-- APERÇU CLIENT : noindex tant que les photos et les coordonnées ne sont pas validées.
+     À la mise en ligne réelle, remettre : <meta name="robots" content="index, follow"> -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- À COMPLÉTER quand le nom de domaine sera choisi :
+     <link rel="canonical" href="https://…/">
+     <meta property="og:url" content="https://…/">
+     <meta property="og:image" content="https://…/assets/logo-immersion-blanc-v2.png"> -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Immersion Sucrée">
+<meta property="og:title" content="Immersion Sucrée — Pâtisserie artisanale à Chalamont">
+<meta property="og:description" content="Le dessert, et l'instant juste après. Pâtisserie artisanale place du Marché, Chalamont.">
+
+<link rel="icon" href="assets/logo-immersion-noir.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo-immersion-noir.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Jost:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   IMMERSION SUCRÉE — jetons repris de la maquette Claude Design
+   (valeurs par défaut du panneau : accent #C4677E, papier #F6F1EA,
+    display Playfair, titre 50px, héro 940px, logo 270px, rayon 4px)
+   ============================================================ */
+:root{
+  --accent:#C4677E;
+  --accent-soft:#E4BBC5;
+  --ink:#14110F;
+  --paper:#F6F1EA;
+  --paper2:#F2EDE6;
+  --muted:#6E655D;
+
+  --display:'Playfair Display', Georgia, serif;
+  --sans:'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --script:'Parisienne', cursive;
+
+  --h1:50px;
+  --hero-h:940px;
+  --logo-w:270px;
+  --card-h:320px;
+  --cols:4;
+
+  --r:4px;      /* rayon standard  */
+  --rm:2px;     /* rayon réduit    */
+  --r-lg:5px;   /* grand rayon     */
+  --pad:56px;   /* gouttière page  */
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none;transition:color .25s ease, background-color .25s ease, border-color .25s ease}
+h1,h2,p{margin:0}
+button{font:inherit}
+
+.page{max-width:1440px;margin:0 auto;background:var(--paper);overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- éléments récurrents ---------- */
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+.h2{font-family:var(--display);font-weight:400;font-size:46px;line-height:1.12;margin:0}
+.script{font-family:var(--script);line-height:1}
+
+.btn{
+  display:inline-block;border-radius:999px;padding:18px 40px;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;text-align:center;
+  border:1px solid transparent;cursor:pointer;
+}
+.btn--light{background:var(--paper);color:var(--ink)}
+.btn--light:hover{background:var(--accent);color:var(--paper)}
+.btn--ghost{border-color:rgba(251,249,246,.55);color:var(--paper)}
+.btn--ghost:hover{background:rgba(251,249,246,.14)}
+.btn--dark{background:var(--ink);color:var(--paper);padding:16px 34px}
+.btn--dark:hover{background:var(--accent)}
+.btn--outline{border-color:rgba(20,17,15,.25);color:var(--ink)}
+.btn--outline:hover{border-color:var(--ink)}
+
+.link-underline{
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  border-bottom:1px solid rgba(20,17,15,.25);padding-bottom:4px;
+}
+.link-underline:hover{border-color:var(--ink)}
+
+.link-accent{
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);
+  border-bottom:1px solid var(--accent);padding-bottom:3px;
+}
+.link-accent:hover{color:var(--ink);border-color:var(--ink)}
+
+/* emplacements photo à fournir par le client */
+.slot{position:relative;width:100%;height:100%;overflow:hidden}
+.slot img{width:100%;height:100%;object-fit:cover}
+.slot--empty{
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
+  background:var(--paper2);border:1px dashed rgba(20,17,15,.22);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);line-height:1.8;
+}
+
+/* ---------- mot-symbole ---------- */
+.wordmark{display:flex;flex-direction:column;line-height:1}
+.wordmark b{font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:.26em;text-transform:uppercase}
+.wordmark i{font-family:var(--script);font-style:normal;font-size:21px;margin-top:2px;margin-left:3px}
+
+/* ============================ HÉRO ============================ */
+.hero{position:relative;height:var(--hero-h);overflow:hidden;background:var(--ink)}
+.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__scrim{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,17,15,.62) 0%,rgba(20,17,15,.26) 32%,rgba(20,17,15,.34) 62%,rgba(20,17,15,.72) 100%);
+}
+
+.hero__bar{
+  position:absolute;top:0;left:0;right:0;z-index:6;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:30px var(--pad);color:var(--paper);
+}
+.nav{display:flex;align-items:center;gap:38px}
+.nav a{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper)}
+.nav a:hover{color:var(--accent-soft)}
+.nav .btn{padding:14px 28px;font-size:11px}
+.nav a.btn--light{color:var(--ink)}          /* sinon `.nav a` (plus spécifique) rend le libellé crème sur crème */
+.nav a.btn--light:hover{color:var(--paper)}
+
+.burger{
+  display:none;flex-direction:column;justify-content:center;gap:6px;
+  width:32px;height:32px;padding:4px;background:none;border:0;cursor:pointer;
+}
+.burger span{display:block;height:1.5px;background:var(--paper);border-radius:2px;transition:transform .3s ease, opacity .3s ease}
+.burger[aria-expanded="true"] span:first-child{transform:translateY(3.75px) rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+
+.hero__content{
+  position:absolute;inset:0;z-index:4;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:80px var(--pad) 190px;pointer-events:none;
+}
+.hero__kicker{
+  display:flex;align-items:center;gap:10px;
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(251,249,246,.85);
+}
+.hero__kicker span{width:6px;height:6px;border-radius:50%;background:var(--accent-soft)}
+.hero__logo{width:var(--logo-w);height:auto;margin-top:18px}
+.hero h1{
+  font-family:var(--display);font-weight:400;font-size:var(--h1);line-height:1.06;
+  margin:10px 0 0;color:var(--paper);max-width:900px;text-wrap:pretty;
+}
+.hero__lead{
+  font-size:16px;line-height:1.7;color:rgba(251,249,246,.82);
+  max-width:520px;margin:22px 0 0;text-wrap:pretty;
+}
+.hero__cta{display:flex;align-items:center;gap:22px;margin-top:34px;pointer-events:auto;flex-wrap:wrap;justify-content:center}
+.br-m{display:none}   /* césure du titre réservée au mobile */
+.only-d{display:inline}   /* texte réservé au desktop (libellés courts sur mobile) */
+
+.hero__note{
+  position:absolute;left:var(--pad);bottom:172px;z-index:4;
+  display:flex;align-items:center;gap:14px;pointer-events:none;
+  color:rgba(251,249,246,.75);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+}
+.hero__note i{display:block;width:40px;height:1px;background:rgba(251,249,246,.5)}
+
+.sound{
+  position:absolute;right:var(--pad);bottom:196px;z-index:5;
+  border:1px solid rgba(251,249,246,.45);background:rgba(20,17,15,.28);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--paper);border-radius:999px;padding:7px 13px;
+  font-size:9px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
+}
+.sound:hover{background:rgba(20,17,15,.62)}
+
+/* ---------- gousse de vanille ---------- */
+.pod{position:relative;z-index:3;height:210px;margin-top:-145px;margin-bottom:16px;pointer-events:none}
+.pod img{
+  position:absolute;left:50%;top:50%;width:120%;max-width:none;height:auto;
+  transform:translate(-50%,-50%) rotate(-24deg);
+}
+
+/* ---------- bandeau défilant (coupé dans la maquette) ---------- */
+.marquee{
+  display:none;overflow:hidden;padding:26px 0;
+  border-top:1px solid rgba(20,17,15,.12);border-bottom:1px solid rgba(20,17,15,.12);
+}
+.marquee[data-on="1"]{display:block}
+.marquee__track{display:flex;width:max-content;animation:marquee 34s linear infinite}
+.marquee__group{
+  display:flex;align-items:center;gap:44px;padding-right:44px;white-space:nowrap;
+  font-family:var(--display);font-size:24px;letter-spacing:.16em;text-transform:uppercase;
+}
+.marquee__group i{display:block;width:7px;height:7px;background:var(--accent);transform:rotate(45deg)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============================ SIGNATURE ============================ */
+.signature{display:flex;flex-direction:column;align-items:center;padding:56px var(--pad) 116px}
+.signature > .script{font-size:58px;color:var(--ink)}
+.signature__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;width:100%;margin-top:52px}
+.sig{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}
+.sig__frame{
+  width:100%;padding:10px;background:var(--paper);
+  border:1px solid rgba(20,17,15,.09);box-shadow:0 18px 40px rgba(20,17,15,.07);
+  border-radius:var(--rm);
+}
+.sig__media{width:100%;height:380px;border-radius:var(--rm);overflow:hidden}
+.sig__name{font-family:var(--display);font-size:23px;margin-top:6px;text-align:center}
+
+/* ============================ CARTE ============================ */
+.carte{padding:0 var(--pad) 116px}
+.carte__head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:44px}
+.carte__head-left{display:flex;flex-direction:column;gap:16px}
+.carte__grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:26px}
+
+.produit{display:flex;flex-direction:column;gap:16px;min-width:0}
+.produit__media{position:relative;width:100%;height:var(--card-h);border-radius:var(--r);overflow:hidden}
+.produit__tag{
+  position:absolute;top:14px;left:14px;z-index:2;pointer-events:none;
+  background:var(--accent);color:var(--paper);border-radius:999px;padding:7px 14px;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+}
+.produit__body{display:flex;flex-direction:column;gap:8px}
+.produit__line{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.produit__name{font-family:var(--display);font-size:23px}
+.produit__price{font-size:14px;color:var(--accent);white-space:nowrap}
+.produit__desc{font-size:13px;line-height:1.65;color:var(--muted);margin:0}
+.carte__more{display:none}
+
+/* ============================ BOUTIQUE ============================ */
+.boutique{
+  background:var(--paper2);padding:104px var(--pad);
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.boutique__col{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.horaires{display:flex;flex-direction:column;gap:12px;width:100%;max-width:420px;margin-top:8px}
+.horaires div{
+  display:flex;justify-content:space-between;gap:16px;font-size:14px;
+  border-bottom:1px solid rgba(20,17,15,.12);padding-bottom:12px;
+}
+.horaires div:last-child{border-bottom:0;padding-bottom:0}
+.horaires dt{color:var(--muted)}
+.horaires dd{margin:0}
+.horaires .ferme{color:var(--accent)}
+.boutique__media{height:460px;border-radius:var(--r-lg);overflow:hidden}
+
+/* ============================ NEWSLETTER (coupée dans la maquette) ============================ */
+.news{display:none;flex-direction:column;align-items:center;text-align:center;padding:104px var(--pad)}
+.news[data-on="1"]{display:flex}
+.news .script{font-size:34px;color:var(--accent)}
+.news h2{margin-top:8px;max-width:640px}
+.news__form{display:flex;gap:12px;margin-top:30px;width:100%;max-width:520px}
+.news input{
+  flex:1;min-width:0;border:1px solid rgba(20,17,15,.2);background:transparent;border-radius:999px;
+  padding:16px 24px;font-family:var(--sans);font-size:14px;color:var(--ink);
+}
+.news input:focus{outline:none;border-color:var(--ink)}
+.news button{
+  border:none;background:var(--ink);color:var(--paper);border-radius:999px;padding:16px 30px;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
+}
+.news button:hover{background:var(--accent)}
+
+/* ============================ PIED DE PAGE ============================ */
+.footer{background:var(--ink);color:var(--paper);padding:64px var(--pad) 34px}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:56px}
+.footer__brand{display:flex;flex-direction:column;gap:14px}
+.footer__brand .wordmark i{color:var(--accent-soft)}
+.footer__brand p{font-size:13px;line-height:1.8;color:rgba(251,249,246,.6);max-width:280px}
+.footer__col{display:flex;flex-direction:column;gap:12px}
+.footer__col h3{
+  margin:0;font-weight:400;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(251,249,246,.45);
+}
+.footer__col a{font-size:13px;color:var(--paper)}
+.footer__col a:hover{color:var(--accent-soft)}
+.footer__bottom{
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  border-top:1px solid rgba(251,249,246,.14);margin-top:48px;padding-top:22px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,249,246,.45);
+}
+
+/* ============================ MENU MOBILE ============================ */
+.drawer{
+  position:fixed;inset:0;z-index:60;display:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  background:rgba(20,17,15,.97);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+}
+.drawer[data-open="1"]{display:flex}
+.drawer a{font-family:var(--display);font-size:28px;color:var(--paper)}
+.drawer a:hover{color:var(--accent-soft)}
+.drawer__close{
+  position:absolute;top:22px;right:20px;width:40px;height:40px;
+  background:none;border:0;color:var(--paper);font-size:26px;line-height:1;cursor:pointer;
+}
+body[data-locked="1"]{overflow:hidden}
+
+/* ============================================================
+   MOBILE / TABLETTE
+   ============================================================ */
+@media (max-width:1023px){
+  :root{
+    --pad:20px;
+    --h1:33px;
+    --logo-w:176px;
+    --card-h:189px;
+    --cols:2;
+    --r-lg:18px;
+    --rm:14px;
+    --r:14px;
+  }
+
+  .hero{height:min(846px,100svh)}
+  .hero__bar{padding:22px var(--pad)}
+  .nav{gap:16px}
+  .nav a:not(.btn){display:none}
+  .nav .btn{padding:11px 18px;font-size:9px}
+  .burger{display:flex}
+
+  .wordmark b{font-size:15px;letter-spacing:.24em}
+  .wordmark i{font-size:16px;margin-left:2px}
+
+  .hero__content{padding:76px var(--pad) 130px}
+  .hero__kicker{font-size:9px;letter-spacing:.26em;gap:8px}
+  .hero__kicker span{width:5px;height:5px}
+  .hero__logo{margin-top:14px}
+  .hero h1{margin-top:6px;line-height:1.04}
+  .br-m{display:inline}
+  .hero__lead{font-size:14px;margin-top:16px}
+  .hero__cta{flex-direction:column;gap:12px;width:100%;margin-top:26px}
+  .hero__cta .btn{width:100%;padding:17px 0;font-size:11px}
+
+  .hero__note{
+    left:0;right:0;bottom:92px;justify-content:center;gap:10px;
+    font-size:9px;
+  }
+  .hero__note i{width:26px}
+  .sound{right:var(--pad);bottom:150px}
+
+  .pod{height:120px;margin-top:-58px;margin-bottom:14px}
+  .pod img{width:260%;transform:translate(-50%,-50%) rotate(-22deg)}
+
+  .marquee{padding:18px 0}
+  .marquee__track{animation-duration:26s}
+  .marquee__group{gap:28px;padding-right:28px;font-size:17px}
+  .marquee__group i{width:5px;height:5px}
+
+  .signature{padding:56px var(--pad)}
+  .signature > .script{font-size:40px}
+  .signature__grid{gap:10px;margin-top:30px}
+  .sig{gap:10px}
+  .sig__frame{padding:5px;box-shadow:0 12px 26px rgba(20,17,15,.07)}
+  .sig__media{height:148px}
+  .sig__name{font-size:13.5px;margin-top:2px}
+  .link-accent{font-size:8px;letter-spacing:.16em;padding-bottom:2px}
+  .slot--empty{font-size:8px;letter-spacing:.14em;padding:8px}
+
+  .carte{display:flex;flex-direction:column;gap:20px;padding:0 var(--pad) 56px}
+  .carte__head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:0}
+  .carte__head .link-underline{display:none}
+  .carte__head-left{gap:12px}
+  .eyebrow{font-size:9px;letter-spacing:.26em}
+  .h2{font-size:34px}
+  .carte__grid{gap:16px}
+  .produit{gap:10px}
+  .produit__tag{top:10px;left:10px;padding:5px 10px;font-size:8px;letter-spacing:.18em}
+  .produit__name{font-size:18px}
+  .produit__price{font-size:12px}
+  .produit__desc{display:none}
+  .only-d{display:none}
+  .carte__more{display:block;padding:16px 0;font-size:11px;margin-top:6px}
+
+  /* ordre de la maquette mobile : intitulé, titre, photo, horaires, bouton.
+     display:contents fait remonter les enfants de .boutique__col au niveau du flex parent. */
+  .boutique{display:flex;flex-direction:column;align-items:stretch;gap:20px;padding:56px var(--pad)}
+  .boutique__col{display:contents}
+  .boutique .eyebrow{order:1}
+  .boutique .h2{order:2}
+  .boutique__media{order:3;height:240px;width:100%}
+  .boutique .horaires{order:4}
+  .boutique .btn--dark{order:5}
+  .horaires{gap:11px;max-width:none;margin-top:0}
+  .horaires div{font-size:13px;padding-bottom:11px}
+  .boutique .btn--dark{width:100%;padding:16px 0;margin-top:4px}
+
+  .news{padding:56px var(--pad)}
+  .news .script{font-size:26px}
+  .news h2{font-size:32px}
+  .news__form{flex-direction:column;gap:10px;margin-top:22px}
+  .news input{text-align:center;padding:15px 22px}
+  .news button{padding:16px 0}
+
+  .footer{padding:44px var(--pad) 26px}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:22px}
+  .footer__brand{grid-column:1 / -1;gap:12px}
+  .footer__col h3{font-size:9px;letter-spacing:.22em}
+  .footer__bottom{font-size:9px;margin-top:26px;padding-top:18px}
+}
+
+/* le mot-symbole du héro reste lisible sur les très petits écrans */
+@media (max-width:359px){
+  :root{--h1:30px;--logo-w:150px}
+}
+
+/* ============================ ACCESSIBILITÉ ============================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee__track{animation:none}
+  *,*::before,*::after{transition-duration:.01ms !important}
+}
+:where(a,button,input):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+@media print{
+  .hero__video,.sound,.burger,.drawer{display:none !important}
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- ================= HÉRO ================= -->
+  <header class="hero" id="haut">
+    <video class="hero__video" id="heroVideo" muted loop playsinline autoplay preload="metadata" aria-hidden="true" tabindex="-1"></video>
+    <div class="hero__scrim"></div>
+
+    <div class="hero__bar">
+      <a class="wordmark" href="#haut" aria-label="Immersion Sucrée — accueil">
+        <b>Immersion</b><i>sucrée</i>
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#carte">La carte</a>
+        <a href="#maison">Notre maison</a>
+        <a href="#boutique">Boutique</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn--light" href="#carte">Commander</a>
+        <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Ouvrir le menu">
+          <span></span><span></span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__kicker"><span aria-hidden="true"></span>Pâtisserie artisanale · Chalamont<span aria-hidden="true"></span></p>
+      <img class="hero__logo" src="assets/logo-immersion-blanc-v2.png" alt="Immersion Sucrée" width="540" height="540" fetchpriority="high">
+      <h1>Le dessert,<br class="br-m"> et l'instant<br>juste après.</h1>
+      <p class="hero__lead">Un savoir-faire porté jusqu'à l'excellence : chaque pièce est façonnée à la main, tous les matins, place du Marché.</p>
+      <div class="hero__cta">
+        <a class="btn btn--light" href="#carte">Voir la carte</a>
+        <a class="btn btn--ghost" href="#boutique">Trouver la boutique</a>
+      </div>
+    </div>
+
+    <p class="hero__note"><i aria-hidden="true"></i>Première fournée · 6h00</p>
+    <button class="sound" id="sound" type="button" aria-pressed="false">Son ▸</button>
+  </header>
+
+  <!-- ================= GOUSSE DE VANILLE ================= -->
+  <div class="pod" aria-hidden="true">
+    <img src="assets/gousse-vanille.png" alt="" width="2752" height="1536" loading="lazy">
+  </div>
+
+  <!-- ================= BANDEAU DÉFILANT (coupé dans la maquette : data-on="1" pour l'afficher) ================= -->
+  <div class="marquee" data-on="0" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span>Entremets</span><i></i>
+        <span>Viennoiserie pur beurre</span><i></i>
+        <span>Chocolat de plantation</span><i></i>
+        <span>Fruits de saison</span><i></i>
+        <span>Gâteaux sur commande</span><i></i>
+      </div>
+      <div class="marquee__group">
+        <span>Entremets</span><i></i>
+        <span>Viennoiserie pur beurre</span><i></i>
+        <span>Chocolat de plantation</span><i></i>
+        <span>Fruits de saison</span><i></i>
+        <span>Gâteaux sur commande</span><i></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SIGNATURE ================= -->
+  <section class="signature" id="maison" aria-labelledby="signature-titre">
+    <h2 class="script" id="signature-titre">Signature</h2>
+
+    <div class="signature__grid">
+      <article class="sig">
+        <div class="sig__frame">
+          <div class="sig__media">
+            <div class="slot"><img src="assets/signature-trompe-loeil.webp" alt="Trompe-l'œil en chocolat et pâte d'amande présentés sur un présentoir" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+        <h3 class="sig__name">Nos Trompes-l'Oeil</h3>
+        <a class="link-accent" href="#carte">Découvrir</a>
+      </article>
+
+      <article class="sig">
+        <div class="sig__frame">
+          <div class="sig__media">
+            <div class="slot"><img src="assets/signature-glaces.webp" alt="Pot de glace artisanale Immersion Sucrée parfum kumquat" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+        <h3 class="sig__name">Nos Glaces Artisanales</h3>
+        <a class="link-accent" href="#carte">Découvrir</a>
+      </article>
+
+      <article class="sig">
+        <div class="sig__frame">
+          <div class="sig__media">
+            <div class="slot"><img src="assets/signature-cookies.webp" alt="Cookies garnis de chocolat, noix de pécan et pistache" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+        <h3 class="sig__name">Nos Cookies Délice</h3>
+        <a class="link-accent" href="#carte">Découvrir</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= LA CARTE ================= -->
+  <section class="carte" id="carte" aria-labelledby="carte-titre">
+    <div class="carte__head">
+      <div class="carte__head-left">
+        <p class="eyebrow">02 — La carte</p>
+        <h2 class="h2" id="carte-titre">Les incontournables</h2>
+      </div>
+      <a class="link-underline" href="#carte">Toute la carte</a>
+    </div>
+
+    <div class="carte__grid">
+      <article class="produit">
+        <div class="produit__media">
+          <span class="produit__tag">Signature</span>
+          <div class="slot slot--empty">Photo<br>Cœur Cerise</div>
+        </div>
+        <div class="produit__body">
+          <div class="produit__line">
+            <h3 class="produit__name">Cœur Cerise</h3>
+            <span class="produit__price">7,50 €</span>
+          </div>
+          <p class="produit__desc">Ganache griotte, biscuit amande, glaçage miroir.</p>
+        </div>
+      </article>
+
+      <article class="produit">
+        <div class="produit__media">
+          <div class="slot slot--empty">Photo<br>Chou Vanille</div>
+        </div>
+        <div class="produit__body">
+          <div class="produit__line">
+            <h3 class="produit__name">Chou Vanille</h3>
+            <span class="produit__price">5,00 €</span>
+          </div>
+          <p class="produit__desc">Craquelin doré, crème à la vanille de Madagascar.</p>
+        </div>
+      </article>
+
+      <article class="produit">
+        <div class="produit__media">
+          <div class="slot slot--empty">Photo<br>Citron Meringuée</div>
+        </div>
+        <div class="produit__body">
+          <div class="produit__line">
+            <h3 class="produit__name">Citron<span class="only-d"> Meringuée</span></h3>
+            <span class="produit__price">6,50 €</span>
+          </div>
+          <p class="produit__desc">Sablé breton, curd au citron de Menton, meringue brûlée.</p>
+        </div>
+      </article>
+
+      <article class="produit">
+        <div class="produit__media">
+          <div class="slot slot--empty">Photo<br>Croissant</div>
+        </div>
+        <div class="produit__body">
+          <div class="produit__line">
+            <h3 class="produit__name">Croissant</h3>
+            <span class="produit__price">1,90 €</span>
+          </div>
+          <p class="produit__desc">Feuilletage 72 h, beurre AOP Charentes-Poitou.</p>
+        </div>
+      </article>
+    </div>
+
+    <a class="btn btn--outline carte__more" href="#carte">Toute la carte</a>
+  </section>
+
+  <!-- ================= BOUTIQUE ================= -->
+  <section class="boutique" id="boutique" aria-labelledby="boutique-titre">
+    <div class="boutique__col">
+      <p class="eyebrow">03 — Boutique</p>
+      <h2 class="h2" id="boutique-titre">Place du Marché<br>Chalamont</h2>
+
+      <dl class="horaires">
+        <div><dt>Mardi — Vendredi</dt><dd>7h30 — 19h30</dd></div>
+        <div><dt>Samedi</dt><dd>8h00 — 20h00</dd></div>
+        <div><dt>Dimanche</dt><dd>8h00 — 14h00</dd></div>
+        <div><dt>Lundi</dt><dd class="ferme">Fermé</dd></div>
+      </dl>
+
+      <a class="btn btn--dark" href="https://www.google.com/maps/search/?api=1&amp;query=Place+du+March%C3%A9%2C+01320+Chalamont" target="_blank" rel="noopener">Itinéraire</a>
+    </div>
+
+    <div class="boutique__media">
+      <div class="slot slot--empty">Photo<br>Devanture de la boutique</div>
+    </div>
+  </section>
+
+  <!-- ================= NEWSLETTER (coupée dans la maquette : data-on="1" pour l'afficher) ================= -->
+  <section class="news" id="newsletter" data-on="0" aria-labelledby="news-titre">
+    <p class="script">chaque jeudi</p>
+    <h2 class="h2" id="news-titre">Les fournées du week-end, dans votre boîte mail.</h2>
+    <form class="news__form" action="#" method="post">
+      <label class="sr-only" for="news-email">Votre adresse e-mail</label>
+      <input id="news-email" name="email" type="email" placeholder="votre@email.fr" autocomplete="email" required>
+      <button type="submit">Je m'inscris</button>
+    </form>
+  </section>
+
+  <!-- ================= PIED DE PAGE ================= -->
+  <footer class="footer" id="contact">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="wordmark"><b>Immersion</b><i>sucrée</i></span>
+        <p>Atelier de pâtisserie artisanale, place du Marché, 01320 Chalamont.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Maison">
+        <h3>Maison</h3>
+        <a href="#carte">La carte</a>
+        <a href="#maison">Notre histoire</a>
+        <a href="#carte">Sur commande</a>
+      </nav>
+
+      <div class="footer__col">
+        <h3>Contact</h3>
+        <a href="tel:+33143571208">01 43 57 12 08</a>
+        <a href="mailto:bonjour@immersionsucree.fr">bonjour@immersionsucree.fr</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>Suivez-nous</h3>
+        <a href="#contact">Instagram</a>
+        <a href="#contact">Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 Immersion Sucrée</span>
+      <a href="#contact">Mentions légales</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ================= MENU MOBILE ================= -->
+<div class="drawer" id="drawer" data-open="0" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="drawer__close" type="button" aria-label="Fermer le menu">&times;</button>
+  <a href="#carte">La carte</a>
+  <a href="#maison">Notre maison</a>
+  <a href="#boutique">Boutique</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Immersion Sucrée",
+  "description": "Pâtisserie artisanale : entremets, viennoiserie pur beurre, glaces artisanales et gâteaux sur commande, façonnés à la main chaque matin.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Place du Marché",
+    "postalCode": "01320",
+    "addressLocality": "Chalamont",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33143571208",
+  "email": "bonjour@immersionsucree.fr",
+  "priceRange": "€€",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "07:30", "closes": "19:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "14:00" }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- vidéo du héro : une seule source selon la largeur ---------- */
+  var video = document.getElementById('heroVideo');
+  var sound = document.getElementById('sound');
+
+  if (video) {
+    var mobile = window.matchMedia('(max-width: 1023px)').matches;
+    video.src = mobile ? 'assets/hero-mobile.mp4' : 'assets/hero-desktop.mp4';
+    video.muted = true;
+    video.load();
+
+    var play = function () {
+      var p = video.play();
+      if (p && p.catch) { p.catch(function () {}); }
+    };
+
+    video.addEventListener('loadeddata', function () {
+      if (reduce) { video.pause(); }   // 1re image figée, aucune animation
+      else { play(); }
+    }, { once: true });
+
+    if (!reduce) {
+      /* iOS / Android coupent la lecture au retour d'arrière-plan */
+      video.addEventListener('pause', function () {
+        if (!video.ended && !document.hidden) { setTimeout(play, 60); }
+      });
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) { play(); }
+      });
+    }
+
+    /* ---------- bouton son ---------- */
+    if (sound) {
+      sound.addEventListener('click', function () {
+        var on = video.muted;                 // on veut activer le son
+        video.muted = !on;
+        sound.textContent = on ? 'Son ◼' : 'Son ▸';
+        sound.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on) { play(); }
+      });
+    }
+  }
+
+  /* ---------- menu mobile ---------- */
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+
+  if (burger && drawer) {
+    var setMenu = function (open) {
+      drawer.setAttribute('data-open', open ? '1' : '0');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      document.body.setAttribute('data-locked', open ? '1' : '0');
+    };
+
+    burger.addEventListener('click', function () {
+      setMenu(drawer.getAttribute('data-open') !== '1');
+    });
+
+    /* clic sur un lien, sur la croix, ou sur le fond → on ferme */
+    drawer.addEventListener('click', function (e) {
+      if (e.target === drawer || e.target.closest('a, .drawer__close')) { setMenu(false); }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { setMenu(false); }
+    });
+
+    /* retour en grand écran : on ne laisse pas le menu ouvert */
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) {
+      if (e.matches) { setMenu(false); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
