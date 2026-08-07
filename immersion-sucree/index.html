@@ -270,6 +270,7 @@ button{font:inherit}
 .horaires dd{margin:0}
 .horaires .ferme{color:var(--accent)}
 .boutique__media{height:460px;border-radius:var(--r-lg);overflow:hidden}
+.carte-map{display:block;width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.02)}
 
 /* ============================ NEWSLETTER (coupée dans la maquette) ============================ */
 .news{display:none;flex-direction:column;align-items:center;text-align:center;padding:104px var(--pad)}
@@ -658,7 +659,7 @@ body[data-locked="1"]{overflow:hidden}
       <article class="produit">
         <div class="produit__media">
           <span class="produit__tag">Signature</span>
-          <div class="slot slot--empty">Photo<br>Cœur Cerise</div>
+          <div class="slot"><img src="assets/produit-coeur-cerise.jpg" alt="Cœur Cerise coupé en deux : mousse et insert griotte sur biscuit amande, glaçage miroir rouge" width="1100" height="1100" loading="lazy" decoding="async"></div>
         </div>
         <div class="produit__body">
           <div class="produit__line">
@@ -671,7 +672,7 @@ body[data-locked="1"]{overflow:hidden}
 
       <article class="produit">
         <div class="produit__media">
-          <div class="slot slot--empty">Photo<br>Chou Vanille</div>
+          <div class="slot"><img src="assets/produit-chou-vanille.jpg" alt="Chou à la vanille garni à la poche, crème montée et craquelin doré" width="1100" height="1100" loading="lazy" decoding="async"></div>
         </div>
         <div class="produit__body">
           <div class="produit__line">
@@ -684,7 +685,7 @@ body[data-locked="1"]{overflow:hidden}
 
       <article class="produit">
         <div class="produit__media">
-          <div class="slot slot--empty">Photo<br>Citron Meringuée</div>
+          <div class="slot"><img src="assets/produit-citron-meringue.jpg" alt="Tartelette au citron meringuée, meringue brûlée et zestes de citron" width="1100" height="1100" loading="lazy" decoding="async"></div>
         </div>
         <div class="produit__body">
           <div class="produit__line">
@@ -697,7 +698,7 @@ body[data-locked="1"]{overflow:hidden}
 
       <article class="produit">
         <div class="produit__media">
-          <div class="slot slot--empty">Photo<br>Croissant</div>
+          <div class="slot"><img src="assets/produit-croissant.jpg" alt="Croissants pur beurre tièdes sur une grille de refroidissement" width="1100" height="1100" loading="lazy" decoding="async"></div>
         </div>
         <div class="produit__body">
           <div class="produit__line">
@@ -729,7 +730,13 @@ body[data-locked="1"]{overflow:hidden}
     </div>
 
     <div class="boutique__media">
-      <div class="slot slot--empty">Photo<br>Devanture de la boutique</div>
+      <iframe
+        class="carte-map"
+        src="https://www.google.com/maps?q=Place%20du%20March%C3%A9%2C%2001320%20Chalamont&amp;z=16&amp;hl=fr&amp;output=embed"
+        title="Plan d'accès : place du Marché, 01320 Chalamont"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
     </div>
   </section>
 
