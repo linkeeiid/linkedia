@@ -194,8 +194,8 @@ button{font:inherit}
 /* ---------- gousse de vanille ---------- */
 .pod{position:relative;z-index:3;height:210px;margin-top:-145px;margin-bottom:16px;pointer-events:none}
 .pod img{
-  position:absolute;left:50%;top:50%;width:120%;max-width:none;height:auto;
-  transform:translate(-50%,-50%) rotate(-24deg);
+  position:absolute;left:50%;top:50%;width:var(--pod-w,120%);max-width:none;height:auto;
+  transform:translate(-50%,-50%) rotate(-24deg) scaleX(var(--pod-x,1));
 }
 
 /* ---------- bandeau défilant (coupé dans la maquette) ---------- */
@@ -420,19 +420,35 @@ body[data-locked="1"]{overflow:hidden}
    GRANDS ÉCRANS — on élargit les gouttières et on redonne de la
    hauteur aux photos pour qu'elles ne soient pas trop recadrées
    ============================================================ */
+/* Gousse de vanille sur grand écran — deux contraintes à tenir ensemble :
+   1. son ÉPAISSEUR doit rester celle de la maquette 1440 (sinon elle grossit avec
+      l'écran et écrase les boutons du héro, « Première fournée » et « Signature ») →
+      on plafonne sa largeur à 1730 px, la valeur qu'elle a à 1440 ;
+   2. elle doit quand même aller d'un bord à l'autre, sinon on voit les coins de
+      l'image en biais → on l'ALLONGE avec scaleX (placé APRÈS le rotate, il agit donc
+      dans le sens de la longueur de la gousse : invisible sur une forme aussi étirée). */
+   Enfin, plus l'écran est large, plus la gousse est inclinée par rapport au bandeau :
+   on la descend (margin-top moins négatif) pour qu'elle garde de l'air sous les boutons
+   tout en couvrant bien la jonction avec la section Signature. */
+@media (min-width:1500px){ :root{--pod-w:1800px;--pod-x:1.15} .pod{margin-top:-130px} }
+@media (min-width:1750px){ :root{--pod-w:1950px;--pod-x:1.25} .pod{margin-top:-120px} }
+@media (min-width:1920px){ :root{--pod-w:2050px;--pod-x:1.30} .pod{margin-top:-110px} }
+@media (min-width:2200px){ :root{--pod-w:2300px;--pod-x:1.45} .pod{margin-top:-100px} }
+@media (min-width:2560px){ :root{--pod-w:2600px;--pod-x:1.60} .pod{margin-top:-90px} }
+
 @media (min-width:1600px){
-  :root{--pad:80px}
+  :root{--pad:72px}
   .sig__media{height:440px}
   .boutique__media{height:520px}
 }
 @media (min-width:1920px){
-  :root{--pad:120px}
+  :root{--pad:88px}
   .sig__media{height:480px}
   .produit__media{height:380px}
   .boutique__media{height:560px}
 }
 @media (min-width:2400px){
-  :root{--pad:180px}
+  :root{--pad:120px}
 }
 
 /* le mot-symbole du héro reste lisible sur les très petits écrans */
