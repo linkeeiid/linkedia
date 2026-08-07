@@ -36,6 +36,8 @@
 :root{
   --accent:#C4677E;
   --accent-soft:#E4BBC5;
+  --btn:#6E7F6A;        /* couleur des boutons */
+  --btn-hover:#5B6A57;
   --ink:#14110F;
   --paper:#F6F1EA;
   --paper2:#F2EDE6;
@@ -89,14 +91,14 @@ button{font:inherit}
   font-size:12px;letter-spacing:.22em;text-transform:uppercase;text-align:center;
   border:1px solid transparent;cursor:pointer;
 }
-.btn--light{background:var(--paper);color:var(--ink)}
-.btn--light:hover{background:var(--accent);color:var(--paper)}
+.btn--light{background:var(--btn);color:var(--paper)}
+.btn--light:hover{background:var(--btn-hover);color:var(--paper)}
 .btn--ghost{border-color:rgba(251,249,246,.55);color:var(--paper)}
 .btn--ghost:hover{background:rgba(251,249,246,.14)}
-.btn--dark{background:var(--ink);color:var(--paper);padding:16px 34px}
-.btn--dark:hover{background:var(--accent)}
+.btn--dark{background:var(--btn);color:var(--paper);padding:16px 34px}
+.btn--dark:hover{background:var(--btn-hover)}
 .btn--outline{border-color:rgba(20,17,15,.25);color:var(--ink)}
-.btn--outline:hover{border-color:var(--ink)}
+.btn--outline:hover{border-color:var(--btn);color:var(--btn)}
 
 .link-underline{
   font-size:12px;letter-spacing:.22em;text-transform:uppercase;
@@ -144,13 +146,17 @@ button{font:inherit}
 .nav a.btn--light{color:var(--ink)}          /* sinon `.nav a` (plus spécifique) rend le libellé crème sur crème */
 .nav a.btn--light:hover{color:var(--paper)}
 
+/* Pastille pleine, comme le bouton Commander : les deux traits blancs seuls
+   disparaissaient sur les images claires de la vidéo. */
 .burger{
-  display:none;flex-direction:column;justify-content:center;gap:6px;
-  width:32px;height:32px;padding:4px;background:none;border:0;cursor:pointer;
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  width:44px;height:44px;padding:0;border:0;border-radius:50%;
+  background:var(--btn);cursor:pointer;transition:background-color .25s ease;
 }
-.burger span{display:block;height:1.5px;background:var(--paper);border-radius:2px;transition:transform .3s ease, opacity .3s ease}
-.burger[aria-expanded="true"] span:first-child{transform:translateY(3.75px) rotate(45deg)}
-.burger[aria-expanded="true"] span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+.burger:hover{background:var(--btn-hover)}
+.burger span{display:block;width:17px;height:1.5px;background:var(--paper);border-radius:2px;transition:transform .3s ease}
+.burger[aria-expanded="true"] span:first-child{transform:translateY(3.25px) rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
 
 .hero__content{
   position:absolute;inset:0;z-index:4;
@@ -175,15 +181,18 @@ button{font:inherit}
 .br-m{display:none}   /* césure du titre réservée au mobile */
 .only-d{display:inline}   /* texte réservé au desktop (libellés courts sur mobile) */
 
+/* Mention et bouton son calés au-dessus de la gousse, qui déborde du bas du héro.
+   Ils sont dans les coins gauche/droit, les boutons du héro sont centrés :
+   aucun risque qu'ils se croisent, quelle que soit la largeur. */
 .hero__note{
-  position:absolute;left:var(--pad);bottom:172px;z-index:4;
+  position:absolute;left:var(--pad);bottom:250px;z-index:4;
   display:flex;align-items:center;gap:14px;pointer-events:none;
   color:rgba(251,249,246,.75);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
 }
 .hero__note i{display:block;width:40px;height:1px;background:rgba(251,249,246,.5)}
 
 .sound{
-  position:absolute;right:var(--pad);bottom:196px;z-index:5;
+  position:absolute;right:var(--pad);bottom:248px;z-index:5;
   border:1px solid rgba(251,249,246,.45);background:rgba(20,17,15,.28);
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
   color:var(--paper);border-radius:999px;padding:7px 13px;
@@ -374,7 +383,7 @@ body[data-locked="1"]{overflow:hidden}
   .wordmark b{font-size:15px;letter-spacing:.24em}
   .wordmark i{font-size:16px;margin-left:2px}
 
-  .hero__content{padding:70px var(--pad) 86px}
+  .hero__content{padding:70px var(--pad) 128px}
   .hero__kicker{font-size:9px;letter-spacing:.26em;gap:8px}
   .hero__kicker span{width:5px;height:5px}
   .hero__logo{margin-top:14px}
@@ -394,13 +403,15 @@ body[data-locked="1"]{overflow:hidden}
      ils ne peuvent plus retomber dans les boutons quand l'écran est court
      (navigateur intégré d'Instagram, barres du téléphone…). */
   /* Mention en bas à GAUCHE et bouton son en bas à droite, comme sur ordinateur :
-     centrée, la mention finissait par toucher le bouton son sur les écrans étroits. */
+     centrée, la mention finissait par toucher le bouton son sur les écrans étroits.
+     Tous deux calés AU-DESSUS de la gousse, qui déborde du bas du héro et les
+     rendait illisibles. Le padding-bas du contenu les tient à distance des boutons. */
   .hero__note{
-    left:var(--pad);right:auto;bottom:26px;justify-content:flex-start;gap:10px;
+    left:var(--pad);right:auto;bottom:98px;justify-content:flex-start;gap:10px;
     font-size:9px;white-space:nowrap;
   }
   .hero__note i{width:26px}
-  .sound{right:var(--pad);bottom:20px;padding:6px 11px}
+  .sound{right:var(--pad);bottom:92px;padding:6px 11px}
 
   .pod{height:120px;margin-top:-58px;margin-bottom:14px}
   .pod img{width:260%;transform:translate(-50%,-50%) rotate(-22deg)}
@@ -509,7 +520,9 @@ body[data-locked="1"]{overflow:hidden}
   .hero__lead{font-size:13px;margin-top:12px;line-height:1.6}
   .hero__cta{margin-top:18px;gap:10px}
   .hero__cta .btn{padding:14px 0}
-  .hero__content{padding-top:58px;padding-bottom:76px}
+  .hero__content{padding-top:58px;padding-bottom:118px}
+  .hero__note{bottom:90px}
+  .sound{bottom:84px}
   .drawer__nav{padding:12px 0;gap:0}
   .drawer__nav a{font-size:clamp(24px,7vw,34px)}
   .drawer__info{font-size:11px;gap:5px;padding-top:14px}
