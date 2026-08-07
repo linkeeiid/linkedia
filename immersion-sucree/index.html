@@ -74,7 +74,9 @@ a{color:inherit;text-decoration:none;transition:color .25s ease, background-colo
 h1,h2,p{margin:0}
 button{font:inherit}
 
-.page{max-width:1440px;margin:0 auto;background:var(--paper);overflow:hidden}
+/* pleine largeur : la maquette est dessinée sur 1440 px, mais le site occupe
+   tout l'écran — les gouttières grandissent au lieu de laisser des bandes vides */
+.page{width:100%;background:var(--paper);overflow:hidden}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* ---------- éléments récurrents ---------- */
@@ -412,6 +414,25 @@ body[data-locked="1"]{overflow:hidden}
   .footer__brand{grid-column:1 / -1;gap:12px}
   .footer__col h3{font-size:9px;letter-spacing:.22em}
   .footer__bottom{font-size:9px;margin-top:26px;padding-top:18px}
+}
+
+/* ============================================================
+   GRANDS ÉCRANS — on élargit les gouttières et on redonne de la
+   hauteur aux photos pour qu'elles ne soient pas trop recadrées
+   ============================================================ */
+@media (min-width:1600px){
+  :root{--pad:80px}
+  .sig__media{height:440px}
+  .boutique__media{height:520px}
+}
+@media (min-width:1920px){
+  :root{--pad:120px}
+  .sig__media{height:480px}
+  .produit__media{height:380px}
+  .boutique__media{height:560px}
+}
+@media (min-width:2400px){
+  :root{--pad:180px}
 }
 
 /* le mot-symbole du héro reste lisible sur les très petits écrans */
