@@ -300,18 +300,53 @@ button{font:inherit}
 
 /* ============================ MENU MOBILE ============================ */
 .drawer{
-  position:fixed;inset:0;z-index:60;display:none;
-  flex-direction:column;align-items:center;justify-content:center;gap:28px;
-  background:rgba(20,17,15,.97);
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  position:fixed;inset:0;z-index:60;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:22px var(--pad) calc(28px + env(safe-area-inset-bottom));
+  background:var(--ink);color:var(--paper);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .4s ease, visibility .4s ease;
 }
-.drawer[data-open="1"]{display:flex}
-.drawer a{font-family:var(--display);font-size:28px;color:var(--paper)}
-.drawer a:hover{color:var(--accent-soft)}
+.drawer[data-open="1"]{opacity:1;visibility:visible;pointer-events:auto}
+
+.drawer__top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.drawer__top .wordmark i{color:var(--accent-soft)}
 .drawer__close{
-  position:absolute;top:22px;right:20px;width:40px;height:40px;
-  background:none;border:0;color:var(--paper);font-size:26px;line-height:1;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;border:1px solid rgba(251,249,246,.22);color:var(--paper);
+  border-radius:999px;padding:10px 16px;cursor:pointer;
+  font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
 }
+.drawer__close:hover{border-color:var(--accent-soft);color:var(--accent-soft)}
+
+.drawer__nav{display:flex;flex-direction:column;gap:6px;padding:24px 0}
+.drawer__nav a{
+  display:flex;align-items:baseline;gap:16px;
+  font-family:var(--display);font-weight:400;font-size:clamp(30px,9vw,44px);
+  line-height:1.25;color:var(--paper);
+  opacity:0;transform:translateY(16px);
+  transition:opacity .5s ease, transform .5s ease, color .25s ease;
+}
+.drawer__nav a em{
+  font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.2em;
+  color:var(--accent-soft);flex:none;
+}
+.drawer[data-open="1"] .drawer__nav a{opacity:1;transform:none}
+.drawer[data-open="1"] .drawer__nav a:nth-child(1){transition-delay:.10s}
+.drawer[data-open="1"] .drawer__nav a:nth-child(2){transition-delay:.17s}
+.drawer[data-open="1"] .drawer__nav a:nth-child(3){transition-delay:.24s}
+.drawer[data-open="1"] .drawer__nav a:nth-child(4){transition-delay:.31s}
+
+.drawer__foot{display:flex;flex-direction:column;gap:18px}
+.drawer__foot .btn{width:100%;padding:18px 0;font-size:11px}
+.drawer__info{
+  display:flex;flex-direction:column;gap:7px;
+  padding-top:18px;border-top:1px solid rgba(251,249,246,.14);
+  font-size:12px;line-height:1.6;color:rgba(251,249,246,.6);
+}
+.drawer__info a{color:var(--paper)}
+.drawer__info a:hover{color:var(--accent-soft)}
+
 body[data-locked="1"]{overflow:hidden}
 
 /* ============================================================
@@ -339,22 +374,33 @@ body[data-locked="1"]{overflow:hidden}
   .wordmark b{font-size:15px;letter-spacing:.24em}
   .wordmark i{font-size:16px;margin-left:2px}
 
-  .hero__content{padding:76px var(--pad) 130px}
+  .hero__content{padding:70px var(--pad) 86px}
   .hero__kicker{font-size:9px;letter-spacing:.26em;gap:8px}
   .hero__kicker span{width:5px;height:5px}
   .hero__logo{margin-top:14px}
-  .hero h1{margin-top:6px;line-height:1.04}
+  /* Sur téléphone le héro est trop court pour tout accueillir : le titre est retiré
+     visuellement (il reste dans le code pour Google et les lecteurs d'écran, la page
+     garde donc son h1). C'est ce qui libère la place et supprime les chevauchements. */
+  .hero h1{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+  }
   .br-m{display:inline}
   .hero__lead{font-size:14px;margin-top:16px}
   .hero__cta{flex-direction:column;gap:12px;width:100%;margin-top:26px}
   .hero__cta .btn{width:100%;padding:17px 0;font-size:11px}
 
+  /* Mention et bouton son alignés sur la même ligne, tout en bas du héro :
+     ils ne peuvent plus retomber dans les boutons quand l'écran est court
+     (navigateur intégré d'Instagram, barres du téléphone…). */
+  /* Mention en bas à GAUCHE et bouton son en bas à droite, comme sur ordinateur :
+     centrée, la mention finissait par toucher le bouton son sur les écrans étroits. */
   .hero__note{
-    left:0;right:0;bottom:92px;justify-content:center;gap:10px;
-    font-size:9px;
+    left:var(--pad);right:auto;bottom:26px;justify-content:flex-start;gap:10px;
+    font-size:9px;white-space:nowrap;
   }
   .hero__note i{width:26px}
-  .sound{right:var(--pad);bottom:150px}
+  .sound{right:var(--pad);bottom:20px;padding:6px 11px}
 
   .pod{height:120px;margin-top:-58px;margin-bottom:14px}
   .pod img{width:260%;transform:translate(-50%,-50%) rotate(-22deg)}
@@ -448,6 +494,25 @@ body[data-locked="1"]{overflow:hidden}
 /* le mot-symbole du héro reste lisible sur les très petits écrans */
 @media (max-width:359px){
   :root{--h1:30px;--logo-w:150px}
+}
+
+/* ============================================================
+   ÉCRANS TRÈS COURTS (navigateur intégré d'Instagram / Facebook,
+   téléphone en paysage) : on allège le héro pour que rien ne se
+   chevauche. Placé en dernier pour l'emporter sur les règles
+   « petits écrans » ci-dessus.
+   ============================================================ */
+@media (max-width:1023px) and (max-height:620px){
+  :root{--logo-w:118px}
+  .hero__kicker{display:none}
+  .hero__logo{margin-top:0}
+  .hero__lead{font-size:13px;margin-top:12px;line-height:1.6}
+  .hero__cta{margin-top:18px;gap:10px}
+  .hero__cta .btn{padding:14px 0}
+  .hero__content{padding-top:58px;padding-bottom:76px}
+  .drawer__nav{padding:12px 0;gap:0}
+  .drawer__nav a{font-size:clamp(24px,7vw,34px)}
+  .drawer__info{font-size:11px;gap:5px;padding-top:14px}
 }
 
 /* ============================ ACCESSIBILITÉ ============================ */
@@ -704,11 +769,26 @@ body[data-locked="1"]{overflow:hidden}
 
 <!-- ================= MENU MOBILE ================= -->
 <div class="drawer" id="drawer" data-open="0" role="dialog" aria-modal="true" aria-label="Menu">
-  <button class="drawer__close" type="button" aria-label="Fermer le menu">&times;</button>
-  <a href="#carte">La carte</a>
-  <a href="#maison">Notre maison</a>
-  <a href="#boutique">Boutique</a>
-  <a href="#contact">Contact</a>
+  <div class="drawer__top">
+    <span class="wordmark"><b>Immersion</b><i>sucrée</i></span>
+    <button class="drawer__close" type="button" aria-label="Fermer le menu">Fermer <span aria-hidden="true">✕</span></button>
+  </div>
+
+  <nav class="drawer__nav" aria-label="Menu principal">
+    <a href="#carte"><em>01</em>La carte</a>
+    <a href="#maison"><em>02</em>Notre maison</a>
+    <a href="#boutique"><em>03</em>Boutique</a>
+    <a href="#contact"><em>04</em>Contact</a>
+  </nav>
+
+  <div class="drawer__foot">
+    <a class="btn btn--light" href="#carte">Commander</a>
+    <div class="drawer__info">
+      <a href="tel:+33143571208">01 43 57 12 08</a>
+      <span>Place du Marché, 01320 Chalamont</span>
+      <span>Mardi — Samedi · dimanche matin · fermé le lundi</span>
+    </div>
+  </div>
 </div>
 
 <script type="application/ld+json">
