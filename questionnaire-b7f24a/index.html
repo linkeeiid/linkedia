@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Votre projet de site — Questionnaire · LinkedIA</title>
+<style>
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  :root{
+    --ink:#0d0d0f; --paper:#fff; --greige:#f5f3ee; --lime:#c9f24d;
+    --muted:#7a746a; --line:#e4e0d8; --soft:#faf9f6;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--greige); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
+
+  .wrap{max-width:860px; margin:0 auto; padding:0 20px 80px}
+
+  /* ---------- En-tête ---------- */
+  header{background:var(--ink); color:#f5f3ee; margin-bottom:26px}
+  .hd{max-width:860px; margin:0 auto; padding:34px 20px 38px}
+  .hd .brand{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--lime); font-weight:700}
+  .hd h1{font-size:clamp(26px,5vw,38px); line-height:1.15; font-weight:700; letter-spacing:-.02em; margin:14px 0 0}
+  .hd p{color:#b8b2a7; font-size:15px; line-height:1.6; margin-top:14px; max-width:62ch}
+  .hd .who{margin-top:22px; padding-top:18px; border-top:1px solid rgba(245,243,238,.16);
+    display:flex; flex-wrap:wrap; gap:6px 26px; font-size:13.5px; color:#8f8a80}
+  .hd .who b{color:#f5f3ee; font-weight:600}
+
+  /* ---------- Barre de progression ---------- */
+  .prog{position:sticky; top:0; z-index:30; background:rgba(245,243,238,.94);
+    backdrop-filter:saturate(1.4) blur(6px); border-bottom:1px solid var(--line);
+    margin:-26px -20px 26px; padding:11px 20px; display:flex; align-items:center; gap:14px}
+  .prog .bar{flex:1; height:6px; background:#e0dcd3; border-radius:99px; overflow:hidden}
+  .prog .bar i{display:block; height:100%; width:0; background:var(--ink); border-radius:99px; transition:width .3s}
+  .prog .n{font-size:13px; font-weight:600; color:#5c574f; white-space:nowrap; font-variant-numeric:tabular-nums}
+
+  /* ---------- Sections ---------- */
+  section{background:var(--paper); border:1px solid var(--line); border-radius:16px;
+    padding:26px 26px 28px; margin-bottom:18px}
+  .sh{display:flex; align-items:baseline; gap:12px; margin-bottom:6px}
+  .sh .no{width:28px; height:28px; flex:0 0 auto; border-radius:50%; background:var(--ink); color:var(--lime);
+    font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; transform:translateY(3px)}
+  .sh h2{font-size:20px; line-height:1.25; font-weight:700; letter-spacing:-.01em}
+  .intro{color:#6b665d; font-size:14.5px; line-height:1.6; margin:0 0 20px 40px}
+
+  .tip{background:var(--soft); border-left:3px solid var(--lime); border-radius:0 10px 10px 0;
+    padding:13px 16px; margin:0 0 18px; font-size:14px; line-height:1.6; color:#4a463f}
+  .tip b{color:var(--ink)}
+
+  .q{margin-bottom:20px}
+  .q:last-child{margin-bottom:0}
+  .q > label, .qlabel{display:block; font-size:15px; font-weight:600; margin-bottom:8px; line-height:1.45}
+  .q .hint{font-size:13.5px; color:#8b857b; line-height:1.5; margin:-4px 0 9px}
+
+  input[type=text], input[type=email], input[type=tel], textarea{
+    width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--soft);
+    border:1px solid var(--line); border-radius:10px; padding:11px 13px}
+  textarea{min-height:96px; resize:vertical; line-height:1.55}
+  input:focus, textarea:focus{outline:0; border-color:var(--ink); background:#fff;
+    box-shadow:0 0 0 3px rgba(201,242,77,.35)}
+  input::placeholder, textarea::placeholder{color:#b3ada2}
+
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:620px){ .duo{grid-template-columns:1fr} }
+
+  /* ---------- Cases et boutons radio ---------- */
+  .opts{display:grid; gap:9px}
+  .opts.two{grid-template-columns:1fr 1fr}
+  @media (max-width:620px){ .opts.two{grid-template-columns:1fr} }
+
+  .opt{display:flex; align-items:flex-start; gap:11px; padding:11px 13px; border:1px solid var(--line);
+    border-radius:10px; background:var(--soft); cursor:pointer; font-size:14.5px; line-height:1.45;
+    transition:border-color .15s, background .15s}
+  .opt:hover{border-color:#c9c4ba}
+  .opt input{appearance:none; -webkit-appearance:none; width:19px; height:19px; flex:0 0 auto;
+    border:1.5px solid #a9a49a; background:#fff; margin-top:1px; cursor:pointer; position:relative}
+  .opt input[type=checkbox]{border-radius:5px}
+  .opt input[type=radio]{border-radius:50%}
+  .opt input:checked{background:var(--ink); border-color:var(--ink)}
+  .opt input[type=checkbox]:checked::after{content:""; position:absolute; left:5.5px; top:2px;
+    width:5px; height:10px; border:solid var(--lime); border-width:0 2px 2px 0; transform:rotate(42deg)}
+  .opt input[type=radio]:checked::after{content:""; position:absolute; left:4px; top:4px;
+    width:7px; height:7px; border-radius:50%; background:var(--lime)}
+  .opt:has(input:checked){border-color:var(--ink); background:#fff}
+  .opt .txt b{display:block; font-weight:600}
+  .opt .txt small{display:block; color:#8b857b; font-size:13px; line-height:1.45; margin-top:2px}
+
+  .price{margin-left:auto; padding-left:10px; font-size:13.5px; font-weight:700; color:#4a463f; white-space:nowrap}
+
+  /* ---------- Formules ---------- */
+  .formules{display:grid; gap:12px}
+  .formule{border:1.5px solid var(--line); border-radius:14px; padding:16px 18px; background:var(--soft);
+    cursor:pointer; display:flex; gap:13px; align-items:flex-start}
+  .formule:has(input:checked){border-color:var(--ink); background:#fff; box-shadow:0 6px 22px rgba(0,0,0,.07)}
+  .formule input{appearance:none; -webkit-appearance:none; width:20px; height:20px; flex:0 0 auto;
+    border:1.5px solid #a9a49a; border-radius:50%; background:#fff; margin-top:3px; position:relative; cursor:pointer}
+  .formule input:checked{background:var(--ink); border-color:var(--ink)}
+  .formule input:checked::after{content:""; position:absolute; left:4.5px; top:4.5px; width:7px; height:7px;
+    border-radius:50%; background:var(--lime)}
+  .formule .t{font-size:16.5px; font-weight:700; letter-spacing:-.01em}
+  .formule .d{font-size:14px; color:#6b665d; line-height:1.5; margin-top:4px}
+  .formule .p{margin-left:auto; text-align:right; white-space:nowrap}
+  .formule .p b{font-size:19px; font-weight:700}
+  .formule .p small{display:block; font-size:12px; color:#8b857b; letter-spacing:.04em; text-transform:uppercase}
+
+  /* ---------- Envoi ---------- */
+  .send{background:var(--ink); color:#f5f3ee; border-radius:16px; padding:28px 26px 30px; margin-top:22px}
+  .send h2{font-size:21px; font-weight:700; letter-spacing:-.01em}
+  .send p{color:#a8a297; font-size:14.5px; line-height:1.6; margin-top:10px}
+  .send .req{margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:620px){ .send .req{grid-template-columns:1fr} }
+  .send label{display:block; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+    color:#8f8a80; font-weight:700; margin-bottom:7px}
+  .send input{background:#1b1a17; border-color:#33312c; color:#f5f3ee}
+  .send input::placeholder{color:#6b665d}
+  .send input:focus{background:#211f1c; border-color:var(--lime); box-shadow:none}
+  .actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; align-items:center}
+  button{font:inherit; font-weight:700; border-radius:11px; cursor:pointer; border:1px solid transparent;
+    padding:14px 24px; font-size:15.5px}
+  .go{background:var(--lime); color:#15140f}
+  .go:hover{filter:brightness(1.06)}
+  .go:disabled{opacity:.55; cursor:default}
+  .ghost{background:transparent; color:#f5f3ee; border-color:#43403a}
+  .ghost:hover{background:#1b1a17}
+  .msg{margin-top:16px; font-size:14.5px; line-height:1.6; display:none}
+  .msg.ok{display:block; color:#d4f57a}
+  .msg.ko{display:block; color:#ff9c8a}
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
+
+  footer{text-align:center; color:#8b857b; font-size:13px; line-height:1.7; margin-top:30px}
+  footer b{color:#4a463f}
+
+  .saved{font-size:13px; color:#8f8a80}
+
+  /* ---------- Impression ---------- */
+  @media print{
+    body{background:#fff; font-size:11px}
+    .prog, .actions, .saved, .tip{display:none !important}
+    header{margin-bottom:14px}
+    .hd{padding:16px 0 18px}
+    .wrap{padding:0; max-width:none}
+    section{border-radius:0; border:0; border-top:1.5px solid #333; padding:12px 0 6px;
+      margin-bottom:0; break-inside:avoid}
+    .sh h2{font-size:14px}
+    .intro{font-size:11px; margin-bottom:10px}
+    .opt{padding:5px 8px; font-size:10.5px; break-inside:avoid}
+    .opt .txt small{display:none}
+    input[type=text], input[type=email], input[type=tel], textarea{background:#fff; font-size:11px; padding:6px 8px}
+    textarea{min-height:52px}
+    .send{background:#fff; color:#111; border:1.5px solid #333; border-radius:0}
+    .send p, .send label{color:#555}
+    .send input{background:#fff; border-color:#aaa; color:#111}
+    .formule{padding:8px 10px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <div class="brand">LinkedIA · Création de sites internet</div>
+    <h1>Votre projet de site&nbsp;:<br>précisons-le ensemble</h1>
+    <p>Ce document a été préparé spécialement pour votre projet de site dédié aux totems
+       d’affichage dynamique. Il me permet de concevoir un site qui correspond exactement à
+       votre activité, et de vous confirmer un budget définitif sans mauvaise surprise.
+       Comptez une dizaine de minutes. Répondez à ce que vous savez : nous verrons le reste ensemble.</p>
+    <div class="who">
+      <span>Préparé pour <b>Stéphane Badache</b></span>
+      <span>Par <b>Jérémy Halimi</b> — LinkedIA</span>
+      <span><b>06 65 14 14 33</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="prog">
+    <div class="bar"><i id="pbar"></i></div>
+    <div class="n"><span id="pnum">0</span> réponse(s)</div>
+  </div>
+
+  <form id="f">
+
+    <!-- 1 -->
+    <section>
+      <div class="sh"><div class="no">1</div><h2>Vous et votre entreprise</h2></div>
+      <p class="intro">Ces informations figureront sur le site, sur le devis et sur la facture.</p>
+
+      <div class="duo">
+        <div class="q"><label for="q_soc">Raison sociale ou nom commercial</label>
+          <input type="text" id="q_soc" data-l="Société"></div>
+        <div class="q"><label for="q_int">Votre nom et prénom</label>
+          <input type="text" id="q_int" data-l="Interlocuteur"></div>
+      </div>
+      <div class="duo">
+        <div class="q"><label for="q_tel">Téléphone</label>
+          <input type="tel" id="q_tel" data-l="Téléphone"></div>
+        <div class="q"><label for="q_sir">N° SIRET</label>
+          <input type="text" id="q_sir" data-l="SIRET"></div>
+      </div>
+      <div class="q"><label for="q_adr">Adresse de l’entreprise</label>
+        <input type="text" id="q_adr" data-l="Adresse"></div>
+      <div class="q"><label for="q_web">Avez-vous déjà un site ou une page ? (adresse)</label>
+        <div class="hint">Même une simple page Facebook ou Google : cela m’aide à voir ce qui existe déjà.</div>
+        <input type="text" id="q_web" data-l="Site actuel"></div>
+    </section>
+
+    <!-- 2 -->
+    <section>
+      <div class="sh"><div class="no">2</div><h2>Votre activité</h2></div>
+      <p class="intro">C’est la question la plus importante du document : elle change entièrement la façon
+         d’écrire le site.</p>
+
+      <div class="tip">Un site qui <b>vend du matériel</b> met en avant le produit, ses caractéristiques et son prix.
+        Un site qui <b>loue des emplacements</b> met en avant l’audience : le passage quotidien, la visibilité,
+        le tarif au mois. Ce ne sont pas les mêmes textes, ni le même parcours pour le visiteur.</div>
+
+      <div class="q">
+        <div class="qlabel">Que proposez-vous à vos clients ?</div>
+        <div class="opts" data-g="Activité">
+          <label class="opt"><input type="radio" name="activite" value="Vente de totems"><span class="txt"><b>Je vends les totems</b><small>Le client achète le matériel et l’installe où il veut.</small></span></label>
+          <label class="opt"><input type="radio" name="activite" value="Location de totems"><span class="txt"><b>Je loue les totems</b><small>Le client loue le matériel pour une durée donnée.</small></span></label>
+          <label class="opt"><input type="radio" name="activite" value="Location d'espaces publicitaires"><span class="txt"><b>Je loue des espaces publicitaires sur mes totems</b><small>Le client achète de la visibilité sur un emplacement que vous exploitez.</small></span></label>
+          <label class="opt"><input type="radio" name="activite" value="Les deux : vente/location de matériel ET espaces"><span class="txt"><b>Les deux à la fois</b><small>Matériel et emplacements.</small></span></label>
+        </div>
+      </div>
+
+      <div class="q"><label for="q_cli">À qui vous adressez-vous en priorité ?</label>
+        <div class="hint">Commerces, centres commerciaux, hôtels, restaurants, collectivités, agences de publicité, autres revendeurs…</div>
+        <input type="text" id="q_cli" data-l="Clients visés"></div>
+
+      <div class="q"><label for="q_zone">Sur quelle zone travaillez-vous ?</label>
+        <div class="hint">Une ville, un département, une région, toute la France…</div>
+        <input type="text" id="q_zone" data-l="Zone couverte"></div>
+
+      <div class="q"><label for="q_diff">Qu’est-ce qui vous différencie de vos concurrents ?</label>
+        <div class="hint">Vos prix, votre réactivité, votre matériel, votre accompagnement, votre expérience du secteur…</div>
+        <textarea id="q_diff" data-l="Différenciation"></textarea></div>
+    </section>
+
+    <!-- 3 -->
+    <section>
+      <div class="sh"><div class="no">3</div><h2>Vos modèles de totems</h2></div>
+      <p class="intro">Le catalogue est le cœur du site : c’est ce que vos visiteurs viendront regarder.</p>
+
+      <div class="q">
+        <div class="qlabel">Combien de modèles souhaitez-vous présenter ?</div>
+        <div class="opts two" data-g="Nombre de modèles">
+          <label class="opt"><input type="radio" name="nbmod" value="1 à 3"><span class="txt">1 à 3 modèles</span></label>
+          <label class="opt"><input type="radio" name="nbmod" value="4 à 6"><span class="txt">4 à 6 modèles</span></label>
+          <label class="opt"><input type="radio" name="nbmod" value="7 à 10"><span class="txt">7 à 10 modèles</span></label>
+          <label class="opt"><input type="radio" name="nbmod" value="Plus de 10"><span class="txt">Plus de 10 modèles</span></label>
+        </div>
+      </div>
+
+      <div class="tip">Vous m’avez indiqué disposer des fiches techniques de vos fournisseurs.
+        Un point important : si ces fiches sont recopiées telles quelles, <b>Google reconnaît un texte
+        qu’il a déjà vu chez d’autres revendeurs</b> et ne positionne pas votre site. Elles doivent être
+        réécrites avec vos mots et vos arguments commerciaux.</div>
+
+      <div class="q">
+        <div class="qlabel">Que faisons-nous de ces fiches ?</div>
+        <div class="opts" data-g="Fiches techniques">
+          <label class="opt"><input type="radio" name="fiches" value="Réécriture par LinkedIA (120 €)"><span class="txt"><b>Réécrivez-les pour moi</b><small>Je les reformule pour Google et pour vos clients.</small></span><span class="price">120 €</span></label>
+          <label class="opt"><input type="radio" name="fiches" value="Le client fournit ses propres textes"><span class="txt"><b>Je vous fournis mes propres textes</b><small>Rédigés par vos soins, prêts à intégrer.</small></span><span class="price">0 €</span></label>
+          <label class="opt"><input type="radio" name="fiches" value="À décider ensemble"><span class="txt"><b>À décider ensemble</b></span></label>
+        </div>
+      </div>
+
+      <div class="tip">Autre point de métier que vous connaissez sûrement mieux que moi : un totem
+        photographié sur fond blanc dans un catalogue ne fait rêver personne. Le même totem
+        <b>photographié dans une galerie marchande, avec des gens autour</b>, vend beaucoup mieux.</div>
+
+      <div class="q">
+        <div class="qlabel">De quelles photos disposez-vous ?</div>
+        <div class="opts" data-g="Photos">
+          <label class="opt"><input type="checkbox" name="photos" value="Photos fournisseur sur fond blanc"><span class="txt">Photos fournisseur, sur fond blanc</span></label>
+          <label class="opt"><input type="checkbox" name="photos" value="Photos en situation réelle"><span class="txt">Photos de totems installés, en situation réelle</span></label>
+          <label class="opt"><input type="checkbox" name="photos" value="Vidéos de démonstration"><span class="txt">Vidéos de démonstration</span></label>
+          <label class="opt"><input type="checkbox" name="photos" value="Souhaite des visuels d'ambiance créés"><span class="txt">Aucune en situation — prévoyons des visuels d’ambiance</span><span class="price">sur devis</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Affichez-vous les prix de vos modèles sur le site ?</div>
+        <div class="opts two" data-g="Affichage des prix">
+          <label class="opt"><input type="radio" name="prix" value="Oui, prix affichés"><span class="txt">Oui, prix affichés</span></label>
+          <label class="opt"><input type="radio" name="prix" value="À partir de…"><span class="txt">Un prix « à partir de… »</span></label>
+          <label class="opt"><input type="radio" name="prix" value="Non, sur devis uniquement"><span class="txt">Non, sur devis uniquement</span></label>
+          <label class="opt"><input type="radio" name="prix" value="À décider"><span class="txt">À décider ensemble</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section>
+      <div class="sh"><div class="no">4</div><h2>Les emplacements et la carte</h2></div>
+      <p class="intro">C’est le point qui distingue la Formule 1 de la Formule 2. Vos réponses ici
+         déterminent le budget final.</p>
+
+      <div class="q">
+        <div class="qlabel">Souhaitez-vous la carte des emplacements ?</div>
+        <div class="opts" data-g="Carte des emplacements">
+          <label class="opt"><input type="radio" name="carte" value="OUI — Formule 2"><span class="txt"><b>Oui, dès le lancement</b><small>Correspond à la Formule 2.</small></span></label>
+          <label class="opt"><input type="radio" name="carte" value="NON — Formule 1, carte plus tard"><span class="txt"><b>Pas tout de suite</b><small>Formule 1, quitte à l’ajouter plus tard.</small></span></label>
+          <label class="opt"><input type="radio" name="carte" value="À décider lors de l'appel"><span class="txt"><b>J’aimerais en parler avec vous d’abord</b></span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Combien d’emplacements au lancement ?</div>
+        <div class="hint">Une estimation suffit. Cela ne change pas le prix, mais cela change la façon de présenter la carte.</div>
+        <div class="opts two" data-g="Nombre d'emplacements">
+          <label class="opt"><input type="radio" name="nbemp" value="1 à 5"><span class="txt">1 à 5</span></label>
+          <label class="opt"><input type="radio" name="nbemp" value="6 à 15"><span class="txt">6 à 15</span></label>
+          <label class="opt"><input type="radio" name="nbemp" value="16 à 40"><span class="txt">16 à 40</span></label>
+          <label class="opt"><input type="radio" name="nbemp" value="Plus de 40"><span class="txt">Plus de 40</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Quelles informations afficher pour chaque emplacement ?</div>
+        <div class="opts two" data-g="Infos par emplacement">
+          <label class="opt"><input type="checkbox" name="infoemp" value="Photo"><span class="txt">Photo du lieu</span></label>
+          <label class="opt"><input type="checkbox" name="infoemp" value="Adresse ou zone"><span class="txt">Adresse ou quartier</span></label>
+          <label class="opt"><input type="checkbox" name="infoemp" value="Descriptif"><span class="txt">Descriptif du lieu</span></label>
+          <label class="opt"><input type="checkbox" name="infoemp" value="Modèle de totem installé"><span class="txt">Modèle de totem installé</span></label>
+          <label class="opt"><input type="checkbox" name="infoemp" value="Passage quotidien estimé"><span class="txt">Passage quotidien estimé</span></label>
+          <label class="opt"><input type="checkbox" name="infoemp" value="Tarif"><span class="txt">Tarif</span></label>
+          <label class="opt"><input type="checkbox" name="infoemp" value="Durée minimum"><span class="txt">Durée minimum de location</span></label>
+          <label class="opt"><input type="checkbox" name="infoemp" value="Disponibilité"><span class="txt">Disponibilité</span></label>
+        </div>
+      </div>
+
+      <div class="tip">Beaucoup de sites n’affichent que les emplacements libres. C’est une erreur :
+        montrer aussi les emplacements <b>déjà pris</b>, en grisé, prouve au visiteur que vos totems
+        se louent réellement — et le pousse à réserver avant qu’il ne reste plus rien.</div>
+
+      <div class="q">
+        <div class="qlabel">Affiche-t-on les emplacements déjà occupés ?</div>
+        <div class="opts" data-g="Emplacements occupés">
+          <label class="opt"><input type="radio" name="occupes" value="Oui, en grisé"><span class="txt"><b>Oui, en grisé</b><small>Ils prouvent la demande sans être réservables.</small></span></label>
+          <label class="opt"><input type="radio" name="occupes" value="Non, uniquement les libres"><span class="txt"><b>Non, uniquement les emplacements libres</b></span></label>
+          <label class="opt"><input type="radio" name="occupes" value="Choix laissé à LinkedIA"><span class="txt"><b>Je vous laisse décider</b></span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Que fait le visiteur qui a repéré un emplacement ?</div>
+        <div class="opts" data-g="Action du visiteur">
+          <label class="opt"><input type="radio" name="action" value="Demande envoyée par formulaire"><span class="txt"><b>Il vous envoie une demande</b><small>Compris dans la Formule 2.</small></span><span class="price">compris</span></label>
+          <label class="opt"><input type="radio" name="action" value="Réservation en ligne avec calendrier"><span class="txt"><b>Il réserve en ligne, avec calendrier de disponibilités</b><small>Fonction avancée, à chiffrer séparément.</small></span><span class="price">sur devis</span></label>
+          <label class="opt"><input type="radio" name="action" value="Il appelle / WhatsApp"><span class="txt"><b>Il vous appelle directement</b></span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Qui met à jour les emplacements quand l’un d’eux est pris ?</div>
+        <div class="opts" data-g="Mise à jour">
+          <label class="opt"><input type="radio" name="maj" value="Espace de gestion (150 €)"><span class="txt"><b>Moi, depuis mon téléphone</b><small>Un espace de gestion privé : vous ajoutez, modifiez et libérez vos emplacements en deux clics.</small></span><span class="price">150 €</span></label>
+          <label class="opt"><input type="radio" name="maj" value="LinkedIA sur simple message"><span class="txt"><b>Vous, sur simple message de ma part</b><small>Compris dans la maintenance.</small></span><span class="price">compris</span></label>
+          <label class="opt"><input type="radio" name="maj" value="À décider"><span class="txt"><b>À décider ensemble</b></span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section>
+      <div class="sh"><div class="no">5</div><h2>Le contenu du site</h2></div>
+      <p class="intro">Cochez ce qui vous paraît utile. Rien n’est définitif, nous ajusterons.</p>
+
+      <div class="q">
+        <div class="qlabel">Les pages souhaitées</div>
+        <div class="opts two" data-g="Pages">
+          <label class="opt"><input type="checkbox" name="pages" value="Accueil"><span class="txt">Accueil</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="L'entreprise"><span class="txt">L’entreprise / à propos</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Nos solutions"><span class="txt">Nos solutions</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Catalogue des modèles"><span class="txt">Catalogue des modèles</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Fiche par modèle"><span class="txt">Une fiche par modèle</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Emplacements"><span class="txt">Emplacements disponibles</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Comment ça marche"><span class="txt">Comment ça marche</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Réalisations"><span class="txt">Nos réalisations</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Tarifs"><span class="txt">Tarifs</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="FAQ"><span class="txt">Questions fréquentes</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Actualités"><span class="txt">Actualités / conseils</span></label>
+          <label class="opt"><input type="checkbox" name="pages" value="Contact"><span class="txt">Contact / demande de devis</span></label>
+        </div>
+      </div>
+
+      <div class="q"><label for="q_pageplus">D’autres pages auxquelles vous pensez ?</label>
+        <input type="text" id="q_pageplus" data-l="Autres pages"></div>
+
+      <div class="q">
+        <div class="qlabel">Les fonctions utiles</div>
+        <div class="opts two" data-g="Fonctions">
+          <label class="opt"><input type="checkbox" name="fonc" value="Formulaire de devis"><span class="txt">Formulaire de demande de devis</span></label>
+          <label class="opt"><input type="checkbox" name="fonc" value="Demande de rappel"><span class="txt">Demande de rappel téléphonique</span></label>
+          <label class="opt"><input type="checkbox" name="fonc" value="Bouton WhatsApp"><span class="txt">Bouton WhatsApp direct</span></label>
+          <label class="opt"><input type="checkbox" name="fonc" value="Brochure PDF téléchargeable"><span class="txt">Brochure PDF téléchargeable</span></label>
+          <label class="opt"><input type="checkbox" name="fonc" value="Vidéo de démonstration"><span class="txt">Vidéo de démonstration</span></label>
+          <label class="opt"><input type="checkbox" name="fonc" value="Avis clients"><span class="txt">Avis clients</span></label>
+          <label class="opt"><input type="checkbox" name="fonc" value="Blog / actualités"><span class="txt">Blog / actualités</span></label>
+          <label class="opt"><input type="checkbox" name="fonc" value="Site multilingue"><span class="txt">Version en anglais</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Les textes du site</div>
+        <div class="opts" data-g="Textes">
+          <label class="opt"><input type="radio" name="textes" value="Le client fournit les textes"><span class="txt">Je vous fournis mes textes</span></label>
+          <label class="opt"><input type="radio" name="textes" value="LinkedIA rédige"><span class="txt">Rédigez-les à partir de mes informations</span></label>
+          <label class="opt"><input type="radio" name="textes" value="À deux"><span class="txt">Faisons-le à deux</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section>
+      <div class="sh"><div class="no">6</div><h2>Votre identité visuelle</h2></div>
+      <p class="intro">Vous m’avez indiqué gérer le logo vous-même — parfait. Quelques précisions sur le style.</p>
+
+      <div class="tip">Pour que le logo s’intègre proprement, il me le faut idéalement en
+        <b>PNG à fond transparent</b>, et si votre graphiste l’a, en <b>fichier vectoriel</b>
+        (SVG, AI, EPS ou PDF). Un logo en JPEG sur fond blanc laisse un rectangle visible.</div>
+
+      <div class="q">
+        <div class="qlabel">Le logo</div>
+        <div class="opts" data-g="Logo">
+          <label class="opt"><input type="radio" name="logo" value="Fourni (PNG transparent / vectoriel)"><span class="txt">Je le fournis, en PNG transparent ou en vectoriel</span></label>
+          <label class="opt"><input type="radio" name="logo" value="Fourni (autre format)"><span class="txt">Je le fournis, mais dans un autre format</span></label>
+          <label class="opt"><input type="radio" name="logo" value="À créer"><span class="txt">Je n’en ai pas encore</span></label>
+        </div>
+      </div>
+
+      <div class="duo">
+        <div class="q"><label for="q_coul">Vos couleurs</label>
+          <input type="text" id="q_coul" data-l="Couleurs"></div>
+        <div class="q"><label for="q_evit">Couleurs ou styles à éviter</label>
+          <input type="text" id="q_evit" data-l="À éviter"></div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">L’ambiance que vous recherchez</div>
+        <div class="opts two" data-g="Ambiance">
+          <label class="opt"><input type="radio" name="ambiance" value="Sobre et technique"><span class="txt">Sobre et technique</span></label>
+          <label class="opt"><input type="radio" name="ambiance" value="Moderne et dynamique"><span class="txt">Moderne et dynamique</span></label>
+          <label class="opt"><input type="radio" name="ambiance" value="Premium / haut de gamme"><span class="txt">Premium, haut de gamme</span></label>
+          <label class="opt"><input type="radio" name="ambiance" value="Coloré et publicitaire"><span class="txt">Coloré et publicitaire</span></label>
+        </div>
+      </div>
+
+      <div class="q"><label for="q_insp">Des sites que vous trouvez réussis</label>
+        <div class="hint">Deux ou trois adresses, même dans un autre secteur. C’est le meilleur moyen de cerner votre goût.</div>
+        <textarea id="q_insp" data-l="Inspirations"></textarea></div>
+    </section>
+
+    <!-- 7 -->
+    <section>
+      <div class="sh"><div class="no">7</div><h2>Être trouvé sur Google</h2></div>
+      <p class="intro">Vous m’avez dit vouloir un site « optimisé lors des recherches sur Internet ».
+         Pour cela, il faut savoir <em>où</em> et <em>sur quoi</em> vous voulez apparaître.</p>
+
+      <div class="tip">On ne se positionne pas sur la France entière avec une seule page.
+        En revanche, on peut très bien ressortir sur <b>« totem publicitaire Lyon »</b> ou
+        <b>« affichage dynamique Villeurbanne »</b> — à condition de créer une page par zone visée.</div>
+
+      <div class="q"><label for="q_villes">Les villes ou zones sur lesquelles vous voulez ressortir</label>
+        <input type="text" id="q_villes" data-l="Villes ciblées"></div>
+
+      <div class="q"><label for="q_mots">Ce que vos clients tapent, selon vous, pour vous trouver</label>
+        <div class="hint">Par exemple : totem publicitaire, écran extérieur, affichage dynamique, location écran vitrine…</div>
+        <textarea id="q_mots" data-l="Mots-clés"></textarea></div>
+
+      <div class="q">
+        <div class="qlabel">Avez-vous une fiche Google (Maps) pour votre entreprise ?</div>
+        <div class="opts two" data-g="Fiche Google">
+          <label class="opt"><input type="radio" name="gmb" value="Oui"><span class="txt">Oui</span></label>
+          <label class="opt"><input type="radio" name="gmb" value="Non"><span class="txt">Non</span></label>
+          <label class="opt"><input type="radio" name="gmb" value="Je ne sais pas"><span class="txt">Je ne sais pas</span></label>
+          <label class="opt"><input type="radio" name="gmb" value="Souhaite qu'on s'en occupe (80 €)"><span class="txt">Occupez-vous-en</span><span class="price">80 €</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section>
+      <div class="sh"><div class="no">8</div><h2>Adresse du site et email</h2></div>
+      <p class="intro">Le nom de domaine est l’adresse de votre site. Il est compris dans les deux formules.</p>
+
+      <div class="duo">
+        <div class="q"><label for="q_dom">Le nom de domaine que vous souhaitez</label>
+          <div class="hint">Exemple : votre-marque.fr</div>
+          <input type="text" id="q_dom" data-l="Domaine souhaité"></div>
+        <div class="q"><label for="q_dom2">Un deuxième choix, au cas où</label>
+          <div class="hint">Le premier peut être déjà pris.</div>
+          <input type="text" id="q_dom2" data-l="Domaine (2e choix)"></div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Souhaitez-vous une adresse email professionnelle ?</div>
+        <div class="hint">Du type contact@votre-marque.fr, relevée depuis votre boîte habituelle.</div>
+        <div class="opts two" data-g="Email pro">
+          <label class="opt"><input type="radio" name="mailpro" value="Oui"><span class="txt">Oui, cela m’intéresse</span></label>
+          <label class="opt"><input type="radio" name="mailpro" value="Non, j'ai déjà"><span class="txt">Non, j’en ai déjà une</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section>
+      <div class="sh"><div class="no">9</div><h2>Votre formule</h2></div>
+      <p class="intro">Les deux devis détaillés sont joints à mon message. Indiquez ici votre préférence :
+         rien n’est engageant tant que le devis n’est pas signé.</p>
+
+      <div class="formules">
+        <label class="formule">
+          <input type="radio" name="formule" value="FORMULE 1 — Site vitrine — 990 €">
+          <span class="txt">
+            <span class="t">Formule 1 — Site vitrine</span>
+            <span class="d">Le site complet de présentation de votre activité et de vos modèles, optimisé pour Google. Sans carte des emplacements.</span>
+          </span>
+          <span class="p"><b>990 €</b><small>3 à 4 semaines</small></span>
+        </label>
+        <label class="formule">
+          <input type="radio" name="formule" value="FORMULE 2 — Site vitrine + emplacements — 1 490 €">
+          <span class="txt">
+            <span class="t">Formule 2 — Site vitrine + emplacements sur carte</span>
+            <span class="d">Tout le contenu de la Formule 1, complété par la carte interactive de vos emplacements et les demandes en ligne.</span>
+          </span>
+          <span class="p"><b>1 490 €</b><small>4 à 5 semaines</small></span>
+        </label>
+        <label class="formule">
+          <input type="radio" name="formule" value="Souhaite en parler avant de choisir">
+          <span class="txt">
+            <span class="t">J’aimerais en parler avant de choisir</span>
+            <span class="d">Nous en discutons au téléphone et je vous confirme la formule adaptée.</span>
+          </span>
+        </label>
+      </div>
+
+      <div class="q" style="margin-top:22px">
+        <div class="qlabel">Les options qui vous intéressent</div>
+        <div class="opts" data-g="Options retenues">
+          <label class="opt"><input type="checkbox" name="options" value="Réécriture des fiches modèles"><span class="txt">Réécriture des fiches modèles</span><span class="price">120 €</span></label>
+          <label class="opt"><input type="checkbox" name="options" value="Espace de gestion autonome"><span class="txt">Espace de gestion autonome</span><span class="price">150 €</span></label>
+          <label class="opt"><input type="checkbox" name="options" value="Fiche Google + optimisation locale"><span class="txt">Fiche Google (Maps) et optimisation locale</span><span class="price">80 €</span></label>
+          <label class="opt"><input type="checkbox" name="options" value="Visuels d'ambiance"><span class="txt">Visuels d’ambiance : vos totems en situation</span><span class="price">sur devis</span></label>
+          <label class="opt"><input type="checkbox" name="options" value="Réservation en ligne"><span class="txt">Réservation en ligne avec disponibilités</span><span class="price">sur devis</span></label>
+          <label class="opt"><input type="checkbox" name="options" value="Maintenance 19 €/mois"><span class="txt">Maintenance et modifications, sans engagement</span><span class="price">19 €/mois</span></label>
+        </div>
+      </div>
+
+      <div class="duo">
+        <div class="q"><label for="q_quand">Pour quand souhaitez-vous le site en ligne ?</label>
+          <input type="text" id="q_quand" data-l="Échéance"></div>
+        <div class="q"><label for="q_event">Une échéance à respecter ?</label>
+          <div class="hint">Un salon, une livraison de matériel, une campagne…</div>
+          <input type="text" id="q_event" data-l="Échéance particulière"></div>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section>
+      <div class="sh"><div class="no">10</div><h2>Vos remarques</h2></div>
+      <p class="intro">Tout ce que vous jugez utile et que je ne vous ai pas demandé.</p>
+
+      <div class="q"><label for="q_libre">Vos précisions</label>
+        <textarea id="q_libre" data-l="Remarques" style="min-height:120px"></textarea></div>
+
+      <div class="q">
+        <div class="qlabel">Comment préférez-vous que je vous recontacte ?</div>
+        <div class="opts two" data-g="Contact préféré">
+          <label class="opt"><input type="radio" name="pref" value="Téléphone"><span class="txt">Par téléphone</span></label>
+          <label class="opt"><input type="radio" name="pref" value="Email"><span class="txt">Par email</span></label>
+          <label class="opt"><input type="radio" name="pref" value="WhatsApp"><span class="txt">Par WhatsApp</span></label>
+          <label class="opt"><input type="radio" name="pref" value="SMS"><span class="txt">Par SMS</span></label>
+        </div>
+      </div>
+
+      <div class="q"><label for="q_creneau">Le meilleur moment pour vous joindre</label>
+        <input type="text" id="q_creneau" data-l="Créneau" placeholder="Par exemple : en semaine, avant 10 h"></div>
+    </section>
+
+    <!-- Envoi -->
+    <div class="send">
+      <h2>Envoyez-moi vos réponses</h2>
+      <p>Un simple clic : je reçois l’ensemble de vos réponses et je reviens vers vous
+         avec le devis définitif. Vous pouvez aussi imprimer ce document, le remplir à la main
+         et me le renvoyer — les deux me conviennent.</p>
+
+      <div class="req">
+        <div>
+          <label for="s_nom">Votre nom *</label>
+          <input type="text" id="s_nom" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="s_mail">Votre email *</label>
+          <input type="email" id="s_mail" autocomplete="email" required>
+        </div>
+      </div>
+
+      <input type="text" class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="actions">
+        <button type="submit" class="go" id="go">Envoyer mes réponses</button>
+        <button type="button" class="ghost" onclick="window.print()">Imprimer / enregistrer en PDF</button>
+        <span class="saved" id="saved"></span>
+      </div>
+
+      <p class="msg" id="msg"></p>
+    </div>
+  </form>
+
+  <footer>
+    <b>LinkedIA — Jérémy Halimi</b><br>
+    06 65 14 14 33 · Jeremyhproo@gmail.com<br>
+    Document préparé le 9 août 2026 pour le projet de Stéphane Badache.
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var ENDPOINT = 'https://linkedia-contact.halimjeremy.workers.dev';
+  var KEY = 'linkedia-quest-badache';
+  var form = document.getElementById('f');
+  var msg = document.getElementById('msg');
+  var go = document.getElementById('go');
+  var savedEl = document.getElementById('saved');
+
+  function fields() { return form.querySelectorAll('input, textarea'); }
+
+  /* ---------- Progression ---------- */
+  function refresh() {
+    var done = 0, groups = {};
+    fields().forEach(function (el) {
+      if (el.classList.contains('hp')) return;
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        if (el.checked) groups[el.name] = 1;
+      } else if (el.value.trim()) done++;
+    });
+    done += Object.keys(groups).length;
+    document.getElementById('pnum').textContent = done;
+    document.getElementById('pbar').style.width = Math.min(100, (done / 34) * 100) + '%';
+  }
+
+  /* ---------- Sauvegarde locale ---------- */
+  function save() {
+    var d = {};
+    fields().forEach(function (el) {
+      if (el.classList.contains('hp')) return;
+      var k = el.id || (el.name + '|' + el.value);
+      if (el.type === 'checkbox' || el.type === 'radio') d[k] = el.checked;
+      else d[k] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+    savedEl.textContent = 'Réponses enregistrées sur cet appareil';
+  }
+  function load() {
+    var d;
+    try { d = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return; }
+    fields().forEach(function (el) {
+      if (el.classList.contains('hp')) return;
+      var k = el.id || (el.name + '|' + el.value);
+      if (!(k in d)) return;
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!d[k];
+      else el.value = d[k];
+    });
+  }
+
+  var t;
+  form.addEventListener('input', function () { refresh(); clearTimeout(t); t = setTimeout(save, 400); });
+  form.addEventListener('change', function () { refresh(); clearTimeout(t); t = setTimeout(save, 400); });
+
+  /* ---------- Récapitulatif texte ---------- */
+  function recap() {
+    var out = [];
+    document.querySelectorAll('section').forEach(function (sec) {
+      var lines = [];
+
+      sec.querySelectorAll('input[type=text], input[type=tel], input[type=email], textarea').forEach(function (el) {
+        var v = el.value.trim();
+        if (v) lines.push('- ' + (el.dataset.l || el.id) + ' : ' + v);
+      });
+
+      sec.querySelectorAll('.opts[data-g], .formules').forEach(function (g) {
+        var vals = [];
+        g.querySelectorAll('input:checked').forEach(function (el) { vals.push(el.value); });
+        if (vals.length) lines.push('- ' + (g.dataset.g || 'Formule') + ' : ' + vals.join(' | '));
+      });
+
+      if (lines.length) {
+        var titre = sec.querySelector('h2').textContent.trim();
+        out.push('== ' + titre.toUpperCase() + ' ==\n' + lines.join('\n'));
+      }
+    });
+    var txt = out.join('\n\n');
+    if (txt.length > 3800) txt = txt.slice(0, 3800) + '\n\n[…] Réponses trop longues : demander le document complet au client.';
+    return txt || '(aucune réponse remplie)';
+  }
+
+  /* ---------- Envoi ---------- */
+  var busy = false;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (busy) return;
+
+    var nom = document.getElementById('s_nom').value.trim();
+    var mail = document.getElementById('s_mail').value.trim();
+    msg.className = 'msg';
+
+    if (!nom || !mail || mail.indexOf('@') < 1) {
+      msg.className = 'msg ko';
+      msg.textContent = 'Merci d’indiquer votre nom et un email valide avant l’envoi.';
+      (nom ? document.getElementById('s_mail') : document.getElementById('s_nom')).focus();
+      return;
+    }
+
+    busy = true;
+    go.disabled = true;
+    go.textContent = 'Envoi en cours…';
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: nom,
+        email: mail,
+        type: 'Questionnaire projet — totems d’affichage',
+        msg: recap(),
+        website: document.getElementById('website').value
+      })
+    }).then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.json();
+    }).then(function () {
+      msg.className = 'msg ok';
+      msg.textContent = 'C’est envoyé, merci. Je reviens vers vous très vite avec le devis définitif.';
+      go.textContent = 'Réponses envoyées ✓';
+    }).catch(function () {
+      busy = false;
+      go.disabled = false;
+      go.textContent = 'Envoyer mes réponses';
+      msg.className = 'msg ko';
+      msg.innerHTML = 'L’envoi n’a pas abouti. Vous pouvez réessayer, ou m’écrire directement à ' +
+        '<a href="mailto:Jeremyhproo@gmail.com" style="color:#c9f24d">Jeremyhproo@gmail.com</a>.';
+    });
+  });
+
+  load();
+  refresh();
+})();
+</script>
+
+</body>
+</html>
