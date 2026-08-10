@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Votre projet de site — Questionnaire · LinkedIA</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../brand/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../brand/icon-192.png">
+<link rel="apple-touch-icon" href="../brand/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="LinkedIA">
+<meta property="og:title" content="Votre projet de site — Questionnaire · LinkedIA">
+<meta property="og:description" content="Quelques précisions sur votre projet, pour concevoir un site qui correspond exactement à votre activité.">
+<meta property="og:image" content="https://linkeeiid.github.io/linkedia/brand/og-linkedia.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   *{box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact}
   :root{
@@ -20,8 +33,13 @@
   /* ---------- En-tête ---------- */
   header{background:var(--ink); color:#f5f3ee; margin-bottom:26px}
   .hd{max-width:860px; margin:0 auto; padding:34px 20px 38px}
-  .hd .brand{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--lime); font-weight:700}
-  .hd h1{font-size:clamp(26px,5vw,38px); line-height:1.15; font-weight:700; letter-spacing:-.02em; margin:14px 0 0}
+  .idb{display:flex; align-items:center; gap:14px}
+  .idb .mark{width:58px; height:58px; flex:0 0 auto; border-radius:14px;
+    border:1px solid rgba(245,243,238,.14); display:block}
+  .hd .brand{font-size:19px; letter-spacing:-.01em; color:#f5f3ee; font-weight:700; line-height:1.15}
+  .hd .brand span{display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--lime); font-weight:700; margin-top:4px}
+  .hd h1{font-size:clamp(26px,5vw,38px); line-height:1.15; font-weight:700; letter-spacing:-.02em; margin:22px 0 0}
   .hd p{color:#b8b2a7; font-size:15px; line-height:1.6; margin-top:14px; max-width:62ch}
   .hd .who{margin-top:22px; padding-top:18px; border-top:1px solid rgba(245,243,238,.16);
     display:flex; flex-wrap:wrap; gap:6px 26px; font-size:13.5px; color:#8f8a80}
@@ -136,15 +154,28 @@
   /* ---------- Impression ---------- */
   @media print{
     body{background:#fff; font-size:11px}
-    .prog, .actions, .saved, .tip{display:none !important}
-    header{margin-bottom:14px}
-    .hd{padding:16px 0 18px}
+    .prog, .actions, .saved{display:none !important}
+    /* fond blanc obligatoire : beaucoup d'imprimantes ignorent les aplats,
+       le texte clair sur noir deviendrait invisible */
+    header{background:#fff; color:#111; margin-bottom:14px; border-bottom:2px solid #111}
+    .hd{padding:16px 0 14px}
+    .hd .brand{color:#111}
+    .hd .brand span{color:#5c7a00}
+    .hd h1{color:#111; font-size:20px; margin-top:14px}
+    .hd p{color:#333; font-size:10.5px; margin-top:8px}
+    .hd .who{color:#555; border-top-color:#ccc; margin-top:12px; padding-top:10px; font-size:10px}
+    .hd .who b{color:#111}
+    .idb .mark{width:42px; height:42px; border-color:#ccc; border-radius:9px}
+    .tip{background:#f4f4f2; border-left-color:#8ab800; padding:7px 10px; margin-bottom:10px;
+      font-size:10px; line-height:1.45; break-inside:avoid}
     .wrap{padding:0; max-width:none}
     section{border-radius:0; border:0; border-top:1.5px solid #333; padding:12px 0 6px;
-      margin-bottom:0; break-inside:avoid}
+      margin-bottom:0}
     .sh h2{font-size:14px}
     .intro{font-size:11px; margin-bottom:10px}
     .opt{padding:5px 8px; font-size:10.5px; break-inside:avoid}
+    .q, .sh, .formule{break-inside:avoid}
+    .sh{break-after:avoid}
     .opt .txt small{display:none}
     input[type=text], input[type=email], input[type=tel], textarea{background:#fff; font-size:11px; padding:6px 8px}
     textarea{min-height:52px}
@@ -159,7 +190,10 @@
 
 <header>
   <div class="hd">
-    <div class="brand">LinkedIA · Création de sites internet</div>
+    <div class="idb">
+      <img class="mark" src="../brand/icon-192.png" width="192" height="192" alt="LinkedIA">
+      <div class="brand">LinkedIA<span>Agence digitale · Création de sites internet</span></div>
+    </div>
     <h1>Votre projet de site&nbsp;:<br>précisons-le ensemble</h1>
     <p>Ce document a été préparé spécialement pour votre projet de site dédié aux totems
        d’affichage dynamique. Il me permet de concevoir un site qui correspond exactement à
