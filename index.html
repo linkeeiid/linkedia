@@ -1201,12 +1201,51 @@
     }
 
     var busy = false;
+    /* Origine de la visite : relevee des l'arrivee sur le site, puis jointe a la demande.
+       Repond a la question "d'ou vient ce prospect ?" sans outil de statistiques. */
+    var SRC_KEY = 'li_origine';
+    (function () {
+      try {
+        if (sessionStorage.getItem(SRC_KEY)) return;
+        var p = new URLSearchParams(location.search);
+        sessionStorage.setItem(SRC_KEY, JSON.stringify({
+          src:  p.get('src') || p.get('utm_source') || '',
+          camp: p.get('utm_campaign') || '',
+          ref:  document.referrer || ''
+        }));
+      } catch (e) {}
+    })();
+
+    function origine() {
+      var o = {};
+      try { o = JSON.parse(sessionStorage.getItem(SRC_KEY) || '{}'); } catch (e) {}
+      var bits = [];
+      if (o.src)  bits.push('source « ' + o.src + ' »');
+      if (o.camp) bits.push('campagne « ' + o.camp + ' »');
+      if (o.ref) {
+        var u = null;
+        try { u = new URL(o.ref); } catch (e) {}
+        var label = u ? u.host : '';
+        if (u && u.host === location.host) {
+          /* Tous les sites clients partagent le meme domaine GitHub Pages :
+             on compare le dossier, sinon un lien venant de blade-society
+             passerait pour une navigation interne. */
+          var moi = location.pathname.replace(/[^/]*$/, '');
+          var seg = u.pathname.split('/')[1] || '';
+          label = (!seg || ('/' + seg + '/') === moi) ? '' : u.host + '/' + seg;
+        }
+        if (label) bits.push('arrive depuis ' + label);
+      }
+      if (!bits.length) bits.push('acces direct — lien saisi, QR sans marqueur, favori ou message prive');
+      return '\n\n---\nOrigine : ' + bits.join(' · ');
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (busy) return;
       if (form.querySelector('[name="website"]') && form.querySelector('[name="website"]').value) { showSent(); return; }
 
-      var data = { name: fieldVal('name'), email: fieldVal('email'), type: fieldVal('type'), msg: fieldVal('msg') };
+      var data = { name: fieldVal('name'), email: fieldVal('email'), type: fieldVal('type'), msg: fieldVal('msg') + origine() };
       if (!data.name || !data.email) return;
 
       if (!CONTACT_ENDPOINT) { mailtoFallback(data); return; }
