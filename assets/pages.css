@@ -1,0 +1,152 @@
+/* ─────────────────────────────────────────────────────────────
+   LinkedIA — feuille de style commune aux pages secondaires
+   (pages locales, guides). Même langage visuel que l'accueil.
+   ───────────────────────────────────────────────────────────── */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  background: #0b0b0c; color: #f4f2ec;
+  font-family: 'Instrument Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.65; overflow-x: hidden;
+}
+::selection { background: #c9f24d; color: #0b0b0c; }
+a { color: #c9f24d; text-decoration: none; word-break: break-word; }
+a:hover { color: #fff; }
+img { max-width: 100%; display: block; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0b0b0c; }
+::-webkit-scrollbar-thumb { background: #26261f; border-radius: 8px; }
+
+.wrap { width: min(920px, 100%); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+.wrap-wide { width: min(1200px, 100%); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ── En-tête ── */
+header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(11,11,12,.88); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(244,242,236,.09);
+}
+.navrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; }
+.logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.02em; color: #f4f2ec; }
+.logo span { color: #c9f24d; }
+.navcta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #c9f24d; color: #0b0b0c; font-weight: 600; font-size: 14px;
+  padding: 10px 18px; border-radius: 100px; transition: background .3s ease;
+}
+.navcta:hover { background: #fff; color: #0b0b0c; }
+
+/* ── Fil d'Ariane ── */
+.breadcrumb {
+  font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; color: #57564f; padding-top: 26px;
+}
+.breadcrumb a { color: #7c7a72; }
+.breadcrumb a:hover { color: #c9f24d; }
+
+/* ── Hero ── */
+.hero { padding: clamp(28px, 5vh, 46px) 0 clamp(30px, 5vh, 50px); position: relative; }
+.hero::before {
+  content: ''; position: absolute; top: -40%; right: 0;
+  width: min(620px, 86vw); height: min(620px, 86vw);
+  background: radial-gradient(circle, rgba(201,242,77,.13), transparent 62%);
+  pointer-events: none; z-index: -1;
+}
+.eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #c9f24d; }
+h1 {
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+  font-size: clamp(2.2rem, 7vw, 4rem); line-height: 1.03; letter-spacing: -.035em;
+  margin-top: 14px; text-wrap: balance;
+}
+h1 em { font-style: normal; color: #c9f24d; }
+.lead { font-size: clamp(1.02rem, 2.6vw, 1.2rem); color: #cfccc3; margin-top: 22px; max-width: 62ch; }
+.lead strong { color: #f4f2ec; font-weight: 600; }
+
+/* ── Sections ── */
+section { padding-bottom: clamp(30px, 5vh, 48px); }
+h2 {
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700;
+  font-size: clamp(1.5rem, 4.4vw, 2.2rem); line-height: 1.12; letter-spacing: -.025em;
+  margin-bottom: 16px; padding-top: clamp(26px, 5vh, 44px);
+  border-top: 1px solid rgba(244,242,236,.12);
+}
+h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: clamp(1.1rem, 3vw, 1.3rem); letter-spacing: -.015em; margin: 26px 0 8px; }
+p, li { color: #c0bdb4; font-size: clamp(.96rem, 2.4vw, 1.04rem); }
+p + p { margin-top: 13px; }
+ul, ol { margin: 12px 0 0; padding-left: 20px; }
+li { margin-bottom: 8px; }
+li::marker { color: #c9f24d; }
+strong { color: #f4f2ec; font-weight: 600; }
+
+/* ── Bloc réponse (extrait par les IA et les moteurs) ── */
+.answer {
+  background: #121213; border: 1px solid rgba(201,242,77,.22);
+  border-left: 3px solid #c9f24d; border-radius: 0 14px 14px 0;
+  padding: clamp(16px, 3.4vw, 22px); margin: 20px 0;
+}
+.answer p { color: #e6e3da; }
+
+/* ── Cartes ── */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 14px; margin-top: 18px; }
+.card { background: #121213; border: 1px solid rgba(244,242,236,.1); border-radius: 16px; padding: clamp(18px, 3.4vw, 24px); }
+.card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+.card p { font-size: .95rem; }
+.card .num { font-family: 'Space Mono', monospace; font-size: 11px; color: #c9f24d; letter-spacing: .1em; }
+
+/* ── Tableau ── */
+.table-scroll { overflow-x: auto; margin-top: 18px; border: 1px solid rgba(244,242,236,.1); border-radius: 14px; }
+table { border-collapse: collapse; width: 100%; min-width: 480px; }
+th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid rgba(244,242,236,.09); font-size: .95rem; }
+th { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #7c7a72; background: #121213; }
+td { color: #c0bdb4; }
+td strong { color: #f4f2ec; }
+tr:last-child td { border-bottom: 0; }
+
+/* ── FAQ ── */
+.faq-item { border-bottom: 1px solid rgba(244,242,236,.12); padding: 18px 0; }
+.faq-item h3 { margin: 0 0 8px; }
+.faq-item p { margin: 0; }
+
+/* ── Zones desservies ── */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.tags span {
+  font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .06em;
+  color: #b8b5ad; border: 1px solid rgba(244,242,236,.16);
+  padding: 7px 13px; border-radius: 100px;
+}
+
+/* ── Appel à l'action ── */
+.cta-box {
+  background: linear-gradient(140deg, #16180d, #121213);
+  border: 1px solid rgba(201,242,77,.25); border-radius: 20px;
+  padding: clamp(24px, 5vw, 40px); margin-top: clamp(26px, 5vh, 44px); text-align: center;
+}
+.cta-box h2 { border: 0; padding-top: 0; margin-bottom: 12px; }
+.cta-box p { max-width: 52ch; margin-inline: auto; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #c9f24d; color: #0b0b0c; font-weight: 600; font-size: 16px;
+  padding: 15px 26px; border-radius: 100px; margin-top: 22px; transition: background .3s ease;
+}
+.btn:hover { background: #fff; color: #0b0b0c; }
+.btn-ghost { background: transparent; color: #f4f2ec; border: 1px solid rgba(244,242,236,.22); }
+.btn-ghost:hover { border-color: #c9f24d; color: #c9f24d; background: transparent; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* ── Pied de page ── */
+footer { border-top: 1px solid rgba(244,242,236,.09); margin-top: clamp(24px, 5vh, 44px); padding: 34px 0 44px; }
+.footlinks { display: flex; flex-wrap: wrap; gap: 12px 26px; margin-bottom: 20px; }
+.footlinks a { color: #b8b5ad; font-size: .95rem; }
+.footlinks a:hover { color: #c9f24d; }
+.footrow {
+  display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between;
+  font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; color: #57564f;
+}
+.footrow a { color: #57564f; }
+.footrow a:hover { color: #c9f24d; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .001ms !important; scroll-behavior: auto !important; } }

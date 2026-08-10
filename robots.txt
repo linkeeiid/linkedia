@@ -1,0 +1,68 @@
+# robots.txt — LinkedIA
+# https://linkeeiid.github.io/linkedia/
+#
+# ⚠️ IMPORTANT : un robots.txt n'est lu par les moteurs QUE s'il est à la racine
+# du domaine (https://linkeeiid.github.io/robots.txt). Tant que le site vit dans
+# le sous-dossier /linkedia/, ce fichier est INACTIF — il sert de préparation
+# pour le jour où le site aura son propre nom de domaine (là il deviendra actif).
+# En attendant, ce qui protège réellement les pages privées, c'est la balise
+# <meta name="robots" content="noindex"> présente dans chacune d'elles,
+# et le sitemap se déclare directement dans la Search Console.
+
+# ── Moteurs de recherche classiques ──
+User-agent: *
+Allow: /
+
+# ── Moteurs de réponse / IA : autorisés explicitement ──
+# (les bloquer empêcherait ChatGPT, Perplexity, Claude ou Gemini de citer le site)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# ── Espaces privés : ne pas indexer ──
+User-agent: *
+Disallow: /carnet-8f21c7/
+Disallow: /questionnaire-b7f24a/
+
+Sitemap: https://linkeeiid.github.io/linkedia/sitemap.xml

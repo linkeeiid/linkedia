@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mentions légales — LinkedIA</title>
+<meta name="description" content="Mentions légales du site LinkedIA : éditeur, hébergeur, propriété intellectuelle, protection des données personnelles et cookies.">
+<meta name="author" content="LinkedIA">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="canonical" href="https://linkeeiid.github.io/linkedia/mentions-legales.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="LinkedIA">
+<meta property="og:title" content="Mentions légales — LinkedIA">
+<meta property="og:description" content="Éditeur, hébergeur, propriété intellectuelle et protection des données personnelles du site LinkedIA.">
+<meta property="og:url" content="https://linkeeiid.github.io/linkedia/mentions-legales.html">
+<meta property="og:image" content="https://linkeeiid.github.io/linkedia/brand/og-linkedia.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="brand/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="brand/icon-192.png">
+<link rel="apple-touch-icon" href="brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0b0b0c; color: #f4f2ec;
+    font-family: 'Instrument Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; line-height: 1.65;
+  }
+  ::selection { background: #c9f24d; color: #0b0b0c; }
+  a { color: #c9f24d; text-decoration: none; word-break: break-word; }
+  a:hover { color: #ffffff; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #0b0b0c; }
+  ::-webkit-scrollbar-thumb { background: #26261f; border-radius: 8px; }
+
+  .wrap { width: min(860px, 100%); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+
+  /* ── barre haute ── */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,11,12,.86); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(244,242,236,.09);
+  }
+  .navrow {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 14px 0;
+  }
+  .logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.02em; color: #f4f2ec; }
+  .logo span { color: #c9f24d; }
+  .back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: #f4f2ec; border: 1px solid rgba(244,242,236,.2);
+    padding: 9px 16px; border-radius: 100px; transition: border-color .3s ease, color .3s ease;
+  }
+  .back:hover { border-color: #c9f24d; color: #c9f24d; }
+
+  /* ── titre ── */
+  .hero { padding: clamp(48px, 9vh, 96px) 0 clamp(28px, 5vh, 48px); }
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #c9f24d; }
+  h1 {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+    font-size: clamp(2.4rem, 8vw, 4.4rem); line-height: 1.02; letter-spacing: -.035em;
+    margin-top: 14px;
+  }
+  .maj { margin-top: 18px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #7c7a72; }
+
+  /* ── sections ── */
+  section { padding-bottom: clamp(30px, 5vh, 46px); }
+  h2 {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700;
+    font-size: clamp(1.25rem, 3.6vw, 1.6rem); letter-spacing: -.02em;
+    margin-bottom: 14px; padding-top: clamp(22px, 4vh, 34px);
+    border-top: 1px solid rgba(244,242,236,.12);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 .num { font-family: 'Space Mono', monospace; font-size: 12px; color: #c9f24d; letter-spacing: .08em; flex: none; }
+  h3 { font-size: 1rem; font-weight: 600; margin: 20px 0 8px; color: #f4f2ec; }
+  p, li { color: #c8c6bd; font-size: clamp(.94rem, 2.4vw, 1rem); }
+  p + p { margin-top: 12px; }
+  ul { margin: 10px 0 0 0; padding-left: 20px; }
+  li { margin-bottom: 7px; }
+  strong { color: #f4f2ec; font-weight: 600; }
+
+  /* ── fiches identité ── */
+  .card {
+    background: #121213; border: 1px solid rgba(244,242,236,.1);
+    border-radius: 16px; padding: clamp(18px, 4vw, 26px);
+  }
+  .card + .card { margin-top: 14px; }
+  .rows { display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); gap: 10px 20px; }
+  .rows dt {
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: #7c7a72; padding-top: 3px;
+  }
+  .rows dd { color: #f4f2ec; font-size: clamp(.94rem, 2.4vw, 1rem); word-break: break-word; }
+  @media (max-width: 620px) {
+    .rows { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .rows dd { margin-bottom: 12px; }
+    .rows dd:last-child { margin-bottom: 0; }
+  }
+  .note {
+    margin-top: 14px; padding: 14px 16px; border-radius: 12px;
+    background: rgba(201,242,77,.06); border: 1px solid rgba(201,242,77,.22);
+    font-size: .9rem; color: #d9dfc4;
+  }
+
+  /* ── pied ── */
+  footer {
+    border-top: 1px solid rgba(244,242,236,.09);
+    margin-top: clamp(20px, 5vh, 40px); padding: 34px 0 44px;
+  }
+  .footrow {
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between;
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #57564f;
+  }
+  .footrow a { color: #57564f; }
+  .footrow a:hover { color: #c9f24d; }
+
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .001ms !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap navrow">
+    <a href="index.html" class="logo">Linked<span>IA</span></a>
+    <a href="index.html" class="back">← Retour au site</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Informations légales</div>
+    <h1>Mentions légales</h1>
+    <p class="maj">Dernière mise à jour : 10 août 2026</p>
+  </div>
+
+  <section>
+    <h2><span class="num">01</span> Éditeur du site</h2>
+    <div class="card">
+      <dl class="rows">
+        <dt>Éditeur</dt>
+        <dd>HALIMI Jérémy — Entrepreneur individuel (EI)</dd>
+        <dt>Nom commercial</dt>
+        <dd>LinkedIA</dd>
+        <dt>Adresse</dt>
+        <dd>201 rue Jean Voillot, 69100 Villeurbanne, France</dd>
+        <dt>SIREN</dt>
+        <dd>848 751 285</dd>
+        <dt>SIRET</dt>
+        <dd>848 751 285 00026</dd>
+        <dt>Code APE</dt>
+        <dd>6201Z — Programmation informatique</dd>
+        <dt>TVA</dt>
+        <dd>TVA non applicable — article 293 B du Code général des impôts</dd>
+        <dt>E-mail</dt>
+        <dd><a href="mailto:Jeremyhproo@gmail.com">Jeremyhproo@gmail.com</a></dd>
+        <dt>Téléphone</dt>
+        <dd><a href="tel:+33665141433">06 65 14 14 33</a></dd>
+        <dt>Directeur de la publication</dt>
+        <dd>Jérémy Halimi</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> Hébergement</h2>
+    <div class="card">
+      <dl class="rows">
+        <dt>Hébergeur</dt>
+        <dd>GitHub, Inc. — GitHub Pages</dd>
+        <dt>Adresse</dt>
+        <dd>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</dd>
+        <dt>Site</dt>
+        <dd><a href="https://github.com" target="_blank" rel="noopener">github.com</a></dd>
+      </dl>
+      <p class="note">Le formulaire de contact transite par un service technique hébergé par Cloudflare, Inc. (Cloudflare Workers) — voir la section 05.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> Propriété intellectuelle</h2>
+    <p>L'ensemble des éléments composant ce site — structure, textes, mise en page, code source, identité visuelle, logo, illustrations et animations — est la propriété exclusive de LinkedIA, sauf mention contraire, et est protégé par le droit d'auteur et le droit des marques.</p>
+    <p>Toute reproduction, représentation, adaptation ou exploitation, totale ou partielle, par quelque procédé que ce soit et sur quelque support que ce soit, sans autorisation écrite préalable, est interdite et constitue une contrefaçon au sens des articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+    <p>Les captures d'écran, noms et logos des sites clients présentés dans la section « Réalisations » restent la propriété de leurs titulaires respectifs et sont affichés à titre de référence, avec leur accord.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> Conditions d'utilisation</h2>
+    <p>L'accès au site est libre et gratuit. LinkedIA s'efforce d'en assurer l'exactitude et la mise à jour, sans pouvoir garantir que les informations publiées soient exemptes d'erreur ou d'omission. Les délais, tarifs et prestations présentés sont donnés à titre indicatif et ne constituent pas une offre contractuelle : seul un devis signé engage les parties.</p>
+    <p>LinkedIA ne saurait être tenu responsable des dommages directs ou indirects résultant de l'accès au site, de son indisponibilité, ou de l'utilisation des informations qui y figurent.</p>
+    <p>Le site peut contenir des liens vers des sites tiers, sur lesquels LinkedIA n'exerce aucun contrôle et dont il ne saurait être tenu responsable du contenu.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span> Données personnelles (RGPD)</h2>
+    <p>Le responsable du traitement est <strong>HALIMI Jérémy (LinkedIA)</strong>, dont les coordonnées figurent en section 01.</p>
+
+    <h3>Données collectées</h3>
+    <p>Aucune donnée personnelle n'est collectée lors de la simple consultation du site. Seul l'envoi volontaire du formulaire de contact entraîne une collecte, limitée aux informations que vous saisissez : <strong>nom, adresse e-mail, téléphone (facultatif), nom de l'entreprise (facultatif), type de projet et contenu du message</strong>. La page d'où provient votre visite (site référent ou paramètre de campagne) est jointe au message afin d'identifier l'origine de la demande.</p>
+
+    <h3>Finalité et base légale</h3>
+    <p>Ces données servent uniquement à répondre à votre demande et, le cas échéant, à établir un devis. La base légale est votre <strong>consentement</strong> et l'exécution de mesures précontractuelles prises à votre demande (article 6.1.a et 6.1.b du RGPD). Elles ne font l'objet d'aucune prospection automatisée, ne sont ni vendues, ni louées, ni cédées à des tiers.</p>
+
+    <h3>Destinataires et sous-traitants</h3>
+    <ul>
+      <li><strong>Cloudflare, Inc.</strong> — acheminement technique du formulaire (Cloudflare Workers) ;</li>
+      <li><strong>Web3Forms</strong> — service de transmission du formulaire par e-mail ;</li>
+      <li><strong>Google (Gmail)</strong> — réception et conservation du message dans la boîte e-mail de LinkedIA.</li>
+    </ul>
+    <p>Certains de ces prestataires sont susceptibles de traiter des données hors de l'Union européenne, dans le cadre des garanties prévues par les articles 44 et suivants du RGPD (clauses contractuelles types).</p>
+
+    <h3>Durée de conservation</h3>
+    <p>Les messages sont conservés <strong>3 ans</strong> à compter du dernier contact, puis supprimés. Les documents contractuels et comptables sont conservés pendant la durée légale applicable (10 ans pour les pièces comptables).</p>
+
+    <h3>Vos droits</h3>
+    <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données. Pour l'exercer, écrivez à <a href="mailto:Jeremyhproo@gmail.com">Jeremyhproo@gmail.com</a> ; une réponse vous sera apportée sous un mois. En cas de désaccord, vous pouvez saisir la CNIL — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 — <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>.</p>
+
+    <h3>Sécurité</h3>
+    <p>Le site est intégralement servi en HTTPS. Le formulaire est protégé contre les envois automatisés (champ piège et limitation du nombre d'envois par adresse IP, cette dernière n'étant traitée que sous forme anonymisée et non conservée).</p>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span> Cookies et stockage local</h2>
+    <p><strong>Ce site ne dépose aucun cookie</strong> : ni cookie publicitaire, ni cookie de mesure d'audience, ni traceur tiers. Aucun bandeau de consentement n'est donc nécessaire.</p>
+    <p>Un stockage temporaire de session (<em>sessionStorage</em>) mémorise uniquement la provenance de votre visite, afin de la joindre au message si vous décidez d'utiliser le formulaire. Cette information est strictement nécessaire au service demandé et disparaît à la fermeture de l'onglet.</p>
+    <p>Les polices d'écriture sont chargées depuis Google Fonts : votre adresse IP est alors transmise à Google LLC pour permettre l'affichage de la page.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span> Accessibilité</h2>
+    <p>Ce site est conçu pour rester lisible et utilisable au clavier, sur mobile comme sur ordinateur, et respecte les préférences système de réduction des animations. Si vous rencontrez une difficulté d'accès à un contenu, signalez-la à <a href="mailto:Jeremyhproo@gmail.com">Jeremyhproo@gmail.com</a> : une solution vous sera proposée.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span> Droit applicable et litiges</h2>
+    <p>Les présentes mentions légales sont soumises au <strong>droit français</strong>. En cas de litige, une solution amiable sera recherchée en priorité en écrivant à <a href="mailto:Jeremyhproo@gmail.com">Jeremyhproo@gmail.com</a>. À défaut d'accord, les tribunaux français seront seuls compétents.</p>
+    <!-- ⚠️ Jeremy : si un jour tu vends à des PARTICULIERS (et non à des pros), la loi t'oblige
+         à adhérer à un médiateur de la consommation et à indiquer son nom + son site ici
+         (art. L.616-1 du Code de la consommation). Tant que tes clients sont des professionnels,
+         ce n'est pas requis. -->
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footrow">
+    <span>© 2026 LinkedIA — Villeurbanne</span>
+    <span style="display:flex;flex-wrap:wrap;gap:12px 20px;">
+      <a href="creation-site-internet-lyon.html">Site internet à Lyon</a>
+      <a href="creation-site-internet-villeurbanne.html">à Villeurbanne</a>
+      <a href="prix-creation-site-internet.html">Prix</a>
+      <a href="index.html">Retour au site ↑</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

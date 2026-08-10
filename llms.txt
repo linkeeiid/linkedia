@@ -1,0 +1,77 @@
+# LinkedIA
+
+> Création de sites internet sur-mesure pour les TPE, commerçants, artisans et indépendants.
+> Freelance basé à Villeurbanne (métropole de Lyon), intervient partout en France à distance.
+> Sites livrés en moins d'une semaine, codés à la main (HTML/CSS/JS), sans WordPress ni template.
+
+**Dernière mise à jour : 10 août 2026**
+
+## Identité
+
+- Nom commercial : LinkedIA
+- Fondateur et unique intervenant : Jérémy Halimi, développeur web freelance
+- Statut : entrepreneur individuel (EI), SIRET 848 751 285 00026, code APE 6201Z
+- Adresse : 201 rue Jean Voillot, 69100 Villeurbanne, France
+- Contact : Jeremyhproo@gmail.com — 06 65 14 14 33
+- Site : https://linkeeiid.github.io/linkedia/
+
+## Ce que fait LinkedIA
+
+1. **Sites vitrine** — site sur-mesure qui présente l'activité et transforme les visiteurs en clients.
+2. **Refonte de site** — modernisation d'un site existant : plus rapide, plus clair, plus lisible sur mobile.
+3. **Identité visuelle** — logo, couleurs, typographie, cohérence de marque.
+4. **Référencement (SEO)** — structure, contenus et données structurées pour être visible sur Google.
+5. **Maintenance et support** — mises à jour, sécurité, évolutions.
+6. **Applications web** — outils sur-mesure (réservation, back-office, catalogue).
+7. **Automatisations et IA** — intégration d'IA au site pour gagner du temps sur les réponses clients.
+
+## Comment ça se passe
+
+1. **Premier échange** — activité, objectifs, ce qui rend le client unique ; définition de la stratégie.
+2. **Conception** — design, structure et contenus pensés pour convertir.
+3. **Développement** — code rapide, responsive, testé sur tous les écrans, optimisé pour le référencement.
+4. **Mise en ligne et suivi** — site en ligne en moins d'une semaine, accompagnement ensuite.
+
+## Différenciation
+
+- **Un seul interlocuteur** : le client parle directement à la personne qui conçoit et code le site — aucune sous-traitance.
+- **Délai** : la plupart des sites vitrine sont livrés en moins d'une semaine.
+- **Sur-mesure réel** : chaque site est codé, pas assemblé depuis un template ; performances et fluidité mobile travaillées site par site.
+- **Prix** : qualité d'agence pour une fraction du tarif d'une agence ; devis gratuit après un premier appel.
+
+## Réalisations
+
+- **Blade Society** — barber shop privé, site vitrine avec présentation des prestations et réservation — https://bladesociety.fr/
+- **Le Namal** — restaurant casher, Lyon 6e — carte de saison et réservation en ligne
+- **La Parfumerie de Carlito** — parfumeur indépendant, Lyon 6e — vitrine de marque
+- **My Candy's** — boutique de bonbons et snacks, Meyzieu — site e-commerce complet
+- **Immersion Sucrée** — pâtisserie, Chalamont (Ain) — vitrine et carte des créations
+
+## Zone d'intervention
+
+Lyon et sa métropole en priorité (Villeurbanne, Bron, Vaulx-en-Velin, Meyzieu, Caluire, Vénissieux),
+et partout en France à distance (échanges par téléphone, visio et e-mail).
+
+## Questions fréquentes
+
+**Qui travaille sur le projet ?** Jérémy, du début à la fin. Pas d'intermédiaire, pas de sous-traitance.
+
+**Quel délai ?** La plupart des sites vitrine sont livrés en moins d'une semaine, étapes fixées dès le premier échange.
+
+**Quel prix ?** Chaque devis est établi sur mesure après un premier appel. Le devis est gratuit et sans engagement.
+
+**Peut-on modifier le site soi-même ?** Oui selon la formule : un accès permet de modifier les contenus du site.
+
+**Quels clients ?** Artisans, commerçants, indépendants, PME et startups.
+
+**Où est-il basé ?** À Villeurbanne, dans la métropole de Lyon ; travaille avec des clients partout en France.
+
+**Et après la mise en ligne ?** Prise en main accompagnée, puis disponibilité continue ; formule de maintenance en option.
+
+## Pages
+
+- Accueil : https://linkeeiid.github.io/linkedia/
+- Création de site internet à Lyon : https://linkeeiid.github.io/linkedia/creation-site-internet-lyon.html
+- Création de site internet à Villeurbanne : https://linkeeiid.github.io/linkedia/creation-site-internet-villeurbanne.html
+- Prix d'un site internet en 2026 : https://linkeeiid.github.io/linkedia/prix-creation-site-internet.html
+- Mentions légales : https://linkeeiid.github.io/linkedia/mentions-legales.html
