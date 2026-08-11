@@ -10,256 +10,256 @@
 <style>
 /* ==========================================================================
    Aperçu — page d'accueil Promoc Design Display
-   Direction artistique : noir plein écran + accent fluo + capitales grasses,
-   d'après la référence grafxconcept.com. Accent à recaler sur le logo client.
+   Direction artistique d'après grafxconcept.com : alternance de bandes
+   noires et blanches, titres centrés soulignés de cyan, vignettes coiffées
+   d'un bandeau noir « + NOM », icônes cerclées magenta.
+   Couleurs d'accent provisoires, à recaler sur le logo du client.
    ========================================================================== */
 *{box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact}
 :root{
   --noir:#000;
-  --noir-2:#0a0a0c;
-  --noir-3:#141418;
-  --ligne:#232329;
+  --noir-2:#0b0b0d;
+  --gris-f:#f0f0f0;      /* bande claire */
+  --gris-b:#e3e3e3;      /* bordures claires */
+  --gris-t:#5d5d66;      /* texte gris sur blanc */
+  --gris-d:#9b9ba4;      /* texte gris sur noir */
   --blanc:#fff;
-  --gris:#9b9ba4;
-  --gris-2:#6a6a73;
-  --fluo:#ff0a78;          /* accent principal */
-  --cyan:#00d8ff;
+  --rose:#ff0080;
+  --cyan:#00b4e6;
   --jaune:#ffd400;
 }
-html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; background:var(--noir)}
-body{background:var(--noir); color:var(--blanc);
-  font:16px/1.7 "Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; background:var(--blanc)}
+body{background:var(--blanc); color:var(--noir);
+  font:16px/1.75 "Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing:antialiased; overflow-x:hidden}
 a{color:inherit; text-decoration:none}
 
-.wrap{max-width:1280px; margin:0 auto; padding:0 28px}
+.wrap{max-width:1320px; margin:0 auto; padding:0 30px}
 @media (max-width:600px){ .wrap{padding:0 20px} }
+section{padding:clamp(64px,8vw,110px) 0}
 
-/* ---------- titrage ---------- */
-.tt{font-family:"Arial Narrow","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  text-transform:uppercase; font-weight:800; letter-spacing:-.005em; line-height:.98}
-h1.tt{font-size:clamp(36px,5.6vw,78px)}
-h2.tt{font-size:clamp(30px,5.2vw,64px)}
-h3.tt{font-size:clamp(20px,2.4vw,27px); line-height:1.06}
-.kicker{font-size:12px; font-weight:800; letter-spacing:.28em; text-transform:uppercase;
-  color:var(--fluo); display:flex; align-items:center; gap:12px}
-.kicker::before{content:""; width:26px; height:2px; background:var(--fluo); flex:0 0 auto}
-p.big{font-size:clamp(16px,1.7vw,18.5px); line-height:1.75; color:var(--gris); max-width:64ch}
-
-section{padding:clamp(64px,9vw,128px) 0}
-.sec-head{margin-bottom:clamp(34px,4.5vw,58px)}
-.sec-head h2{margin-top:16px}
-.sec-head p{margin-top:20px}
+/* ---------- titres ---------- */
+h1,h2,h3,.hd{font-weight:800; letter-spacing:-.025em; line-height:1.05}
+h2.sec{font-size:clamp(34px,5.4vw,62px); text-align:center}
+.rule{width:112px; height:4px; background:var(--cyan); margin:22px auto 0; border-radius:2px}
+.rule.rose{background:var(--rose)}
+.intro{text-align:center; max-width:74ch; margin:34px auto 0; font-size:clamp(16px,1.7vw,18.5px);
+  line-height:1.75; color:var(--gris-t); font-weight:600}
+.dark .intro{color:var(--gris-d)}
 
 /* ---------- bandeau aperçu ---------- */
-.draft{background:var(--fluo); color:#fff; font-size:11.5px; font-weight:800;
+.draft{background:var(--rose); color:#fff; font-size:11.5px; font-weight:800;
   letter-spacing:.14em; text-transform:uppercase; text-align:center; padding:8px 16px}
 
 /* ---------- navigation ---------- */
-header{position:sticky; top:0; z-index:70; background:rgba(0,0,0,.82);
-  backdrop-filter:blur(14px); border-bottom:1px solid var(--ligne)}
-.nav{display:flex; align-items:center; gap:26px; height:82px}
-.brand{display:flex; align-items:center; gap:12px; flex:0 0 auto}
-.brand .mk{width:46px; height:46px; border:2px solid var(--blanc); border-radius:4px;
-  display:grid; place-content:center; position:relative; flex:0 0 auto}
-.brand .mk b{font-family:"Arial Narrow",Arial,sans-serif; font-size:21px; font-weight:800;
-  letter-spacing:-.04em; line-height:1}
-.brand .mk i{position:absolute; right:-4px; bottom:-4px; display:flex; gap:2px}
-.brand .mk i s{width:5px; height:5px; text-decoration:none; display:block}
-.brand .nm{font-family:"Arial Narrow",Arial,sans-serif; text-transform:uppercase;
-  font-weight:800; font-size:20px; letter-spacing:.01em; line-height:1.05}
-.brand .nm small{display:block; font-size:9.5px; letter-spacing:.34em; color:var(--gris-2); font-weight:700}
-.menu{display:flex; gap:30px; margin-left:auto; font-size:13.5px; font-weight:700;
-  letter-spacing:.11em; text-transform:uppercase}
-.menu a{color:var(--gris)}
-.menu a:hover{color:var(--blanc)}
-.cta-nav{background:var(--fluo); color:#fff; border-radius:999px; padding:13px 28px;
-  font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap}
-.cta-nav:hover{background:#ff3d95}
-.socials{display:flex; gap:14px; color:var(--gris)}
-.socials span{width:19px; height:19px; border:1.6px solid currentColor; border-radius:4px}
-@media (max-width:1080px){ .menu{display:none} .cta-nav{margin-left:auto} .socials{display:none} }
+header{position:sticky; top:0; z-index:80; background:var(--noir); color:#fff}
+.nav{display:flex; align-items:center; gap:26px; height:88px}
+.brand{display:flex; align-items:center; gap:13px; flex:0 0 auto}
+.brand .mk{width:52px; height:52px; border:2.5px solid #fff; position:relative; flex:0 0 auto;
+  display:grid; place-content:center; transform:skewX(-6deg)}
+.brand .mk b{font-size:23px; font-weight:800; letter-spacing:-.05em; transform:skewX(6deg)}
+.brand .mk i{position:absolute; right:-7px; bottom:-7px; display:flex; gap:3px; transform:skewX(6deg)}
+.brand .mk i s{width:7px; height:7px; text-decoration:none; display:block; transform:rotate(45deg)}
+.brand .nm{text-transform:uppercase; font-weight:800; font-size:19px; letter-spacing:.02em; line-height:1.1}
+.brand .nm small{display:block; font-size:9px; letter-spacing:.42em; color:#8b8b95; font-weight:700; margin-top:2px}
+.menu{display:flex; gap:34px; margin:0 auto; font-size:14px; font-weight:800;
+  letter-spacing:.06em; text-transform:uppercase}
+.menu a:hover{color:var(--rose)}
+.cta-nav{background:var(--rose); color:#fff; border-radius:999px; padding:14px 32px;
+  font-size:14px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap}
+.cta-nav:hover{background:#ff3d9e}
+.socials{display:flex; gap:15px; margin-left:24px}
+.socials span{width:18px; height:18px; border:1.6px solid #fff; border-radius:4px; display:block}
+@media (max-width:1120px){ .menu,.socials{display:none} .cta-nav{margin-left:auto} }
 @media (max-width:520px){
-  .nav{height:70px} .brand .mk{width:38px; height:38px} .brand .mk b{font-size:17px}
-  .brand .nm{font-size:16px} .brand .nm small{font-size:8.5px; letter-spacing:.28em}
-  .cta-nav{padding:11px 20px; font-size:11.5px}
+  .nav{height:72px} .brand .mk{width:42px; height:42px} .brand .mk b{font-size:19px}
+  .brand .nm{font-size:15.5px} .brand .nm small{font-size:8px; letter-spacing:.3em}
+  .cta-nav{padding:11px 20px; font-size:12px}
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative; display:flex; flex-direction:column; justify-content:center;
-  padding:clamp(52px,7vw,88px) 0 clamp(40px,5vw,60px); overflow:hidden}
-.hero .glow{position:absolute; width:min(920px,120vw); aspect-ratio:1; right:-14%; top:-24%;
-  background:radial-gradient(circle, rgba(255,10,120,.22), transparent 62%); pointer-events:none}
-.hero .glow.b{left:-24%; top:38%; width:min(760px,110vw); right:auto;
-  background:radial-gradient(circle, rgba(0,216,255,.13), transparent 64%)}
-.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(28px,4vw,64px);
-  align-items:center; position:relative}
-@media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
-.hero h1{margin-top:22px}
-.hero h1 mark{background:none; color:var(--fluo)}
-.hero p.big{margin-top:26px}
-.hero .btns{display:flex; flex-wrap:wrap; gap:14px; margin-top:36px}
-.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
-  padding:17px 34px; border-radius:999px; border:2px solid transparent; cursor:pointer;
-  font-family:inherit}
-.btn-fluo{background:var(--fluo); color:#fff}
-.btn-fluo:hover{background:#ff3d95}
-.btn-line{border-color:#3a3a44; color:var(--blanc)}
-.btn-line:hover{border-color:var(--blanc)}
-
-/* ligne de spécialités */
-.specs{margin-top:clamp(44px,6vw,74px); position:relative}
-.specs .row{font-family:"Arial Narrow","Segoe UI",Arial,sans-serif; text-transform:uppercase;
-  font-weight:800; font-size:clamp(18px,3vw,38px); line-height:1.14; letter-spacing:-.005em;
-  display:flex; flex-wrap:wrap; align-items:center; gap:4px 11px}
-.specs .row i{color:var(--fluo); font-style:normal; font-weight:800}
-.specs .row u{text-decoration:none; color:var(--fluo); font-style:italic;
-  transform:rotate(-3deg); display:inline-block;
-  font-family:"Segoe Script","Brush Script MT",cursive; font-size:.92em; margin-left:6px}
-.arrow{width:42px; height:12px; flex:0 0 auto; position:relative; margin-right:4px}
-.arrow::before{content:""; position:absolute; left:0; top:5px; width:32px; height:3px; background:var(--fluo)}
-.arrow::after{content:""; position:absolute; right:0; top:1px; width:11px; height:11px;
-  border-top:3px solid var(--fluo); border-right:3px solid var(--fluo); transform:rotate(45deg)}
-.chev{margin:clamp(30px,4vw,50px) auto 0; width:24px; height:24px; opacity:.45;
-  border-left:2px solid var(--blanc); border-bottom:2px solid var(--blanc); transform:rotate(-45deg)}
-
-/* ---------- totem ---------- */
-.stage{display:flex; justify-content:center; align-items:center; position:relative}
-.totem{width:min(280px,72vw); border-radius:8px; padding:12px 12px 44px;
-  background:linear-gradient(165deg,#26262e,#0b0b0e 62%);
-  box-shadow:0 40px 90px -26px rgba(255,10,120,.34), 0 0 0 1px rgba(255,255,255,.07) inset}
-.screen{aspect-ratio:9/16; border-radius:3px; overflow:hidden; position:relative; background:#000}
-.slide{position:absolute; inset:0; display:grid; place-content:center; text-align:center; padding:22px;
+.hero{background:var(--noir); color:#fff; position:relative; overflow:hidden}
+.hero .scene{position:relative; min-height:clamp(400px,62vh,620px); display:flex;
+  align-items:center; justify-content:center;
+  background:
+    radial-gradient(90% 70% at 50% 40%, rgba(255,0,128,.18), transparent 62%),
+    radial-gradient(70% 60% at 82% 76%, rgba(0,180,230,.16), transparent 64%),
+    linear-gradient(180deg,#141419,#000 78%)}
+.hero .scene::after{content:""; position:absolute; inset:0;
+  background:repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 1px, transparent 1px 78px)}
+.totem{position:relative; z-index:2; width:min(292px,74vw); padding:13px 13px 46px; border-radius:6px;
+  background:linear-gradient(165deg,#2a2a33,#0a0a0d 62%);
+  box-shadow:0 46px 100px -28px rgba(255,0,128,.42), 0 0 0 1px rgba(255,255,255,.08) inset}
+.screen{aspect-ratio:9/16; overflow:hidden; position:relative; background:#000; border-radius:2px}
+.slide{position:absolute; inset:0; display:grid; place-content:center; text-align:center; padding:24px;
   opacity:0; animation:cyc 13.5s infinite}
-.slide:nth-child(1){background:linear-gradient(160deg,#ff0a78,#8a0038); animation-delay:-.75s}
-.slide:nth-child(2){background:linear-gradient(160deg,#00d8ff,#00506b); animation-delay:3.75s}
-.slide:nth-child(3){background:linear-gradient(160deg,#1c1c22,#000); animation-delay:8.25s}
-.slide b{font-family:"Arial Narrow",Arial,sans-serif; text-transform:uppercase; display:block;
-  color:#fff; font-size:30px; line-height:1.02; font-weight:800}
-.slide span{display:block; color:rgba(255,255,255,.72); font-size:11px; margin-top:12px;
-  letter-spacing:.2em; text-transform:uppercase; font-weight:700}
+.slide:nth-child(1){background:linear-gradient(160deg,#ff0080,#87003f); animation-delay:-.75s}
+.slide:nth-child(2){background:linear-gradient(160deg,#00b4e6,#004d63); animation-delay:3.75s}
+.slide:nth-child(3){background:linear-gradient(160deg,#22222a,#000); animation-delay:8.25s}
+.slide b{display:block; font-size:31px; line-height:1.02; font-weight:800; text-transform:uppercase;
+  letter-spacing:-.02em}
+.slide span{display:block; color:rgba(255,255,255,.75); font-size:10.5px; margin-top:13px;
+  letter-spacing:.22em; text-transform:uppercase; font-weight:700}
 @keyframes cyc{0%,2%{opacity:0} 5%,30%{opacity:1} 34%,100%{opacity:0}}
-.totem .base{height:6px; width:66%; margin:24px auto 0; border-radius:2px; background:rgba(255,255,255,.09)}
-@media (prefers-reduced-motion:reduce){
-  .slide{animation:none} .slide:nth-child(1){opacity:1}
-}
+.totem .base{height:6px; width:64%; margin:26px auto 0; border-radius:2px; background:rgba(255,255,255,.10)}
+@media (prefers-reduced-motion:reduce){ .slide{animation:none} .slide:nth-child(1){opacity:1} }
+
+/* bande de spécialités */
+.specs{background:var(--noir); color:#fff; padding:clamp(26px,3.4vw,44px) 0}
+.specs.light{background:var(--gris-f); color:var(--noir)}
+.specs .row{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:4px 12px;
+  font-size:clamp(19px,2.9vw,40px); font-weight:800; text-transform:uppercase; letter-spacing:-.02em}
+.specs .row i{color:var(--rose); font-style:normal}
+.specs .row u{text-decoration:none; color:var(--rose); font-style:italic; display:inline-block;
+  transform:rotate(-4deg); font-family:"Segoe Script","Brush Script MT",cursive; margin-left:8px;
+  border-bottom:3px solid var(--rose); padding-bottom:2px}
+.arrow{width:52px; height:14px; flex:0 0 auto; position:relative; margin-right:6px}
+.arrow::before{content:""; position:absolute; left:0; top:5.5px; width:40px; height:4px; background:var(--rose)}
+.arrow::after{content:""; position:absolute; right:0; top:1px; width:13px; height:13px;
+  border-top:4px solid var(--rose); border-right:4px solid var(--rose); transform:rotate(45deg)}
+.chev{display:block; margin:0 auto; width:26px; height:26px; opacity:.55; border-left:2px solid #fff;
+  border-bottom:2px solid #fff; transform:rotate(-45deg)}
+.chev-w{background:var(--noir); padding:0 0 34px}
+
+/* ---------- présentation (noir, découpe diagonale) ---------- */
+.about{background:var(--noir); color:#fff; padding:clamp(60px,7vw,104px) 0 clamp(96px,11vw,168px);
+  clip-path:polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 74px))}
+.about .grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(34px,5vw,78px); align-items:center}
+@media (max-width:900px){ .about .grid{grid-template-columns:1fr; text-align:center} }
+.about .mark{border:4px solid #fff; padding:34px 40px; display:grid; place-content:center;
+  transform:skewX(-6deg); justify-self:center; position:relative}
+.about .mark b{font-size:clamp(52px,7vw,88px); font-weight:800; letter-spacing:-.06em; transform:skewX(6deg);
+  display:block; line-height:1}
+.about .mark i{position:absolute; right:-13px; bottom:-13px; display:flex; gap:5px; transform:skewX(6deg)}
+.about .mark i s{width:13px; height:13px; text-decoration:none; display:block; transform:rotate(45deg)}
+.about h2{font-size:clamp(28px,3.8vw,44px); line-height:1.14}
+.about .bar{width:100%; max-width:520px; height:2px; background:var(--rose); margin:26px 0}
+@media (max-width:900px){ .about .bar{margin:26px auto} }
+.about p{color:var(--gris-d); font-size:clamp(15.5px,1.6vw,17.5px); line-height:1.8; max-width:64ch}
+@media (max-width:900px){ .about p{margin:0 auto} }
+.about p b{color:#fff}
 
 /* ---------- vignettes produits ---------- */
-.tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-@media (max-width:900px){ .tiles{grid-template-columns:1fr 1fr} }
+.tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:clamp(44px,5vw,64px)}
+@media (max-width:1080px){ .tiles{grid-template-columns:1fr 1fr} }
 @media (max-width:560px){ .tiles{grid-template-columns:1fr} }
-.tile{position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--noir-3);
-  display:flex; align-items:flex-end; border:1px solid var(--ligne)}
-.tile .ph{position:absolute; inset:0;
-  background:
-    radial-gradient(120% 90% at 30% 10%, rgba(255,255,255,.07), transparent 60%),
-    repeating-linear-gradient(38deg, #17171c 0 16px, #131317 16px 32px)}
+.tile .lab{background:var(--noir); color:#fff; padding:15px 18px; display:flex; align-items:center;
+  justify-content:center; gap:11px; text-align:center}
+.tile .lab .p{color:var(--rose); font-weight:800; font-size:17px; line-height:1}
+.tile .lab b{font-size:14.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase}
+.tile:hover .lab{background:var(--rose)}
+.tile:hover .lab .p{color:#fff}
+.tile .ph{aspect-ratio:4/3; position:relative; border:1px solid var(--gris-b); border-top:0;
+  background:repeating-linear-gradient(38deg,#f7f7f7 0 14px,#efefef 14px 28px)}
 .tile .ph::after{content:"Photo à venir"; position:absolute; inset:0; display:grid; place-content:center;
-  font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:#4a4a54; font-weight:800}
-.tile .lab{position:relative; width:100%; background:rgba(0,0,0,.88); padding:14px 18px; min-height:58px;
-  display:flex; align-items:center; gap:12px; border-top:1px solid var(--ligne)}
-.tile .lab .plus{color:var(--fluo); font-weight:800; font-size:17px; line-height:1}
-.tile .lab b{font-family:"Arial Narrow",Arial,sans-serif; text-transform:uppercase; font-weight:800;
-  font-size:16px; letter-spacing:.05em}
-.tile .lab em{margin-left:auto; font-style:normal; font-size:11px; letter-spacing:.12em;
-  color:var(--gris-2); font-weight:700; text-transform:uppercase}
-.tile:hover .lab{background:var(--fluo)}
-.tile:hover .lab .plus, .tile:hover .lab em{color:#fff}
-
-/* ---------- deux offres ---------- */
-.duo{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-@media (max-width:900px){ .duo{grid-template-columns:1fr} }
-.offer{border:1px solid var(--ligne); padding:clamp(28px,3.4vw,44px); background:var(--noir);
-  display:flex; flex-direction:column; position:relative; overflow:hidden}
-.offer.on{border-color:var(--fluo)}
-.offer .no{font-family:"Arial Narrow",Arial,sans-serif; font-size:64px; font-weight:800; line-height:.8;
-  color:var(--ligne)}
-.offer.on .no{color:rgba(255,10,120,.4)}
-.offer h3{margin-top:18px}
-.offer p{color:var(--gris); margin-top:16px; font-size:16px; line-height:1.7}
-.offer ul{list-style:none; margin-top:26px; display:grid; gap:12px}
-.offer li{position:relative; padding-left:24px; font-size:15px; color:var(--gris); line-height:1.55}
-.offer li::before{content:"+"; position:absolute; left:0; top:-1px; color:var(--fluo); font-weight:800}
-.offer .go{margin-top:auto; padding-top:30px}
+  font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:#b3b3ba; font-weight:800}
+.tile .cap{padding:14px 4px 0; text-align:center; font-size:13.5px; color:var(--gris-t); font-weight:600}
 
 /* ---------- services ---------- */
-.svc{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.svc{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(28px,3.4vw,52px);
+  margin-top:clamp(46px,5vw,68px)}
 @media (max-width:880px){ .svc{grid-template-columns:1fr} }
-.svc .it{border:1px solid var(--ligne); padding:clamp(26px,3vw,38px); background:var(--noir)}
-.svc .it .n{font-family:"Arial Narrow",Arial,sans-serif; font-size:13px; font-weight:800;
-  letter-spacing:.24em; color:var(--fluo)}
-.svc .it h3{margin-top:16px}
-.svc .it p{color:var(--gris); margin-top:14px; font-size:15.5px; line-height:1.7}
+.svc .it{text-align:center}
+.ic{width:86px; height:86px; border:2.5px solid var(--rose); border-radius:50%; margin:0 auto 26px;
+  display:grid; place-content:center; position:relative}
+.ic::before{content:""; width:34px; height:26px; border:2.5px solid var(--rose); border-radius:3px}
+.ic.b::before{width:30px; height:30px; border-radius:50%; border-width:2.5px}
+.ic.c::before{width:32px; height:32px; border-radius:3px; border-width:2.5px;
+  border-left-color:transparent; border-bottom-color:transparent; transform:rotate(45deg)}
+.svc h3{font-size:clamp(23px,2.7vw,31px)}
+.svc p{color:var(--gris-t); margin-top:16px; font-size:15.5px; line-height:1.8}
+
+/* ---------- deux offres ---------- */
+.duo{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:clamp(44px,5vw,64px)}
+@media (max-width:900px){ .duo{grid-template-columns:1fr} }
+.offer{border:1px solid var(--gris-b); padding:clamp(28px,3.4vw,46px); display:flex; flex-direction:column;
+  background:var(--blanc)}
+.offer.on{border:2px solid var(--rose)}
+.offer .no{font-size:70px; font-weight:800; line-height:.78; color:var(--gris-b); letter-spacing:-.05em}
+.offer.on .no{color:rgba(255,0,128,.32)}
+.offer h3{margin-top:18px; font-size:clamp(23px,2.6vw,30px)}
+.offer p{color:var(--gris-t); margin-top:16px; font-size:16px}
+.offer ul{list-style:none; margin-top:26px; display:grid; gap:13px}
+.offer li{position:relative; padding-left:26px; font-size:15.5px; color:var(--gris-t); line-height:1.6}
+.offer li::before{content:"+"; position:absolute; left:0; top:0; color:var(--rose); font-weight:800; font-size:16px}
+.offer .go{margin-top:auto; padding-top:32px}
+.btn{display:inline-flex; align-items:center; justify-content:center;
+  font-size:13.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;
+  padding:17px 36px; border-radius:999px; border:2px solid transparent; cursor:pointer; font-family:inherit}
+.btn-rose{background:var(--rose); color:#fff}
+.btn-rose:hover{background:#ff3d9e}
+.btn-noir{background:var(--noir); color:#fff}
+.btn-line{border-color:currentColor}
 
 /* ---------- emplacements ---------- */
-.spots{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.dark{background:var(--noir); color:#fff}
+.spots{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:clamp(44px,5vw,64px)}
 @media (max-width:900px){ .spots{grid-template-columns:1fr} }
-.spot{border:1px solid var(--ligne); background:var(--noir-2); padding:26px}
-.spot .st{display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:800;
-  letter-spacing:.18em; text-transform:uppercase; color:#39e08d}
-.spot .st i{width:7px; height:7px; border-radius:50%; background:#39e08d; display:block}
-.spot.off .st{color:var(--gris-2)} .spot.off .st i{background:var(--gris-2)}
-.spot h3{margin-top:16px; font-size:20px}
-.spot dl{margin-top:20px; display:grid; gap:11px; font-size:14.5px}
-.spot dl div{display:flex; justify-content:space-between; gap:14px; padding-bottom:10px;
-  border-bottom:1px solid var(--ligne)}
-.spot dt{color:var(--gris-2)} .spot dd{font-weight:700}
-
-.host{margin-top:16px; border:1px solid var(--fluo); padding:clamp(28px,3.4vw,44px);
-  display:flex; flex-wrap:wrap; gap:24px; align-items:center;
-  background:linear-gradient(100deg, rgba(255,10,120,.10), transparent 62%)}
-.host div{flex:1 1 380px}
-.host p{color:var(--gris); margin-top:12px; font-size:16px; line-height:1.7}
+.spot{border:1px solid #26262c; padding:28px; background:var(--noir-2)}
+.spot .st{display:inline-flex; align-items:center; gap:9px; font-size:11px; font-weight:800;
+  letter-spacing:.2em; text-transform:uppercase; color:#2fe08a}
+.spot .st i{width:8px; height:8px; border-radius:50%; background:#2fe08a; display:block}
+.spot.off .st{color:#77777f} .spot.off .st i{background:#77777f}
+.spot h3{margin-top:16px; font-size:21px; text-transform:uppercase}
+.spot dl{margin-top:22px; display:grid; gap:12px; font-size:14.5px}
+.spot dl div{display:flex; justify-content:space-between; gap:14px; padding-bottom:11px;
+  border-bottom:1px solid #26262c}
+.spot dt{color:#8a8a93} .spot dd{font-weight:700}
+.host{margin-top:22px; border:2px solid var(--rose); padding:clamp(28px,3.4vw,46px);
+  display:flex; flex-wrap:wrap; gap:26px; align-items:center; justify-content:center; text-align:center;
+  background:linear-gradient(100deg, rgba(255,0,128,.12), transparent 64%)}
+.host div{flex:1 1 420px}
+.host h3{font-size:clamp(23px,2.6vw,30px); text-transform:uppercase}
+.host p{color:var(--gris-d); margin-top:12px; font-size:16px}
 
 /* ---------- chiffres ---------- */
-.nums{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--ligne);
-  border:1px solid var(--ligne)}
+.nums{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#26262c;
+  border:1px solid #26262c; margin-top:clamp(40px,4.6vw,60px)}
 @media (max-width:820px){ .nums{grid-template-columns:1fr 1fr} }
-.nums .n{background:var(--noir); padding:clamp(28px,3.4vw,42px) 24px; text-align:center}
-.nums .n b{font-family:"Arial Narrow",Arial,sans-serif; display:block; font-size:clamp(38px,5vw,64px);
-  font-weight:800; line-height:1; color:var(--fluo)}
-.nums .n span{display:block; margin-top:12px; font-size:11.5px; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--gris); font-weight:700}
+.nums .n{background:var(--noir); padding:clamp(28px,3.4vw,44px) 22px; text-align:center}
+.nums .n b{display:block; font-size:clamp(40px,5vw,68px); font-weight:800; line-height:1; color:var(--rose);
+  letter-spacing:-.04em}
+.nums .n span{display:block; margin-top:13px; font-size:11px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--gris-d); font-weight:800}
 
 /* ---------- zone ---------- */
-.villes{display:flex; flex-wrap:wrap; gap:10px; margin-top:30px}
-.villes span{border:1px solid var(--ligne); padding:10px 20px; font-size:13px; font-weight:700;
-  letter-spacing:.1em; text-transform:uppercase; color:var(--gris)}
+.villes{display:flex; flex-wrap:wrap; gap:11px; justify-content:center; margin-top:clamp(36px,4vw,52px)}
+.villes span{border:1px solid var(--gris-b); padding:11px 22px; font-size:13px; font-weight:800;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--gris-t)}
 
 /* ---------- contact ---------- */
-.ct{display:grid; grid-template-columns:.95fr 1.05fr; gap:clamp(30px,4vw,64px)}
+.ct{display:grid; grid-template-columns:.95fr 1.05fr; gap:clamp(32px,4vw,68px);
+  margin-top:clamp(44px,5vw,64px); text-align:left}
 @media (max-width:900px){ .ct{grid-template-columns:1fr} }
-.coord{display:grid; gap:1px; margin-top:34px; background:var(--ligne); border:1px solid var(--ligne)}
-.coord div{background:var(--noir); padding:20px 24px}
-.coord .k{font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--gris-2); font-weight:800}
-.coord .v{font-family:"Arial Narrow",Arial,sans-serif; text-transform:uppercase; font-size:22px;
-  font-weight:800; margin-top:6px; letter-spacing:.02em}
-form{border:1px solid var(--ligne); padding:clamp(26px,3.2vw,40px); background:var(--noir)}
-.f2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.coord{display:grid; gap:1px; background:var(--gris-b); border:1px solid var(--gris-b)}
+.coord div{background:var(--blanc); padding:22px 26px}
+.coord .k{font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:#9a9aa2; font-weight:800}
+.coord .v{font-size:23px; font-weight:800; margin-top:6px; letter-spacing:-.02em}
+form{border:1px solid var(--gris-b); padding:clamp(26px,3.2vw,42px); background:var(--gris-f)}
+.f2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 @media (max-width:560px){ .f2{grid-template-columns:1fr} }
 label{display:block; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--gris-2); font-weight:800; margin-bottom:8px}
-input,textarea,select{width:100%; background:var(--noir-2); border:1px solid var(--ligne);
-  color:var(--blanc); font:inherit; font-size:15px; padding:14px 16px; border-radius:0}
-textarea{min-height:120px; resize:vertical}
-input:focus,textarea:focus,select:focus{outline:0; border-color:var(--fluo)}
-.fld{margin-bottom:16px}
-form .btn{width:100%; margin-top:6px}
+  color:#8a8a93; font-weight:800; margin-bottom:9px}
+input,textarea,select{width:100%; background:var(--blanc); border:1px solid var(--gris-b); color:var(--noir);
+  font:inherit; font-size:15px; padding:15px 16px; border-radius:0}
+textarea{min-height:126px; resize:vertical}
+input:focus,textarea:focus,select:focus{outline:0; border-color:var(--rose)}
+.fld{margin-bottom:18px}
+form .btn{width:100%}
 
 /* ---------- pied ---------- */
-footer{border-top:1px solid var(--ligne); padding:56px 0 40px; background:var(--noir)}
-.f-top{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:34px; padding-bottom:36px;
-  border-bottom:1px solid var(--ligne)}
+footer{background:var(--noir); color:var(--gris-d); padding:60px 0 40px}
+.f-top{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; padding-bottom:38px;
+  border-bottom:1px solid #26262c}
 @media (max-width:820px){ .f-top{grid-template-columns:1fr 1fr} }
 @media (max-width:560px){ .f-top{grid-template-columns:1fr} }
 footer h5{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:800;
-  color:var(--blanc); margin-bottom:18px}
-footer ul{list-style:none; display:grid; gap:11px; font-size:14.5px; color:var(--gris)}
-footer a:hover{color:var(--fluo)}
-footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
-.f-bot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 28px; padding-top:26px;
-  font-size:12.5px; letter-spacing:.06em; color:var(--gris-2)}
+  color:#fff; margin-bottom:20px}
+footer ul{list-style:none; display:grid; gap:12px; font-size:14.5px}
+footer a:hover{color:var(--rose)}
+footer p{font-size:14.5px; line-height:1.8; max-width:38ch; margin-top:18px}
+.f-bot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 28px; padding-top:28px;
+  font-size:12.5px; color:#77777f}
 </style>
 </head>
 <body>
@@ -269,14 +269,14 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
 <header>
   <div class="wrap nav">
     <a class="brand" href="#">
-      <span class="mk"><b>PD</b><i><s style="background:#00d8ff"></s><s style="background:#ff0a78"></s><s style="background:#ffd400"></s></i></span>
+      <span class="mk"><b>PD</b><i><s style="background:#00b4e6"></s><s style="background:#ff0080"></s><s style="background:#ffd400"></s></i></span>
       <span class="nm">Promoc Design<small>Display</small></span>
     </a>
     <nav class="menu">
       <a href="#produits">Produits</a>
-      <a href="#offres">Offres</a>
-      <a href="#emplacements">Emplacements</a>
       <a href="#services">Services</a>
+      <a href="#emplacements">Emplacements</a>
+      <a href="#offres">Offres</a>
     </nav>
     <a class="cta-nav" href="#contact">Contact</a>
     <div class="socials"><span></span><span></span><span></span></div>
@@ -285,83 +285,132 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
 
 <!-- ================= HERO ================= -->
 <div class="hero">
-  <div class="glow"></div><div class="glow b"></div>
+  <div class="scene">
+    <div class="totem">
+      <div class="screen">
+        <div class="slide"><b>-30 %<br>cette semaine</b><span>Vitrine · Sainte-Maxime</span></div>
+        <div class="slide"><b>Menu<br>du jour</b><span>Restaurant · Saint-Tropez</span></div>
+        <div class="slide"><b>Votre<br>campagne ici</b><span>Emplacement disponible</span></div>
+      </div>
+      <div class="base"></div>
+    </div>
+  </div>
+</div>
+
+<div class="specs">
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="kicker">Var · Bouches-du-Rhône · Alpes-Maritimes</div>
-        <h1 class="tt">Vos messages,<br>là où passent<br><mark>vos clients</mark></h1>
-        <p class="big">Totems et écrans d’affichage dynamique pour les commerces, les hôtels et les
-          centres commerciaux. Nous vendons le matériel et nous l’installons — et nous louons
-          nos propres emplacements à ceux qui veulent être vus sans investir.</p>
-        <div class="btns">
-          <a class="btn btn-fluo" href="#contact">Demander un devis</a>
-          <a class="btn btn-line" href="#produits">Voir les modèles</a>
-        </div>
-      </div>
-
-      <div class="stage">
-        <div class="totem">
-          <div class="screen">
-            <div class="slide"><b>-30 %<br>cette semaine</b><span>Vitrine · Sainte-Maxime</span></div>
-            <div class="slide"><b>Menu<br>du jour</b><span>Restaurant · Saint-Tropez</span></div>
-            <div class="slide"><b>Votre<br>campagne ici</b><span>Emplacement disponible</span></div>
-          </div>
-          <div class="base"></div>
-        </div>
-      </div>
+    <div class="row">
+      <i class="arrow"></i>
+      TOTEMS <i>+</i> ÉCRANS VITRINE <i>+</i> BORNES TACTILES <i>+</i> EMPLACEMENTS <u>et plus !</u>
     </div>
+  </div>
+</div>
+<div class="chev-w"><span class="chev"></span></div>
 
-    <div class="specs">
-      <div class="row">
-        <i class="arrow"></i>
-        TOTEMS <i>+</i> ÉCRANS VITRINE <i>+</i> BORNES TACTILES <i>+</i> EMPLACEMENTS <i>+</i> VISUELS
-        <u>et plus !</u>
-      </div>
+<!-- ================= PRÉSENTATION ================= -->
+<div class="about">
+  <div class="wrap grid">
+    <div class="mark"><b>PD</b><i><s style="background:#00b4e6"></s><s style="background:#ff0080"></s><s style="background:#ffd400"></s></i></div>
+    <div>
+      <h2>Affichage dynamique<br>dans le Var et sur la Côte d’Azur</h2>
+      <div class="bar"></div>
+      <p>Basés à Sainte-Maxime, nous équipons les commerces, les hôtels et les centres commerciaux
+        en <b>totems et écrans d’affichage dynamique</b>, du choix du matériel jusqu’à l’installation.
+        Nous exploitons également <b>nos propres emplacements publicitaires</b> pour les annonceurs
+        qui veulent être vus sans investir. Nous intervenons sur le <b>Var, les Bouches-du-Rhône
+        et les Alpes-Maritimes</b>.</p>
     </div>
-    <div class="chev"></div>
   </div>
 </div>
 
 <!-- ================= PRODUITS ================= -->
 <section id="produits">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker">Nos produits</div>
-      <h2 class="tt">Un modèle pour chaque lieu</h2>
-      <p class="big">Une vitrine plein sud et un hall d’hôtel n’appellent pas le même matériel.
-        La luminosité, le format et la résistance se choisissent selon l’endroit.</p>
-    </div>
+    <h2 class="sec">Nos Produits</h2>
+    <div class="rule"></div>
+    <p class="intro">Une vitrine plein sud et un hall d’hôtel n’appellent pas le même matériel.
+      La luminosité, le format et la résistance se choisissent selon le lieu.</p>
 
     <div class="tiles">
-      <a class="tile" href="#contact"><span class="ph"></span>
-        <span class="lab"><span class="plus">+</span><b>Totem intérieur</b><em>43″ – 55″</em></span></a>
-      <a class="tile" href="#contact"><span class="ph"></span>
-        <span class="lab"><span class="plus">+</span><b>Totem extérieur</b><em>IP65</em></span></a>
-      <a class="tile" href="#contact"><span class="ph"></span>
-        <span class="lab"><span class="plus">+</span><b>Écran de vitrine</b><em>Haute lumin.</em></span></a>
-      <a class="tile" href="#contact"><span class="ph"></span>
-        <span class="lab"><span class="plus">+</span><b>Totem tactile</b><em>Interactif</em></span></a>
-      <a class="tile" href="#contact"><span class="ph"></span>
-        <span class="lab"><span class="plus">+</span><b>Mur d’images</b><em>Sur mesure</em></span></a>
-      <a class="tile" href="#contact"><span class="ph"></span>
-        <span class="lab"><span class="plus">+</span><b>Chevalet numérique</b><em>Mobile</em></span></a>
+      <a class="tile" href="#contact">
+        <div class="lab"><span class="p">+</span><b>Totem intérieur</b></div>
+        <div class="ph"></div><div class="cap">43″ à 55″ · halls et boutiques</div></a>
+      <a class="tile" href="#contact">
+        <div class="lab"><span class="p">+</span><b>Totem extérieur</b></div>
+        <div class="ph"></div><div class="cap">IP65 · plein air et forte chaleur</div></a>
+      <a class="tile" href="#contact">
+        <div class="lab"><span class="p">+</span><b>Écran de vitrine</b></div>
+        <div class="ph"></div><div class="cap">Haute luminosité · lisible en plein soleil</div></a>
+      <a class="tile" href="#contact">
+        <div class="lab"><span class="p">+</span><b>Totem tactile</b></div>
+        <div class="ph"></div><div class="cap">Catalogue, plan, informations</div></a>
+      <a class="tile" href="#contact">
+        <div class="lab"><span class="p">+</span><b>Mur d’images</b></div>
+        <div class="ph"></div><div class="cap">Grands formats sur mesure</div></a>
+      <a class="tile" href="#contact">
+        <div class="lab"><span class="p">+</span><b>Chevalet numérique</b></div>
+        <div class="ph"></div><div class="cap">Mobile · terrasses et entrées</div></a>
+      <a class="tile" href="#contact">
+        <div class="lab"><span class="p">+</span><b>Borne d’accueil</b></div>
+        <div class="ph"></div><div class="cap">Orientation et signalétique</div></a>
+      <a class="tile" href="#contact">
+        <div class="lab"><span class="p">+</span><b>Écran de menu</b></div>
+        <div class="ph"></div><div class="cap">Restauration · prix et cartes</div></a>
+    </div>
+  </div>
+</section>
+
+<div class="specs light">
+  <div class="wrap">
+    <div class="row">
+      VENTE <i>+</i> LOCATION <i>+</i> INSTALLATION <i>+</i> CONTENUS <u>et plus !</u>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <h2 class="sec">Nos Services</h2>
+    <div class="rule"></div>
+    <p class="intro">Nous vous accompagnons de l’étude du lieu jusqu’aux contenus qui tournent
+      sur votre écran, sur l’ensemble de la région.</p>
+
+    <div class="svc">
+      <div class="it">
+        <div class="ic"></div>
+        <h3>Étude du lieu</h3>
+        <p>Emplacement, luminosité, passage et contraintes techniques : c’est le lieu qui détermine
+          le modèle, et pas l’inverse. Nous nous déplaçons pour le voir.</p>
+      </div>
+      <div class="it">
+        <div class="ic b"></div>
+        <h3>Installation</h3>
+        <p>Livraison, pose, mise en service et prise en main du logiciel de diffusion avec vous.
+          Nos équipes interviennent sur les trois départements.</p>
+      </div>
+      <div class="it">
+        <div class="ic c"></div>
+        <h3>Création de visuels</h3>
+        <p>Images fixes, animations et vidéos publicitaires : nous réalisons les contenus diffusés
+          sur votre écran et nous les mettons à jour quand vous le souhaitez.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ================= DEUX OFFRES ================= -->
-<section id="offres" style="background:var(--noir-2); border-top:1px solid var(--ligne); border-bottom:1px solid var(--ligne)">
+<section id="offres" style="background:var(--gris-f)">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker">Deux façons de travailler</div>
-      <h2 class="tt">Votre écran, ou le nôtre</h2>
-    </div>
+    <h2 class="sec">Votre écran, ou le nôtre</h2>
+    <div class="rule rose"></div>
+    <p class="intro">Selon que vous vouliez communiquer chez vous ou toucher le public ailleurs,
+      le point de départ n’est pas le même.</p>
 
     <div class="duo">
       <div class="offer">
         <div class="no">01</div>
-        <h3 class="tt">Équipez votre établissement</h3>
+        <h3>Équipez votre établissement</h3>
         <p>Vous installez un totem ou un écran dans votre vitrine, votre hall ou votre boutique,
           et vous diffusez ce que vous voulez, quand vous voulez.</p>
         <ul>
@@ -371,12 +420,12 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
           <li>Prise en main du logiciel de diffusion</li>
           <li>Création de vos visuels et vidéos</li>
         </ul>
-        <div class="go"><a class="btn btn-line" href="#produits">Voir les modèles</a></div>
+        <div class="go"><a class="btn btn-noir" href="#produits">Voir les modèles</a></div>
       </div>
 
       <div class="offer on">
         <div class="no">02</div>
-        <h3 class="tt">Diffusez sur nos emplacements</h3>
+        <h3>Diffusez sur nos emplacements</h3>
         <p>Pas besoin d’acheter un écran : nous en avons déjà, installés dans des lieux de passage.
           Vous réservez un emplacement, votre campagne tourne.</p>
         <ul>
@@ -386,26 +435,24 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
           <li>Conception du visuel ou de la vidéo</li>
           <li>Plusieurs points pour couvrir une zone</li>
         </ul>
-        <div class="go"><a class="btn btn-fluo" href="#emplacements">Voir les emplacements</a></div>
+        <div class="go"><a class="btn btn-rose" href="#emplacements">Voir les emplacements</a></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= EMPLACEMENTS ================= -->
-<section id="emplacements">
+<section class="dark" id="emplacements">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker">Nos emplacements</div>
-      <h2 class="tt">Des écrans déjà installés,<br>là où il y a du monde</h2>
-      <p class="big">Vous choisissez le lieu qui correspond à votre clientèle, nous diffusons votre
-        campagne. Passage estimé, format et tarif sont indiqués pour chaque emplacement.</p>
-    </div>
+    <h2 class="sec">Nos Emplacements</h2>
+    <div class="rule rose"></div>
+    <p class="intro">Des écrans déjà installés, là où il y a du monde. Passage estimé, format et
+      tarif sont indiqués pour chaque emplacement.</p>
 
     <div class="spots">
       <div class="spot">
         <span class="st"><i></i> Disponible</span>
-        <h3 class="tt">Galerie marchande — Sainte-Maxime</h3>
+        <h3>Galerie marchande<br>Sainte-Maxime</h3>
         <dl>
           <div><dt>Passage estimé</dt><dd>0 000 / jour</dd></div>
           <div><dt>Format</dt><dd>Totem 55″</dd></div>
@@ -414,7 +461,7 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
       </div>
       <div class="spot">
         <span class="st"><i></i> Disponible</span>
-        <h3 class="tt">Hall d’hôtel — Saint-Tropez</h3>
+        <h3>Hall d’hôtel<br>Saint-Tropez</h3>
         <dl>
           <div><dt>Passage estimé</dt><dd>0 000 / jour</dd></div>
           <div><dt>Format</dt><dd>Écran 43″ vitrine</dd></div>
@@ -423,7 +470,7 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
       </div>
       <div class="spot off">
         <span class="st"><i></i> Occupé jusqu’en octobre</span>
-        <h3 class="tt">Centre commercial — Fréjus</h3>
+        <h3>Centre commercial<br>Fréjus</h3>
         <dl>
           <div><dt>Passage estimé</dt><dd>0 000 / jour</dd></div>
           <div><dt>Format</dt><dd>Totem 65″ double face</dd></div>
@@ -434,64 +481,29 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
 
     <div class="host">
       <div>
-        <h3 class="tt">Vous avez un lieu de passage ?</h3>
-        <p>Commerce, hall d’immeuble, salle d’attente, restaurant : si votre établissement voit passer
-          du monde, il peut accueillir un totem. L’installation ne vous coûte rien.</p>
+        <h3>Vous avez un lieu de passage ?</h3>
+        <p>Commerce, hall d’immeuble, salle d’attente, restaurant : si votre établissement voit
+          passer du monde, il peut accueillir un totem. L’installation ne vous coûte rien.</p>
       </div>
-      <a class="btn btn-fluo" href="#contact">Proposer un emplacement</a>
+      <a class="btn btn-rose" href="#contact">Proposer un emplacement</a>
     </div>
-  </div>
-</section>
 
-<!-- ================= SERVICES ================= -->
-<section id="services" style="background:var(--noir-2); border-top:1px solid var(--ligne)">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker">Nos services</div>
-      <h2 class="tt">Du conseil à la diffusion</h2>
-    </div>
-    <div class="svc">
-      <div class="it">
-        <div class="n">01</div>
-        <h3 class="tt">Étude du lieu</h3>
-        <p>On regarde l’emplacement, la luminosité, le passage et les contraintes techniques.
-          C’est ce qui détermine le modèle, pas l’inverse.</p>
-      </div>
-      <div class="it">
-        <div class="n">02</div>
-        <h3 class="tt">Installation</h3>
-        <p>Livraison, pose, mise en service et prise en main du logiciel avec vous.
-          Nous intervenons nous-mêmes sur les trois départements.</p>
-      </div>
-      <div class="it">
-        <div class="n">03</div>
-        <h3 class="tt">Création de visuels</h3>
-        <p>Images fixes, animations, vidéos publicitaires : nous réalisons les contenus qui
-          tournent sur votre écran, et nous les mettons à jour.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CHIFFRES ================= -->
-<section style="padding-top:0; background:var(--noir-2)">
-  <div class="wrap">
     <div class="nums">
       <div class="n"><b>00</b><span>Années d’expérience</span></div>
       <div class="n"><b>00</b><span>Écrans installés</span></div>
       <div class="n"><b>00</b><span>Emplacements</span></div>
-      <div class="n"><b>3</b><span>Départements couverts</span></div>
+      <div class="n"><b>3</b><span>Départements</span></div>
     </div>
-    <p style="color:var(--gris-2); font-size:13px; margin-top:16px; letter-spacing:.04em">
+    <p style="color:#77777f; font-size:13px; margin-top:18px; text-align:center">
       Chiffres à compléter avec vous — ils rassurent plus que n’importe quel argumentaire.</p>
   </div>
 </section>
 
 <!-- ================= ZONE ================= -->
-<section style="border-top:1px solid var(--ligne)">
+<section>
   <div class="wrap">
-    <div class="kicker">Zone d’intervention</div>
-    <h2 class="tt" style="margin-top:16px">Var, Bouches-du-Rhône<br>et Alpes-Maritimes</h2>
+    <h2 class="sec">Zone d’intervention</h2>
+    <div class="rule"></div>
     <div class="villes">
       <span>Sainte-Maxime</span><span>Saint-Tropez</span><span>Fréjus</span><span>Saint-Raphaël</span>
       <span>Draguignan</span><span>Hyères</span><span>Toulon</span><span>Cannes</span>
@@ -501,39 +513,44 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
 </section>
 
 <!-- ================= CONTACT ================= -->
-<section id="contact" style="background:var(--noir-2); border-top:1px solid var(--ligne)">
-  <div class="wrap ct">
-    <div>
-      <div class="kicker">Contact</div>
-      <h2 class="tt" style="margin-top:16px">Parlez-nous<br>de votre projet</h2>
-      <p class="big" style="margin-top:22px">Un commerce à équiper, une campagne à diffuser,
-        ou une question sur le matériel : on vous répond avec une proposition chiffrée.</p>
-      <div class="coord">
-        <div><div class="k">Téléphone</div><div class="v">00 00 00 00 00</div></div>
-        <div><div class="k">Email</div><div class="v" style="font-size:18px; text-transform:none">contact@…</div></div>
-        <div><div class="k">Adresse</div><div class="v" style="font-size:18px">Sainte-Maxime (83120)</div></div>
-      </div>
-    </div>
+<section id="contact" style="background:var(--gris-f); border-top:1px solid var(--gris-b)">
+  <div class="wrap">
+    <h2 class="sec">Parlez-nous de votre projet</h2>
+    <div class="rule rose"></div>
 
-    <form onsubmit="return false">
-      <div class="f2">
-        <div class="fld"><label for="n">Nom</label><input id="n" type="text"></div>
-        <div class="fld"><label for="t">Téléphone</label><input id="t" type="tel"></div>
-      </div>
-      <div class="f2">
-        <div class="fld"><label for="e">Email</label><input id="e" type="email"></div>
-        <div class="fld"><label for="s">Sujet</label>
-          <select id="s">
-            <option>Équiper mon établissement</option>
-            <option>Diffuser sur un emplacement</option>
-            <option>Proposer un emplacement</option>
-            <option>Autre demande</option>
-          </select>
+    <div class="ct">
+      <div>
+        <p style="color:var(--gris-t); font-size:17px; line-height:1.8; margin-bottom:30px">
+          Un commerce à équiper, une campagne à diffuser, ou une simple question sur le matériel :
+          expliquez-nous votre besoin, nous revenons vers vous avec une proposition chiffrée.</p>
+        <div class="coord">
+          <div><div class="k">Téléphone</div><div class="v">00 00 00 00 00</div></div>
+          <div><div class="k">Email</div><div class="v" style="font-size:19px">contact@…</div></div>
+          <div><div class="k">Adresse</div><div class="v" style="font-size:19px">Sainte-Maxime (83120)</div></div>
+          <div><div class="k">Horaires</div><div class="v" style="font-size:19px">À compléter</div></div>
         </div>
       </div>
-      <div class="fld"><label for="m">Message</label><textarea id="m"></textarea></div>
-      <button class="btn btn-fluo" type="submit">Envoyer ma demande</button>
-    </form>
+
+      <form onsubmit="return false">
+        <div class="f2">
+          <div class="fld"><label for="n">Nom</label><input id="n" type="text"></div>
+          <div class="fld"><label for="t">Téléphone</label><input id="t" type="tel"></div>
+        </div>
+        <div class="f2">
+          <div class="fld"><label for="e">Email</label><input id="e" type="email"></div>
+          <div class="fld"><label for="s">Sujet</label>
+            <select id="s">
+              <option>Équiper mon établissement</option>
+              <option>Diffuser sur un emplacement</option>
+              <option>Proposer un emplacement</option>
+              <option>Autre demande</option>
+            </select>
+          </div>
+        </div>
+        <div class="fld"><label for="m">Message</label><textarea id="m"></textarea></div>
+        <button class="btn btn-rose" type="submit">Envoyer ma demande</button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -541,8 +558,8 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
   <div class="wrap">
     <div class="f-top">
       <div>
-        <a class="brand" href="#" style="margin-bottom:18px">
-          <span class="mk"><b>PD</b><i><s style="background:#00d8ff"></s><s style="background:#ff0a78"></s><s style="background:#ffd400"></s></i></span>
+        <a class="brand" href="#">
+          <span class="mk"><b>PD</b><i><s style="background:#00b4e6"></s><s style="background:#ff0080"></s><s style="background:#ffd400"></s></i></span>
           <span class="nm">Promoc Design<small>Display</small></span>
         </a>
         <p>Totems et écrans d’affichage dynamique. Vente, location et emplacements publicitaires
@@ -569,7 +586,7 @@ footer p{color:var(--gris); font-size:14.5px; line-height:1.7; max-width:38ch}
     </div>
     <div class="f-bot">
       <span>© 2026 Promoc Design Display — Sainte-Maxime</span>
-      <span>Site réalisé par <a href="https://linkeeiid.github.io/linkedia/" target="_blank" rel="noopener" style="color:var(--gris)">LinkedIA</a></span>
+      <span>Site réalisé par <a href="https://linkeeiid.github.io/linkedia/" target="_blank" rel="noopener">LinkedIA</a></span>
     </div>
   </div>
 </footer>
