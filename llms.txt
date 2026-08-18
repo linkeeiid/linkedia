@@ -71,7 +71,7 @@ et partout en France à distance (échanges par téléphone, visio et e-mail).
 ## Pages
 
 - Accueil : https://linkeedia.fr/
-- Création de site internet à Lyon : https://linkeedia.fr/creation-site-internet-lyon.html
-- Création de site internet à Villeurbanne : https://linkeedia.fr/creation-site-internet-villeurbanne.html
-- Prix d'un site internet en 2026 : https://linkeedia.fr/prix-creation-site-internet.html
-- Mentions légales : https://linkeedia.fr/mentions-legales.html
+- Création de site internet à Lyon : https://linkeedia.fr/creation-site-internet-lyon
+- Création de site internet à Villeurbanne : https://linkeedia.fr/creation-site-internet-villeurbanne
+- Prix d'un site internet en 2026 : https://linkeedia.fr/prix-creation-site-internet
+- Mentions légales : https://linkeedia.fr/mentions-legales
