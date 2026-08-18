@@ -13,7 +13,7 @@
 - Statut : entrepreneur individuel (EI), SIRET 848 751 285 00026, code APE 6201Z
 - Ville : Villeurbanne (69100), métropole de Lyon, France
 - Contact : Jeremyhproo@gmail.com — 06 65 14 14 33
-- Site : https://linkeeiid.github.io/linkedia/
+- Site : https://linkeedia.fr/
 
 ## Ce que fait LinkedIA
 
@@ -70,8 +70,8 @@ et partout en France à distance (échanges par téléphone, visio et e-mail).
 
 ## Pages
 
-- Accueil : https://linkeeiid.github.io/linkedia/
-- Création de site internet à Lyon : https://linkeeiid.github.io/linkedia/creation-site-internet-lyon.html
-- Création de site internet à Villeurbanne : https://linkeeiid.github.io/linkedia/creation-site-internet-villeurbanne.html
-- Prix d'un site internet en 2026 : https://linkeeiid.github.io/linkedia/prix-creation-site-internet.html
-- Mentions légales : https://linkeeiid.github.io/linkedia/mentions-legales.html
+- Accueil : https://linkeedia.fr/
+- Création de site internet à Lyon : https://linkeedia.fr/creation-site-internet-lyon.html
+- Création de site internet à Villeurbanne : https://linkeedia.fr/creation-site-internet-villeurbanne.html
+- Prix d'un site internet en 2026 : https://linkeedia.fr/prix-creation-site-internet.html
+- Mentions légales : https://linkeedia.fr/mentions-legales.html

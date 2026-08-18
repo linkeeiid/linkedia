@@ -1,13 +1,9 @@
 # robots.txt — LinkedIA
-# https://linkeeiid.github.io/linkedia/
+# https://linkeedia.fr/
 #
-# ⚠️ IMPORTANT : un robots.txt n'est lu par les moteurs QUE s'il est à la racine
-# du domaine (https://linkeeiid.github.io/robots.txt). Tant que le site vit dans
-# le sous-dossier /linkedia/, ce fichier est INACTIF — il sert de préparation
-# pour le jour où le site aura son propre nom de domaine (là il deviendra actif).
-# En attendant, ce qui protège réellement les pages privées, c'est la balise
-# <meta name="robots" content="noindex"> présente dans chacune d'elles,
-# et le sitemap se déclare directement dans la Search Console.
+# Le site est à la racine de son domaine (linkeedia.fr) → ce fichier est ACTIF.
+# Les espaces privés sont listés ci-dessous ET protégés par une balise
+# <meta name="robots" content="noindex"> dans chaque page.
 
 # ── Moteurs de recherche classiques ──
 User-agent: *
@@ -64,5 +60,6 @@ Allow: /
 User-agent: *
 Disallow: /carnet-8f21c7/
 Disallow: /questionnaire-b7f24a/
+Disallow: /apercu-badache-9c4e7f/
 
-Sitemap: https://linkeeiid.github.io/linkedia/sitemap.xml
+Sitemap: https://linkeedia.fr/sitemap.xml
