@@ -781,3 +781,7 @@ textarea:focus-visible, input:focus-visible {
     font-weight: 700;
   }
 }
+
+/* « Le reste de la semaine » : mêmes cartes que les archives, resserrées dans le panneau */
+.archive.semaine { margin-top: 1rem; }
+.archive.semaine .arch { background: var(--card-sunk, transparent); }

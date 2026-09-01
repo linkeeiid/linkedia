@@ -108,6 +108,15 @@
     for (var i = 0; i < TOURNEES.length; i++) { if (!isClosed(TOURNEES[i])) { return TOURNEES[i]; } }
     return null;
   }
+  /* les tournées non closes qui viennent après celle-ci, dans l'ordre du tableau */
+  function aVenir(tour) {
+    var out = [], vu = false;
+    TOURNEES.forEach(function (t) {
+      if (t.id === tour.id) { vu = true; return; }
+      if (vu && !isClosed(t)) { out.push(t); }
+    });
+    return out;
+  }
   function archivees() {
     return TOURNEES.filter(isClosed).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
   }
@@ -286,10 +295,30 @@
       html += "</section>";
     }
 
+    var suite = aVenir(tour);
+    if (suite.length) {
+      html += '<section class="panel"><h2>Le reste de la semaine</h2>' +
+        "<p>Ces tournées sont déjà prêtes. Elles prendront la place de celle-ci, l'une après l'autre, à mesure que tu les clos.</p>" +
+        '<div class="archive semaine">';
+      suite.forEach(function (t) {
+        html += '<a class="arch" href="#/t/' + t.id + '"><div class="arch__date">' + dateCourte(t.date) + "</div>" +
+          '<div class="arch__nom">' + t.titre + '</div><div class="arch__zone">' + t.zone + "</div>" +
+          '<div class="arch__ligne"><span class="dot">' + stopsOf(t).length + " commerces</span></div></a>";
+      });
+      html += "</div></section>";
+    }
+
+    var cur = courante();
+    var apercu = !closed && cur && cur.id !== tour.id;
+
     html += '<footer class="foot">';
     if (closed) {
       html += '<a class="backlink" href="#/archives">← Retour aux archives</a><br>' +
               '<button type="button" id="reopen">Remettre cette tournée en cours</button>';
+    } else if (apercu) {
+      html += "<p>Aperçu d'une tournée à venir. Elle deviendra la tournée du jour quand tu auras clos celle du " +
+              dateCourte(cur.date) + ".</p>" +
+              '<a class="backlink" href="#/actuelle">← Retour à la tournée du jour</a>';
     } else {
       html += "<p>Tes résultats et tes fiches restent enregistrés sur cet appareil, même si tu fermes la page.</p>" +
               '<button type="button" id="close-tour">Clore la tournée et l\'envoyer aux archives</button>';
