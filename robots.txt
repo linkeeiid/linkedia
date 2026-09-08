@@ -58,7 +58,7 @@ Allow: /
 
 # ── Espaces privés : ne pas indexer ──
 User-agent: *
-Disallow: /carnet-8f21c7/
+Disallow: /tournee
 Disallow: /questionnaire-b7f24a/
 Disallow: /apercu-badache-9c4e7f/
 
