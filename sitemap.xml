@@ -36,4 +36,18 @@
     <priority>0.2</priority>
   </url>
 
+  <url>
+    <loc>https://linkeedia.fr/blog</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://linkeedia.fr/blog/combien-coute-site-internet-lyon</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
