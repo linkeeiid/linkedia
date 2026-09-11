@@ -18,202 +18,282 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact}
   :root{
-    --ink:#0d0d0f; --paper:#fff; --greige:#f5f3ee; --lime:#c9f24d;
-    --muted:#7a746a; --line:#e4e0d8; --soft:#faf9f6; --rouge:#c8102e;
+    --ink:#1d1d1f;      /* texte principal */
+    --sub:#6e6e73;      /* texte secondaire */
+    --faint:#86868b;    /* mentions */
+    --line:#d2d2d7;     /* filet net */
+    --hair:#e8e8ed;     /* filet tres leger */
+    --panel:#f5f5f7;    /* fond des champs et encarts */
+    --accent:#0071e3;   /* bleu de selection */
+    --accent-soft:#f0f6fe;
   }
-  html{scroll-behavior:smooth}
-  body{background:var(--greige); color:var(--ink);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+  body{
+    background:#fff; color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px; line-height:1.55; letter-spacing:-.011em;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
 
-  .wrap{max-width:860px; margin:0 auto; padding:0 20px 80px}
+  .wrap{max-width:780px; margin:0 auto; padding:0 24px 96px}
 
-  /* ---------- En-tête ---------- */
-  header{background:var(--ink); color:#f5f3ee; margin-bottom:26px}
-  .hd{max-width:860px; margin:0 auto; padding:34px 20px 38px}
-  .idb{display:flex; align-items:center; gap:14px}
-  .idb .mark{width:58px; height:58px; flex:0 0 auto; border-radius:14px;
-    border:1px solid rgba(245,243,238,.14); display:block}
-  .hd .brand{font-size:19px; letter-spacing:-.01em; color:#f5f3ee; font-weight:700; line-height:1.15}
-  .hd .brand span{display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
-    color:var(--lime); font-weight:700; margin-top:4px}
-  .hd h1{font-size:clamp(26px,5vw,38px); line-height:1.15; font-weight:700; letter-spacing:-.02em; margin:22px 0 0}
-  .hd p{color:#b8b2a7; font-size:15px; line-height:1.6; margin-top:14px; max-width:62ch}
-  .hd .who{margin-top:22px; padding-top:18px; border-top:1px solid rgba(245,243,238,.16);
-    display:flex; flex-wrap:wrap; gap:6px 26px; font-size:13.5px; color:#8f8a80}
-  .hd .who b{color:#f5f3ee; font-weight:600}
+  /* ---------- En-tete ---------- */
+  header{border-bottom:1px solid var(--hair)}
+  .hd{max-width:780px; margin:0 auto; padding:56px 24px 52px}
+  .idb{display:flex; align-items:center; gap:11px}
+  .idb .mark{width:30px; height:30px; flex:0 0 auto; border-radius:8px; display:block}
+  .hd .brand{font-size:15px; font-weight:600; letter-spacing:-.01em; line-height:1.2}
+  .hd .brand span{display:block; font-size:11px; font-weight:500; letter-spacing:.07em;
+    text-transform:uppercase; color:var(--faint); margin-top:2px}
+  .hd .over{font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); margin:46px 0 14px}
+  .hd h1{font-size:clamp(34px,6.2vw,54px); line-height:1.06; font-weight:600;
+    letter-spacing:-.028em; margin:0; max-width:15ch}
+  .hd p{color:var(--sub); font-size:19px; line-height:1.5; letter-spacing:-.012em;
+    margin-top:22px; max-width:58ch}
+  .hd p b{color:var(--ink); font-weight:600}
+  .hd .who{margin-top:40px; padding-top:22px; border-top:1px solid var(--hair);
+    display:flex; flex-wrap:wrap; gap:6px 30px; font-size:14px; color:var(--faint)}
+  .hd .who b{color:var(--ink); font-weight:500}
+  @media (max-width:620px){ .hd{padding:36px 22px 38px} .hd h1{margin-top:32px} .hd p{font-size:17px} }
 
-  /* ---------- Barre de progression ---------- */
-  .prog{position:sticky; top:0; z-index:30; background:rgba(245,243,238,.94);
-    backdrop-filter:saturate(1.4) blur(6px); border-bottom:1px solid var(--line);
-    margin:-26px -20px 26px; padding:11px 20px; display:flex; align-items:center; gap:14px}
-  .prog .bar{flex:1; height:6px; background:#e0dcd3; border-radius:99px; overflow:hidden}
-  .prog .bar i{display:block; height:100%; width:0; background:var(--ink); border-radius:99px; transition:width .3s}
-  .prog .n{font-size:13px; font-weight:600; color:#5c574f; white-space:nowrap; font-variant-numeric:tabular-nums}
+  /* ---------- Progression ---------- */
+  .prog{position:sticky; top:0; z-index:30;
+    background:rgba(255,255,255,.82); backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid var(--hair);
+    margin:0 -24px 8px; padding:13px 24px; display:flex; align-items:center; gap:16px}
+  .prog .bar{flex:1; height:3px; background:var(--hair); border-radius:99px; overflow:hidden}
+  .prog .bar i{display:block; height:100%; width:0; background:var(--ink); border-radius:99px;
+    transition:width .35s cubic-bezier(.4,0,.2,1)}
+  .prog .n{font-size:13px; font-weight:500; color:var(--faint); white-space:nowrap;
+    font-variant-numeric:tabular-nums}
 
   /* ---------- Sections ---------- */
-  section{background:var(--paper); border:1px solid var(--line); border-radius:16px;
-    padding:26px 26px 28px; margin-bottom:18px}
-  .sh{display:flex; align-items:baseline; gap:12px; margin-bottom:6px}
-  .sh .no{width:28px; height:28px; flex:0 0 auto; border-radius:50%; background:var(--ink); color:var(--lime);
-    font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; transform:translateY(3px)}
-  .sh h2{font-size:20px; line-height:1.25; font-weight:700; letter-spacing:-.01em}
-  .intro{color:#6b665d; font-size:14.5px; line-height:1.6; margin:0 0 20px 40px}
-  @media (max-width:620px){ .intro{margin-left:0} section{padding:22px 18px 24px} }
+  section{padding:60px 0 8px; border-top:1px solid var(--hair)}
+  section:first-of-type{border-top:0; padding-top:44px}
+  .sh{display:flex; align-items:baseline; gap:14px; margin-bottom:12px}
+  .sh .no{flex:0 0 auto; font-size:13px; font-weight:600; color:var(--faint);
+    letter-spacing:.02em; font-variant-numeric:tabular-nums}
+  .sh .no::before{content:"0"}
+  .sh h2{font-size:clamp(24px,3.6vw,31px); line-height:1.14; font-weight:600; letter-spacing:-.024em}
+  .intro{color:var(--sub); font-size:17px; line-height:1.5; margin:0 0 30px; max-width:62ch}
 
-  .tip{background:var(--soft); border-left:3px solid var(--lime); border-radius:0 10px 10px 0;
-    padding:13px 16px; margin:0 0 18px; font-size:14px; line-height:1.6; color:#4a463f}
-  .tip b{color:var(--ink)}
+  .tip{background:var(--panel); border-radius:14px; padding:16px 18px; margin:0 0 26px;
+    font-size:15px; line-height:1.55; color:#424245}
+  .tip b{color:var(--ink); font-weight:600}
 
-  .q{margin-bottom:20px}
+  .q{margin-bottom:30px}
   .q:last-child{margin-bottom:0}
-  .q > label, .qlabel{display:block; font-size:15px; font-weight:600; margin-bottom:8px; line-height:1.45}
-  .q .hint{font-size:13.5px; color:#8b857b; line-height:1.5; margin:-4px 0 9px}
+  .q > label, .qlabel{display:block; font-size:17px; font-weight:600; letter-spacing:-.014em;
+    margin-bottom:11px; line-height:1.35}
+  .q .hint{font-size:14.5px; color:var(--sub); line-height:1.5; margin:-6px 0 12px}
 
   input[type=text], input[type=email], input[type=tel], textarea{
-    width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--soft);
-    border:1px solid var(--line); border-radius:10px; padding:11px 13px}
-  textarea{min-height:88px; resize:vertical; line-height:1.55}
-  input:focus, textarea:focus{outline:0; border-color:var(--ink); background:#fff;
-    box-shadow:0 0 0 3px rgba(201,242,77,.35)}
-  input::placeholder, textarea::placeholder{color:#b3ada2}
+    width:100%; font:inherit; font-size:16px; letter-spacing:-.01em; color:var(--ink);
+    background:var(--panel); border:1px solid transparent; border-radius:12px; padding:13px 15px;
+    transition:background .15s, border-color .15s, box-shadow .15s}
+  textarea{min-height:96px; resize:vertical; line-height:1.5}
+  input:focus, textarea:focus{outline:0; background:#fff; border-color:var(--accent);
+    box-shadow:0 0 0 4px rgba(0,113,227,.13)}
+  input::placeholder, textarea::placeholder{color:#a1a1a6}
 
-  .duo{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-  @media (max-width:620px){ .duo{grid-template-columns:1fr} }
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:end}
+  .duo .q{display:flex; flex-direction:column; margin-bottom:0}
+  .duo .q input{margin-top:auto}
+  @media (max-width:620px){ .duo{grid-template-columns:1fr} .duo .q:first-child{margin-bottom:22px} }
 
-  /* ---------- Cases et boutons radio ---------- */
-  .opts{display:grid; gap:9px}
+  /* ---------- Choix ---------- */
+  .opts{display:grid; gap:8px}
   .opts.two{grid-template-columns:1fr 1fr}
   .opts.three{grid-template-columns:1fr 1fr 1fr}
   @media (max-width:620px){ .opts.two, .opts.three{grid-template-columns:1fr} }
 
-  .opt{display:flex; align-items:flex-start; gap:11px; padding:11px 13px; border:1px solid var(--line);
-    border-radius:10px; background:var(--soft); cursor:pointer; font-size:14.5px; line-height:1.45;
-    transition:border-color .15s, background .15s}
-  .opt:hover{border-color:#c9c4ba}
-  .opt input{appearance:none; -webkit-appearance:none; width:19px; height:19px; flex:0 0 auto;
-    border:1.5px solid #a9a49a; background:#fff; margin-top:1px; cursor:pointer; position:relative}
-  .opt input[type=checkbox]{border-radius:5px}
+  .opt{display:flex; align-items:flex-start; gap:12px; padding:14px 16px;
+    border:1px solid var(--line); border-radius:12px; background:#fff; cursor:pointer;
+    font-size:16px; line-height:1.4; letter-spacing:-.01em;
+    transition:border-color .15s, background .15s, box-shadow .15s}
+  .opt:hover{background:#fafafa; border-color:#bfbfc6}
+  .opt input{appearance:none; -webkit-appearance:none; width:21px; height:21px; flex:0 0 auto;
+    border:1.5px solid #c7c7cc; background:#fff; margin-top:0; cursor:pointer; position:relative;
+    transition:background .12s, border-color .12s}
+  .opt input[type=checkbox]{border-radius:6px}
   .opt input[type=radio]{border-radius:50%}
-  .opt input:checked{background:var(--ink); border-color:var(--ink)}
-  .opt input[type=checkbox]:checked::after{content:""; position:absolute; left:5.5px; top:2px;
-    width:5px; height:10px; border:solid var(--lime); border-width:0 2px 2px 0; transform:rotate(42deg)}
-  .opt input[type=radio]:checked::after{content:""; position:absolute; left:4px; top:4px;
-    width:7px; height:7px; border-radius:50%; background:var(--lime)}
-  .opt:has(input:checked){border-color:var(--ink); background:#fff}
+  .opt input:checked{background:var(--accent); border-color:var(--accent)}
+  .opt input[type=checkbox]:checked::after{content:""; position:absolute; left:6.5px; top:3px;
+    width:5px; height:10px; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(43deg)}
+  .opt input[type=radio]:checked::after{content:""; position:absolute; left:5.5px; top:5.5px;
+    width:8px; height:8px; border-radius:50%; background:#fff}
+  .opt:has(input:checked){border-color:var(--accent); background:var(--accent-soft);
+    box-shadow:inset 0 0 0 1px var(--accent)}
+  .opt .txt{padding-top:1px}
   .opt .txt b{display:block; font-weight:600}
-  .opt .txt small{display:block; color:#8b857b; font-size:13px; line-height:1.45; margin-top:2px}
-  .opt .tag{margin-left:auto; padding-left:10px; font-size:11px; font-weight:700; letter-spacing:.06em;
-    text-transform:uppercase; color:#6d7d1f; white-space:nowrap; align-self:center}
+  .opt .txt small{display:block; color:var(--sub); font-size:14px; line-height:1.45; margin-top:3px}
+  .opt .tag{margin-left:auto; padding:3px 9px; border-radius:99px; background:var(--panel);
+    font-size:11px; font-weight:600; letter-spacing:.03em; text-transform:uppercase;
+    color:var(--sub); white-space:nowrap; align-self:center}
+  .opt:has(input:checked) .tag{background:#fff; color:var(--accent)}
 
   /* ---------- Directions artistiques ---------- */
-  .das{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  .das{display:grid; grid-template-columns:1fr 1fr; gap:16px}
   @media (max-width:620px){ .das{grid-template-columns:1fr} }
-  .da{border:1.5px solid var(--line); border-radius:14px; background:var(--soft); cursor:pointer;
-    overflow:hidden; display:block; transition:border-color .15s, box-shadow .15s}
-  .da:hover{border-color:#c9c4ba}
-  .da:has(input:checked){border-color:var(--ink); background:#fff; box-shadow:0 6px 22px rgba(0,0,0,.08)}
-  .da .body{padding:13px 15px 15px; display:flex; gap:11px; align-items:flex-start}
-  .da input{appearance:none; -webkit-appearance:none; width:19px; height:19px; flex:0 0 auto;
-    border:1.5px solid #a9a49a; border-radius:50%; background:#fff; margin-top:2px; position:relative; cursor:pointer}
-  .da input:checked{background:var(--ink); border-color:var(--ink)}
-  .da input:checked::after{content:""; position:absolute; left:4px; top:4px; width:7px; height:7px;
-    border-radius:50%; background:var(--lime)}
+  .da{border:1px solid var(--line); border-radius:16px; background:#fff; cursor:pointer;
+    overflow:hidden; display:block; transition:border-color .15s, box-shadow .2s, transform .2s}
+  .da:hover{border-color:#bfbfc6; box-shadow:0 4px 18px rgba(0,0,0,.06)}
+  .da:has(input:checked){border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+  .da .body{padding:16px 18px 18px; display:flex; gap:12px; align-items:flex-start}
+  .da input{appearance:none; -webkit-appearance:none; width:21px; height:21px; flex:0 0 auto;
+    border:1.5px solid #c7c7cc; border-radius:50%; background:#fff; margin-top:1px;
+    position:relative; cursor:pointer; transition:background .12s, border-color .12s}
+  .da input:checked{background:var(--accent); border-color:var(--accent)}
+  .da input:checked::after{content:""; position:absolute; left:5.5px; top:5.5px; width:8px; height:8px;
+    border-radius:50%; background:#fff}
   .da .body > span{display:block}
-  .da .t{display:block; font-size:15.5px; font-weight:700; letter-spacing:-.01em; line-height:1.3}
-  .da .d{display:block; font-size:13.5px; color:#6b665d; line-height:1.5; margin-top:4px}
+  .da .t{display:block; font-size:17px; font-weight:600; letter-spacing:-.016em; line-height:1.3}
+  .da .d{display:block; font-size:14.5px; color:var(--sub); line-height:1.5; margin-top:5px}
 
-  /* miniatures dessinées en CSS */
-  .mock{height:132px; padding:10px; display:flex; flex-direction:column; gap:5px; border-bottom:1px solid var(--line)}
-  .mock i{display:block; border-radius:2px}
-  .mock .row{display:flex; gap:5px; flex:1}
+  /* apercus de style : une plaque de couleur, le nom traite dans le style, trois pastilles */
+  .mock{position:relative; height:132px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:11px; border-bottom:1px solid var(--hair)}
+  .mock .nm{font-size:16px; line-height:1.2}
+  .mock .ru{display:block; width:26px; height:2px; border-radius:2px}
+  .mock .dots{position:absolute; left:16px; bottom:14px; display:flex; gap:6px}
+  .mock .dots i{display:block; width:8px; height:8px; border-radius:50%}
+
+  /* A - sobre et institutionnel */
   .m1{background:#fff}
-  .m1 .nav{height:9px; background:#0d0d0f; border-radius:2px}
-  .m1 .h{height:13px; width:62%; background:#1a1a1c}
-  .m1 .h2{height:6px; width:44%; background:#b9b6b0}
-  .m1 .rule{height:3px; width:28px; background:#c8102e}
-  .m1 .ph{background:#d8d5cf; flex:1}
-  .m2{background:#101012}
-  .m2 .nav{height:9px; background:#2a2a2e; border-radius:2px}
-  .m2 .h{height:15px; width:70%; background:#f2f0ec}
-  .m2 .h2{height:6px; width:40%; background:#6a6a70}
-  .m2 .cta{height:9px; width:52px; background:#c8102e; border-radius:2px}
-  .m2 .ph{background:#26262b; flex:1}
-  .m3{background:#fff}
-  .m3 .nav{height:9px; background:#c8102e; border-radius:2px}
-  .m3 .h{height:14px; width:66%; background:#0d0d0f}
-  .m3 .blk{background:#c8102e; flex:1}
-  .m3 .blk2{background:#0d0d0f; flex:1}
-  .m3 .ph{background:#ddd9d2; flex:2}
-  .m4{background:#fbfaf8}
-  .m4 .nav{height:8px; width:60%; background:#ddd9d2; border-radius:2px; align-self:flex-end}
-  .m4 .h{height:12px; width:50%; background:#2b2b2e}
-  .m4 .h2{height:5px; width:34%; background:#c4c0b8}
-  .m4 .ph{background:#e6e2da; flex:1}
-  .m4 .ph2{background:#cfcabf; flex:1}
+  .m1 .nm{color:#1d1d1f; font-weight:600; letter-spacing:-.02em}
+  .m1 .ru{background:#c8102e}
+  .m1 .dots i:nth-child(1){background:#1d1d1f}
+  .m1 .dots i:nth-child(2){background:#c8102e}
+  .m1 .dots i:nth-child(3){background:#e8e8ed}
+
+  /* B - noir et rouge, esprit chantier */
+  .m2{background:#0f0f11}
+  .m2 .nm{color:#fff; font-weight:700; text-transform:uppercase; letter-spacing:.11em; font-size:14px}
+  .m2 .ru{background:#c8102e; width:38px; height:3px}
+  .m2 .dots i:nth-child(1){background:#fff}
+  .m2 .dots i:nth-child(2){background:#c8102e}
+  .m2 .dots i:nth-child(3){background:#3a3a40}
+
+  /* C - rouge affirme */
+  .m3{background:#c8102e}
+  .m3 .nm{color:#fff; font-weight:700; text-transform:uppercase; letter-spacing:.04em; font-size:15px}
+  .m3 .ru{background:#0f0f11; width:34px; height:3px}
+  .m3 .dots i:nth-child(1){background:#fff}
+  .m3 .dots i:nth-child(2){background:#0f0f11}
+  .m3 .dots i:nth-child(3){background:rgba(255,255,255,.45)}
+
+  /* D - clair et epure */
+  .m4{background:#fbfbfd}
+  .m4 .nm{color:#1d1d1f; font-weight:300; text-transform:uppercase; letter-spacing:.26em; font-size:12px}
+  .m4 .ru{background:#d2d2d7; width:20px; height:1px}
+  .m4 .dots i:nth-child(1){background:#1d1d1f}
+  .m4 .dots i:nth-child(2){background:#d2d2d7}
+  .m4 .dots i:nth-child(3){background:#ececed}
 
   /* ---------- Envoi ---------- */
-  .send{background:var(--ink); color:#f5f3ee; border-radius:16px; padding:28px 26px 30px; margin-top:22px}
-  .send h2{font-size:21px; font-weight:700; letter-spacing:-.01em}
-  .send p{color:#a8a297; font-size:14.5px; line-height:1.6; margin-top:10px}
-  .send .req{margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:14px}
-  @media (max-width:620px){ .send .req{grid-template-columns:1fr} }
-  .send label{display:block; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
-    color:#8f8a80; font-weight:700; margin-bottom:7px}
-  .send input{background:#1b1a17; border-color:#33312c; color:#f5f3ee}
-  .send input::placeholder{color:#6b665d}
-  .send input:focus{background:#211f1c; border-color:var(--lime); box-shadow:none}
-  .actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; align-items:center}
-  button{font:inherit; font-weight:700; border-radius:11px; cursor:pointer; border:1px solid transparent;
-    padding:14px 24px; font-size:15.5px}
-  .go{background:var(--lime); color:#15140f}
-  .go:hover{filter:brightness(1.06)}
-  .go:disabled{opacity:.55; cursor:default}
-  .ghost{background:transparent; color:#f5f3ee; border-color:#43403a}
-  .ghost:hover{background:#1b1a17}
-  .msg{margin-top:16px; font-size:14.5px; line-height:1.6; display:none}
-  .msg.ok{display:block; color:#d4f57a}
-  .msg.ko{display:block; color:#ff9c8a}
+  .send{background:var(--panel); border-radius:20px; padding:38px 34px 36px; margin-top:56px}
+  .send h2{font-size:27px; font-weight:600; letter-spacing:-.024em; line-height:1.15}
+  .send p{color:var(--sub); font-size:16px; line-height:1.5; margin-top:12px; max-width:58ch}
+  .send .req{margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media (max-width:620px){ .send{padding:28px 22px 26px} .send .req{grid-template-columns:1fr} }
+  .send label{display:block; font-size:14px; font-weight:500; color:var(--sub); margin-bottom:8px}
+  .send input{background:#fff; border-color:var(--line)}
+  .send input:focus{border-color:var(--accent)}
+  .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; align-items:center}
+  button{font:inherit; font-size:16px; font-weight:500; letter-spacing:-.01em; border-radius:980px;
+    cursor:pointer; border:1px solid transparent; padding:12px 24px; transition:background .15s, opacity .15s}
+  /* bouton d envoi : cercle qui se deploie, texte et fleches qui glissent */
+  .go{position:relative; display:inline-flex; align-items:center; gap:4px; overflow:hidden;
+    padding:13px 32px; border:1.5px solid rgba(51,51,51,.4); border-radius:100px;
+    background:transparent; color:#111; font-size:15px; font-weight:600;
+    transition:color .6s cubic-bezier(.23,1,.32,1), border-color .6s cubic-bezier(.23,1,.32,1),
+      border-radius .6s cubic-bezier(.23,1,.32,1), transform .2s ease, opacity .2s ease}
+  .go .arr{position:absolute; width:16px; height:16px; z-index:9; color:#111;
+    transition:left .8s cubic-bezier(.34,1.56,.64,1), right .8s cubic-bezier(.34,1.56,.64,1),
+      color .6s cubic-bezier(.23,1,.32,1)}
+  .go .arr-l{left:-25%}
+  .go .arr-r{right:16px}
+  .go .lbl{position:relative; z-index:1; transform:translateX(-12px);
+    transition:transform .8s cubic-bezier(.23,1,.32,1)}
+  .go .circle{position:absolute; top:50%; left:50%; width:16px; height:16px; border-radius:50%;
+    background:#111; opacity:0; transform:translate(-50%,-50%); pointer-events:none;
+    transition:width .8s cubic-bezier(.19,1,.22,1), height .8s cubic-bezier(.19,1,.22,1), opacity .6s ease}
+  .go:hover:not(:disabled){border-color:transparent; border-radius:12px; color:#fff}
+  .go:hover:not(:disabled) .arr{color:#fff}
+  .go:hover:not(:disabled) .arr-l{left:16px}
+  .go:hover:not(:disabled) .arr-r{right:-25%}
+  .go:hover:not(:disabled) .lbl{transform:translateX(12px)}
+  .go:hover:not(:disabled) .circle{width:300px; height:300px; opacity:1}
+  .go:active:not(:disabled){transform:scale(.95)}
+  .go:disabled{opacity:.45; cursor:default}
+  @media (prefers-reduced-motion:reduce){
+    .go, .go *{transition-duration:.01ms !important}
+  }
+  .ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+  .ghost:hover{background:rgba(0,0,0,.04)}
+  .msg{margin-top:18px; font-size:15px; line-height:1.55; display:none}
+  .msg.ok{display:block; color:#1a7f37}
+  .msg.ko{display:block; color:#c9252d}
+  .msg a{color:var(--accent)}
   .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
 
-  footer{text-align:center; color:#8b857b; font-size:13px; line-height:1.7; margin-top:30px}
-  footer b{color:#4a463f}
-  .saved{font-size:13px; color:#8f8a80}
+  footer{text-align:center; color:var(--faint); font-size:13.5px; line-height:1.7;
+    margin-top:56px; padding-top:28px; border-top:1px solid var(--hair)}
+  footer b{color:var(--ink); font-weight:500}
+  .saved{font-size:13.5px; color:var(--faint); margin-left:2px}
 
   /* ---------- Impression ---------- */
   @media print{
-    body{background:#fff; font-size:11px}
+    body{font-size:10.5px; letter-spacing:0}
     .prog, .actions, .saved{display:none !important}
     *{box-shadow:none !important}
-    header{background:#fff; color:#111; margin-bottom:14px; border-bottom:2px solid #111}
-    .hd{padding:16px 0 14px}
-    .hd .brand{color:#111}
-    .hd .brand span{color:#5c7a00}
-    .hd h1{color:#111; font-size:20px; margin-top:14px}
-    .hd p{color:#333; font-size:10.5px; margin-top:8px}
-    .hd .who{color:#555; border-top-color:#ccc; margin-top:12px; padding-top:10px; font-size:10px}
-    .hd .who b{color:#111}
-    .idb .mark{width:42px; height:42px; border-color:#ccc; border-radius:9px}
-    .tip{background:#f4f4f2; border-left-color:#8ab800; padding:7px 10px; margin-bottom:10px;
-      font-size:10px; line-height:1.45; break-inside:avoid}
+    header{border-bottom:1px solid #c7c7cc}
+    .hd{padding:0 0 14px}
+    .idb .mark{width:24px; height:24px}
+    .hd .brand{font-size:11px}
+    .hd .brand span{font-size:8px}
+    .hd .over{font-size:9px; margin:14px 0 6px}
+    .hd h1{font-size:23px; margin:0; max-width:none}
+    .hd p{font-size:10.5px; margin-top:9px}
+    .hd .who{margin-top:14px; padding-top:10px; font-size:9.5px}
     .wrap{padding:0; max-width:none}
-    section{border-radius:0; border:0; border-top:1.5px solid #333; padding:12px 0 6px; margin-bottom:0}
+    section{padding:14px 0 4px; border-top:1px solid #d2d2d7}
+    section:first-of-type{padding-top:12px}
     .sh h2{font-size:14px}
-    .intro{font-size:11px; margin-bottom:10px}
-    .opt{padding:5px 8px; font-size:10.5px; break-inside:avoid}
-    .q, .sh, .da{break-inside:avoid}
-    .sh{break-after:avoid}
+    .sh .no{font-size:9.5px}
+    .intro{font-size:10.5px; margin-bottom:10px}
+    .tip{padding:8px 10px; font-size:9.5px; margin-bottom:10px; background:#f5f5f7}
+    .q{margin-bottom:13px}
+    .q > label, .qlabel{font-size:11px; margin-bottom:6px}
+    .q .hint{font-size:9.5px; margin-bottom:7px}
+    .opt{padding:6px 9px; font-size:10px; border-color:#c7c7cc; break-inside:avoid}
+    .opt input{width:13px; height:13px}
     .opt .txt small{display:none}
-    .opt .txt small.keep{display:block; font-size:9.5px; color:#555}
-    input[type=text], input[type=email], input[type=tel], textarea{background:#fff; font-size:11px; padding:6px 8px}
-    textarea{min-height:44px}
-    .mock{height:92px}
-    .da .d{font-size:10px}
-    .send{background:#fff; color:#111; border:1.5px solid #333; border-radius:0}
-    .send p, .send label{color:#555}
-    .send input{background:#fff; border-color:#aaa; color:#111}
+    .opt .txt small.keep{display:block; font-size:9px; color:#6e6e73}
+    .opt .tag{font-size:8px; padding:2px 6px}
+    .sh, .da{break-inside:avoid}
+    .sh{break-after:avoid}
+    .q > label, .qlabel{break-after:avoid}
+    input[type=text], input[type=email], input[type=tel], textarea{
+      background:#fff; border-color:#c7c7cc; font-size:10px; padding:6px 8px}
+    textarea{min-height:42px}
+    .mock{height:96px}
+    .da .t{font-size:11px}
+    .da .d{font-size:9.5px}
+    .da .body{padding:9px 11px 11px}
+    .send{background:#fff; border:1px solid #1d1d1f; border-radius:0; padding:14px 16px; margin-top:16px}
+    .send h2{font-size:14px}
+    .send p{font-size:10px}
+    .send label{font-size:9.5px}
+    footer{margin-top:18px; padding-top:12px; font-size:9.5px}
   }
 </style>
 </head>
@@ -225,15 +305,17 @@
       <img class="mark" src="../brand/icon-192.png" width="192" height="192" alt="LinkedIA">
       <div class="brand">LinkedIA<span>Agence digitale · Création de sites internet</span></div>
     </div>
-    <h1>Faure Bâtiment&nbsp;:<br>votre page vitrine</h1>
+    <p class="over">SAS Faure Bâtiment</p>
+    <h1>Concevons votre page vitrine.</h1>
     <p>J&rsquo;ai lu votre plaquette et votre organigramme&nbsp;: j&rsquo;ai donc déjà l&rsquo;essentiel de vos
        informations. Il me manque surtout <b>votre goût</b> — le style vers lequel on part — et
        <b>ce que vous voulez voir sur la page</b>.</p>
-    <p>Une dizaine de questions, 5 à 10 minutes. Vos réponses s&rsquo;enregistrent toutes seules&nbsp;:
+    <p>Une dizaine de questions, 5 à 10 minutes. Vos photos de chantiers, vous me les transmettez
+       à part&nbsp;: pas besoin d&rsquo;en parler ici. Vos réponses s&rsquo;enregistrent toutes seules&nbsp;—
        vous pouvez fermer la page et y revenir.</p>
     <div class="who">
       <span>Préparé pour <b>M. Ibrahim YOLCU</b> — SAS Faure Bâtiment</span>
-      <span>Par <b>Jérémy Halimi</b> — LinkedIA</span>
+      <span>Par <b>LinkedIA</b></span>
       <span><b>06 65 14 14 33</b></span>
     </div>
   </div>
@@ -243,7 +325,7 @@
 
   <div class="prog">
     <div class="bar"><i id="pbar"></i></div>
-    <div class="n"><span id="pnum">0</span> réponse(s)</div>
+    <div class="n"><span id="pnum">0</span> <span id="plab">réponse</span></div>
   </div>
 
   <form id="f">
@@ -335,6 +417,50 @@
 
       <div class="q"><label for="q_plus">Autre chose que vous voulez absolument voir sur la page&nbsp;?</label>
         <textarea id="q_plus" data-l="À ajouter sur la page"></textarea></div>
+
+      <div class="tip">Vous m&rsquo;annoncez <b>une quarantaine de photos de réalisations</b> — c&rsquo;est parfait,
+        largement de quoi faire. Deux précisions suffisent&nbsp;:</div>
+
+      <div class="q">
+        <div class="qlabel">Combien de chantiers montre-t-on&nbsp;?</div>
+        <div class="opts two" data-g="Nombre de chantiers montrés">
+          <label class="opt"><input type="radio" name="nbrea" value="4 à 6, les plus représentatifs"><span class="txt"><b>4 à 6 chantiers</b><small>Les plus représentatifs, en grand.</small></span><span class="tag">Conseillé</span></label>
+          <label class="opt"><input type="radio" name="nbrea" value="8 à 12"><span class="txt"><b>8 à 12 chantiers</b><small>Un aperçu plus large de votre activité.</small></span></label>
+          <label class="opt"><input type="radio" name="nbrea" value="Toutes les photos en galerie"><span class="txt"><b>Toutes les photos, en galerie</b><small>On les affiche en mosaïque, agrandissables au clic.</small></span></label>
+          <label class="opt"><input type="radio" name="nbrea" value="Je vous laisse choisir dans le lot"><span class="txt"><b>Je vous laisse trier</b><small>Vous m&rsquo;envoyez tout, je sélectionne les meilleures.</small></span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Écrit-on quelque chose sous chaque chantier&nbsp;?</div>
+        <div class="opts" data-g="Légendes des chantiers">
+          <label class="opt"><input type="radio" name="legende" value="Nature des travaux + ville + type de bâtiment"><span class="txt"><b>Nature des travaux, ville, type de bâtiment</b><small>Ex.&nbsp;: «&nbsp;Gros œuvre · 37 logements collectifs · Pont-de-Chéruy (38)&nbsp;».</small></span></label>
+          <label class="opt"><input type="radio" name="legende" value="Juste la ville"><span class="txt"><b>Juste la ville</b></span></label>
+          <label class="opt"><input type="radio" name="legende" value="Rien, uniquement les photos"><span class="txt"><b>Rien du tout — uniquement les photos</b></span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Peut-on citer vos clients par leur nom&nbsp;?</div>
+        <div class="hint">NEXITY, les mairies, les bailleurs sociaux… C&rsquo;est un vrai argument sur la page,
+          mais certains contrats l&rsquo;encadrent.</div>
+        <div class="opts three" data-g="Citer les clients">
+          <label class="opt"><input type="radio" name="moa" value="Oui"><span class="txt">Oui</span></label>
+          <label class="opt"><input type="radio" name="moa" value="Non, rester générique"><span class="txt">Non, rester générique</span></label>
+          <label class="opt"><input type="radio" name="moa" value="À vérifier"><span class="txt">À vérifier</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qlabel">Affiche-t-on les montants des chantiers&nbsp;?</div>
+        <div class="hint">Votre plaquette les indique (765 000 €, 632 000 €…). En ligne, vos concurrents
+          les lisent aussi et en déduisent vos prix.</div>
+        <div class="opts two" data-g="Montants des chantiers">
+          <label class="opt"><input type="radio" name="mont" value="Non, on les retire"><span class="txt">Non, on les retire</span><span class="tag">Conseillé</span></label>
+          <label class="opt"><input type="radio" name="mont" value="Oui, comme la plaquette"><span class="txt">Oui, comme la plaquette</span></label>
+          <label class="opt"><input type="radio" name="mont" value="À voir ensemble"><span class="txt">À voir ensemble</span></label>
+        </div>
+      </div>
     </section>
 
     <!-- ============ 4 ============ -->
@@ -346,9 +472,9 @@
       <div class="das" data-g="Direction artistique">
         <label class="da">
           <span class="mock m1">
-            <i class="nav"></i>
-            <i class="h"></i><i class="rule"></i><i class="h2"></i>
-            <span class="row"><i class="ph"></i><i class="ph"></i><i class="ph"></i></span>
+            <span class="nm">Faure Bâtiment</span>
+            <i class="ru"></i>
+            <span class="dots"><i></i><i></i><i></i></span>
           </span>
           <span class="body">
             <input type="radio" name="da" value="A — Sobre et institutionnel (blanc, noir, filet rouge)">
@@ -360,9 +486,9 @@
 
         <label class="da">
           <span class="mock m2">
-            <i class="nav"></i>
-            <i class="h"></i><i class="h2"></i><i class="cta"></i>
-            <span class="row"><i class="ph"></i><i class="ph"></i></span>
+            <span class="nm">Faure Bâtiment</span>
+            <i class="ru"></i>
+            <span class="dots"><i></i><i></i><i></i></span>
           </span>
           <span class="body">
             <input type="radio" name="da" value="B — Noir et rouge, esprit chantier (impactant)">
@@ -374,9 +500,9 @@
 
         <label class="da">
           <span class="mock m3">
-            <i class="nav"></i>
-            <i class="h"></i>
-            <span class="row"><i class="blk"></i><i class="blk2"></i><i class="ph"></i></span>
+            <span class="nm">Faure Bâtiment</span>
+            <i class="ru"></i>
+            <span class="dots"><i></i><i></i><i></i></span>
           </span>
           <span class="body">
             <input type="radio" name="da" value="C — Rouge affirmé, dans la continuité de la plaquette">
@@ -388,9 +514,9 @@
 
         <label class="da">
           <span class="mock m4">
-            <i class="nav"></i>
-            <i class="h"></i><i class="h2"></i>
-            <span class="row"><i class="ph"></i><i class="ph2"></i></span>
+            <span class="nm">Faure Bâtiment</span>
+            <i class="ru"></i>
+            <span class="dots"><i></i><i></i><i></i></span>
           </span>
           <span class="body">
             <input type="radio" name="da" value="D — Clair et épuré, beaucoup d'espace">
@@ -412,7 +538,7 @@
       <div class="q">
         <div class="qlabel">On part sur quelles couleurs&nbsp;?</div>
         <div class="opts two" data-g="Couleurs">
-          <label class="opt"><input type="radio" name="coul" value="Rouge et noir (logo)"><span class="txt">Rouge et noir, comme le logo</span><span class="tag">Logique</span></label>
+          <label class="opt"><input type="radio" name="coul" value="Rouge et noir (logo)"><span class="txt"><b>Rouge et noir</b><small>Les couleurs de votre logo et de vos véhicules.</small></span><span class="tag">Logique</span></label>
           <label class="opt"><input type="radio" name="coul" value="Bleu marine et orange"><span class="txt">Bleu marine et orange</span></label>
           <label class="opt"><input type="radio" name="coul" value="Rouge, noir et touche dorée"><span class="txt">Rouge, noir et une touche dorée</span></label>
           <label class="opt"><input type="radio" name="coul" value="Je vous fais confiance"><span class="txt">Je vous fais confiance</span></label>
@@ -430,46 +556,7 @@
 
     <!-- ============ 5 ============ -->
     <section>
-      <div class="sh"><div class="no">5</div><h2>Vos photos et votre logo</h2></div>
-      <p class="intro">Sur un site de bâtiment, les photos font la moitié du résultat. C&rsquo;est le seul
-         point où j&rsquo;ai vraiment besoin de vous.</p>
-
-      <div class="q">
-        <div class="qlabel">De quoi disposez-vous&nbsp;?</div>
-        <div class="opts" data-g="Photos disponibles">
-          <label class="opt"><input type="checkbox" name="photos" value="Photos de chantiers terminés"><span class="txt">Des photos de chantiers terminés</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Photos de chantiers en cours (grue, banches)"><span class="txt">Des photos de chantiers en cours (grue, banches, ferraillage)</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Photos du matériel et des véhicules"><span class="txt">Des photos du matériel et des véhicules floqués</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Photo de l'équipe"><span class="txt">Une photo de l&rsquo;équipe</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Vue par drone"><span class="txt">Des vues par drone</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Peu de photos exploitables"><span class="txt">Pas grand-chose d&rsquo;exploitable, à vrai dire</span></label>
-        </div>
-      </div>
-
-      <div class="duo">
-        <div class="q"><label for="q_qui">Qui m&rsquo;envoie les photos, et quand&nbsp;?</label>
-          <div class="hint">C&rsquo;est ce qui retarde le plus souvent un site. Autant le décider maintenant.</div>
-          <input type="text" id="q_qui" data-l="Qui fournit les photos"></div>
-        <div class="q"><label for="q_logo">Avez-vous le logo en fichier d&rsquo;origine&nbsp;?</label>
-          <div class="hint">Fichier .ai, .eps, .svg ou PDF fourni par votre graphiste — sinon le logo sera flou.</div>
-          <input type="text" id="q_logo" data-l="Logo vectoriel" placeholder="Oui / non / à redemander"></div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Sur les photos de chantiers, affiche-t-on les montants&nbsp;?</div>
-        <div class="hint">Votre plaquette indique les montants HT (765 000 €, 632 000 €…). En ligne, vos
-          concurrents les lisent aussi.</div>
-        <div class="opts two" data-g="Montants des chantiers">
-          <label class="opt"><input type="radio" name="mont" value="Non, on les retire"><span class="txt">Non, on les retire</span><span class="tag">Conseillé</span></label>
-          <label class="opt"><input type="radio" name="mont" value="Oui, comme la plaquette"><span class="txt">Oui, comme la plaquette</span></label>
-          <label class="opt"><input type="radio" name="mont" value="À voir ensemble"><span class="txt">À voir ensemble</span></label>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 6 ============ -->
-    <section>
-      <div class="sh"><div class="no">6</div><h2>Le bloc «&nbsp;Nous contacter&nbsp;», en bas</h2></div>
+      <div class="sh"><div class="no">5</div><h2>Le bloc «&nbsp;Nous contacter&nbsp;», en bas</h2></div>
       <p class="intro">C&rsquo;est la partie qui doit vous rapporter des affaires&nbsp;: un formulaire simple,
          vos coordonnées, et c&rsquo;est tout.</p>
 
@@ -504,37 +591,15 @@
       </div>
     </section>
 
-    <!-- ============ 7 ============ -->
+    <!-- ============ 6 ============ -->
     <section>
-      <div class="sh"><div class="no">7</div><h2>Deux ou trois détails, et c&rsquo;est fini</h2></div>
+      <div class="sh"><div class="no">6</div><h2>Pour finir</h2></div>
+      <p class="intro">Trois questions pratiques, et je peux me mettre au travail.</p>
 
-      <div class="tip">Votre plaquette annonce le <b>RGE Qualibat «&nbsp;en cours de montage&nbsp;»</b>. Tant que la
-        qualification n&rsquo;est pas obtenue, mieux vaut ne pas l&rsquo;afficher comme acquise sur le site
-        (c&rsquo;est un risque juridique). On peut simplement écrire que la démarche est engagée.</div>
-
-      <div class="q">
-        <div class="qlabel">Où en est ce dossier&nbsp;?</div>
-        <div class="opts three" data-g="RGE Qualibat">
-          <label class="opt"><input type="radio" name="rge" value="Obtenu"><span class="txt">Obtenu depuis</span></label>
-          <label class="opt"><input type="radio" name="rge" value="Toujours en cours"><span class="txt">Toujours en cours</span></label>
-          <label class="opt"><input type="radio" name="rge" value="On n'en parle pas"><span class="txt">On n&rsquo;en parle pas</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_assur">Votre assurance décennale (assureur + n° de contrat)</label>
-        <div class="hint">Mention obligatoire pour une entreprise du bâtiment — et un vrai gage de sérieux
-          pour celui qui vous découvre.</div>
-        <input type="text" id="q_assur" data-l="Assurance décennale" placeholder="Ex. : SMABTP — contrat n° …"></div>
-
-      <div class="q">
-        <div class="qlabel">Peut-on citer vos clients par leur nom&nbsp;?</div>
-        <div class="hint">NEXITY, les mairies, les bailleurs sociaux… Certains contrats l&rsquo;encadrent.</div>
-        <div class="opts three" data-g="Citer les clients">
-          <label class="opt"><input type="radio" name="moa" value="Oui"><span class="txt">Oui</span></label>
-          <label class="opt"><input type="radio" name="moa" value="Non, rester générique"><span class="txt">Non, rester générique</span></label>
-          <label class="opt"><input type="radio" name="moa" value="À vérifier"><span class="txt">À vérifier</span></label>
-        </div>
-      </div>
+      <div class="q"><label for="q_logo">Avez-vous le logo en fichier d&rsquo;origine&nbsp;?</label>
+        <div class="hint">Fichier .ai, .eps, .svg ou PDF fourni par votre graphiste. Sinon le logo
+          apparaîtra flou en haut de page — c&rsquo;est le seul fichier dont j&rsquo;ai vraiment besoin, avec vos photos.</div>
+        <input type="text" id="q_logo" data-l="Logo vectoriel" placeholder="Oui / non / à redemander au graphiste"></div>
 
       <div class="duo">
         <div class="q"><label for="q_date">Pour quand souhaitez-vous être en ligne&nbsp;?</label>
@@ -552,7 +617,7 @@
     <div class="send">
       <h2>Envoyez-moi vos réponses</h2>
       <p>Je reçois tout d&rsquo;un coup, je vous prépare une première maquette de la page dans le style
-         choisi, et on ajuste ensemble. Vous pouvez aussi imprimer ce document et le remplir à la main.</p>
+         choisi, et on ajuste ensemble.</p>
 
       <div class="req">
         <div>
@@ -568,9 +633,14 @@
       <input type="text" class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div class="actions">
-        <button type="submit" class="go" id="go">Envoyer mes réponses</button>
-        <button type="button" class="ghost" onclick="window.print()">Imprimer / enregistrer en PDF</button>
-        <button type="button" class="ghost" id="dl">Télécharger mes réponses</button>
+        <button type="submit" class="go" id="go">
+          <svg class="arr arr-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="lbl" id="golbl">Envoyer mes réponses</span>
+          <span class="circle" aria-hidden="true"></span>
+          <svg class="arr arr-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
         <span class="saved" id="saved"></span>
       </div>
 
@@ -579,7 +649,7 @@
   </form>
 
   <footer>
-    <b>LinkedIA — Jérémy Halimi</b><br>
+    <b>LinkedIA</b><br>
     06 65 14 14 33 · contact@linkeedia.fr · linkeedia.fr<br>
     Document préparé le 11 septembre 2026 pour la SAS Faure Bâtiment.
   </footer>
@@ -590,10 +660,11 @@
   'use strict';
   var ENDPOINT = 'https://linkedia-contact.halimjeremy.workers.dev';
   var KEY = 'linkedia-quest-faure-v2';
-  var TOTAL = 30;
+  var TOTAL = 24;
   var form = document.getElementById('f');
   var msg = document.getElementById('msg');
   var go = document.getElementById('go');
+  var goLbl = document.getElementById('golbl');
   var savedEl = document.getElementById('saved');
 
   function fields() { return form.querySelectorAll('input, textarea'); }
@@ -609,6 +680,7 @@
     });
     done += Object.keys(groups).length;
     document.getElementById('pnum').textContent = done;
+    document.getElementById('plab').textContent = done > 1 ? 'réponses' : 'réponse';
     document.getElementById('pbar').style.width = Math.min(100, (done / TOTAL) * 100) + '%';
   }
 
@@ -693,17 +765,6 @@
     });
   }
 
-  /* ---------- Téléchargement de secours ---------- */
-  document.getElementById('dl').addEventListener('click', function () {
-    var blob = new Blob(['QUESTIONNAIRE FAURE BATIMENT — ' + new Date().toLocaleString('fr-FR') + '\n\n' + recap()],
-      { type: 'text/plain;charset=utf-8' });
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'questionnaire-faure-batiment.txt';
-    document.body.appendChild(a); a.click();
-    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
-  });
-
   /* ---------- Envoi ---------- */
   var busy = false;
   form.addEventListener('submit', function (e) {
@@ -723,7 +784,7 @@
 
     busy = true;
     go.disabled = true;
-    go.textContent = 'Envoi en cours…';
+    goLbl.textContent = 'Envoi en cours…';
 
     var parts = chunks(recap(), 3500);
     var hp = document.getElementById('website').value;
@@ -744,14 +805,14 @@
     chain.then(function () {
       msg.className = 'msg ok';
       msg.textContent = 'C’est envoyé, merci. Je reviens très vite avec une première maquette de votre page.';
-      go.textContent = 'Réponses envoyées ✓';
+      goLbl.textContent = 'Réponses envoyées';
     }).catch(function () {
       busy = false;
       go.disabled = false;
-      go.textContent = 'Envoyer mes réponses';
+      goLbl.textContent = 'Envoyer mes réponses';
       msg.className = 'msg ko';
-      msg.innerHTML = 'L’envoi n’a pas abouti. Utilisez le bouton « Télécharger mes réponses » et envoyez-moi le fichier à ' +
-        '<a href="mailto:contact@linkeedia.fr" style="color:#c9f24d">contact@linkeedia.fr</a>, ou réessayez dans un instant.';
+      msg.innerHTML = 'L’envoi n’a pas abouti. Vos réponses sont conservées sur cet appareil&nbsp;: ' +
+        'réessayez dans un instant, ou écrivez-nous à <a href="mailto:contact@linkeedia.fr">contact@linkeedia.fr</a>.';
     });
   });
 
