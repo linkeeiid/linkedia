@@ -414,30 +414,6 @@
         </div>
       </div>
 
-      <div class="q"><label for="q_plus">Autre chose que vous voulez absolument voir sur la page&nbsp;?</label>
-        <textarea id="q_plus" data-l="À ajouter sur la page"></textarea></div>
-
-      <div class="tip">Vous m&rsquo;annoncez <b>une quarantaine de photos de réalisations</b> — c&rsquo;est parfait,
-        largement de quoi faire. Deux précisions suffisent&nbsp;:</div>
-
-      <div class="q">
-        <div class="qlabel">Combien de chantiers montre-t-on&nbsp;?</div>
-        <div class="opts two" data-g="Nombre de chantiers montrés">
-          <label class="opt"><input type="radio" name="nbrea" value="4 à 6, les plus représentatifs"><span class="txt"><b>4 à 6 chantiers</b><small>Les plus représentatifs, en grand.</small></span><span class="tag">Conseillé</span></label>
-          <label class="opt"><input type="radio" name="nbrea" value="8 à 12"><span class="txt"><b>8 à 12 chantiers</b><small>Un aperçu plus large de votre activité.</small></span></label>
-          <label class="opt"><input type="radio" name="nbrea" value="Toutes les photos en galerie"><span class="txt"><b>Toutes les photos, en galerie</b><small>On les affiche en mosaïque, agrandissables au clic.</small></span></label>
-          <label class="opt"><input type="radio" name="nbrea" value="Je vous laisse choisir dans le lot"><span class="txt"><b>Je vous laisse trier</b><small>Vous m&rsquo;envoyez tout, je sélectionne les meilleures.</small></span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Écrit-on quelque chose sous chaque chantier&nbsp;?</div>
-        <div class="opts" data-g="Légendes des chantiers">
-          <label class="opt"><input type="radio" name="legende" value="Nature des travaux + ville + type de bâtiment"><span class="txt"><b>Nature des travaux, ville, type de bâtiment</b><small>Ex.&nbsp;: «&nbsp;Gros œuvre · 37 logements collectifs · Pont-de-Chéruy (38)&nbsp;».</small></span></label>
-          <label class="opt"><input type="radio" name="legende" value="Juste la ville"><span class="txt"><b>Juste la ville</b></span></label>
-          <label class="opt"><input type="radio" name="legende" value="Rien, uniquement les photos"><span class="txt"><b>Rien du tout — uniquement les photos</b></span></label>
-        </div>
-      </div>
 
       <div class="q">
         <div class="qlabel">Peut-on citer vos clients par leur nom&nbsp;?</div>
@@ -447,17 +423,6 @@
           <label class="opt"><input type="radio" name="moa" value="Oui"><span class="txt">Oui</span></label>
           <label class="opt"><input type="radio" name="moa" value="Non, rester générique"><span class="txt">Non, rester générique</span></label>
           <label class="opt"><input type="radio" name="moa" value="À vérifier"><span class="txt">À vérifier</span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Affiche-t-on les montants des chantiers&nbsp;?</div>
-        <div class="hint">Votre plaquette les indique (765 000 €, 632 000 €…). En ligne, vos concurrents
-          les lisent aussi et en déduisent vos prix.</div>
-        <div class="opts two" data-g="Montants des chantiers">
-          <label class="opt"><input type="radio" name="mont" value="Non, on les retire"><span class="txt">Non, on les retire</span><span class="tag">Conseillé</span></label>
-          <label class="opt"><input type="radio" name="mont" value="Oui, comme la plaquette"><span class="txt">Oui, comme la plaquette</span></label>
-          <label class="opt"><input type="radio" name="mont" value="À voir ensemble"><span class="txt">À voir ensemble</span></label>
         </div>
       </div>
     </section>
@@ -615,8 +580,6 @@
     <!-- ============ ENVOI ============ -->
     <div class="send">
       <h2>Envoyez-moi vos réponses</h2>
-      <p>Je reçois tout d&rsquo;un coup, je vous prépare une première maquette de la page dans le style
-         choisi, et on ajuste ensemble.</p>
 
       <div class="req">
         <div>
@@ -659,7 +622,7 @@
   'use strict';
   var ENDPOINT = 'https://linkedia-contact.halimjeremy.workers.dev';
   var KEY = 'linkedia-quest-faure-v2';
-  var TOTAL = 24;
+  var TOTAL = 20;
   var form = document.getElementById('f');
   var msg = document.getElementById('msg');
   var go = document.getElementById('go');
