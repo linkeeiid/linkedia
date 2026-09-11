@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Faure Bâtiment — Questionnaire de conception du site · LinkedIA</title>
+<title>Faure Bâtiment — Votre page vitrine · LinkedIA</title>
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../brand/icon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="../brand/icon-192.png">
@@ -12,8 +12,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="LinkedIA">
-<meta property="og:title" content="Faure Bâtiment — Questionnaire de conception du site">
-<meta property="og:description" content="Préparation du site internet de la SAS Faure Bâtiment : validation des informations, arbitrages et contenus à fournir.">
+<meta property="og:title" content="Faure Bâtiment — Votre page vitrine">
+<meta property="og:description" content="Quelques questions rapides pour lancer votre site vitrine : contenu de la page et direction artistique.">
 <meta property="og:image" content="https://linkeedia.fr/brand/og-linkedia.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,11 +28,11 @@
   body{background:var(--greige); color:var(--ink);
     font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
 
-  .wrap{max-width:880px; margin:0 auto; padding:0 20px 80px}
+  .wrap{max-width:860px; margin:0 auto; padding:0 20px 80px}
 
   /* ---------- En-tête ---------- */
   header{background:var(--ink); color:#f5f3ee; margin-bottom:26px}
-  .hd{max-width:880px; margin:0 auto; padding:34px 20px 38px}
+  .hd{max-width:860px; margin:0 auto; padding:34px 20px 38px}
   .idb{display:flex; align-items:center; gap:14px}
   .idb .mark{width:58px; height:58px; flex:0 0 auto; border-radius:14px;
     border:1px solid rgba(245,243,238,.14); display:block}
@@ -40,20 +40,10 @@
   .hd .brand span{display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
     color:var(--lime); font-weight:700; margin-top:4px}
   .hd h1{font-size:clamp(26px,5vw,38px); line-height:1.15; font-weight:700; letter-spacing:-.02em; margin:22px 0 0}
-  .hd p{color:#b8b2a7; font-size:15px; line-height:1.6; margin-top:14px; max-width:64ch}
+  .hd p{color:#b8b2a7; font-size:15px; line-height:1.6; margin-top:14px; max-width:62ch}
   .hd .who{margin-top:22px; padding-top:18px; border-top:1px solid rgba(245,243,238,.16);
     display:flex; flex-wrap:wrap; gap:6px 26px; font-size:13.5px; color:#8f8a80}
   .hd .who b{color:#f5f3ee; font-weight:600}
-
-  /* ---------- Sommaire ---------- */
-  .toc{background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 24px 22px; margin-bottom:18px}
-  .toc h3{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#8b857b; font-weight:700; margin-bottom:12px}
-  .toc ol{list-style:none; counter-reset:t; display:grid; grid-template-columns:1fr 1fr; gap:5px 22px}
-  @media (max-width:620px){ .toc ol{grid-template-columns:1fr} }
-  .toc li{counter-increment:t; font-size:14px; line-height:1.5}
-  .toc li::before{content:counter(t) ". "; color:#a9a49a; font-variant-numeric:tabular-nums}
-  .toc a{color:#4a463f; text-decoration:none; border-bottom:1px solid transparent}
-  .toc a:hover{border-bottom-color:#a9a49a}
 
   /* ---------- Barre de progression ---------- */
   .prog{position:sticky; top:0; z-index:30; background:rgba(245,243,238,.94);
@@ -65,7 +55,7 @@
 
   /* ---------- Sections ---------- */
   section{background:var(--paper); border:1px solid var(--line); border-radius:16px;
-    padding:26px 26px 28px; margin-bottom:18px; scroll-margin-top:64px}
+    padding:26px 26px 28px; margin-bottom:18px}
   .sh{display:flex; align-items:baseline; gap:12px; margin-bottom:6px}
   .sh .no{width:28px; height:28px; flex:0 0 auto; border-radius:50%; background:var(--ink); color:var(--lime);
     font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; transform:translateY(3px)}
@@ -76,16 +66,6 @@
   .tip{background:var(--soft); border-left:3px solid var(--lime); border-radius:0 10px 10px 0;
     padding:13px 16px; margin:0 0 18px; font-size:14px; line-height:1.6; color:#4a463f}
   .tip b{color:var(--ink)}
-  .tip.warn{border-left-color:var(--rouge); background:#fdf6f6}
-
-  /* ---------- Encart « relevé dans vos documents » ---------- */
-  .ex{border:1px dashed #cfc9bd; background:#fbfaf7; border-radius:10px; padding:12px 15px; margin:0 0 16px;
-    font-size:13.5px; line-height:1.6; color:#4a463f}
-  .ex .k{display:block; font-size:10.5px; letter-spacing:.13em; text-transform:uppercase;
-    color:#a09a8e; font-weight:700; margin-bottom:6px}
-  .ex ul{margin:6px 0 0 18px}
-  .ex li{margin-bottom:2px}
-  .ex b{color:var(--ink)}
 
   .q{margin-bottom:20px}
   .q:last-child{margin-bottom:0}
@@ -95,14 +75,13 @@
   input[type=text], input[type=email], input[type=tel], textarea{
     width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--soft);
     border:1px solid var(--line); border-radius:10px; padding:11px 13px}
-  textarea{min-height:92px; resize:vertical; line-height:1.55}
+  textarea{min-height:88px; resize:vertical; line-height:1.55}
   input:focus, textarea:focus{outline:0; border-color:var(--ink); background:#fff;
     box-shadow:0 0 0 3px rgba(201,242,77,.35)}
   input::placeholder, textarea::placeholder{color:#b3ada2}
 
   .duo{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-  .trio{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px}
-  @media (max-width:620px){ .duo, .trio{grid-template-columns:1fr} }
+  @media (max-width:620px){ .duo{grid-template-columns:1fr} }
 
   /* ---------- Cases et boutons radio ---------- */
   .opts{display:grid; gap:9px}
@@ -129,13 +108,51 @@
   .opt .tag{margin-left:auto; padding-left:10px; font-size:11px; font-weight:700; letter-spacing:.06em;
     text-transform:uppercase; color:#6d7d1f; white-space:nowrap; align-self:center}
 
-  /* ---------- Arbitrages (points à trancher) ---------- */
-  .arb{border:1px solid var(--line); border-radius:14px; padding:16px 18px 18px; margin-bottom:14px; background:var(--soft)}
-  .arb h4{font-size:15.5px; font-weight:700; margin-bottom:4px; line-height:1.4}
-  .arb .src{font-size:13px; color:#8b857b; line-height:1.55; margin-bottom:12px}
-  .arb .src em{font-style:normal; color:var(--rouge); font-weight:600}
-  .arb .opts{gap:7px}
-  .arb .opt{background:#fff}
+  /* ---------- Directions artistiques ---------- */
+  .das{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:620px){ .das{grid-template-columns:1fr} }
+  .da{border:1.5px solid var(--line); border-radius:14px; background:var(--soft); cursor:pointer;
+    overflow:hidden; display:block; transition:border-color .15s, box-shadow .15s}
+  .da:hover{border-color:#c9c4ba}
+  .da:has(input:checked){border-color:var(--ink); background:#fff; box-shadow:0 6px 22px rgba(0,0,0,.08)}
+  .da .body{padding:13px 15px 15px; display:flex; gap:11px; align-items:flex-start}
+  .da input{appearance:none; -webkit-appearance:none; width:19px; height:19px; flex:0 0 auto;
+    border:1.5px solid #a9a49a; border-radius:50%; background:#fff; margin-top:2px; position:relative; cursor:pointer}
+  .da input:checked{background:var(--ink); border-color:var(--ink)}
+  .da input:checked::after{content:""; position:absolute; left:4px; top:4px; width:7px; height:7px;
+    border-radius:50%; background:var(--lime)}
+  .da .body > span{display:block}
+  .da .t{display:block; font-size:15.5px; font-weight:700; letter-spacing:-.01em; line-height:1.3}
+  .da .d{display:block; font-size:13.5px; color:#6b665d; line-height:1.5; margin-top:4px}
+
+  /* miniatures dessinées en CSS */
+  .mock{height:132px; padding:10px; display:flex; flex-direction:column; gap:5px; border-bottom:1px solid var(--line)}
+  .mock i{display:block; border-radius:2px}
+  .mock .row{display:flex; gap:5px; flex:1}
+  .m1{background:#fff}
+  .m1 .nav{height:9px; background:#0d0d0f; border-radius:2px}
+  .m1 .h{height:13px; width:62%; background:#1a1a1c}
+  .m1 .h2{height:6px; width:44%; background:#b9b6b0}
+  .m1 .rule{height:3px; width:28px; background:#c8102e}
+  .m1 .ph{background:#d8d5cf; flex:1}
+  .m2{background:#101012}
+  .m2 .nav{height:9px; background:#2a2a2e; border-radius:2px}
+  .m2 .h{height:15px; width:70%; background:#f2f0ec}
+  .m2 .h2{height:6px; width:40%; background:#6a6a70}
+  .m2 .cta{height:9px; width:52px; background:#c8102e; border-radius:2px}
+  .m2 .ph{background:#26262b; flex:1}
+  .m3{background:#fff}
+  .m3 .nav{height:9px; background:#c8102e; border-radius:2px}
+  .m3 .h{height:14px; width:66%; background:#0d0d0f}
+  .m3 .blk{background:#c8102e; flex:1}
+  .m3 .blk2{background:#0d0d0f; flex:1}
+  .m3 .ph{background:#ddd9d2; flex:2}
+  .m4{background:#fbfaf8}
+  .m4 .nav{height:8px; width:60%; background:#ddd9d2; border-radius:2px; align-self:flex-end}
+  .m4 .h{height:12px; width:50%; background:#2b2b2e}
+  .m4 .h2{height:5px; width:34%; background:#c4c0b8}
+  .m4 .ph{background:#e6e2da; flex:1}
+  .m4 .ph2{background:#cfcabf; flex:1}
 
   /* ---------- Envoi ---------- */
   .send{background:var(--ink); color:#f5f3ee; border-radius:16px; padding:28px 26px 30px; margin-top:22px}
@@ -168,7 +185,8 @@
   /* ---------- Impression ---------- */
   @media print{
     body{background:#fff; font-size:11px}
-    .prog, .actions, .saved, .toc{display:none !important}
+    .prog, .actions, .saved{display:none !important}
+    *{box-shadow:none !important}
     header{background:#fff; color:#111; margin-bottom:14px; border-bottom:2px solid #111}
     .hd{padding:16px 0 14px}
     .hd .brand{color:#111}
@@ -180,20 +198,19 @@
     .idb .mark{width:42px; height:42px; border-color:#ccc; border-radius:9px}
     .tip{background:#f4f4f2; border-left-color:#8ab800; padding:7px 10px; margin-bottom:10px;
       font-size:10px; line-height:1.45; break-inside:avoid}
-    .tip.warn{border-left-color:#c8102e; background:#faf3f3}
-    .ex{padding:7px 10px; font-size:9.8px; margin-bottom:9px; break-inside:avoid}
     .wrap{padding:0; max-width:none}
     section{border-radius:0; border:0; border-top:1.5px solid #333; padding:12px 0 6px; margin-bottom:0}
     .sh h2{font-size:14px}
     .intro{font-size:11px; margin-bottom:10px}
     .opt{padding:5px 8px; font-size:10.5px; break-inside:avoid}
-    .q, .sh, .arb{break-inside:avoid}
+    .q, .sh, .da{break-inside:avoid}
     .sh{break-after:avoid}
     .opt .txt small{display:none}
     .opt .txt small.keep{display:block; font-size:9.5px; color:#555}
     input[type=text], input[type=email], input[type=tel], textarea{background:#fff; font-size:11px; padding:6px 8px}
-    textarea{min-height:46px}
-    .arb{background:#fff; border-color:#bbb; padding:8px 10px; margin-bottom:8px}
+    textarea{min-height:44px}
+    .mock{height:92px}
+    .da .d{font-size:10px}
     .send{background:#fff; color:#111; border:1.5px solid #333; border-radius:0}
     .send p, .send label{color:#555}
     .send input{background:#fff; border-color:#aaa; color:#111}
@@ -208,15 +225,12 @@
       <img class="mark" src="../brand/icon-192.png" width="192" height="192" alt="LinkedIA">
       <div class="brand">LinkedIA<span>Agence digitale · Création de sites internet</span></div>
     </div>
-    <h1>SAS Faure Bâtiment&nbsp;:<br>concevons votre site ensemble</h1>
-    <p>J&rsquo;ai étudié en détail les deux documents que vous m&rsquo;avez transmis&nbsp;: votre plaquette
-       commerciale et votre organigramme mis à jour le 27/08/2026. L&rsquo;essentiel y figure déjà —
-       ce questionnaire sert donc à <b>valider ce que j&rsquo;ai compris</b>, à <b>trancher les points qui
-       diffèrent d&rsquo;un document à l&rsquo;autre</b>, et à récupérer ce qui manque pour écrire un site juste,
-       crédible auprès des maîtres d&rsquo;ouvrage publics comme des promoteurs privés.</p>
-    <p>Comptez 15 à 20 minutes. Répondez à ce que vous savez&nbsp;: nous verrons le reste ensemble.
-       Vos réponses sont enregistrées automatiquement sur cet appareil — vous pouvez fermer la page
-       et y revenir plus tard.</p>
+    <h1>Faure Bâtiment&nbsp;:<br>votre page vitrine</h1>
+    <p>J&rsquo;ai lu votre plaquette et votre organigramme&nbsp;: j&rsquo;ai donc déjà l&rsquo;essentiel de vos
+       informations. Il me manque surtout <b>votre goût</b> — le style vers lequel on part — et
+       <b>ce que vous voulez voir sur la page</b>.</p>
+    <p>Une dizaine de questions, 5 à 10 minutes. Vos réponses s&rsquo;enregistrent toutes seules&nbsp;:
+       vous pouvez fermer la page et y revenir.</p>
     <div class="who">
       <span>Préparé pour <b>M. Ibrahim YOLCU</b> — SAS Faure Bâtiment</span>
       <span>Par <b>Jérémy Halimi</b> — LinkedIA</span>
@@ -232,1028 +246,313 @@
     <div class="n"><span id="pnum">0</span> réponse(s)</div>
   </div>
 
-  <nav class="toc">
-    <h3>Ce que nous allons passer en revue</h3>
-    <ol>
-      <li><a href="#s1">Informations officielles de la société</a></li>
-      <li><a href="#s2">Nom de domaine, emails et existant</a></li>
-      <li><a href="#s3">Ce que le site doit vous rapporter</a></li>
-      <li><a href="#s4">À qui s&rsquo;adresse le site</a></li>
-      <li><a href="#s5">Vos métiers et vos capacités</a></li>
-      <li><a href="#s6">Vos réalisations et vos photos</a></li>
-      <li><a href="#s7">Marchés publics et pièces administratives</a></li>
-      <li><a href="#s8">Votre équipe</a></li>
-      <li><a href="#s9">Vos chiffres clés</a></li>
-      <li><a href="#s10">Certifications, assurances, mentions légales</a></li>
-      <li><a href="#s11">Recrutement</a></li>
-      <li><a href="#s12">Moyens matériels&nbsp;: que publie-t-on&nbsp;?</a></li>
-      <li><a href="#s13">Identité visuelle et style</a></li>
-      <li><a href="#s14">Pages et fonctionnalités du site</a></li>
-      <li><a href="#s15">Être trouvé sur Google</a></li>
-      <li><a href="#s16">Points à trancher dans vos documents</a></li>
-      <li><a href="#s17">Organisation, délais et budget</a></li>
-    </ol>
-  </nav>
-
   <form id="f">
 
     <!-- ============ 1 ============ -->
-    <section id="s1">
-      <div class="sh"><div class="no">1</div><h2>Informations officielles de la société</h2></div>
-      <p class="intro">Ces informations apparaîtront en pied de page, dans les mentions légales et sur les
-         documents de facturation. Elles doivent être exactes au caractère près.</p>
+    <section>
+      <div class="sh"><div class="no">1</div><h2>On vérifie vos informations</h2></div>
+      <p class="intro">Ce sont elles qui apparaîtront en bas de page et dans les mentions légales.</p>
 
-      <div class="ex"><span class="k">Relevé dans vos documents</span>
-        <b>SAS FAURE BATIMENT</b> — SIRET 982 083 339 00019 — 4 rue Adolphe Chapoutier, 69330 Pusignan —
-        04.81.91.17.10 — contact@faurebtp.fr — créée en 2023 par M. Ibrahim YOLCU.
-      </div>
+      <div class="tip">Relevé dans vos documents&nbsp;: <b>SAS FAURE BATIMENT</b> — 4 rue Adolphe Chapoutier,
+        69330 Pusignan — 04.81.91.17.10 — contact@faurebtp.fr — SIRET 982 083 339 00019.</div>
 
       <div class="q">
-        <div class="qlabel">Ces informations sont-elles exactes et à jour&nbsp;?</div>
-        <div class="opts two" data-g="Infos société exactes">
-          <label class="opt"><input type="radio" name="infosok" value="Oui, tout est exact"><span class="txt">Oui, tout est exact</span></label>
-          <label class="opt"><input type="radio" name="infosok" value="Non, corrections ci-dessous"><span class="txt">Non — je corrige ci-dessous</span></label>
+        <div class="qlabel">Tout est exact&nbsp;?</div>
+        <div class="opts two" data-g="Infos exactes">
+          <label class="opt"><input type="radio" name="infosok" value="Oui, tout est exact"><span class="txt">Oui, c&rsquo;est bon</span></label>
+          <label class="opt"><input type="radio" name="infosok" value="Non, corrections ci-dessous"><span class="txt">Non — je corrige juste en dessous</span></label>
         </div>
       </div>
 
       <div class="q"><label for="q_corr">Corrections éventuelles</label>
-        <textarea id="q_corr" data-l="Corrections infos société" placeholder="Ex. : nouvelle adresse, second établissement, numéro de téléphone différent…"></textarea></div>
+        <textarea id="q_corr" data-l="Corrections" placeholder="Adresse, téléphone, email…"></textarea></div>
 
-      <div class="duo">
-        <div class="q"><label for="q_cap">Capital social</label>
-          <div class="hint">Obligatoire en mentions légales pour une SAS.</div>
-          <input type="text" id="q_cap" data-l="Capital social" placeholder="Ex. : 50 000 €"></div>
-        <div class="q"><label for="q_rcs">N° RCS / ville d&rsquo;immatriculation</label>
-          <input type="text" id="q_rcs" data-l="RCS" placeholder="Ex. : RCS Lyon 982 083 339"></div>
+      <div class="tip">Vos documents renvoient déjà à <b>www.faurebtp.fr</b>. Si ce nom de domaine vous
+        appartient, on l&rsquo;utilise directement&nbsp;— et vos emails ne sont pas touchés.</div>
+
+      <div class="q">
+        <div class="qlabel">Le domaine faurebtp.fr&nbsp;:</div>
+        <div class="opts three" data-g="Domaine">
+          <label class="opt"><input type="radio" name="dom" value="Nous appartient"><span class="txt">Il nous appartient</span></label>
+          <label class="opt"><input type="radio" name="dom" value="Je ne sais pas"><span class="txt">Je ne sais pas</span></label>
+          <label class="opt"><input type="radio" name="dom" value="À acheter"><span class="txt">À acheter</span></label>
+        </div>
       </div>
-      <div class="duo">
-        <div class="q"><label for="q_tva">N° TVA intracommunautaire</label>
-          <input type="text" id="q_tva" data-l="TVA intracom" placeholder="FR…"></div>
-        <div class="q"><label for="q_ape">Code APE / NAF</label>
-          <input type="text" id="q_ape" data-l="Code APE" placeholder="Ex. : 4399C"></div>
-      </div>
-
-      <div class="q"><label for="q_horaires">Horaires d&rsquo;accueil téléphonique / bureau</label>
-        <input type="text" id="q_horaires" data-l="Horaires" placeholder="Ex. : du lundi au vendredi, 8h–12h et 14h–17h"></div>
-
-      <div class="q"><label for="q_mails">Adresses email à faire figurer sur le site</label>
-        <div class="hint">Une seule adresse générale, ou plusieurs (contact, appels d&rsquo;offres, recrutement, comptabilité)&nbsp;? Précisez qui reçoit quoi.</div>
-        <textarea id="q_mails" data-l="Adresses email du site" placeholder="Ex. : contact@faurebtp.fr (général), recrutement@faurebtp.fr (candidatures)…"></textarea></div>
-
-      <div class="trio">
-        <div class="q"><label for="q_int">Interlocuteur pour le projet</label>
-          <input type="text" id="q_int" data-l="Interlocuteur projet" placeholder="Nom et fonction"></div>
-        <div class="q"><label for="q_intel">Son portable</label>
-          <input type="tel" id="q_intel" data-l="Portable interlocuteur"></div>
-        <div class="q"><label for="q_intm">Son email</label>
-          <input type="email" id="q_intm" data-l="Email interlocuteur"></div>
-      </div>
-
-      <div class="q"><label for="q_valide">Qui valide définitivement les textes et les photos&nbsp;?</label>
-        <div class="hint">Une seule personne décisionnaire fait gagner des semaines sur un projet de ce type.</div>
-        <input type="text" id="q_valide" data-l="Décideur final"></div>
     </section>
 
     <!-- ============ 2 ============ -->
-    <section id="s2">
-      <div class="sh"><div class="no">2</div><h2>Nom de domaine, emails et existant</h2></div>
-      <p class="intro">Point technique important à régler avant toute chose&nbsp;: vos documents mentionnent
-         déjà une adresse internet et une adresse email professionnelle.</p>
-
-      <div class="ex"><span class="k">Relevé dans vos documents</span>
-        Le pied de page de votre plaquette indique <b>www.faurebtp.fr</b> et l&rsquo;adresse
-        <b>contact@faurebtp.fr</b> — le nom de domaine semble donc déjà vous appartenir.
-      </div>
+    <section>
+      <div class="sh"><div class="no">2</div><h2>Le haut de la page</h2></div>
+      <p class="intro">C&rsquo;est la première chose que voit un visiteur&nbsp;: une grande photo, votre nom,
+         une phrase, et un bouton pour vous joindre. C&rsquo;est ce qui donne le ton.</p>
 
       <div class="q">
-        <div class="qlabel">Le domaine <b>faurebtp.fr</b> vous appartient-il déjà&nbsp;?</div>
-        <div class="opts" data-g="Domaine faurebtp.fr">
-          <label class="opt"><input type="radio" name="dom" value="Oui, acheté et actif"><span class="txt"><b>Oui, il est acheté et actif</b><small>Les emails contact@faurebtp.fr fonctionnent.</small></span></label>
-          <label class="opt"><input type="radio" name="dom" value="Oui, mais rien dessus"><span class="txt"><b>Oui, mais il n&rsquo;y a pas de site dessus</b><small>Il est réservé, éventuellement utilisé pour les emails.</small></span></label>
-          <label class="opt"><input type="radio" name="dom" value="Non / je ne sais pas"><span class="txt"><b>Non, ou je ne sais pas</b><small>Nous le vérifierons et l&rsquo;achèterons si besoin.</small></span></label>
+        <div class="qlabel">Qu&rsquo;est-ce qu&rsquo;on doit comprendre en cinq secondes&nbsp;?</div>
+        <div class="opts" data-g="Message principal">
+          <label class="opt"><input type="radio" name="msg" value="Entreprise de gros œuvre solide, marchés publics et privés"><span class="txt"><b>Une entreprise de gros œuvre solide</b><small>Capable de tenir des marchés publics comme privés.</small></span></label>
+          <label class="opt"><input type="radio" name="msg" value="Entreprise complète : du terrassement à la peinture"><span class="txt"><b>Une entreprise complète</b><small>Du terrassement à la peinture, un seul interlocuteur.</small></span></label>
+          <label class="opt"><input type="radio" name="msg" value="Une jeune entreprise qui monte vite"><span class="txt"><b>Une jeune entreprise qui monte vite</b><small>Créée en 2023, déjà 20 personnes et 2,5 M€ de commandes.</small></span></label>
+          <label class="opt"><input type="radio" name="msg" value="Réactivité et respect des délais"><span class="txt"><b>La réactivité et le respect des délais</b><small>L&rsquo;argument que vous mettez en avant dans votre plaquette.</small></span></label>
         </div>
       </div>
 
-      <div class="duo">
-        <div class="q"><label for="q_regi">Chez qui le domaine est-il enregistré&nbsp;?</label>
-          <div class="hint">OVH, Ionos, Gandi, GoDaddy, votre prestataire informatique…</div>
-          <input type="text" id="q_regi" data-l="Registrar domaine"></div>
-        <div class="q"><label for="q_acces">Avez-vous les identifiants de ce compte&nbsp;?</label>
-          <input type="text" id="q_acces" data-l="Accès domaine" placeholder="Oui / Non / à récupérer auprès de…"></div>
-      </div>
-
-      <div class="tip warn">Vos emails <b>contact@faurebtp.fr</b> passent par ce même nom de domaine. Une mise en
-        ligne mal faite peut <b>couper votre messagerie</b> — c&rsquo;est l&rsquo;erreur la plus fréquente sur ce type
-        de projet. Je m&rsquo;engage à intervenir sur la configuration sans interrompre vos emails&nbsp;; j&rsquo;ai
-        simplement besoin de savoir qui les héberge aujourd&rsquo;hui.</div>
-
-      <div class="q"><label for="q_host">Qui gère aujourd&rsquo;hui vos emails professionnels&nbsp;?</label>
-        <div class="hint">Microsoft 365, Google Workspace, OVH, Ionos, un informaticien externe…</div>
-        <input type="text" id="q_host" data-l="Hébergeur emails"></div>
-
-      <div class="q"><label for="q_site">Un site existe-t-il déjà, même ancien ou incomplet&nbsp;?</label>
-        <input type="text" id="q_site" data-l="Site existant" placeholder="Adresse, ou « aucun »"></div>
+      <div class="q"><label for="q_phrase">Votre plaquette dit «&nbsp;Bâtir ensemble les projets de demain&nbsp;». On la garde&nbsp;?</label>
+        <div class="hint">Répondez «&nbsp;oui&nbsp;», ou proposez votre propre phrase — je peux aussi vous en écrire plusieurs.</div>
+        <input type="text" id="q_phrase" data-l="Phrase d'accroche"></div>
 
       <div class="q">
-        <div class="qlabel">Sur quelles plateformes l&rsquo;entreprise est-elle déjà présente&nbsp;?</div>
-        <div class="hint">Cela nous donne des points d&rsquo;appui immédiats pour la visibilité.</div>
-        <div class="opts two" data-g="Présence en ligne">
-          <label class="opt"><input type="checkbox" name="pres" value="Fiche Google (Google Business Profile)"><span class="txt">Fiche Google (la fiche avec les avis)</span></label>
-          <label class="opt"><input type="checkbox" name="pres" value="LinkedIn"><span class="txt">Page LinkedIn</span></label>
-          <label class="opt"><input type="checkbox" name="pres" value="Facebook / Instagram"><span class="txt">Facebook ou Instagram</span></label>
-          <label class="opt"><input type="checkbox" name="pres" value="Plateformes marchés publics (profil acheteur)"><span class="txt">Plateformes de marchés publics</span></label>
-          <label class="opt"><input type="checkbox" name="pres" value="Annuaires BTP / Pages Jaunes"><span class="txt">Annuaires BTP, Pages Jaunes</span></label>
-          <label class="opt"><input type="checkbox" name="pres" value="Aucune présence"><span class="txt">Aucune, pour l&rsquo;instant</span></label>
+        <div class="qlabel">Le bouton principal, en haut, doit inviter à&nbsp;:</div>
+        <div class="opts two" data-g="Bouton principal">
+          <label class="opt"><input type="radio" name="cta" value="Nous contacter"><span class="txt">Nous contacter</span></label>
+          <label class="opt"><input type="radio" name="cta" value="Demander un devis"><span class="txt">Demander un devis</span></label>
+          <label class="opt"><input type="radio" name="cta" value="Nous consulter sur un chantier"><span class="txt">Nous consulter sur un chantier</span></label>
+          <label class="opt"><input type="radio" name="cta" value="Appeler directement"><span class="txt">Appeler directement</span></label>
         </div>
       </div>
-
-      <div class="q"><label for="q_liens">Adresses de ces pages (si vous les avez sous la main)</label>
-        <textarea id="q_liens" data-l="Liens réseaux/plateformes"></textarea></div>
     </section>
 
     <!-- ============ 3 ============ -->
-    <section id="s3">
-      <div class="sh"><div class="no">3</div><h2>Ce que le site doit vous rapporter</h2></div>
-      <p class="intro">C&rsquo;est la question qui détermine tout le reste&nbsp;: un site qui doit rassurer un
-         maître d&rsquo;ouvrage public pendant l&rsquo;analyse d&rsquo;une offre ne s&rsquo;écrit pas du tout comme un site qui
-         doit faire venir des demandes de particuliers.</p>
+    <section>
+      <div class="sh"><div class="no">3</div><h2>Ce qu&rsquo;on met sur la page</h2></div>
+      <p class="intro">Une seule page, qui se parcourt en descendant. Cochez les blocs que vous voulez&nbsp;;
+         décochez ce qui ne vous paraît pas utile.</p>
 
       <div class="q">
-        <div class="qlabel">Quels objectifs attendez-vous du site&nbsp;? (plusieurs réponses possibles)</div>
-        <div class="opts" data-g="Objectifs du site">
-          <label class="opt"><input type="checkbox" name="obj" value="Crédibiliser l'entreprise en appel d'offres"><span class="txt"><b>Crédibiliser l&rsquo;entreprise lors des appels d&rsquo;offres</b><small class="keep">L&rsquo;acheteur public ou le promoteur vérifie presque toujours l&rsquo;entreprise sur internet avant d&rsquo;attribuer.</small></span></label>
-          <label class="opt"><input type="checkbox" name="obj" value="Être contacté par des promoteurs / entreprises générales"><span class="txt"><b>Être contacté par des promoteurs et entreprises générales</b><small class="keep">Recevoir des consultations directes sur vos lots.</small></span></label>
-          <label class="opt"><input type="checkbox" name="obj" value="Recruter (maçons, coffreurs, chefs de chantier)"><span class="txt"><b>Recruter</b><small class="keep">Maçons, coffreurs, ferrailleurs, chefs de chantier, alternants.</small></span></label>
-          <label class="opt"><input type="checkbox" name="obj" value="Recevoir des demandes de particuliers"><span class="txt"><b>Recevoir des demandes de particuliers</b><small class="keep">Maisons d&rsquo;architecte, ravalement, extensions.</small></span></label>
-          <label class="opt"><input type="checkbox" name="obj" value="Montrer les réalisations et les moyens"><span class="txt"><b>Montrer vos réalisations et vos moyens</b><small class="keep">Un support à montrer en rendez-vous, mieux qu&rsquo;une plaquette PDF.</small></span></label>
-          <label class="opt"><input type="checkbox" name="obj" value="Centraliser les pièces administratives"><span class="txt"><b>Centraliser vos pièces administratives</b><small class="keep">Kbis, attestations, RIB, à transmettre en un lien plutôt qu&rsquo;en dix emails.</small></span></label>
-          <label class="opt"><input type="checkbox" name="obj" value="Exister face aux concurrents du secteur"><span class="txt"><b>Simplement exister, face à des concurrents déjà en ligne</b></span></label>
+        <div class="qlabel">Les blocs de la page</div>
+        <div class="opts" data-g="Blocs de la page">
+          <label class="opt"><input type="checkbox" name="blocs" value="Nos métiers (les 6 prestations)" checked><span class="txt"><b>Vos métiers</b><small class="keep">Terrassement/VRD, maçonnerie, gros œuvre, ravalement, étanchéité, peinture.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Qui nous sommes (présentation courte)" checked><span class="txt"><b>Qui vous êtes</b><small class="keep">Quelques lignes&nbsp;: création en 2023, l&rsquo;équipe, la façon de travailler.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Chiffres clés" checked><span class="txt"><b>Vos chiffres clés</b><small class="keep">19 500 m³ de béton, 25 000 m² de planchers… très impressionnant en un coup d&rsquo;œil.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Réalisations en photos" checked><span class="txt"><b>Vos réalisations en photos</b><small class="keep">3 à 6 chantiers, avec une ligne de description chacun.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Références marchés publics"><span class="txt"><b>Vos références en marchés publics</b><small class="keep">Mairies, bailleurs sociaux, Région&nbsp;: ça rassure énormément.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Nos valeurs (qualité, sécurité, confiance)"><span class="txt"><b>Vos valeurs</b><small class="keep">Qualité, sécurité, confiance — comme dans la plaquette.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Moyens matériels (grues, engins, coffrages)"><span class="txt"><b>Vos moyens matériels</b><small class="keep">Grues, engins, coffrages&nbsp;: rare sur un site, et très crédible.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Zone d'intervention"><span class="txt"><b>Votre zone d&rsquo;intervention</b><small class="keep">69, 38, 73, 74, 01.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Nous recrutons"><span class="txt"><b>Un mot sur le recrutement</b><small class="keep">Si vous cherchez des maçons ou des coffreurs, autant le dire ici.</small></span></label>
+          <label class="opt"><input type="checkbox" name="blocs" value="Plaquette en téléchargement"><span class="txt"><b>Votre plaquette en téléchargement</b></span></label>
         </div>
       </div>
 
-      <div class="q">
-        <div class="qlabel">Parmi ces objectifs, lequel est <b>le plus important</b>&nbsp;?</div>
-        <div class="hint">Un seul. C&rsquo;est lui qui décidera de ce qu&rsquo;on voit en premier sur la page d&rsquo;accueil.</div>
-        <div class="opts two" data-g="Objectif prioritaire">
-          <label class="opt"><input type="radio" name="obj1" value="Crédibilité appels d'offres"><span class="txt">Crédibilité en appel d&rsquo;offres</span></label>
-          <label class="opt"><input type="radio" name="obj1" value="Nouvelles consultations privées"><span class="txt">Nouvelles consultations privées</span></label>
-          <label class="opt"><input type="radio" name="obj1" value="Recrutement"><span class="txt">Recrutement</span></label>
-          <label class="opt"><input type="radio" name="obj1" value="Demandes de particuliers"><span class="txt">Demandes de particuliers</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_orig">Comment vos clients vous trouvent-ils aujourd&rsquo;hui&nbsp;?</label>
-        <div class="hint">Bouche-à-oreille, plateformes de marchés publics, relations avec des promoteurs, architectes prescripteurs, anciens collègues…</div>
-        <textarea id="q_orig" data-l="Origine des clients actuels"></textarea></div>
-
-      <div class="q"><label for="q_6mois">Dans six mois, à quoi verrez-vous que le site a été un bon investissement&nbsp;?</label>
-        <div class="hint">Répondez avec vos mots — c&rsquo;est la phrase qui me servira de boussole pendant toute la conception.</div>
-        <textarea id="q_6mois" data-l="Critère de réussite à 6 mois"></textarea></div>
+      <div class="q"><label for="q_plus">Autre chose que vous voulez absolument voir sur la page&nbsp;?</label>
+        <textarea id="q_plus" data-l="À ajouter sur la page"></textarea></div>
     </section>
 
     <!-- ============ 4 ============ -->
-    <section id="s4">
-      <div class="sh"><div class="no">4</div><h2>À qui s&rsquo;adresse le site</h2></div>
-      <p class="intro">Votre plaquette cible « marchés publics &amp; privés · collectivités · bailleurs sociaux ·
-         promoteurs ». Précisons l&rsquo;ordre d&rsquo;importance&nbsp;: le site parlera en priorité à ces personnes-là.</p>
+    <section>
+      <div class="sh"><div class="no">4</div><h2>Le style — c&rsquo;est vous qui choisissez</h2></div>
+      <p class="intro">Voici quatre directions possibles. Regardez les vignettes et choisissez celle qui
+         vous parle&nbsp;; ce n&rsquo;est pas encore le site, juste l&rsquo;ambiance générale.</p>
+
+      <div class="das" data-g="Direction artistique">
+        <label class="da">
+          <span class="mock m1">
+            <i class="nav"></i>
+            <i class="h"></i><i class="rule"></i><i class="h2"></i>
+            <span class="row"><i class="ph"></i><i class="ph"></i><i class="ph"></i></span>
+          </span>
+          <span class="body">
+            <input type="radio" name="da" value="A — Sobre et institutionnel (blanc, noir, filet rouge)">
+            <span><span class="t">A · Sobre et institutionnel</span>
+              <span class="d">Fond blanc, texte noir, un filet rouge pour signer. Sérieux, rassurant&nbsp;:
+                le style qui passe le mieux auprès des mairies et des bailleurs.</span></span>
+          </span>
+        </label>
+
+        <label class="da">
+          <span class="mock m2">
+            <i class="nav"></i>
+            <i class="h"></i><i class="h2"></i><i class="cta"></i>
+            <span class="row"><i class="ph"></i><i class="ph"></i></span>
+          </span>
+          <span class="body">
+            <input type="radio" name="da" value="B — Noir et rouge, esprit chantier (impactant)">
+            <span><span class="t">B · Noir et rouge, esprit chantier</span>
+              <span class="d">Fond noir, grandes photos de chantier, rouge vif en accent. Puissant et
+                moderne&nbsp;: on retient l&rsquo;entreprise tout de suite.</span></span>
+          </span>
+        </label>
+
+        <label class="da">
+          <span class="mock m3">
+            <i class="nav"></i>
+            <i class="h"></i>
+            <span class="row"><i class="blk"></i><i class="blk2"></i><i class="ph"></i></span>
+          </span>
+          <span class="body">
+            <input type="radio" name="da" value="C — Rouge affirmé, dans la continuité de la plaquette">
+            <span><span class="t">C · Rouge affirmé</span>
+              <span class="d">Dans la continuité exacte de votre plaquette et de vos véhicules&nbsp;:
+                blocs rouges et noirs, structure marquée. Très identitaire.</span></span>
+          </span>
+        </label>
+
+        <label class="da">
+          <span class="mock m4">
+            <i class="nav"></i>
+            <i class="h"></i><i class="h2"></i>
+            <span class="row"><i class="ph"></i><i class="ph2"></i></span>
+          </span>
+          <span class="body">
+            <input type="radio" name="da" value="D — Clair et épuré, beaucoup d'espace">
+            <span><span class="t">D · Clair et épuré</span>
+              <span class="d">Beaucoup d&rsquo;air, grandes photos, peu de couleur. Élégant&nbsp;; parle surtout
+                aux architectes et aux clients privés haut de gamme.</span></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="q" style="margin-top:20px"><label for="q_dacom">Un commentaire sur votre choix&nbsp;?</label>
+        <div class="hint">Vous pouvez aussi mélanger&nbsp;: «&nbsp;le B mais moins sombre&nbsp;», «&nbsp;le A avec plus de rouge&nbsp;»…</div>
+        <input type="text" id="q_dacom" data-l="Commentaire sur la direction artistique"></div>
+
+      <div class="tip">Petite remarque au passage&nbsp;: vos deux documents n&rsquo;utilisent pas la même charte
+        (rouge et noir dans la plaquette, bleu marine et orange sur une page de l&rsquo;organigramme).
+        Le site va fixer la couleur officielle de Faure Bâtiment.</div>
 
       <div class="q">
-        <div class="qlabel">Qui doit se sentir concerné en arrivant sur le site&nbsp;?</div>
-        <div class="opts two" data-g="Cibles du site">
-          <label class="opt"><input type="checkbox" name="cible" value="Mairies et collectivités"><span class="txt">Mairies et collectivités</span></label>
-          <label class="opt"><input type="checkbox" name="cible" value="Bailleurs sociaux"><span class="txt">Bailleurs sociaux</span></label>
-          <label class="opt"><input type="checkbox" name="cible" value="Promoteurs immobiliers"><span class="txt">Promoteurs immobiliers</span></label>
-          <label class="opt"><input type="checkbox" name="cible" value="Entreprises générales (sous-traitance)"><span class="txt">Entreprises générales (sous-traitance)</span></label>
-          <label class="opt"><input type="checkbox" name="cible" value="Architectes et maîtres d'œuvre"><span class="txt">Architectes et maîtres d&rsquo;œuvre</span></label>
-          <label class="opt"><input type="checkbox" name="cible" value="Industriels et tertiaire"><span class="txt">Industriels, tertiaire, logistique</span></label>
-          <label class="opt"><input type="checkbox" name="cible" value="Syndics et copropriétés"><span class="txt">Syndics et copropriétés (ravalement)</span></label>
-          <label class="opt"><input type="checkbox" name="cible" value="Particuliers"><span class="txt">Particuliers</span></label>
-          <label class="opt"><input type="checkbox" name="cible" value="Candidats à l'embauche"><span class="txt">Candidats à l&rsquo;embauche</span></label>
+        <div class="qlabel">On part sur quelles couleurs&nbsp;?</div>
+        <div class="opts two" data-g="Couleurs">
+          <label class="opt"><input type="radio" name="coul" value="Rouge et noir (logo)"><span class="txt">Rouge et noir, comme le logo</span><span class="tag">Logique</span></label>
+          <label class="opt"><input type="radio" name="coul" value="Bleu marine et orange"><span class="txt">Bleu marine et orange</span></label>
+          <label class="opt"><input type="radio" name="coul" value="Rouge, noir et touche dorée"><span class="txt">Rouge, noir et une touche dorée</span></label>
+          <label class="opt"><input type="radio" name="coul" value="Je vous fais confiance"><span class="txt">Je vous fais confiance</span></label>
         </div>
       </div>
 
-      <div class="q"><label for="q_prio">Classez les trois plus importants, dans l&rsquo;ordre</label>
-        <input type="text" id="q_prio" data-l="Top 3 des cibles" placeholder="Ex. : 1. promoteurs — 2. mairies — 3. bailleurs sociaux"></div>
-
-      <div class="q">
-        <div class="qlabel">Travaillez-vous en sous-traitance pour d&rsquo;autres entreprises&nbsp;?</div>
-        <div class="opts three" data-g="Sous-traitance">
-          <label class="opt"><input type="radio" name="st" value="Oui, et on l'affiche"><span class="txt">Oui, et on peut l&rsquo;afficher</span></label>
-          <label class="opt"><input type="radio" name="st" value="Oui, mais on n'en parle pas"><span class="txt">Oui, mais on n&rsquo;en parle pas</span></label>
-          <label class="opt"><input type="radio" name="st" value="Non"><span class="txt">Non, uniquement en direct</span></label>
-        </div>
+      <div class="duo">
+        <div class="q"><label for="q_like">Un site que vous trouvez réussi&nbsp;?</label>
+          <div class="hint">Un concurrent, ou n&rsquo;importe quel autre secteur.</div>
+          <input type="text" id="q_like" data-l="Site apprécié"></div>
+        <div class="q"><label for="q_no">Ce que vous ne voulez surtout pas</label>
+          <input type="text" id="q_no" data-l="À éviter" placeholder="Ex. : trop chargé, couleurs criardes…"></div>
       </div>
-
-      <div class="q">
-        <div class="qlabel">Acceptez-vous les demandes de particuliers&nbsp;?</div>
-        <div class="hint">Réponse importante&nbsp;: si c&rsquo;est non, j&rsquo;écris le site de façon à ne pas vous faire perdre
-          de temps avec des demandes de petits travaux.</div>
-        <div class="opts" data-g="Demandes particuliers">
-          <label class="opt"><input type="radio" name="part" value="Oui, tous types de chantiers"><span class="txt"><b>Oui, sans restriction</b></span></label>
-          <label class="opt"><input type="radio" name="part" value="Oui, à partir d'un certain montant"><span class="txt"><b>Oui, mais à partir d&rsquo;un certain montant seulement</b><small>Précisez le seuil ci-dessous.</small></span></label>
-          <label class="opt"><input type="radio" name="part" value="Non, uniquement professionnels"><span class="txt"><b>Non — uniquement professionnels et marchés publics</b></span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_seuil">Montant minimum de chantier que vous acceptez</label>
-        <input type="text" id="q_seuil" data-l="Seuil chantier minimum" placeholder="Ex. : à partir de 30 000 € HT"></div>
     </section>
 
     <!-- ============ 5 ============ -->
-    <section id="s5">
-      <div class="sh"><div class="no">5</div><h2>Vos métiers et vos capacités</h2></div>
-      <p class="intro">Chaque métier peut avoir sa propre page détaillée. C&rsquo;est ce qui permet d&rsquo;apparaître
-         sur Google quand quelqu&rsquo;un cherche « entreprise gros œuvre Lyon » ou « ravalement de façade 69 »&nbsp;:
-         une page = une recherche.</p>
-
-      <div class="ex"><span class="k">Relevé dans votre plaquette — vos six prestations</span>
-        <ul>
-          <li>Terrassement &amp; VRD</li>
-          <li>Maçonnerie neuf &amp; réhabilitation</li>
-          <li>Gros œuvre</li>
-          <li>Ravalement de façade</li>
-          <li>Étanchéité toitures-terrasses</li>
-          <li>Peinture intérieure</li>
-        </ul>
-      </div>
-
-      <div class="tip">En lisant vos <b>références de chantiers</b>, j&rsquo;ai relevé trois activités qui
-        n&rsquo;apparaissent pas dans cette liste de six&nbsp;: <b>curage et démolition</b> (Courchevel, Lycée Élie
-        Cartan), <b>bardage</b> (Saint-Vulbas) et <b>enduits extérieurs projetés</b> (Charvieu-Chavagneux).
-        Faut-il les ajouter aux prestations affichées&nbsp;?</div>
+    <section>
+      <div class="sh"><div class="no">5</div><h2>Vos photos et votre logo</h2></div>
+      <p class="intro">Sur un site de bâtiment, les photos font la moitié du résultat. C&rsquo;est le seul
+         point où j&rsquo;ai vraiment besoin de vous.</p>
 
       <div class="q">
-        <div class="qlabel">Ces activités complémentaires&nbsp;:</div>
-        <div class="opts" data-g="Activités complémentaires">
-          <label class="opt"><input type="checkbox" name="compl" value="Démolition / curage à afficher"><span class="txt">Démolition &amp; curage — à afficher</span></label>
-          <label class="opt"><input type="checkbox" name="compl" value="Bardage à afficher"><span class="txt">Bardage — à afficher</span></label>
-          <label class="opt"><input type="checkbox" name="compl" value="Enduits extérieurs à afficher"><span class="txt">Enduits extérieurs projetés — à afficher</span></label>
-          <label class="opt"><input type="checkbox" name="compl" value="Ouvrages en béton armé à afficher"><span class="txt">Ouvrages en béton armé / béton banché — à afficher</span></label>
-          <label class="opt"><input type="checkbox" name="compl" value="On s'en tient aux six prestations"><span class="txt">Non — on s&rsquo;en tient aux six prestations de la plaquette</span></label>
+        <div class="qlabel">De quoi disposez-vous&nbsp;?</div>
+        <div class="opts" data-g="Photos disponibles">
+          <label class="opt"><input type="checkbox" name="photos" value="Photos de chantiers terminés"><span class="txt">Des photos de chantiers terminés</span></label>
+          <label class="opt"><input type="checkbox" name="photos" value="Photos de chantiers en cours (grue, banches)"><span class="txt">Des photos de chantiers en cours (grue, banches, ferraillage)</span></label>
+          <label class="opt"><input type="checkbox" name="photos" value="Photos du matériel et des véhicules"><span class="txt">Des photos du matériel et des véhicules floqués</span></label>
+          <label class="opt"><input type="checkbox" name="photos" value="Photo de l'équipe"><span class="txt">Une photo de l&rsquo;équipe</span></label>
+          <label class="opt"><input type="checkbox" name="photos" value="Vue par drone"><span class="txt">Des vues par drone</span></label>
+          <label class="opt"><input type="checkbox" name="photos" value="Peu de photos exploitables"><span class="txt">Pas grand-chose d&rsquo;exploitable, à vrai dire</span></label>
         </div>
       </div>
-
-      <div class="q"><label for="q_autres">Autres prestations non citées&nbsp;?</label>
-        <textarea id="q_autres" data-l="Autres prestations" placeholder="Ex. : réseaux secs et humides, dallage industriel, piscine béton, reprise en sous-œuvre…"></textarea></div>
-
-      <div class="q">
-        <div class="qlabel">Quels métiers voulez-vous mettre <b>en avant en priorité</b>&nbsp;? (2 ou 3 maximum)</div>
-        <div class="hint">Ce sont ceux qui rapportent le plus, ou ceux que vous voulez développer.</div>
-        <div class="opts two" data-g="Métiers prioritaires">
-          <label class="opt"><input type="checkbox" name="metpri" value="Gros œuvre"><span class="txt">Gros œuvre</span></label>
-          <label class="opt"><input type="checkbox" name="metpri" value="Maçonnerie neuf & réhabilitation"><span class="txt">Maçonnerie neuf &amp; réhabilitation</span></label>
-          <label class="opt"><input type="checkbox" name="metpri" value="Terrassement & VRD"><span class="txt">Terrassement &amp; VRD</span></label>
-          <label class="opt"><input type="checkbox" name="metpri" value="Ravalement de façade"><span class="txt">Ravalement de façade</span></label>
-          <label class="opt"><input type="checkbox" name="metpri" value="Étanchéité toitures-terrasses"><span class="txt">Étanchéité toitures-terrasses</span></label>
-          <label class="opt"><input type="checkbox" name="metpri" value="Peinture intérieure"><span class="txt">Peinture intérieure</span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Combien de pages métier souhaitez-vous&nbsp;?</div>
-        <div class="opts" data-g="Nombre de pages métier">
-          <label class="opt"><input type="radio" name="nbmet" value="Une page détaillée par métier (6 à 9 pages)"><span class="txt"><b>Une page détaillée par métier</b><small>Le plus efficace pour Google, le plus complet pour un maître d&rsquo;œuvre. 6 à 9 pages.</small></span><span class="tag">Recommandé</span></label>
-          <label class="opt"><input type="radio" name="nbmet" value="Une page pour les 2-3 métiers principaux, le reste regroupé"><span class="txt"><b>Une page pour les métiers principaux, le reste regroupé</b><small>Compromis entre visibilité et volume de rédaction.</small></span></label>
-          <label class="opt"><input type="radio" name="nbmet" value="Une seule page « Nos métiers »"><span class="txt"><b>Une seule page « Nos métiers »</b><small>Plus simple, mais nettement moins visible sur Google.</small></span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_tech">Capacités techniques dont vous êtes le plus fier</label>
-        <div class="hint">Ce qui vous distingue techniquement d&rsquo;une petite entreprise de maçonnerie&nbsp;: béton banché,
-          coffrage aluminium, planchers, ouvrages BA complexes, reprise en sous-œuvre, chantiers occupés…</div>
-        <textarea id="q_tech" data-l="Capacités techniques mises en avant"></textarea></div>
-
-      <div class="q"><label for="q_diff">Qu&rsquo;est-ce qui vous différencie réellement de vos concurrents&nbsp;?</label>
-        <div class="hint">Votre plaquette parle de réactivité, rigueur technique et respect des délais. Pouvez-vous
-          me donner un exemple concret&nbsp;? Un chantier tenu dans un délai difficile, une solution technique
-          trouvée sur place, une capacité à intervenir vite…</div>
-        <textarea id="q_diff" data-l="Différenciation concrète"></textarea></div>
 
       <div class="duo">
-        <div class="q"><label for="q_mini">Taille de chantier minimum</label>
-          <input type="text" id="q_mini" data-l="Chantier minimum" placeholder="Ex. : 14 000 € HT"></div>
-        <div class="q"><label for="q_maxi">Taille de chantier maximum réalisable</label>
-          <div class="hint">Utile&nbsp;: cela rassure un maître d&rsquo;ouvrage sur votre capacité.</div>
-          <input type="text" id="q_maxi" data-l="Chantier maximum" placeholder="Ex. : jusqu&rsquo;à 1,5 M€ HT en lot unique"></div>
+        <div class="q"><label for="q_qui">Qui m&rsquo;envoie les photos, et quand&nbsp;?</label>
+          <div class="hint">C&rsquo;est ce qui retarde le plus souvent un site. Autant le décider maintenant.</div>
+          <input type="text" id="q_qui" data-l="Qui fournit les photos"></div>
+        <div class="q"><label for="q_logo">Avez-vous le logo en fichier d&rsquo;origine&nbsp;?</label>
+          <div class="hint">Fichier .ai, .eps, .svg ou PDF fourni par votre graphiste — sinon le logo sera flou.</div>
+          <input type="text" id="q_logo" data-l="Logo vectoriel" placeholder="Oui / non / à redemander"></div>
       </div>
 
-      <div class="q"><label for="q_zone">Votre zone d&rsquo;intervention exacte</label>
-        <div class="hint">Vos références couvrent le 69, le 38, le 73, le 74 et le 01. Jusqu&rsquo;où acceptez-vous
-          de vous déplacer&nbsp;? Y a-t-il une limite (rayon en km, temps de trajet, hébergement des équipes)&nbsp;?</div>
-        <textarea id="q_zone" data-l="Zone d'intervention"></textarea></div>
+      <div class="q">
+        <div class="qlabel">Sur les photos de chantiers, affiche-t-on les montants&nbsp;?</div>
+        <div class="hint">Votre plaquette indique les montants HT (765 000 €, 632 000 €…). En ligne, vos
+          concurrents les lisent aussi.</div>
+        <div class="opts two" data-g="Montants des chantiers">
+          <label class="opt"><input type="radio" name="mont" value="Non, on les retire"><span class="txt">Non, on les retire</span><span class="tag">Conseillé</span></label>
+          <label class="opt"><input type="radio" name="mont" value="Oui, comme la plaquette"><span class="txt">Oui, comme la plaquette</span></label>
+          <label class="opt"><input type="radio" name="mont" value="À voir ensemble"><span class="txt">À voir ensemble</span></label>
+        </div>
+      </div>
     </section>
 
     <!-- ============ 6 ============ -->
-    <section id="s6">
-      <div class="sh"><div class="no">6</div><h2>Vos réalisations et vos photos</h2></div>
-      <p class="intro">C&rsquo;est ce que vos visiteurs regarderont en premier. Sur un site de gros œuvre,
-         la qualité des photos fait plus de la moitié de l&rsquo;effet produit.</p>
-
-      <div class="ex"><span class="k">Relevé dans votre plaquette — quatre réalisations</span>
-        <ul>
-          <li>Gros œuvre · 37 logements collectifs (NEXITY) · 765 000 € HT · Pont-de-Chéruy (38)</li>
-          <li>Maison d&rsquo;architecte 650 m² + étanchéité &amp; peinture · 475 000 € HT · Charly (69)</li>
-          <li>Siège social + 4 maisons, étanchéité toit-terrasse 350 m² · 632 000 € HT · Meyzieu (69)</li>
-          <li>Bâtiment industriel 5 000 m² + étanchéité &amp; bardage · 557 000 € HT · Saint-Vulbas (01)</li>
-        </ul>
-      </div>
+    <section>
+      <div class="sh"><div class="no">6</div><h2>Le bloc «&nbsp;Nous contacter&nbsp;», en bas</h2></div>
+      <p class="intro">C&rsquo;est la partie qui doit vous rapporter des affaires&nbsp;: un formulaire simple,
+         vos coordonnées, et c&rsquo;est tout.</p>
 
       <div class="q">
-        <div class="qlabel">Combien de réalisations voulez-vous présenter au lancement&nbsp;?</div>
-        <div class="opts two" data-g="Nombre de réalisations">
-          <label class="opt"><input type="radio" name="nbrea" value="Les 4 de la plaquette"><span class="txt">Les 4 de la plaquette</span></label>
-          <label class="opt"><input type="radio" name="nbrea" value="6 à 10"><span class="txt">6 à 10</span></label>
-          <label class="opt"><input type="radio" name="nbrea" value="10 à 15"><span class="txt">10 à 15</span></label>
-          <label class="opt"><input type="radio" name="nbrea" value="Plus de 15"><span class="txt">Plus de 15</span></label>
+        <div class="qlabel">Que doit remplir le visiteur&nbsp;?</div>
+        <div class="hint">Moins il y a de champs, plus vous recevez de demandes.</div>
+        <div class="opts two" data-g="Champs du formulaire">
+          <label class="opt"><input type="checkbox" name="champs" value="Nom" checked><span class="txt">Son nom</span></label>
+          <label class="opt"><input type="checkbox" name="champs" value="Email" checked><span class="txt">Son email</span></label>
+          <label class="opt"><input type="checkbox" name="champs" value="Téléphone" checked><span class="txt">Son téléphone</span></label>
+          <label class="opt"><input type="checkbox" name="champs" value="Société"><span class="txt">Sa société</span></label>
+          <label class="opt"><input type="checkbox" name="champs" value="Type de projet / nature des travaux" checked><span class="txt">La nature des travaux</span></label>
+          <label class="opt"><input type="checkbox" name="champs" value="Commune du chantier"><span class="txt">La commune du chantier</span></label>
+          <label class="opt"><input type="checkbox" name="champs" value="Message libre" checked><span class="txt">Un message libre</span></label>
+          <label class="opt"><input type="checkbox" name="champs" value="Pièce jointe (plans, DCE)"><span class="txt">Une pièce jointe (plans, DCE)</span></label>
         </div>
       </div>
 
-      <div class="tip warn">Point à trancher&nbsp;: votre plaquette affiche les <b>montants HT de chaque chantier</b>
-        (765 000 €, 632 000 €…). C&rsquo;est très bien dans un document remis en main propre. En ligne, c&rsquo;est
-        <b>visible par vos concurrents</b>, qui en déduisent vos prix au m². Mon conseil&nbsp;: garder les
-        volumes et surfaces (37 logements, 5 000 m², 350 m² d&rsquo;étanchéité), qui impressionnent autant,
-        et retirer les montants — ou les remplacer par des tranches.</div>
+      <div class="q"><label for="q_recoit">Sur quelle adresse email doivent arriver les demandes&nbsp;?</label>
+        <input type="text" id="q_recoit" data-l="Email de réception" placeholder="Ex. : contact@faurebtp.fr"></div>
 
       <div class="q">
-        <div class="qlabel">Que faisons-nous des montants&nbsp;?</div>
-        <div class="opts" data-g="Affichage des montants">
-          <label class="opt"><input type="radio" name="mont" value="Retirer les montants du site"><span class="txt"><b>Les retirer du site</b><small>On garde les surfaces, volumes et nature des travaux.</small></span><span class="tag">Conseillé</span></label>
-          <label class="opt"><input type="radio" name="mont" value="Afficher des tranches"><span class="txt"><b>Afficher des tranches</b><small>« Chantier de 500 à 800 k€ HT ».</small></span></label>
-          <label class="opt"><input type="radio" name="mont" value="Tout afficher comme dans la plaquette"><span class="txt"><b>Tout afficher, comme dans la plaquette</b><small>Assumé&nbsp;: cela démontre votre capacité financière.</small></span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Pouvons-nous citer publiquement le nom de vos maîtres d&rsquo;ouvrage&nbsp;?</div>
-        <div class="hint">NEXITY, SDH, Haute-Savoie Habitat, Territoires 38, Région Auvergne-Rhône-Alpes, les
-          communes… Certains contrats l&rsquo;interdisent ou demandent un accord écrit.</div>
-        <div class="opts" data-g="Citer les maîtres d'ouvrage">
-          <label class="opt"><input type="radio" name="moa" value="Oui, tous"><span class="txt">Oui, tous — sans restriction</span></label>
-          <label class="opt"><input type="radio" name="moa" value="Oui sauf certains (précisés)"><span class="txt">Oui, sauf certains (je précise lesquels ci-dessous)</span></label>
-          <label class="opt"><input type="radio" name="moa" value="Non, rester générique"><span class="txt">Non — rester générique («&nbsp;pour un grand promoteur national&nbsp;»)</span></label>
-          <label class="opt"><input type="radio" name="moa" value="À vérifier auprès d'eux"><span class="txt">À vérifier auprès d&rsquo;eux avant publication</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_moaex">Maîtres d&rsquo;ouvrage à ne pas citer, ou logos autorisés</label>
-        <textarea id="q_moaex" data-l="Restrictions maîtres d'ouvrage"></textarea></div>
-
-      <div class="q">
-        <div class="qlabel">De quelles photos disposez-vous&nbsp;?</div>
-        <div class="opts" data-g="Photos disponibles">
-          <label class="opt"><input type="checkbox" name="photos" value="Photos de chantiers terminés, bonne qualité"><span class="txt">Photos de chantiers terminés, de bonne qualité</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Photos prises au téléphone par les équipes"><span class="txt">Photos prises au téléphone par les chefs de chantier</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Photos de chantier en cours (grue, banches, ferraillage)"><span class="txt">Photos de chantier en cours — grue, banches, ferraillage</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Photos avant / après (réhabilitation, ravalement)"><span class="txt">Photos avant / après (réhabilitation, ravalement)</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Prises de vue par drone"><span class="txt">Prises de vue par drone</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Photos du matériel et des véhicules floqués"><span class="txt">Photos du matériel, des engins et des véhicules floqués</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Portraits de l'équipe"><span class="txt">Portraits de l&rsquo;équipe, photo de groupe</span></label>
-          <label class="opt"><input type="checkbox" name="photos" value="Peu de photos exploitables"><span class="txt">Très peu de choses exploitables, à vrai dire</span></label>
-        </div>
-      </div>
-
-      <div class="tip">Sur les quatre photos de votre plaquette, deux sont excellentes (le collectif de
-        Pont-de-Chéruy et la maison d&rsquo;architecte). En revanche, la photo de la pelle mécanique est
-        <b>prise à la verticale, en contre-plongée&nbsp;</b>: elle passe mal en grand format sur un écran.
-        Prévoir une reprise de ces visuels sur un chantier en cours serait un vrai plus.</div>
-
-      <div class="q">
-        <div class="qlabel">Souhaitez-vous une séance photo professionnelle sur un chantier&nbsp;?</div>
-        <div class="opts three" data-g="Séance photo">
-          <label class="opt"><input type="radio" name="shoot" value="Oui, à prévoir"><span class="txt">Oui, à prévoir</span></label>
-          <label class="opt"><input type="radio" name="shoot" value="Non, nos photos suffisent"><span class="txt">Non, nos photos suffisent</span></label>
-          <label class="opt"><input type="radio" name="shoot" value="À chiffrer avant décision"><span class="txt">À chiffrer avant de décider</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_qui">Qui, en interne, peut fournir les photos et sous quel délai&nbsp;?</label>
-        <div class="hint">C&rsquo;est le point qui retarde le plus souvent les projets&nbsp;: désignons quelqu&rsquo;un dès maintenant.</div>
-        <input type="text" id="q_qui" data-l="Responsable photos + délai"></div>
-
-      <div class="q">
-        <div class="qlabel">Disposez-vous d&rsquo;attestations de bonne exécution ou de recommandations écrites&nbsp;?</div>
-        <div class="opts three" data-g="Témoignages">
-          <label class="opt"><input type="radio" name="temoin" value="Oui, plusieurs"><span class="txt">Oui, plusieurs</span></label>
-          <label class="opt"><input type="radio" name="temoin" value="Oui, une ou deux"><span class="txt">Une ou deux</span></label>
-          <label class="opt"><input type="radio" name="temoin" value="Non, mais possible d'en demander"><span class="txt">Non, mais je peux en demander</span></label>
+        <div class="qlabel">À côté du formulaire, on affiche&nbsp;:</div>
+        <div class="opts two" data-g="Infos du bloc contact">
+          <label class="opt"><input type="checkbox" name="infos" value="Téléphone cliquable" checked><span class="txt">Le téléphone (cliquable sur mobile)</span></label>
+          <label class="opt"><input type="checkbox" name="infos" value="Email" checked><span class="txt">L&rsquo;email</span></label>
+          <label class="opt"><input type="checkbox" name="infos" value="Adresse du siège" checked><span class="txt">L&rsquo;adresse à Pusignan</span></label>
+          <label class="opt"><input type="checkbox" name="infos" value="Petite carte"><span class="txt">Une petite carte</span></label>
+          <label class="opt"><input type="checkbox" name="infos" value="Horaires"><span class="txt">Les horaires</span></label>
+          <label class="opt"><input type="checkbox" name="infos" value="Zone d'intervention"><span class="txt">La zone d&rsquo;intervention</span></label>
         </div>
       </div>
     </section>
 
     <!-- ============ 7 ============ -->
-    <section id="s7">
-      <div class="sh"><div class="no">7</div><h2>Marchés publics et pièces administratives</h2></div>
-      <p class="intro">C&rsquo;est, à mon avis, l&rsquo;endroit où votre site peut vous faire gagner le plus de temps —
-         et vous différencier de 90&nbsp;% des entreprises de gros œuvre, qui n&rsquo;ont rien de tel.</p>
+    <section>
+      <div class="sh"><div class="no">7</div><h2>Deux ou trois détails, et c&rsquo;est fini</h2></div>
 
-      <div class="ex"><span class="k">Relevé dans votre plaquette — 9 marchés publics référencés</span>
-        Mairie de Feigères (74) · Mairie de Pomeys (69) · Territoires 38 / UGA (38) · Commune de
-        Lépin-le-Lac (73) · Commune de Courchevel (73) · SDH (38) · Haute-Savoie Habitat (74) ·
-        Région Auvergne-Rhône-Alpes (38) · Mairie de Charvieu-Chavagneux (38).
-      </div>
+      <div class="tip">Votre plaquette annonce le <b>RGE Qualibat «&nbsp;en cours de montage&nbsp;»</b>. Tant que la
+        qualification n&rsquo;est pas obtenue, mieux vaut ne pas l&rsquo;afficher comme acquise sur le site
+        (c&rsquo;est un risque juridique). On peut simplement écrire que la démarche est engagée.</div>
 
       <div class="q">
-        <div class="qlabel">Souhaitez-vous une page dédiée «&nbsp;Marchés publics &amp; collectivités&nbsp;»&nbsp;?</div>
-        <div class="opts" data-g="Page marchés publics">
-          <label class="opt"><input type="radio" name="pmp" value="Oui, avec le tableau des références publiques"><span class="txt"><b>Oui, avec le tableau des références</b><small>Reprise de votre tableau, tenu à jour.</small></span><span class="tag">Recommandé</span></label>
-          <label class="opt"><input type="radio" name="pmp" value="Oui, mais sans le détail des montants"><span class="txt"><b>Oui, mais sans le détail des montants</b></span></label>
-          <label class="opt"><input type="radio" name="pmp" value="Non"><span class="txt"><b>Non, une mention suffit</b></span></label>
+        <div class="qlabel">Où en est ce dossier&nbsp;?</div>
+        <div class="opts three" data-g="RGE Qualibat">
+          <label class="opt"><input type="radio" name="rge" value="Obtenu"><span class="txt">Obtenu depuis</span></label>
+          <label class="opt"><input type="radio" name="rge" value="Toujours en cours"><span class="txt">Toujours en cours</span></label>
+          <label class="opt"><input type="radio" name="rge" value="On n'en parle pas"><span class="txt">On n&rsquo;en parle pas</span></label>
         </div>
       </div>
 
-      <div class="tip">Idée concrète&nbsp;: un <b>espace «&nbsp;Nos pièces administratives&nbsp;»</b> où un acheteur public
-        ou un promoteur télécharge en un clic votre Kbis, vos attestations URSSAF et fiscale, votre
-        attestation d&rsquo;assurance décennale, votre RIB et vos références. Aujourd&rsquo;hui, vous les envoyez
-        probablement par email, dossier par dossier. Là, vous envoyez un lien. Et vous ne mettez à jour
-        qu&rsquo;au même endroit, deux fois par an.</div>
+      <div class="q"><label for="q_assur">Votre assurance décennale (assureur + n° de contrat)</label>
+        <div class="hint">Mention obligatoire pour une entreprise du bâtiment — et un vrai gage de sérieux
+          pour celui qui vous découvre.</div>
+        <input type="text" id="q_assur" data-l="Assurance décennale" placeholder="Ex. : SMABTP — contrat n° …"></div>
 
       <div class="q">
-        <div class="qlabel">Cet espace de téléchargement vous intéresse-t-il&nbsp;?</div>
-        <div class="opts" data-g="Espace pièces administratives">
-          <label class="opt"><input type="radio" name="espace" value="Oui, en accès libre"><span class="txt"><b>Oui, en accès libre</b><small>Le plus pratique&nbsp;; ces pièces ne sont pas confidentielles.</small></span></label>
-          <label class="opt"><input type="radio" name="espace" value="Oui, mais protégé par un code"><span class="txt"><b>Oui, mais protégé par un code</b><small>Vous communiquez le code à qui vous voulez.</small></span></label>
-          <label class="opt"><input type="radio" name="espace" value="Oui, sur demande via un formulaire"><span class="txt"><b>Oui, sur demande via un formulaire</b><small>Vous savez ainsi qui les a demandées.</small></span></label>
-          <label class="opt"><input type="radio" name="espace" value="Non"><span class="txt"><b>Non, ce n&rsquo;est pas utile</b></span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Quelles pièces y mettrait-on&nbsp;?</div>
-        <div class="opts two" data-g="Pièces à publier">
-          <label class="opt"><input type="checkbox" name="pieces" value="Kbis"><span class="txt">Extrait Kbis</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="Attestation URSSAF (vigilance)"><span class="txt">Attestation de vigilance URSSAF</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="Attestation fiscale"><span class="txt">Attestation fiscale</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="Attestation d'assurance décennale"><span class="txt">Attestation d&rsquo;assurance décennale</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="Attestation RC professionnelle"><span class="txt">Attestation RC professionnelle</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="RIB"><span class="txt">RIB</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="Plaquette PDF"><span class="txt">Votre plaquette en PDF</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="Liste de références / plan de charge"><span class="txt">Liste de références, plan de charge</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="Attestation de travailleurs étrangers / liste nominative"><span class="txt">Liste nominative des salariés étrangers</span></label>
-          <label class="opt"><input type="checkbox" name="pieces" value="Certificat Qualibat / RGE"><span class="txt">Certificat Qualibat / RGE (quand obtenu)</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_maj">Qui mettrait ces documents à jour&nbsp;?</label>
-        <div class="hint">Les attestations URSSAF et fiscale expirent tous les six mois&nbsp;; un document périmé en
-          ligne est pire que pas de document du tout. Je peux mettre en place un rappel automatique.</div>
-        <input type="text" id="q_maj" data-l="Responsable mise à jour des pièces" placeholder="Ex. : service administratif — M. Mohamed YOLCU"></div>
-
-      <div class="q">
-        <div class="qlabel">Souhaitez-vous un formulaire «&nbsp;Consulter Faure Bâtiment&nbsp;» pour les appels d&rsquo;offres&nbsp;?</div>
-        <div class="hint">Avec dépôt de pièces jointes (DCE, plans, CCTP) directement depuis le site.</div>
-        <div class="opts three" data-g="Formulaire consultation AO">
-          <label class="opt"><input type="radio" name="fao" value="Oui, avec dépôt de fichiers"><span class="txt">Oui, avec dépôt de fichiers</span></label>
-          <label class="opt"><input type="radio" name="fao" value="Oui, formulaire simple"><span class="txt">Oui, formulaire simple</span></label>
-          <label class="opt"><input type="radio" name="fao" value="Non"><span class="txt">Non</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_plateformes">Êtes-vous référencé sur des plateformes acheteurs&nbsp;?</label>
-        <div class="hint">e-Attestations, Provigis, AchatPublic, Marchés Online, Klekoon, profils acheteurs
-          de certaines collectivités… Si oui, on peut y renvoyer depuis le site.</div>
-        <textarea id="q_plateformes" data-l="Plateformes acheteurs"></textarea></div>
-    </section>
-
-    <!-- ============ 8 ============ -->
-    <section id="s8">
-      <div class="sh"><div class="no">8</div><h2>Votre équipe</h2></div>
-      <p class="intro">Sur un site de BTP, montrer les personnes change tout&nbsp;: on passe d&rsquo;une entreprise
-         anonyme à une équipe identifiée, avec des responsables joignables.</p>
-
-      <div class="ex"><span class="k">Relevé dans votre organigramme (27/08/2026)</span>
-        <ul>
-          <li><b>Ibrahim YOLCU</b> — Président, Directeur Général</li>
-          <li><b>Mme Aoitif EL GRICHI</b> — Directeur Technique et Commercial (étude de prix &amp; conduite de travaux)</li>
-          <li><b>Mohamed YOLCU</b> — Directeur de Travaux (service administratif &amp; comptabilité)</li>
-          <li>4 chefs de chantier · 13 compagnons (maçons, coffreurs, ferrailleurs)</li>
-        </ul>
-      </div>
-
-      <div class="tip warn">Merci de <b>vérifier l&rsquo;orthographe exacte du prénom «&nbsp;Aoitif&nbsp;»</b> ainsi que la
-        civilité et l&rsquo;intitulé de poste souhaité (Directrice technique et commerciale&nbsp;?). Une faute sur
-        le nom d&rsquo;un membre de la direction, en ligne, se remarque immédiatement.</div>
-
-      <div class="q"><label for="q_ortho">Orthographe et intitulés exacts des trois membres de la direction</label>
-        <textarea id="q_ortho" data-l="Direction — orthographe exacte" placeholder="Prénom NOM — intitulé de poste exact, pour chacun"></textarea></div>
-
-      <div class="q">
-        <div class="qlabel">Que publie-t-on de l&rsquo;organigramme&nbsp;?</div>
-        <div class="hint">Votre document porte la mention «&nbsp;confidentiel&nbsp;»&nbsp;: nous en publierons ce que vous déciderez.</div>
-        <div class="opts" data-g="Publication organigramme">
-          <label class="opt"><input type="radio" name="orga" value="Organigramme complet"><span class="txt"><b>L&rsquo;organigramme complet</b><small>Direction, encadrement, effectifs. Rassure fortement en marché public.</small></span></label>
-          <label class="opt"><input type="radio" name="orga" value="Direction seulement + effectifs globaux"><span class="txt"><b>La direction seulement, avec les effectifs globaux</b><small>« 3 dirigeants, 4 chefs de chantier, 13 compagnons ».</small></span></label>
-          <label class="opt"><input type="radio" name="orga" value="Effectifs globaux sans nommer personne"><span class="txt"><b>Uniquement les effectifs, sans nommer personne</b></span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Photos des personnes&nbsp;?</div>
-        <div class="opts three" data-g="Photos équipe">
-          <label class="opt"><input type="radio" name="photoeq" value="Portraits individuels de la direction"><span class="txt">Portraits de la direction</span></label>
-          <label class="opt"><input type="radio" name="photoeq" value="Photo de groupe uniquement"><span class="txt">Photo de groupe</span></label>
-          <label class="opt"><input type="radio" name="photoeq" value="Aucune photo de personne"><span class="txt">Aucune photo de personne</span></label>
+        <div class="qlabel">Peut-on citer vos clients par leur nom&nbsp;?</div>
+        <div class="hint">NEXITY, les mairies, les bailleurs sociaux… Certains contrats l&rsquo;encadrent.</div>
+        <div class="opts three" data-g="Citer les clients">
+          <label class="opt"><input type="radio" name="moa" value="Oui"><span class="txt">Oui</span></label>
+          <label class="opt"><input type="radio" name="moa" value="Non, rester générique"><span class="txt">Non, rester générique</span></label>
+          <label class="opt"><input type="radio" name="moa" value="À vérifier"><span class="txt">À vérifier</span></label>
         </div>
       </div>
 
       <div class="duo">
-        <div class="q"><label for="q_eff">Effectif total à afficher aujourd&rsquo;hui</label>
-          <div class="hint">Vos documents laissent compter 20 personnes. Est-ce toujours exact&nbsp;?</div>
-          <input type="text" id="q_eff" data-l="Effectif total"></div>
-        <div class="q"><label for="q_inte">Contacts nominatifs à publier&nbsp;?</label>
-          <div class="hint">Email ou ligne directe pour le service étude de prix, par exemple.</div>
-          <input type="text" id="q_inte" data-l="Contacts nominatifs"></div>
+        <div class="q"><label for="q_date">Pour quand souhaitez-vous être en ligne&nbsp;?</label>
+          <input type="text" id="q_date" data-l="Délai souhaité"></div>
+        <div class="q"><label for="q_qui2">Qui suit le projet avec moi&nbsp;?</label>
+          <div class="hint">Nom et portable de la personne que j&rsquo;appelle en cas de question.</div>
+          <input type="text" id="q_qui2" data-l="Interlocuteur"></div>
       </div>
-
-      <div class="q"><label for="q_histoire">L&rsquo;histoire de l&rsquo;entreprise, en quelques lignes</label>
-        <div class="hint">Vous avez créé Faure Bâtiment en 2023 et atteignez déjà 2,5 M€ de carnet de commandes&nbsp;:
-          c&rsquo;est une trajectoire remarquable, et elle mérite d&rsquo;être racontée. Pourquoi avez-vous créé
-          l&rsquo;entreprise&nbsp;? Que faisiez-vous avant&nbsp;? Pourquoi ce nom&nbsp;?</div>
-        <textarea id="q_histoire" data-l="Histoire de l'entreprise"></textarea></div>
-    </section>
-
-    <!-- ============ 9 ============ -->
-    <section id="s9">
-      <div class="sh"><div class="no">9</div><h2>Vos chiffres clés</h2></div>
-      <p class="intro">Ces chiffres sont votre meilleur argument&nbsp;: ils disent, sans avoir à le prétendre,
-         que l&rsquo;entreprise encaisse du volume.</p>
-
-      <div class="ex"><span class="k">Relevé dans vos deux documents (identiques)</span>
-        <ul>
-          <li>+ 19 500 m³ de béton coulé · + 600 T d&rsquo;aciers mis en œuvre</li>
-          <li>+ 25 000 m² de planchers réalisés · + 9 900 m² de murs béton banchés</li>
-          <li>+ 14 200 m² de murs maçonnés · + 5 200 T de déchets traités</li>
-          <li>+ 2 500 000 € de carnet de commandes en cours de réalisation</li>
-        </ul>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Ces chiffres sont-ils toujours d&rsquo;actualité en septembre 2026&nbsp;?</div>
-        <div class="opts three" data-g="Chiffres à jour">
-          <label class="opt"><input type="radio" name="chif" value="Oui, à jour"><span class="txt">Oui, à jour</span></label>
-          <label class="opt"><input type="radio" name="chif" value="À réactualiser (valeurs ci-dessous)"><span class="txt">À réactualiser</span></label>
-          <label class="opt"><input type="radio" name="chif" value="À vérifier en interne"><span class="txt">À vérifier en interne</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_chifmaj">Chiffres actualisés</label>
-        <textarea id="q_chifmaj" data-l="Chiffres actualisés"></textarea></div>
-
-      <div class="q">
-        <div class="qlabel">Affiche-t-on publiquement le carnet de commandes de 2,5 M€&nbsp;?</div>
-        <div class="hint">Argument de solidité très fort pour un maître d&rsquo;ouvrage&nbsp;; information stratégique
-          pour un concurrent. À vous de trancher.</div>
-        <div class="opts three" data-g="Carnet de commandes affiché">
-          <label class="opt"><input type="radio" name="carnet" value="Oui, affiché"><span class="txt">Oui, affiché</span></label>
-          <label class="opt"><input type="radio" name="carnet" value="Non, retiré du site"><span class="txt">Non, retiré</span></label>
-          <label class="opt"><input type="radio" name="carnet" value="Remplacé par le chiffre d'affaires annuel"><span class="txt">Remplacé par le CA annuel</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_ca">Chiffre d&rsquo;affaires que vous accepteriez d&rsquo;afficher</label>
-        <input type="text" id="q_ca" data-l="CA affichable" placeholder="Ex. : 3,2 M€ en 2025 — ou « ne pas afficher »"></div>
-    </section>
-
-    <!-- ============ 10 ============ -->
-    <section id="s10">
-      <div class="sh"><div class="no">10</div><h2>Certifications, assurances, mentions légales</h2></div>
-      <p class="intro">Pour une entreprise du bâtiment, certaines mentions ne sont pas facultatives&nbsp;:
-         elles sont obligatoires sur tout support professionnel, site internet compris.</p>
-
-      <div class="tip warn">Votre plaquette indique que le dossier <b>RGE Qualibat est «&nbsp;en cours de montage&nbsp;»</b>
-        (août 2026). Attention&nbsp;: annoncer une qualification non encore obtenue est juridiquement risqué
-        (publicité trompeuse). Nous pouvons en revanche écrire, sans risque, que la démarche est engagée —
-        ou attendre l&rsquo;obtention pour l&rsquo;afficher pleinement.</div>
-
-      <div class="q">
-        <div class="qlabel">Où en est le dossier RGE Qualibat&nbsp;?</div>
-        <div class="opts" data-g="Statut RGE Qualibat">
-          <label class="opt"><input type="radio" name="rge" value="Obtenu — numéro et indices à fournir"><span class="txt"><b>Obtenu depuis</b><small>Merci de me communiquer les indices et le numéro.</small></span></label>
-          <label class="opt"><input type="radio" name="rge" value="En cours, dépôt fait"><span class="txt"><b>En cours, dossier déposé</b></span></label>
-          <label class="opt"><input type="radio" name="rge" value="En cours de montage"><span class="txt"><b>Toujours en cours de montage</b></span></label>
-          <label class="opt"><input type="radio" name="rge" value="Abandonné / en suspens"><span class="txt"><b>En suspens</b></span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Autres qualifications, certifications ou adhésions</div>
-        <div class="opts two" data-g="Qualifications">
-          <label class="opt"><input type="checkbox" name="qual" value="Qualibat (indices à préciser)"><span class="txt">Qualibat (hors RGE)</span></label>
-          <label class="opt"><input type="checkbox" name="qual" value="MASE / sécurité"><span class="txt">MASE ou équivalent sécurité</span></label>
-          <label class="opt"><input type="checkbox" name="qual" value="ISO 9001 / 14001"><span class="txt">ISO 9001 / 14001</span></label>
-          <label class="opt"><input type="checkbox" name="qual" value="Adhérent FFB"><span class="txt">Adhérent FFB</span></label>
-          <label class="opt"><input type="checkbox" name="qual" value="Adhérent CAPEB / FRTP"><span class="txt">Adhérent CAPEB ou FRTP</span></label>
-          <label class="opt"><input type="checkbox" name="qual" value="Carte BTP / caisse congés payés"><span class="txt">Carte BTP, caisse CIBTP</span></label>
-          <label class="opt"><input type="checkbox" name="qual" value="Aucune pour l'instant"><span class="txt">Aucune pour l&rsquo;instant</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_qualdet">Précisions (numéros, indices, années d&rsquo;obtention)</label>
-        <textarea id="q_qualdet" data-l="Détail qualifications"></textarea></div>
-
-      <div class="tip">La <b>mention de l&rsquo;assurance décennale</b> (nom de l&rsquo;assureur, numéro de contrat et
-        couverture géographique) est obligatoire sur vos documents professionnels. La faire figurer sur
-        le site est aussi un signal de sérieux immédiat pour un maître d&rsquo;ouvrage.</div>
-
-      <div class="trio">
-        <div class="q"><label for="q_assur">Assureur décennale</label>
-          <input type="text" id="q_assur" data-l="Assureur décennale" placeholder="Ex. : SMABTP, AXA…"></div>
-        <div class="q"><label for="q_police">N° de contrat</label>
-          <input type="text" id="q_police" data-l="N° contrat décennale"></div>
-        <div class="q"><label for="q_couv">Couverture géographique</label>
-          <input type="text" id="q_couv" data-l="Couverture géographique" placeholder="Ex. : France métropolitaine"></div>
-      </div>
-
-      <div class="q"><label for="q_rcpro">RC professionnelle et autres garanties</label>
-        <input type="text" id="q_rcpro" data-l="RC pro / garanties"></div>
-
-      <div class="q">
-        <div class="qlabel">Si vous travaillez avec des particuliers&nbsp;: médiateur de la consommation</div>
-        <div class="hint">Obligatoire d&rsquo;afficher le nom et l&rsquo;adresse de votre médiateur dès lors que vous
-          contractez avec des particuliers.</div>
-        <div class="opts three" data-g="Médiateur consommation">
-          <label class="opt"><input type="radio" name="medi" value="Oui, nous en avons un"><span class="txt">Nous en avons un</span></label>
-          <label class="opt"><input type="radio" name="medi" value="Non, à mettre en place"><span class="txt">Non, à mettre en place</span></label>
-          <label class="opt"><input type="radio" name="medi" value="Sans objet (pas de particuliers)"><span class="txt">Sans objet</span></label>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 11 ============ -->
-    <section id="s11">
-      <div class="sh"><div class="no">11</div><h2>Recrutement</h2></div>
-      <p class="intro">Vous employez 17 personnes sur le terrain. Dans le gros œuvre, trouver des coffreurs
-         et des maçons qualifiés est souvent plus difficile que trouver des chantiers — une page bien
-         faite peut réellement produire des candidatures.</p>
-
-      <div class="q">
-        <div class="qlabel">Recrutez-vous actuellement, ou régulièrement&nbsp;?</div>
-        <div class="opts three" data-g="Recrutement">
-          <label class="opt"><input type="radio" name="recrute" value="Oui, en permanence"><span class="txt">Oui, en permanence</span></label>
-          <label class="opt"><input type="radio" name="recrute" value="Ponctuellement"><span class="txt">Ponctuellement</span></label>
-          <label class="opt"><input type="radio" name="recrute" value="Non, pas pour le moment"><span class="txt">Non, pas pour le moment</span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Quels postes&nbsp;?</div>
-        <div class="opts two" data-g="Postes recherchés">
-          <label class="opt"><input type="checkbox" name="postes" value="Maçons"><span class="txt">Maçons</span></label>
-          <label class="opt"><input type="checkbox" name="postes" value="Coffreurs-bancheurs"><span class="txt">Coffreurs-bancheurs</span></label>
-          <label class="opt"><input type="checkbox" name="postes" value="Ferrailleurs"><span class="txt">Ferrailleurs</span></label>
-          <label class="opt"><input type="checkbox" name="postes" value="Chefs de chantier"><span class="txt">Chefs de chantier</span></label>
-          <label class="opt"><input type="checkbox" name="postes" value="Conducteurs de travaux"><span class="txt">Conducteurs de travaux</span></label>
-          <label class="opt"><input type="checkbox" name="postes" value="Économiste / étude de prix"><span class="txt">Économiste, étude de prix</span></label>
-          <label class="opt"><input type="checkbox" name="postes" value="Grutiers / conducteurs d'engins"><span class="txt">Grutiers, conducteurs d&rsquo;engins</span></label>
-          <label class="opt"><input type="checkbox" name="postes" value="Apprentis et alternants"><span class="txt">Apprentis et alternants</span></label>
-          <label class="opt"><input type="checkbox" name="postes" value="Administratif"><span class="txt">Administratif, comptabilité</span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Quelle forme donne-t-on à cette page&nbsp;?</div>
-        <div class="opts" data-g="Page recrutement">
-          <label class="opt"><input type="radio" name="pagerec" value="Offres détaillées + formulaire avec CV"><span class="txt"><b>Offres détaillées et formulaire avec dépôt de CV</b><small>Vous pourrez ajouter et retirer les offres vous-même.</small></span></label>
-          <label class="opt"><input type="radio" name="pagerec" value="Page simple « candidature spontanée »"><span class="txt"><b>Page simple de candidature spontanée</b></span></label>
-          <label class="opt"><input type="radio" name="pagerec" value="Pas de page recrutement"><span class="txt"><b>Pas de page recrutement</b></span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_candmail">Où doivent arriver les candidatures&nbsp;?</label>
-        <input type="text" id="q_candmail" data-l="Email candidatures"></div>
-
-      <div class="q"><label for="q_avantages">Ce que vous offrez à vos salariés</label>
-        <div class="hint">Paniers, mutuelle, primes, véhicule, matériel récent, formations, perspectives
-          d&rsquo;évolution, ambiance d&rsquo;équipe… Ces éléments font la différence dans une annonce.</div>
-        <textarea id="q_avantages" data-l="Avantages salariés"></textarea></div>
-    </section>
-
-    <!-- ============ 12 ============ -->
-    <section id="s12">
-      <div class="sh"><div class="no">12</div><h2>Moyens matériels&nbsp;: que publie-t-on&nbsp;?</h2></div>
-      <p class="intro">Vos trois pages de moyens matériels sont un atout considérable en marché public —
-         mais elles disent aussi beaucoup à un concurrent qui vous lit.</p>
-
-      <div class="q">
-        <div class="qlabel">Jusqu&rsquo;où détaille-t-on le parc matériel sur le site&nbsp;?</div>
-        <div class="opts" data-g="Niveau de détail matériel">
-          <label class="opt"><input type="radio" name="mat" value="Tout le détail, comme dans la plaquette"><span class="txt"><b>Tout le détail</b><small>Grues, banches, coffrages, échafaudages, informatique — comme dans votre plaquette.</small></span></label>
-          <label class="opt"><input type="radio" name="mat" value="Version résumée par famille"><span class="txt"><b>Une version résumée par famille</b><small>« Trois grues à montage rapide, 1 500 m² de coffrages, 1 200 m² d&rsquo;échafaudages… »</small></span><span class="tag">Bon compromis</span></label>
-          <label class="opt"><input type="radio" name="mat" value="Résumé public + fiche complète en téléchargement"><span class="txt"><b>Résumé sur le site, fiche complète en téléchargement</b><small>Le détail reste disponible pour un dossier de candidature.</small></span></label>
-          <label class="opt"><input type="radio" name="mat" value="On n'en parle pas"><span class="txt"><b>On n&rsquo;en parle pas</b></span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Mentionne-t-on ce qui est en location&nbsp;?</div>
-        <div class="hint">Votre organigramme précise «&nbsp;grue en location&nbsp;», votre plaquette ne le précise pas.
-          En marché public, la distinction propriété / location est parfois demandée&nbsp;; en communication
-          commerciale, elle affaiblit un peu le propos.</div>
-        <div class="opts three" data-g="Mention location">
-          <label class="opt"><input type="radio" name="loc" value="Oui, on le précise"><span class="txt">Oui, on le précise</span></label>
-          <label class="opt"><input type="radio" name="loc" value="Non, on liste les moyens mobilisables"><span class="txt">Non — « moyens mobilisables »</span></label>
-          <label class="opt"><input type="radio" name="loc" value="À voir ensemble"><span class="txt">À voir ensemble</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_matmaj">Y a-t-il eu des acquisitions ou des sorties de parc depuis août 2026&nbsp;?</label>
-        <textarea id="q_matmaj" data-l="Évolution du parc matériel"></textarea></div>
-    </section>
-
-    <!-- ============ 13 ============ -->
-    <section id="s13">
-      <div class="sh"><div class="no">13</div><h2>Identité visuelle et style</h2></div>
-      <p class="intro">Le site doit prolonger votre identité existante, pas en inventer une autre.</p>
-
-      <div class="tip warn">J&rsquo;ai relevé une <b>incohérence de charte entre vos deux documents</b>&nbsp;: la plaquette
-        et la première page de l&rsquo;organigramme utilisent le <b>rouge et le noir</b> (avec une touche de doré),
-        tandis que la page «&nbsp;chiffres clés&nbsp;» de l&rsquo;organigramme est en <b>bleu marine et orange</b>.
-        Le site doit fixer une bonne fois la couleur de référence de Faure Bâtiment.</div>
-
-      <div class="q">
-        <div class="qlabel">Quelle est la charte officielle&nbsp;?</div>
-        <div class="opts" data-g="Charte couleurs">
-          <label class="opt"><input type="radio" name="charte" value="Rouge et noir (logo)"><span class="txt"><b>Rouge et noir</b><small>Les couleurs de votre logo — cohérent avec le flocage de vos véhicules.</small></span><span class="tag">Logique</span></label>
-          <label class="opt"><input type="radio" name="charte" value="Bleu marine et orange"><span class="txt"><b>Bleu marine et orange</b></span></label>
-          <label class="opt"><input type="radio" name="charte" value="Rouge/noir + accent doré"><span class="txt"><b>Rouge et noir, avec un accent doré</b><small>Comme le bandeau de votre première page.</small></span></label>
-          <label class="opt"><input type="radio" name="charte" value="À retravailler ensemble"><span class="txt"><b>À retravailler ensemble</b></span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_codes">Codes couleurs exacts, si vous les avez</label>
-        <div class="hint">Votre graphiste ou votre imprimeur les connaît (références Pantone ou codes hexadécimaux).</div>
-        <input type="text" id="q_codes" data-l="Codes couleurs"></div>
-
-      <div class="q">
-        <div class="qlabel">Disposez-vous du logo en version vectorielle&nbsp;?</div>
-        <div class="hint">Fichiers .ai, .eps, .svg ou PDF vectoriel. Sans cela, le logo apparaîtra flou sur
-          les grands écrans — c&rsquo;est le premier détail qui trahit un site fait à l&rsquo;économie.</div>
-        <div class="opts three" data-g="Logo vectoriel">
-          <label class="opt"><input type="radio" name="logo" value="Oui, disponible"><span class="txt">Oui, je peux le fournir</span></label>
-          <label class="opt"><input type="radio" name="logo" value="Seulement en image (JPG/PNG)"><span class="txt">Seulement en image</span></label>
-          <label class="opt"><input type="radio" name="logo" value="À redemander au graphiste"><span class="txt">À redemander au graphiste</span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Quel style vous ressemble&nbsp;?</div>
-        <div class="opts" data-g="Style du site">
-          <label class="opt"><input type="radio" name="style" value="Sobre et institutionnel"><span class="txt"><b>Sobre et institutionnel</b><small>Rassurant pour une collectivité ou un bailleur. Peu d&rsquo;effets, beaucoup de preuves.</small></span></label>
-          <label class="opt"><input type="radio" name="style" value="Moderne et impactant"><span class="txt"><b>Moderne et impactant</b><small>Grandes photos de chantier, typographies affirmées, contrastes forts.</small></span></label>
-          <label class="opt"><input type="radio" name="style" value="Brut / industriel"><span class="txt"><b>Brut et industriel</b><small>Textures béton, noir profond, esprit chantier assumé.</small></span></label>
-          <label class="opt"><input type="radio" name="style" value="Très technique / dossier"><span class="txt"><b>Très technique</b><small>Proche d&rsquo;un mémoire technique&nbsp;: tableaux, chiffres, méthodologie.</small></span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_refs">Deux ou trois sites que vous trouvez réussis</label>
-        <div class="hint">Dans le bâtiment ou ailleurs, peu importe&nbsp;: ce sont vos goûts qui m&rsquo;intéressent.
-          Dites-moi aussi ce qui vous plaît dedans.</div>
-        <textarea id="q_refs" data-l="Sites de référence appréciés"></textarea></div>
-
-      <div class="q"><label for="q_norefs">Ce que vous ne voulez surtout pas</label>
-        <textarea id="q_norefs" data-l="À éviter absolument" placeholder="Ex. : photos de banque d&rsquo;images, effets animés, couleurs criardes, textes trop longs…"></textarea></div>
-
-      <div class="q"><label for="q_conc">Vos concurrents directs, et leurs sites</label>
-        <div class="hint">Je les étudierai&nbsp;: l&rsquo;objectif est que votre site tienne la comparaison, et la gagne.</div>
-        <textarea id="q_conc" data-l="Concurrents identifiés"></textarea></div>
-    </section>
-
-    <!-- ============ 14 ============ -->
-    <section id="s14">
-      <div class="sh"><div class="no">14</div><h2>Pages et fonctionnalités du site</h2></div>
-      <p class="intro">Voici la structure que je propose au vu de vos documents. Décochez ce qui ne vous
-         paraît pas utile, ajoutez ce qui manque.</p>
-
-      <div class="q">
-        <div class="qlabel">Structure proposée</div>
-        <div class="opts two" data-g="Pages retenues">
-          <label class="opt"><input type="checkbox" name="pages" value="Accueil" checked><span class="txt">Accueil</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="L'entreprise" checked><span class="txt">L&rsquo;entreprise (histoire, valeurs, équipe)</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="Nos métiers + sous-pages" checked><span class="txt">Nos métiers + une page par métier</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="Réalisations" checked><span class="txt">Réalisations</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="Marchés publics & collectivités" checked><span class="txt">Marchés publics &amp; collectivités</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="Moyens matériels" checked><span class="txt">Moyens matériels</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="Nous rejoindre (recrutement)" checked><span class="txt">Nous rejoindre</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="Pièces administratives"><span class="txt">Pièces administratives</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="Contact" checked><span class="txt">Contact</span></label>
-          <label class="opt"><input type="checkbox" name="pages" value="Actualités / chantiers en cours"><span class="txt">Actualités, chantiers en cours</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_pagesplus">Pages à ajouter</label>
-        <input type="text" id="q_pagesplus" data-l="Pages supplémentaires"></div>
-
-      <div class="q">
-        <div class="qlabel">Fonctionnalités souhaitées</div>
-        <div class="opts" data-g="Fonctionnalités">
-          <label class="opt"><input type="checkbox" name="fonc" value="Formulaire de contact / demande de devis"><span class="txt"><b>Formulaire de contact et de demande de devis</b><small class="keep">Les demandes arrivent directement dans votre boîte mail.</small></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Dépôt de fichiers (plans, DCE, CCTP)"><span class="txt"><b>Dépôt de fichiers par le visiteur</b><small class="keep">Plans, DCE, CCTP — pratique pour être consulté sur un lot.</small></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Carte des chantiers réalisés"><span class="txt"><b>Carte des chantiers réalisés</b><small class="keep">Montre d&rsquo;un coup d&rsquo;œil votre implantation sur la région.</small></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Espace documents administratifs"><span class="txt"><b>Espace de téléchargement des pièces administratives</b></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Plaquette PDF téléchargeable"><span class="txt"><b>Votre plaquette en téléchargement</b></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Offres d'emploi + dépôt de CV"><span class="txt"><b>Offres d&rsquo;emploi et dépôt de CV</b></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Avis Google affichés"><span class="txt"><b>Affichage de vos avis Google</b></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Bouton d'appel direct depuis mobile"><span class="txt"><b>Appel direct depuis un mobile</b></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Page modifiable par vos soins (chantiers, offres)"><span class="txt"><b>Contenus que vous modifiez vous-même</b><small class="keep">Ajouter un chantier ou une offre d&rsquo;emploi sans passer par moi.</small></span></label>
-          <label class="opt"><input type="checkbox" name="fonc" value="Version anglaise"><span class="txt"><b>Une version anglaise</b></span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_foncplus">Autre chose que le site devrait savoir faire&nbsp;?</label>
-        <textarea id="q_foncplus" data-l="Autres fonctionnalités"></textarea></div>
-    </section>
-
-    <!-- ============ 15 ============ -->
-    <section id="s15">
-      <div class="sh"><div class="no">15</div><h2>Être trouvé sur Google</h2></div>
-      <p class="intro">Un site invisible ne sert à rien. Quelques informations me permettent de le construire
-         dès le départ pour qu&rsquo;il remonte sur les bonnes recherches.</p>
-
-      <div class="q"><label for="q_mots">Que taperait un client pour vous trouver&nbsp;?</label>
-        <div class="hint">Écrivez-le comme lui l&rsquo;écrirait, pas en langage de métier. Ex. : «&nbsp;entreprise gros
-          œuvre Lyon&nbsp;», «&nbsp;ravalement façade immeuble 69&nbsp;», «&nbsp;étanchéité toiture terrasse Meyzieu&nbsp;».</div>
-        <textarea id="q_mots" data-l="Mots-clés visés"></textarea></div>
-
-      <div class="q"><label for="q_villes">Villes et secteurs prioritaires</label>
-        <div class="hint">Pusignan, Meyzieu, Genas, Lyon, Villeurbanne, l&rsquo;est lyonnais, la Savoie, la
-          Haute-Savoie, l&rsquo;Isère… Dans quel ordre&nbsp;?</div>
-        <textarea id="q_villes" data-l="Villes prioritaires"></textarea></div>
-
-      <div class="q">
-        <div class="qlabel">Votre fiche Google (celle qui affiche l&rsquo;entreprise sur Maps avec les avis)</div>
-        <div class="opts" data-g="Fiche Google">
-          <label class="opt"><input type="radio" name="gbp" value="Créée et gérée"><span class="txt">Elle existe et nous la gérons</span></label>
-          <label class="opt"><input type="radio" name="gbp" value="Existe mais non gérée / à récupérer"><span class="txt">Elle existe mais personne ne s&rsquo;en occupe</span></label>
-          <label class="opt"><input type="radio" name="gbp" value="À créer"><span class="txt">À créer — j&rsquo;aimerais que vous vous en chargiez</span></label>
-          <label class="opt"><input type="radio" name="gbp" value="Je ne sais pas"><span class="txt">Je ne sais pas ce que c&rsquo;est</span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Avez-vous des avis clients en ligne&nbsp;?</div>
-        <div class="opts three" data-g="Avis en ligne">
-          <label class="opt"><input type="radio" name="avis" value="Oui, plusieurs"><span class="txt">Oui, plusieurs</span></label>
-          <label class="opt"><input type="radio" name="avis" value="Un ou deux"><span class="txt">Un ou deux</span></label>
-          <label class="opt"><input type="radio" name="avis" value="Aucun"><span class="txt">Aucun</span></label>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 16 ============ -->
-    <section id="s16">
-      <div class="sh"><div class="no">16</div><h2>Points à trancher dans vos documents</h2></div>
-      <p class="intro">En comparant votre plaquette et votre organigramme, j&rsquo;ai relevé plusieurs
-         différences chiffrées. Rien de grave — ce sont des documents rédigés à des moments différents —
-         mais le site doit dire une seule chose, et la bonne. Merci de trancher ligne par ligne&nbsp;:
-         c&rsquo;est ce qui sera publié.</p>
-
-      <div class="arb">
-        <h4>a. Le parc de grues</h4>
-        <p class="src">Plaquette&nbsp;: <em>1 grue 125 K Liebherr, 1 IGO T85 A Potain, 1 IGO T 50 Potain, 1 télescopique 25 m Manitou</em>.
-          Organigramme&nbsp;: <em>grue 125 K (en location), grue IGO 50 (en location)</em> — l&rsquo;IGO T85 et le télescopique n&rsquo;y figurent pas.</p>
-        <div class="opts" data-g="Arbitrage grues">
-          <label class="opt"><input type="radio" name="a_grue" value="Version plaquette (4 appareils)"><span class="txt">Retenir la version plaquette (4 appareils)</span></label>
-          <label class="opt"><input type="radio" name="a_grue" value="Version organigramme (2 grues en location)"><span class="txt">Retenir la version organigramme (2 grues, en location)</span></label>
-          <label class="opt"><input type="radio" name="a_grue" value="Autre — précisé ci-dessous"><span class="txt">Ni l&rsquo;une ni l&rsquo;autre — je précise ci-dessous</span></label>
-        </div>
-      </div>
-
-      <div class="arb">
-        <h4>b. Les banches et coffrages</h4>
-        <p class="src">Plaquette&nbsp;: <em>240 m² Outinord B8000, 500 m² manuportables, 750 m² alu PERI GRIDFLEX, 1 200 m² dalle poutrelle bois, 160 m² de tours d&rsquo;étaiement</em>.
-          Organigramme&nbsp;: <em>140 m² Outinord, 400 m² manuportables, 550 m² coffrage plancher alu</em>.</p>
-        <div class="opts" data-g="Arbitrage coffrages">
-          <label class="opt"><input type="radio" name="a_coff" value="Version plaquette (chiffres hauts)"><span class="txt">Version plaquette (chiffres hauts)</span></label>
-          <label class="opt"><input type="radio" name="a_coff" value="Version organigramme (chiffres bas)"><span class="txt">Version organigramme (chiffres bas)</span></label>
-          <label class="opt"><input type="radio" name="a_coff" value="Autre — précisé ci-dessous"><span class="txt">Autre — je précise ci-dessous</span></label>
-        </div>
-      </div>
-
-      <div class="arb">
-        <h4>c. Les protections de sécurité</h4>
-        <p class="src">Plaquette&nbsp;: <em>600 m² de BATIROC PROTECT</em>. Organigramme&nbsp;: <em>550 m²</em>.
-          (Les 1 200 m² d&rsquo;échafaudage COMABI et les 500 m² de tubes concordent.)</p>
-        <div class="opts three" data-g="Arbitrage BATIROC">
-          <label class="opt"><input type="radio" name="a_bati" value="600 m²"><span class="txt">600 m²</span></label>
-          <label class="opt"><input type="radio" name="a_bati" value="550 m²"><span class="txt">550 m²</span></label>
-          <label class="opt"><input type="radio" name="a_bati" value="Autre"><span class="txt">Autre</span></label>
-        </div>
-      </div>
-
-      <div class="arb">
-        <h4>d. Le parc de véhicules</h4>
-        <p class="src">Plaquette&nbsp;: <em>1 camion grue 8×4, 4 camions bennes 3,5 T, 3 utilitaires L2H2, 4 petits utilitaires, 3 véhicules de service</em>.
-          Organigramme&nbsp;: <em>camion 8×4 en accord-cadre, 4 bennes 3,5 T, 3 Trafic, 2 véhicules de chantier, 2 de direction, 2 de service</em>.</p>
-        <div class="opts" data-g="Arbitrage véhicules">
-          <label class="opt"><input type="radio" name="a_veh" value="Version plaquette"><span class="txt">Version plaquette</span></label>
-          <label class="opt"><input type="radio" name="a_veh" value="Version organigramme"><span class="txt">Version organigramme</span></label>
-          <label class="opt"><input type="radio" name="a_veh" value="Total simplifié (ex. : « une quinzaine de véhicules »)"><span class="txt">Un total simplifié («&nbsp;une quinzaine de véhicules&nbsp;»)</span></label>
-        </div>
-      </div>
-
-      <div class="arb">
-        <h4>e. Le matériel de production</h4>
-        <p class="src">Plaquette&nbsp;: <em>2 bétonnières avec chargeur 250 L, 4 bétonnières 100 L, machine à projeter, scie murale, scie Jumbo, 2 compresseurs</em>.
-          Organigramme&nbsp;: <em>1 bétonnière avec chargeur 250 L, bétonnières de 50 à 150 L, table de découpe</em>.</p>
-        <div class="opts three" data-g="Arbitrage production">
-          <label class="opt"><input type="radio" name="a_prod" value="Version plaquette"><span class="txt">Version plaquette</span></label>
-          <label class="opt"><input type="radio" name="a_prod" value="Version organigramme"><span class="txt">Version organigramme</span></label>
-          <label class="opt"><input type="radio" name="a_prod" value="Autre"><span class="txt">Autre</span></label>
-        </div>
-      </div>
-
-      <div class="arb">
-        <h4>f. Le chariot télescopique</h4>
-        <p class="src">Plaquette&nbsp;: <em>1 télescopique 25 m Manitou</em>, classé dans «&nbsp;levage&nbsp;».
-          Organigramme&nbsp;: <em>1 Manitou</em>, classé dans «&nbsp;engins&nbsp;», sans hauteur. Quelle hauteur retenons-nous&nbsp;?</p>
-        <div class="opts three" data-g="Arbitrage télescopique">
-          <label class="opt"><input type="radio" name="a_tele" value="25 m confirmé"><span class="txt">25 m, confirmé</span></label>
-          <label class="opt"><input type="radio" name="a_tele" value="Autre hauteur"><span class="txt">Autre hauteur</span></label>
-          <label class="opt"><input type="radio" name="a_tele" value="Ne pas préciser la hauteur"><span class="txt">Ne pas préciser</span></label>
-        </div>
-      </div>
-
-      <div class="arb">
-        <h4>g. L&rsquo;adresse du site dans vos pieds de page</h4>
-        <p class="src">Vos documents renvoient déjà à <em>www.faurebtp.fr</em>. Si ce site n&rsquo;existe pas encore,
-          toute personne ayant reçu votre plaquette a tapé une adresse vide — raison de plus pour avancer vite.</p>
-        <div class="opts three" data-g="Arbitrage adresse web">
-          <label class="opt"><input type="radio" name="a_web" value="Le site existe déjà"><span class="txt">Le site existe déjà</span></label>
-          <label class="opt"><input type="radio" name="a_web" value="Rien en ligne aujourd'hui"><span class="txt">Rien en ligne aujourd&rsquo;hui</span></label>
-          <label class="opt"><input type="radio" name="a_web" value="Une page d'attente seulement"><span class="txt">Une simple page d&rsquo;attente</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_arbdet">Précisions sur ces arbitrages</label>
-        <textarea id="q_arbdet" data-l="Précisions arbitrages" placeholder="Indiquez ici les valeurs exactes à publier quand vous avez répondu « autre »."></textarea></div>
-
-      <div class="q"><label for="q_autrediff">D&rsquo;autres informations de vos documents à corriger avant publication&nbsp;?</label>
-        <textarea id="q_autrediff" data-l="Autres corrections documents"></textarea></div>
-    </section>
-
-    <!-- ============ 17 ============ -->
-    <section id="s17">
-      <div class="sh"><div class="no">17</div><h2>Organisation, délais et budget</h2></div>
-      <p class="intro">Dernière ligne droite&nbsp;: le cadre pratique du projet.</p>
-
-      <div class="q"><label for="q_date">Date de mise en ligne souhaitée</label>
-        <div class="hint">Y a-t-il une échéance particulière&nbsp;? Une consultation importante, un salon, une
-          réimpression de plaquette, un dépôt de dossier de qualification…</div>
-        <input type="text" id="q_date" data-l="Date de mise en ligne souhaitée"></div>
-
-      <div class="q">
-        <div class="qlabel">Qui rédige les textes&nbsp;?</div>
-        <div class="opts" data-g="Rédaction des textes">
-          <label class="opt"><input type="radio" name="redac" value="LinkedIA rédige tout à partir des documents"><span class="txt"><b>Je rédige tout à partir de vos documents</b><small>Vous relisez et corrigez. C&rsquo;est le plus rapide et le plus efficace.</small></span><span class="tag">Recommandé</span></label>
-          <label class="opt"><input type="radio" name="redac" value="Rédaction partagée"><span class="txt"><b>Rédaction partagée</b><small>Je rédige, vous fournissez les parties techniques.</small></span></label>
-          <label class="opt"><input type="radio" name="redac" value="Le client fournit ses textes"><span class="txt"><b>Vous fournissez vos textes</b></span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Quel délai de retour pouvez-vous tenir sur les validations&nbsp;?</div>
-        <div class="opts three" data-g="Délai de validation">
-          <label class="opt"><input type="radio" name="delai" value="Sous 48 h"><span class="txt">Sous 48 h</span></label>
-          <label class="opt"><input type="radio" name="delai" value="Sous une semaine"><span class="txt">Sous une semaine</span></label>
-          <label class="opt"><input type="radio" name="delai" value="Variable selon les chantiers"><span class="txt">Variable selon les chantiers</span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Après la mise en ligne, qui fait vivre le site&nbsp;?</div>
-        <div class="opts" data-g="Suivi après mise en ligne">
-          <label class="opt"><input type="radio" name="suivi" value="LinkedIA s'occupe des mises à jour"><span class="txt"><b>Je m&rsquo;occupe des mises à jour</b><small>Vous m&rsquo;envoyez les photos et les infos, je publie.</small></span></label>
-          <label class="opt"><input type="radio" name="suivi" value="Le client met à jour lui-même (avec formation)"><span class="txt"><b>Vous mettez à jour vous-même</b><small>Je vous forme et je vous laisse un mode d&rsquo;emploi.</small></span></label>
-          <label class="opt"><input type="radio" name="suivi" value="Site figé, peu de mises à jour"><span class="txt"><b>Site figé</b><small>Peu ou pas de mises à jour prévues.</small></span></label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qlabel">Quelle enveloppe avez-vous en tête&nbsp;?</div>
-        <div class="hint">Une fourchette me suffit&nbsp;; cela me permet de vous proposer la bonne ambition,
-          sans vous faire perdre de temps.</div>
-        <div class="opts two" data-g="Budget envisagé">
-          <label class="opt"><input type="radio" name="budget" value="Moins de 1 500 €"><span class="txt">Moins de 1 500 €</span></label>
-          <label class="opt"><input type="radio" name="budget" value="1 500 à 3 000 €"><span class="txt">1 500 à 3 000 €</span></label>
-          <label class="opt"><input type="radio" name="budget" value="3 000 à 5 000 €"><span class="txt">3 000 à 5 000 €</span></label>
-          <label class="opt"><input type="radio" name="budget" value="Je préfère en discuter de vive voix"><span class="txt">J&rsquo;en discute avec vous de vive voix</span></label>
-        </div>
-      </div>
-
-      <div class="q"><label for="q_attente">S&rsquo;il ne devait y avoir qu&rsquo;une seule chose à réussir sur ce site&nbsp;?</label>
-        <textarea id="q_attente" data-l="L'essentiel à réussir"></textarea></div>
 
       <div class="q"><label for="q_libre">Autre chose à me dire&nbsp;?</label>
-        <div class="hint">Une contrainte, une inquiétude, une idée, une mauvaise expérience passée avec un
-          prestataire… Tout m&rsquo;intéresse.</div>
-        <textarea id="q_libre" data-l="Remarques libres"></textarea></div>
+        <textarea id="q_libre" data-l="Remarques libres" placeholder="Une idée, une contrainte, une inquiétude…"></textarea></div>
     </section>
 
     <!-- ============ ENVOI ============ -->
     <div class="send">
       <h2>Envoyez-moi vos réponses</h2>
-      <p>Un simple clic&nbsp;: je reçois l&rsquo;ensemble de vos réponses, je prépare l&rsquo;arborescence détaillée
-         et la proposition définitive, et je reviens vers vous sous 48 heures. Vous pouvez aussi imprimer
-         ce document, le remplir à la main et me le remettre — les deux me conviennent.</p>
+      <p>Je reçois tout d&rsquo;un coup, je vous prépare une première maquette de la page dans le style
+         choisi, et on ajuste ensemble. Vous pouvez aussi imprimer ce document et le remplir à la main.</p>
 
       <div class="req">
         <div>
@@ -1282,8 +581,7 @@
   <footer>
     <b>LinkedIA — Jérémy Halimi</b><br>
     06 65 14 14 33 · contact@linkeedia.fr · linkeedia.fr<br>
-    Document préparé le 11 septembre 2026 pour la SAS Faure Bâtiment,<br>
-    après analyse de la plaquette commerciale et de l&rsquo;organigramme du 27/08/2026.
+    Document préparé le 11 septembre 2026 pour la SAS Faure Bâtiment.
   </footer>
 </div>
 
@@ -1291,8 +589,8 @@
 (function () {
   'use strict';
   var ENDPOINT = 'https://linkedia-contact.halimjeremy.workers.dev';
-  var KEY = 'linkedia-quest-faure';
-  var TOTAL = 72;
+  var KEY = 'linkedia-quest-faure-v2';
+  var TOTAL = 30;
   var form = document.getElementById('f');
   var msg = document.getElementById('msg');
   var go = document.getElementById('go');
@@ -1354,7 +652,7 @@
         if (v) lines.push('- ' + (el.dataset.l || el.id) + ' : ' + v);
       });
 
-      sec.querySelectorAll('.opts[data-g]').forEach(function (g) {
+      sec.querySelectorAll('.opts[data-g], .das[data-g]').forEach(function (g) {
         var vals = [];
         g.querySelectorAll('input:checked').forEach(function (el) { vals.push(el.value); });
         if (vals.length) lines.push('- ' + (g.dataset.g || 'Choix') + ' : ' + vals.join(' | '));
@@ -1372,7 +670,7 @@
   function chunks(txt, size) {
     var parts = [], blocks = txt.split('\n\n'), cur = '';
     blocks.forEach(function (b) {
-      if (b.length > size) {                       // bloc trop long : on le coupe brut
+      if (b.length > size) {
         if (cur) { parts.push(cur); cur = ''; }
         for (var i = 0; i < b.length; i += size) parts.push(b.slice(i, i + size));
         return;
@@ -1436,7 +734,7 @@
         return post({
           name: nom,
           email: mail,
-          type: 'Questionnaire Faure Bâtiment (' + (i + 1) + '/' + parts.length + ')',
+          type: 'Questionnaire Faure Bâtiment' + (parts.length > 1 ? ' (' + (i + 1) + '/' + parts.length + ')' : ''),
           msg: (parts.length > 1 ? '[partie ' + (i + 1) + '/' + parts.length + ']\n\n' : '') + p,
           website: hp
         });
@@ -1445,7 +743,7 @@
 
     chain.then(function () {
       msg.className = 'msg ok';
-      msg.textContent = 'C’est envoyé, merci. Je reviens vers vous sous 48 heures avec l’arborescence détaillée et la proposition.';
+      msg.textContent = 'C’est envoyé, merci. Je reviens très vite avec une première maquette de votre page.';
       go.textContent = 'Réponses envoyées ✓';
     }).catch(function () {
       busy = false;
