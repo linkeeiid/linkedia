@@ -410,7 +410,6 @@
           <label class="opt"><input type="checkbox" name="blocs" value="Moyens matériels (grues, engins, coffrages)"><span class="txt"><b>Vos moyens matériels</b><small class="keep">Grues, engins, coffrages&nbsp;: rare sur un site, et très crédible.</small></span></label>
           <label class="opt"><input type="checkbox" name="blocs" value="Zone d'intervention"><span class="txt"><b>Votre zone d&rsquo;intervention</b><small class="keep">69, 38, 73, 74, 01.</small></span></label>
           <label class="opt"><input type="checkbox" name="blocs" value="Nous recrutons"><span class="txt"><b>Un mot sur le recrutement</b><small class="keep">Si vous cherchez des maçons ou des coffreurs, autant le dire ici.</small></span></label>
-          <label class="opt"><input type="checkbox" name="blocs" value="Plaquette en téléchargement"><span class="txt"><b>Votre plaquette en téléchargement</b></span></label>
         </div>
       </div>
 
@@ -560,10 +559,14 @@
       <div class="sh"><div class="no">6</div><h2>Pour finir</h2></div>
       <p class="intro">Trois questions pratiques, et je peux me mettre au travail.</p>
 
-      <div class="q"><label for="q_logo">Avez-vous le logo en fichier d&rsquo;origine&nbsp;?</label>
-        <div class="hint">Fichier .ai, .eps, .svg ou PDF fourni par votre graphiste. Sinon le logo
-          apparaîtra flou en haut de page — c&rsquo;est le seul fichier dont j&rsquo;ai vraiment besoin, avec vos photos.</div>
-        <input type="text" id="q_logo" data-l="Logo vectoriel" placeholder="Oui / non / à redemander au graphiste"></div>
+      <div class="q">
+        <div class="qlabel">Quel logo utilisons-nous&nbsp;?</div>
+        <div class="opts" data-g="Logo à utiliser">
+          <label class="opt"><input type="radio" name="logo" value="Celui de la plaquette"><span class="txt"><b>Celui de la plaquette</b><small>On le reprend tel quel.</small></span></label>
+          <label class="opt"><input type="radio" name="logo" value="Un autre logo, que je vous envoie"><span class="txt"><b>Un autre — je vous l&rsquo;envoie</b><small>Version plus récente, ou déclinaison particulière.</small></span></label>
+          <label class="opt"><input type="radio" name="logo" value="Le même, mais à rafraîchir"><span class="txt"><b>Le même, mais à rafraîchir</b><small>On le remet au propre sans changer son identité.</small></span></label>
+        </div>
+      </div>
 
       <div class="duo">
         <div class="q"><label for="q_date">Pour quand souhaitez-vous être en ligne&nbsp;?</label>
