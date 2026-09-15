@@ -2,7 +2,7 @@
    Stratégie : réseau d'abord (toujours à jour quand il y a du signal),
    cache en secours (marche dans le métro et dans les rues sans 4G). */
 
-var CACHE = "carnet-v3";
+var CACHE = "carnet-v4";
 var FILES = [
   "./",
   "./index.html",
