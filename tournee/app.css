@@ -794,10 +794,11 @@ textarea:focus-visible, input:focus-visible {
    LISTE D'APPELS
    ================================================================== */
 
-/* quatre onglets sur 375 px : on resserre */
+/* quatre ou cinq onglets sur 375 px : on resserre, le compteur passe sous le libellé */
 @media (max-width: 26rem) {
-  .tab { font-size: .75rem; padding: .5rem .25rem; gap: .25rem; }
+  .tab { font-size: .75rem; padding: .375rem .125rem; gap: 0; flex-direction: column; line-height: 1.15; min-width: 0; }
   .tab span.n { font-size: .625rem; }
+  .tab span.n:empty { display: none; }
 }
 
 .stop[hidden], .block[hidden] { display: none !important; }
@@ -888,6 +889,120 @@ details.cheat summary small {
 .cheat__step p, .cheat__step li { font-size: .875rem; color: var(--ink-soft); margin: 0 0 .375rem; }
 .cheat__step ul { margin: 0; padding-left: 1.125rem; }
 .cheat__step q { color: var(--ink); quotes: "« " " »"; }
+
+/* ==================================================================
+   CARTE
+   ================================================================== */
+
+.carte-intro { padding-bottom: .875rem; }
+.carte-tours { margin-top: 1rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.carte-tours::-webkit-scrollbar { display: none; }
+.carte-tours .pill { flex: none; min-height: 2.25rem; padding: .375rem .75rem; }
+.carte-tours + .carte-tours { margin-top: .5rem; }
+
+.carte-wrap { position: relative; margin: 0 -1rem; }
+#carte {
+  height: calc(100svh - var(--barh, 6.75rem) - 5rem);
+  min-height: 22rem;
+  max-height: 44rem;
+  background: var(--card-sunk);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 42rem) {
+  .carte-wrap { margin: 0; }
+  #carte { border: 1px solid var(--line); border-radius: 3px; }
+}
+.carte-msg {
+  position: absolute; left: 1rem; right: 1rem; top: 45%;
+  margin: 0; text-align: center; font-size: .875rem; color: var(--ink-soft);
+}
+.carte-btns {
+  position: absolute; top: .625rem; right: .625rem; z-index: 1000;
+  display: flex; flex-direction: column; gap: .375rem; align-items: flex-end;
+}
+.carte-btn {
+  font: inherit; font-size: .8125rem; font-weight: 600;
+  color: var(--ink); background: var(--card);
+  border: 1px solid var(--line-strong); border-radius: 2px;
+  padding: .5rem .75rem; min-height: 2.5rem; cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.carte-btn:active { background: var(--card-sunk); }
+
+/* les tuiles OSM en sombre, sans toucher aux marqueurs */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.85) contrast(.9); }
+}
+:root[data-theme="dark"] .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.85) contrast(.9); }
+.leaflet-container { font-family: var(--sans); background: var(--card-sunk); }
+.leaflet-container a.leaflet-control-zoom-in,
+.leaflet-container a.leaflet-control-zoom-out { width: 2.25rem; height: 2.25rem; line-height: 2.25rem; }
+
+.pinwrap { background: none; border: none; }
+.pin {
+  --pin: var(--crv);
+  display: grid; place-items: center;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--paper); color: var(--pin);
+  border: 2px solid var(--pin);
+  font: 700 11px/1 var(--mono); font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 3px rgba(0,0,0,.35);
+  box-sizing: border-box;
+}
+.pin.crv { --pin: var(--crv); }
+.pin.cdl { --pin: var(--cdl); }
+.pin.autre { --pin: var(--autre); }
+.pin.prune { --pin: var(--prune); }
+.pin.ardoise { --pin: var(--ardoise); }
+.pin[data-out] { color: #fbfbf9; }
+.pin[data-out="interesse"] { background: var(--ok); border-color: var(--ok); }
+.pin[data-out="rappeler"]  { background: var(--wait); border-color: var(--wait); }
+.pin[data-out="refus"]     { background: var(--no); border-color: var(--no); opacity: .55; }
+.pin[data-out="absent"]    { background: var(--absent); border-color: var(--absent); }
+.pin[data-approx] { border-style: dashed; }
+.pin[data-focus] { transform: scale(1.3); box-shadow: 0 0 0 4px rgba(42,125,225,.45), 0 1px 3px rgba(0,0,0,.35); }
+.pin.depart { --pin: var(--ink); font-size: 15px; background: var(--ink); color: var(--paper); }
+
+.carte-legende { display: flex; flex-wrap: wrap; gap: .5rem .875rem; margin: .875rem 0 0; font-size: .75rem; color: var(--ink-soft); }
+.carte-legende span { display: inline-flex; align-items: center; gap: .375rem; }
+.pin-mini {
+  display: inline-block; width: .875rem; height: .875rem; border-radius: 50%;
+  border: 2px solid var(--crv); background: var(--paper); box-sizing: border-box;
+}
+.pin-mini[data-out="interesse"] { background: var(--ok); border-color: var(--ok); }
+.pin-mini[data-out="rappeler"]  { background: var(--wait); border-color: var(--wait); }
+.pin-mini[data-out="refus"]     { background: var(--no); border-color: var(--no); }
+.pin-mini[data-out="absent"]    { background: var(--absent); border-color: var(--absent); }
+.pin-mini[data-approx] { border-style: dashed; border-color: var(--ink-faint); }
+.carte-note { font-size: .75rem; color: var(--ink-faint); margin: .5rem 0 0; }
+
+.etapes-panel { margin-top: 1.5rem; }
+.etapes { list-style: none; margin: .25rem 0 0; padding: 0; display: grid; gap: .125rem; }
+.etapes a {
+  display: flex; align-items: center; gap: .625rem;
+  padding: .4375rem 0; min-height: 2.75rem;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.etapes li:last-child a { border-bottom: none; }
+.etapes .pin { flex: none; width: 26px; height: 26px; font-size: 10px; box-shadow: none; }
+.etape__txt { min-width: 0; display: flex; flex-direction: column; }
+.etape__txt b { font-size: .875rem; font-weight: 600; overflow-wrap: anywhere; }
+.etape__txt small { font-size: .6875rem; color: var(--ink-faint); font-family: var(--mono); }
+
+/* arrivée sur une fiche depuis la carte */
+.stop.focus .card { box-shadow: 0 0 0 3px var(--rail), var(--shadow); animation: focus-pulse 1.2s ease-out 2; }
+@keyframes focus-pulse { 0% { box-shadow: 0 0 0 0 var(--rail), var(--shadow); } 60% { box-shadow: 0 0 0 7px transparent, var(--shadow); } 100% { box-shadow: 0 0 0 3px var(--rail), var(--shadow); } }
+.retourcarte {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(1rem + env(safe-area-inset-bottom)); z-index: 40;
+  font-size: .875rem; font-weight: 600; text-decoration: none; white-space: nowrap;
+  color: #fbfbf9; background: var(--crv);
+  border-radius: 999px; padding: .6875rem 1.125rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+}
+@media print { .retourcarte, .carte-wrap, .carte-btns { display: none !important; } }
 
 /* « Le reste de la semaine » : mêmes cartes que les archives, resserrées dans le panneau */
 .archive.semaine { margin-top: 1rem; }

@@ -17,6 +17,7 @@
   var tabAppels = document.getElementById("tab-appels");
   var tabArchives = document.getElementById("tab-archives");
   var tabFiches = document.getElementById("tab-fiches");
+  var tabCarte = document.getElementById("tab-carte");
   var gauge = document.getElementById("gauge");
   var themeBtn = document.getElementById("theme");
   var toast = document.getElementById("toast");
@@ -52,6 +53,7 @@
   var APPELS = window.APPELS || null;
   if (APPELS) { APPELS.kind = "appels"; }
   var FICHE = window.FICHE || [];
+  var GEO = window.GEO || {};
   var PREFILL = window.FICHE_PREFILL || [];
 
   /* ================= stockage ================= */
@@ -129,6 +131,14 @@
     return null;
   }
   function estAppels(tour) { return !!tour && tour.kind === "appels"; }
+  function geoOf(tour, stop) {
+    var g = GEO[tour.id + ":" + stop.id];
+    return g && g[0] ? g : null;
+  }
+  /* l'adresse d'une carte de commerce dans sa liste (utilisée par la carte) */
+  function stopHref(tour, stop) {
+    return (estAppels(tour) ? "#/appels/" : "#/t/" + encodeURIComponent(tour.id) + "/") + stop.id;
+  }
   function tourHref(tour) {
     if (!estAppels(tour)) { return "#/t/" + tour.id; }
     return MODE === "carnet" && tour.page ? tour.page : "#/appels";
@@ -216,6 +226,12 @@
     }
     if (stop.lien) {
       a.push('<a class="act" href="' + stop.lien.url + '" target="_blank" rel="noopener">' + stop.lien.t + "</a>");
+    }
+    var g = geoOf(tour, stop);
+    if (g) {
+      a.push('<a class="act" href="#/carte/' + encodeURIComponent(tour.id) + "/" + stop.id + '">Carte</a>');
+      a.push('<a class="act" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + g[0] + "," + g[1] +
+        "&amp;travelmode=" + (estAppels(tour) ? "driving" : "walking") + '" target="_blank" rel="noopener">Itinéraire</a>');
     }
     var fid = "t:" + tour.id + ":" + stop.id;
     var f = getFiche(fid);
@@ -508,6 +524,319 @@
     if (n) {
       n.textContent = vus === total ? total + " entreprises" :
         vus + " sur " + total + (vus ? "" : " — rien ne correspond");
+    }
+  }
+
+  /* ================= rendu : carte ================= */
+
+  var LEAFLET_CSS = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";
+  var LEAFLET_JS = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
+  var DEPART_APPELS = [45.7556, 4.8906];  /* Montchat : départ par défaut du trajet des appels */
+  var carte = null;        /* carte Leaflet affichée */
+  var carteJeton = 0;      /* invalide un chargement de Leaflet qui arrive après un changement de page */
+  var carteVues = {};      /* centre et zoom mémorisés par liste : on revient au même endroit */
+  var carteDepart = null;  /* position GPS choisie avec « Partir d'ici » */
+  var moi = null;          /* point bleu « Me localiser » */
+  var leafletAttente = [], leafletEnCours = false;
+
+  function chargerLeaflet(cb) {
+    if (window.L) { cb(true); return; }
+    leafletAttente.push(cb);
+    if (leafletEnCours) { return; }
+    leafletEnCours = true;
+    function fin(ok) {
+      leafletEnCours = false;
+      var q = leafletAttente; leafletAttente = [];
+      q.forEach(function (f) { f(ok); });
+    }
+    if (!document.querySelector('link[href="' + LEAFLET_CSS + '"]')) {
+      var l = document.createElement("link");
+      l.rel = "stylesheet"; l.href = LEAFLET_CSS;
+      document.head.appendChild(l);
+    }
+    var s = document.createElement("script");
+    s.src = LEAFLET_JS;
+    s.onload = function () { fin(!!window.L); };
+    s.onerror = function () { s.parentNode.removeChild(s); fin(false); };  /* on pourra réessayer */
+    document.head.appendChild(s);
+  }
+
+  function distM(a, b) {
+    var r = Math.PI / 180;
+    var x = (b[1] - a[1]) * r * Math.cos((a[0] + b[0]) / 2 * r), y = (b[0] - a[0]) * r;
+    return Math.sqrt(x * x + y * y) * 6371000;
+  }
+
+  function tourneesCartables() {
+    return TOURNEES.filter(function (t) {
+      return stopsOf(t).some(function (s) { return geoOf(t, s); });
+    });
+  }
+
+  function carteTour(idDemande) {
+    if (MODE === "appels") { return APPELS; }
+    var liste = tourneesCartables();
+    var t = idDemande ? tourById(idDemande) : null;
+    if (t && !estAppels(t) && liste.indexOf(t) !== -1) { return t; }
+    var memo = tourById(read("carte:tour", ""));
+    if (memo && liste.indexOf(memo) !== -1 && !isClosed(memo)) { return memo; }
+    var cur = courante();
+    if (cur && liste.indexOf(cur) !== -1) { return cur; }
+    return liste[0] || null;
+  }
+
+  /* plus proche voisin puis 2-opt : ~100 points, instantané */
+  function trajetCourt(pts, depart) {
+    var reste = pts.slice(), route = [], pos = depart;
+    while (reste.length) {
+      var bi = 0, bd = Infinity;
+      for (var i = 0; i < reste.length; i++) {
+        var d = distM(pos, reste[i].g);
+        if (d < bd) { bd = d; bi = i; }
+      }
+      pos = reste[bi].g;
+      route.push(reste.splice(bi, 1)[0]);
+    }
+    function pt(i) { return i < 0 ? depart : route[i].g; }
+    var mieux = true, passes = 0;
+    while (mieux && passes++ < 40) {
+      mieux = false;
+      for (var a = -1; a < route.length - 2; a++) {
+        for (var k = a + 2; k < route.length; k++) {
+          var suite = k + 1 < route.length;
+          var avant = distM(pt(a), route[a + 1].g) + (suite ? distM(route[k].g, route[k + 1].g) : 0);
+          var apres = distM(pt(a), route[k].g) + (suite ? distM(route[a + 1].g, route[k + 1].g) : 0);
+          if (apres + 1 < avant) {
+            var seg = route.slice(a + 1, k + 1).reverse();
+            Array.prototype.splice.apply(route, [a + 1, seg.length].concat(seg));
+            mieux = true;
+          }
+        }
+      }
+    }
+    return route;
+  }
+
+  /* appels : trajet le plus court sans les « Non ».
+     tournée : trajet le plus court depuis le 1er commerce (par défaut), ou l'ordre des créneaux */
+  function ordreCreneaux(tour) { return !estAppels(tour) && read("carte:ordre", "court") === "creneaux"; }
+  function ordreCarte(tour, points) {
+    if (estAppels(tour)) {
+      return trajetCourt(points.filter(function (p) { return p.st.o !== "refus"; }), carteDepart || DEPART_APPELS);
+    }
+    var tri = points.slice().sort(function (a, b) { return a.stop.n - b.stop.n; });
+    if (ordreCreneaux(tour) || tri.length < 3) { return tri; }
+    var premier = tri.shift();
+    return [premier].concat(trajetCourt(tri, premier.g));
+  }
+
+  function renderCarte(idDemande, focusId) {
+    var tour = carteTour(idDemande);
+    if (!tour) {
+      view.innerHTML = '<header class="intro"><p class="eyebrow">Carte</p><h1>Aucun point à afficher</h1>' +
+        '<p class="lede">Les commerces n\'ont pas encore de coordonnées. Demande-moi de les ajouter.</p></header>';
+      setGauge(0);
+      return;
+    }
+    var appel = estAppels(tour);
+    if (!appel) { write("carte:tour", tour.id); }
+
+    var points = [], sansGeo = 0;
+    stopsOf(tour).forEach(function (s) {
+      var g = geoOf(tour, s);
+      if (g) { points.push({ stop: s, g: g, st: stopState(tour.id, s.id) }); } else { sansGeo++; }
+    });
+    var route = ordreCarte(tour, points);
+    var rang = {};
+    route.forEach(function (p, i) { rang[p.stop.id] = i + 1; });
+    var m = 0;
+    route.forEach(function (p, i) { if (i) { m += distM(route[i - 1].g, p.g); } });
+    var km = m / 1000;
+    var faits = points.filter(function (p) { return p.st.o; }).length;
+    var refus = points.length - route.length;
+
+    var html = '<header class="intro carte-intro">';
+    html += '<p class="eyebrow">Carte · ' + (appel ? tour.zone : dateLongue(tour.date) + " · " + tour.zone) + "</p>";
+    html += "<h1>" + (appel ? "Le trajet des " + points.length + " entreprises" : tour.titre) + "</h1>";
+    html += '<p class="lede">' + (appel
+      ? "Les points sont reliés dans l'ordre le plus court en partant de " + (carteDepart ? "<b>ta position</b>" : "<b>Montchat</b>") +
+        ". Ceux marqués « Non » sortent du trajet. Touche un point pour ouvrir sa fiche."
+      : (ordreCreneaux(tour)
+        ? "Les points sont reliés dans l'ordre des créneaux horaires, comme la liste. Touche un point pour ouvrir sa fiche."
+        : "Les points sont reliés par le trajet le plus court, en partant du n° 1 de la tournée. Le numéro sur la carte, c'est l'étape ; celui de la liste est rappelé en dessous. Touche un point pour ouvrir sa fiche.")) + "</p>";
+
+    if (!appel) {
+      html += '<div class="pills carte-tours" role="group" aria-label="Ordre du trajet">' +
+        '<button type="button" class="pill carteordre" data-ordre="court" aria-pressed="' + (!ordreCreneaux(tour)) + '">Trajet le plus court</button>' +
+        '<button type="button" class="pill carteordre" data-ordre="creneaux" aria-pressed="' + ordreCreneaux(tour) + '">Ordre des créneaux</button></div>';
+    }
+
+    if (!appel) {
+      var liste = tourneesCartables();
+      if (liste.length > 1) {
+        html += '<div class="pills carte-tours" role="group" aria-label="Choisir la tournée">';
+        liste.forEach(function (t) {
+          html += '<button type="button" class="pill cartetour" data-tour="' + t.id + '" aria-pressed="' + (t.id === tour.id ? "true" : "false") + '">' +
+            dateCourte(t.date).replace(/ \d{4}$/, "") + (isClosed(t) ? " ✓" : "") + "</button>";
+        });
+        html += "</div>";
+      }
+    }
+
+    html += '<div class="tiles">' +
+      '<div class="tile"><span class="tile__n">' + route.length + '</span><span class="tile__l">' + (appel ? "points sur le trajet" : "points reliés") + "</span></div>" +
+      '<div class="tile"><span class="tile__n">' + (km < 10 ? km.toFixed(1).replace(".", ",") : Math.round(km)) + '</span><span class="tile__l">km à vol d\'oiseau</span></div>' +
+      '<div class="tile"><span class="tile__n">' + (appel ? faits + "/" + points.length : "≈" + Math.max(1, Math.round(km / 4.5 * 60)) + " min") +
+        '</span><span class="tile__l">' + (appel ? "déjà traités" : "de marche, hors arrêts") + "</span></div></div>";
+    html += "</header>";
+
+    html += '<div class="carte-wrap">' +
+      '<div id="carte" role="region" aria-label="Carte des points à visiter"></div>' +
+      '<div class="carte-btns">' +
+        '<button type="button" class="carte-btn" id="carte-geo">Me localiser</button>' +
+        (appel ? '<button type="button" class="carte-btn" id="carte-depart">Partir d\'ici</button>' : "") +
+      "</div>" +
+      '<p class="carte-msg" id="carte-msg">Chargement de la carte…</p></div>';
+
+    html += '<div class="carte-legende">' +
+      '<span><i class="pin-mini"></i> à faire</span>' +
+      '<span><i class="pin-mini" data-out="interesse"></i> ' + (appel ? "RDV pris" : "intéressé") + "</span>" +
+      '<span><i class="pin-mini" data-out="rappeler"></i> à rappeler</span>' +
+      '<span><i class="pin-mini" data-out="refus"></i> non</span>' +
+      '<span><i class="pin-mini" data-out="absent"></i> ' + (appel ? "pas joint" : "absent") + "</span>" +
+      '<span><i class="pin-mini" data-approx></i> position approximative</span></div>';
+
+    if (refus || sansGeo) {
+      html += '<p class="carte-note">' +
+        (refus ? refus + " « Non » retiré" + (refus > 1 ? "s" : "") + " du trajet. " : "") +
+        (sansGeo ? sansGeo + " commerce" + (sansGeo > 1 ? "s" : "") + " sans adresse précise, absent" + (sansGeo > 1 ? "s" : "") + " de la carte." : "") + "</p>";
+    }
+
+    html += '<section class="panel etapes-panel"><h2>Les étapes dans l\'ordre</h2><ol class="etapes">';
+    route.forEach(function (p, i) {
+      var d = i ? distM(route[i - 1].g, p.g) : (appel ? distM(carteDepart || DEPART_APPELS, p.g) : 0);
+      html += '<li><a href="' + stopHref(tour, p.stop) + '">' +
+        '<span class="pin ' + p.stop.rue + '"' + (p.st.o ? ' data-out="' + p.st.o + '"' : "") + (p.g[2] ? " data-approx" : "") + ">" + (ordreCreneaux(tour) ? p.stop.n : i + 1) + "</span>" +
+        '<span class="etape__txt"><b>' + p.stop.nom + "</b><small>" + (!appel && !ordreCreneaux(tour) ? "n° " + p.stop.n + " de la liste · " : "") + esc(p.stop.numero) +
+        (d ? " · " + (d < 1000 ? Math.round(d / 10) * 10 + " m" : (d / 1000).toFixed(1).replace(".", ",") + " km") + (i ? "" : " du départ") : "") +
+        "</small></span></a></li>";
+    });
+    html += "</ol></section>";
+
+    view.innerHTML = html;
+    activeTour = null;
+    setGauge(points.length ? faits / points.length : 0);
+    document.title = "Carte — " + (appel ? "Appels" : tour.zone);
+
+    var jeton = carteJeton;
+    chargerLeaflet(function (ok) {
+      if (jeton !== carteJeton || !document.getElementById("carte")) { return; }
+      var msg = document.getElementById("carte-msg");
+      if (!ok) {
+        msg.textContent = "La carte a besoin d'une connexion internet. La liste des étapes, en dessous, marche sans.";
+        return;
+      }
+      msg.hidden = true;
+      dessinerCarte(tour, points, route, rang, focusId);
+    });
+  }
+
+  function couleurVar(nom, secours) {
+    var v = getComputedStyle(document.documentElement).getPropertyValue(nom);
+    return (v && v.trim()) || secours;
+  }
+
+  function dessinerCarte(tour, points, route, rang, focusId) {
+    var appel = estAppels(tour);
+    carte = window.L.map("carte", { zoomControl: true, tap: true });
+    window.L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+    }).addTo(carte);
+
+    var trace = route.map(function (p) { return [p.g[0], p.g[1]]; });
+    if (appel && trace.length) {
+      var dep = carteDepart || DEPART_APPELS;
+      trace.unshift(dep);
+      window.L.marker(dep, {
+        icon: window.L.divIcon({ className: "pinwrap", html: '<span class="pin depart">⌂</span>', iconSize: [30, 30], iconAnchor: [15, 15] }),
+        title: "Départ", keyboard: false
+      }).addTo(carte).bindTooltip(carteDepart ? "Départ : ta position" : "Départ : Montchat", { direction: "top", offset: [0, -14] });
+    }
+    window.L.polyline(trace, { color: couleurVar("--crv", "#1f4e6d"), weight: 3, opacity: 0.7, lineJoin: "round" }).addTo(carte);
+
+    var marqueurs = {};
+    points.forEach(function (p) {
+      var num = ordreCreneaux(tour) ? p.stop.n : (rang[p.stop.id] || "×");
+      var focus = p.stop.id === focusId;
+      var icon = window.L.divIcon({
+        className: "pinwrap",
+        html: '<span class="pin ' + p.stop.rue + '"' + (p.st.o ? ' data-out="' + p.st.o + '"' : "") +
+          (p.g[2] ? " data-approx" : "") + (focus ? " data-focus" : "") + ">" + num + "</span>",
+        iconSize: [30, 30], iconAnchor: [15, 15]
+      });
+      var mk = window.L.marker([p.g[0], p.g[1]], { icon: icon, title: p.stop.nom.replace(/<[^>]+>/g, ""), zIndexOffset: focus ? 1000 : (p.st.o === "refus" ? -500 : 0) });
+      mk.bindTooltip(p.stop.nom + (p.g[2] ? " · position approximative" : ""), { direction: "top", offset: [0, -14] });
+      mk.on("click", function () {
+        memoriserVue(tour);
+        /* hors de l'événement Leaflet : le changement de page détruit la carte */
+        setTimeout(function () { location.hash = stopHref(tour, p.stop); }, 0);
+      });
+      mk.addTo(carte);
+      marqueurs[p.stop.id] = mk;
+    });
+
+    var vue = carteVues[tour.id];
+    if (vue) { carte.setView(vue.c, vue.z); }
+    else if (focusId && marqueurs[focusId]) { carte.setView(marqueurs[focusId].getLatLng(), 16); }
+    else if (points.length) {
+      carte.fitBounds(points.map(function (p) { return [p.g[0], p.g[1]]; }), { padding: [30, 30], maxZoom: 17 });
+    } else { carte.setView(DEPART_APPELS, 12); }
+    carte.on("moveend", function () { memoriserVue(tour); });
+  }
+
+  function memoriserVue(tour) {
+    if (carte) { carteVues[tour.id] = { c: carte.getCenter(), z: carte.getZoom() }; }
+  }
+
+  function localiser(depart) {
+    if (!navigator.geolocation) { flash("Localisation indisponible"); return; }
+    flash("Localisation…");
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      var ll = [pos.coords.latitude, pos.coords.longitude];
+      if (depart) {
+        carteDepart = ll;
+        delete carteVues[APPELS.id];
+        render();
+        return;
+      }
+      if (!carte) { return; }
+      if (moi) { moi.remove(); }
+      moi = window.L.circleMarker(ll, { radius: 8, color: "#ffffff", weight: 3, fillColor: "#2a7de1", fillOpacity: 1 }).addTo(carte);
+      carte.setView(ll, Math.max(carte.getZoom(), 16));
+    }, function () { flash("Position refusée ou introuvable"); },
+    { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
+  }
+
+  /* arrivée depuis la carte : on amène la carte du commerce à l'écran */
+  function focusStop(tour, id) {
+    var el = view.querySelector('.stop[data-id="' + id + '"]');
+    if (!el) { return; }
+    if (el.hidden) {
+      write("appels:filtre", "tous");
+      var q = document.getElementById("appels-q");
+      if (q) { q.value = ""; }
+      Array.prototype.forEach.call(view.querySelectorAll(".filt"), function (p) {
+        p.setAttribute("aria-pressed", p.dataset.filtre === "tous" ? "true" : "false");
+      });
+      appliquerFiltre();
+    }
+    el.classList.add("focus");
+    var bar = document.querySelector(".bar"), filtres = view.querySelector(".filtres");
+    var haut = (bar ? bar.offsetHeight : 0) + (filtres ? filtres.offsetHeight : 0) + 12;
+    window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - haut);
+    if (geoOf(tour, { id: id })) {
+      view.insertAdjacentHTML("beforeend", '<a class="retourcarte" href="#/carte/' + encodeURIComponent(tour.id) + "/" + id + '">← Retour à la carte</a>');
     }
   }
 
@@ -915,6 +1244,14 @@
 
       if (t.id === "export-all") { exporterTout(); return; }
 
+      /* --- carte --- */
+      var ct = t.closest ? t.closest(".cartetour") : null;
+      if (ct) { location.hash = "#/carte/" + encodeURIComponent(ct.dataset.tour); return; }
+      var co = t.closest ? t.closest(".carteordre") : null;
+      if (co) { write("carte:ordre", co.dataset.ordre); render(); return; }
+      if (t.id === "carte-geo") { localiser(false); return; }
+      if (t.id === "carte-depart") { localiser(true); return; }
+
       /* --- liste d'appels : filtres + compteur d'appels --- */
       var filt = t.closest ? t.closest(".filt") : null;
       if (filt && estAppels(activeTour)) {
@@ -1024,6 +1361,9 @@
 
   function render() {
     var hash = location.hash || "#/actuelle";
+    if (carte) { carte.remove(); carte = null; }
+    moi = null;
+    carteJeton++;
     view.innerHTML = "";
     activeFiche = null;
     activeTour = null;
@@ -1037,19 +1377,29 @@
     } else if (hash.indexOf("#/fiches") === 0) {
       mode = "fiches";
       renderFiches();
+    } else if (hash.indexOf("#/carte") === 0) {
+      /* #/carte  ·  #/carte/<liste>  ·  #/carte/<liste>/<stop> */
+      mode = "carte";
+      var cp = hash.slice(8).split("/");
+      renderCarte(decodeURIComponent(cp[0] || ""), cp[1] || "");
     } else if (hash.indexOf("#/appels") === 0 || MODE === "appels") {
-      /* la page séparée n'a que deux vues : la liste et les fiches */
+      /* la page séparée : la liste, la carte et les fiches */
       mode = "appels";
       renderAppels();
+      var ap = hash.match(/^#\/appels\/([^/?]+)/);
+      if (ap && APPELS) { focusStop(APPELS, ap[1]); }
     } else if (hash.indexOf("#/archives") === 0) {
       mode = "archives";
       renderArchives();
     } else if (hash.indexOf("#/t/") === 0) {
-      var tour = tourById(hash.slice(4));
-      if (estAppels(tour)) { location.hash = "#/appels"; return; }
+      /* #/t/<tournée>  ·  #/t/<tournée>/<stop> (arrivée depuis la carte) */
+      var tp = hash.slice(4).split("/");
+      var tour = tourById(decodeURIComponent(tp[0]));
+      if (estAppels(tour)) { location.hash = "#/appels" + (tp[1] ? "/" + tp[1] : ""); return; }
       if (tour) {
         mode = isClosed(tour) ? "archives" : "actuelle";
         renderTour(tour);
+        if (tp[1]) { focusStop(tour, tp[1]); }
       } else { location.hash = "#/actuelle"; return; }
     } else {
       var cur = courante();
@@ -1063,7 +1413,7 @@
       }
     }
 
-    [[tabActuelle, "actuelle"], [tabAppels, "appels"], [tabArchives, "archives"], [tabFiches, "fiches"]]
+    [[tabActuelle, "actuelle"], [tabAppels, "appels"], [tabCarte, "carte"], [tabArchives, "archives"], [tabFiches, "fiches"]]
       .forEach(function (p) { if (p[0]) { p[0].setAttribute("aria-current", mode === p[1] ? "page" : "false"); } });
 
     updateCounts();
