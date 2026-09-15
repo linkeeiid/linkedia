@@ -59,6 +59,7 @@ Allow: /
 # ── Espaces privés : ne pas indexer ──
 User-agent: *
 Disallow: /tournee
+Disallow: /appels-3c9e51/
 Disallow: /questionnaire-b7f24a/
 Disallow: /apercu-badache-9c4e7f/
 

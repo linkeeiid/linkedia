@@ -5,11 +5,16 @@
 (function () {
   "use strict";
 
+  /* "carnet" = l'appli de tournée ; "appels" = la page séparée de prospection
+     téléphonique, qui réutilise ce fichier (même stockage, mêmes fiches) */
+  var MODE = window.CARNET_MODE === "appels" ? "appels" : "carnet";
+
   var NS = "carnet:v1:";
   var FPREF = "fiche:";
 
   var view = document.getElementById("view");
   var tabActuelle = document.getElementById("tab-actuelle");
+  var tabAppels = document.getElementById("tab-appels");
   var tabArchives = document.getElementById("tab-archives");
   var tabFiches = document.getElementById("tab-fiches");
   var gauge = document.getElementById("gauge");
@@ -23,11 +28,29 @@
     { v: "absent", t: "Absent" }
   ];
 
+  /* mêmes codes que la tournée (couleurs, stats, relances), libellés du téléphone */
+  var OUTCOMES_APPEL = [
+    { v: "interesse", t: "RDV pris" },
+    { v: "rappeler", t: "À rappeler" },
+    { v: "refus", t: "Non" },
+    { v: "absent", t: "Pas joint" }
+  ];
+
+  var FILTRES = [
+    { v: "tous", t: "Tous" },
+    { v: "afaire", t: "À appeler" },
+    { v: "rappeler", t: "À rappeler" },
+    { v: "interesse", t: "RDV" }
+  ];
+
   var MOIS = ["janvier", "février", "mars", "avril", "mai", "juin",
               "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
   var JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
 
   var TOURNEES = window.TOURNEES || [];
+  /* la liste d'appels se range comme une tournée (blocs → stops), avec kind: "appels" */
+  var APPELS = window.APPELS || null;
+  if (APPELS) { APPELS.kind = "appels"; }
   var FICHE = window.FICHE || [];
   var PREFILL = window.FICHE_PREFILL || [];
 
@@ -102,7 +125,13 @@
 
   function tourById(id) {
     for (var i = 0; i < TOURNEES.length; i++) { if (TOURNEES[i].id === id) { return TOURNEES[i]; } }
+    if (APPELS && APPELS.id === id) { return APPELS; }
     return null;
+  }
+  function estAppels(tour) { return !!tour && tour.kind === "appels"; }
+  function tourHref(tour) {
+    if (!estAppels(tour)) { return "#/t/" + tour.id; }
+    return MODE === "carnet" && tour.page ? tour.page : "#/appels";
   }
   function courante() {
     for (var i = 0; i < TOURNEES.length; i++) { if (!isClosed(TOURNEES[i])) { return TOURNEES[i]; } }
@@ -177,7 +206,10 @@
 
   function actsHtml(tour, stop) {
     var a = [];
-    if (stop.tel) { a.push('<a class="act tel" href="tel:' + stop.tel + '">' + stop.telAffiche + "</a>"); }
+    if (stop.tel) {
+      a.push('<a class="act tel' + (estAppels(tour) ? " big" : "") + '" href="tel:' + stop.tel + '" data-stop="' + stop.id + '">' +
+        (estAppels(tour) ? "Appeler · " : "") + stop.telAffiche + "</a>");
+    }
     if (stop.google) {
       a.push('<a class="act" href="https://www.google.com/search?q=' +
         encodeURIComponent(stop.google) + '" target="_blank" rel="noopener">Google</a>');
@@ -192,19 +224,27 @@
     return '<div class="acts">' + a.join("") + "</div>";
   }
 
-  function outcomeHtml(tourId, stop) {
-    var cur = stopState(tourId, stop.id).o;
-    return '<div class="outcome" role="group" aria-label="Résultat de la visite">' +
-      OUTCOMES.map(function (o) {
+  function outcomeHtml(tour, stop) {
+    var cur = stopState(tour.id, stop.id).o;
+    var appel = estAppels(tour);
+    return '<div class="outcome" role="group" aria-label="' + (appel ? "Résultat de l'appel" : "Résultat de la visite") + '">' +
+      (appel ? OUTCOMES_APPEL : OUTCOMES).map(function (o) {
         return '<button type="button" class="out" data-stop="' + stop.id + '" data-v="' + o.v +
           '" aria-pressed="' + (cur === o.v ? "true" : "false") + '">' + o.t + "</button>";
       }).join("") + "</div>";
   }
 
+  function appelsLigne(st) {
+    if (!st.a) { return ""; }
+    return "Appelé " + st.a + "× · dernier le " + quand(st.t);
+  }
+
   function stopHtml(tour, stop) {
     var st = stopState(tour.id, stop.id);
+    var appel = estAppels(tour);
     return '<div class="stop ' + stop.rue + '" data-id="' + stop.id + '"' +
-        (st.o ? ' data-out="' + st.o + '"' : "") + ">" +
+        (st.o ? ' data-out="' + st.o + '"' : "") +
+        (appel ? ' data-q="' + esc((stop.nom + " " + stop.numero + " " + stop.meta).toLowerCase()) + '"' : "") + ">" +
         '<div class="rail"><span class="node">' + stop.n + "</span></div>" +
         '<div class="card">' +
           '<div class="card__top"><span class="card__num">' + stop.numero + "</span>" +
@@ -213,10 +253,13 @@
           '<p class="card__why">' + stop.pourquoi + "</p>" +
           chipsHtml(stop.chips) +
           actsHtml(tour, stop) +
-          outcomeHtml(tour.id, stop) +
+          (appel ? '<p class="card__calls" data-calls="' + stop.id + '">' + appelsLigne(st) + "</p>" : "") +
+          outcomeHtml(tour, stop) +
           '<details class="notes" data-filled="' + (st.n ? "1" : "0") + '">' +
             "<summary>Notes rapides" + (st.n ? " ●" : "") + "</summary>" +
-            '<textarea data-stop="' + stop.id + '" placeholder="Un mot sur le passage. Le détail va dans la fiche client."></textarea>' +
+            '<textarea data-stop="' + stop.id + '" placeholder="' +
+              (appel ? "Prénom du patron, jour et heure où le rappeler…" : "Un mot sur le passage. Le détail va dans la fiche client.") +
+              '"></textarea>' +
           "</details>" +
         "</div></div>";
   }
@@ -337,6 +380,137 @@
     document.title = "Tournée " + tour.zone + " — Carnet";
   }
 
+  /* ================= rendu : liste d'appels ================= */
+
+  function sansAccent(s) {
+    s = String(s || "").toLowerCase();
+    if (s.normalize) { s = s.normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+    /* « asta richard » doit trouver « Asta-Richard », « del b » « Del'B » */
+    return s.replace(/[-'’.,·()]/g, " ").replace(/\s+/g, " ");
+  }
+
+  function renderAppels() {
+    var tour = APPELS;
+    if (!tour) {
+      view.innerHTML = '<header class="intro"><p class="eyebrow">Prospection téléphonique</p>' +
+        "<h1>Aucune liste d'appels</h1>" +
+        '<p class="lede">Demande-moi d\'en préparer une.</p></header>';
+      activeTour = null;
+      setGauge(0);
+      return;
+    }
+    var st = statsOf(tour);
+    var filtre = read("appels:filtre", "tous");
+    var html = "";
+
+    html += '<header class="intro">';
+    html += '<p class="eyebrow">Prospection téléphonique · vérifiée le ' + dateCourte(tour.date) + "</p>";
+    html += "<h1>" + tour.titre + "</h1>";
+    if (tour.resume) { html += '<p class="lede">' + tour.resume + "</p>"; }
+
+    html += '<div class="score">' +
+      '<div class="s-ok"><b>' + st.interesse + "</b><span>RDV pris</span></div>" +
+      '<div class="s-wait"><b>' + st.rappeler + "</b><span>à rappeler</span></div>" +
+      '<div class="s-no"><b>' + st.refus + "</b><span>non</span></div>" +
+      '<div class="s-absent"><b>' + st.absent + "</b><span>pas joints</span></div></div>";
+
+    if (tour.chiffres && tour.chiffres.length) {
+      html += '<div class="tiles">';
+      tour.chiffres.forEach(function (c) {
+        html += '<div class="tile"><span class="tile__n">' + c.n + '</span><span class="tile__l">' + c.l + "</span></div>";
+      });
+      html += "</div>";
+    }
+
+    if (tour.rues && tour.rues.length) {
+      html += '<div class="legend">';
+      tour.rues.forEach(function (r) {
+        html += "<span><i style=\"background:var(--" + r.code + ")\"></i> " + r.nom + "</span>";
+      });
+      html += "</div>";
+    }
+    html += "</header>";
+
+    if (tour.antiseche && tour.antiseche.length) {
+      html += '<details class="panel cheat"><summary>Antisèche d\'appel <small>à relire avant de composer</small></summary>';
+      tour.antiseche.forEach(function (a) {
+        html += '<div class="cheat__step"><h3>' + a.t + "</h3>" + a.html + "</div>";
+      });
+      html += "</details>";
+    }
+
+    html += '<div class="filtres">' +
+      '<div class="pills" role="group" aria-label="Filtrer la liste">' +
+      FILTRES.map(function (f) {
+        return '<button type="button" class="pill filt" data-filtre="' + f.v + '" aria-pressed="' +
+          (filtre === f.v ? "true" : "false") + '">' + f.t + "</button>";
+      }).join("") + "</div>" +
+      '<input type="search" class="fld__in" id="appels-q" placeholder="Chercher un nom, une commune, un métier…" autocomplete="off" aria-label="Chercher dans la liste">' +
+      '<p class="filtres__n" id="appels-n" aria-live="polite"></p></div>';
+
+    (tour.blocs || []).forEach(function (bloc, bi) {
+      html += '<section class="block" data-bloc="' + bi + '"><div class="block__head"><span class="block__time">' +
+        bloc.heure + '</span><span class="block__what">' + bloc.quoi + "</span></div>";
+      if (bloc.conseil) { html += '<p class="block__tip">' + bloc.conseil + "</p>"; }
+      bloc.stops.forEach(function (s) { html += stopHtml(tour, s); });
+      html += "</section>";
+    });
+
+    if (tour.reserves && tour.reserves.length) {
+      html += '<section class="panel"><h2>À savoir</h2>';
+      tour.reserves.forEach(function (r) { html += "<p>" + r + "</p>"; });
+      html += "</section>";
+    }
+
+    html += '<footer class="foot"><p>Tes résultats, tes notes et le nombre d\'appels restent enregistrés sur cet appareil. ' +
+      "Les « RDV pris » et « À rappeler » remontent aussi dans l'encart « À relancer » du carnet de tournée (onglet Passées), " +
+      "et les fiches clients sont les mêmes des deux côtés.</p></footer>";
+
+    view.innerHTML = html;
+
+    stopsOf(tour).forEach(function (stop) {
+      var ta = view.querySelector('textarea[data-stop="' + stop.id + '"]');
+      if (ta) { ta.value = stopState(tour.id, stop.id).n || ""; }
+      var el = view.querySelector('.stop[data-id="' + stop.id + '"]');
+      if (el) { el.setAttribute("data-q", sansAccent(el.getAttribute("data-q"))); }
+    });
+
+    activeTour = tour;
+    var bar = document.querySelector(".bar");
+    if (bar) { document.documentElement.style.setProperty("--barh", bar.offsetHeight + "px"); }
+    appliquerFiltre();
+    setGauge(st.total ? st.done / st.total : 0);
+    document.title = "Appels — Carnet";
+  }
+
+  function appliquerFiltre() {
+    var filtre = read("appels:filtre", "tous");
+    var qEl = document.getElementById("appels-q");
+    var q = qEl ? sansAccent(qEl.value.trim()) : "";
+    var vus = 0, total = 0;
+
+    Array.prototype.forEach.call(view.querySelectorAll(".block"), function (bloc) {
+      var visibles = 0;
+      Array.prototype.forEach.call(bloc.querySelectorAll(".stop"), function (el) {
+        var o = el.getAttribute("data-out");
+        var ok = filtre === "tous" ||
+          (filtre === "afaire" && (!o || o === "absent")) ||
+          o === filtre;
+        if (ok && q && (el.getAttribute("data-q") || "").indexOf(q) === -1) { ok = false; }
+        el.hidden = !ok;
+        total++;
+        if (ok) { visibles++; vus++; }
+      });
+      bloc.hidden = visibles === 0;
+    });
+
+    var n = document.getElementById("appels-n");
+    if (n) {
+      n.textContent = vus === total ? total + " entreprises" :
+        vus + " sur " + total + (vus ? "" : " — rien ne correspond");
+    }
+  }
+
   /* ================= rendu : archives ================= */
 
   function renderArchives() {
@@ -347,7 +521,7 @@
       '<p class="lede">Les rues déjà faites, avec leurs résultats. Sers-t\'en pour ne jamais repasser deux fois au même endroit.</p></header>';
 
     var relances = [];
-    TOURNEES.forEach(function (t) {
+    TOURNEES.concat(APPELS ? [APPELS] : []).forEach(function (t) {
       stopsOf(t).forEach(function (stop) {
         var st = stopState(t.id, stop.id);
         if (st.o === "rappeler" || st.o === "interesse") { relances.push({ tour: t, stop: stop, st: st }); }
@@ -522,7 +696,7 @@
           etab: stop.nom,
           activite: (stop.meta || "").split(" · ")[0],
           tel: stop.telAffiche || "",
-          adresse: (stop.numero && stop.numero !== "—" ? stop.numero + " " : "") + rue
+          adresse: stop.adresse || ((stop.numero && stop.numero !== "—" ? stop.numero + " " : "") + rue)
         };
         PREFILL.forEach(function (k) { if (pre[k]) { f.v[k] = pre[k]; } });
         f.nom = stop.nom;
@@ -573,7 +747,7 @@
     html += '<div class="bar-mini big"><i style="width:' + pct + '%"></i></div>';
     if (f.src) {
       var src = findStop(f.src.tour, f.src.stop);
-      if (src) { html += '<p class="fiche-src">Ouverte depuis <a href="#/t/' + src.tour.id + '">' + src.tour.zone + "</a> · " + esc(src.stop.nom) + "</p>"; }
+      if (src) { html += '<p class="fiche-src">Ouverte depuis <a href="' + tourHref(src.tour) + '">' + src.tour.zone + "</a> · " + esc(src.stop.nom) + "</p>"; }
     }
     html += "</header>";
 
@@ -741,6 +915,28 @@
 
       if (t.id === "export-all") { exporterTout(); return; }
 
+      /* --- liste d'appels : filtres + compteur d'appels --- */
+      var filt = t.closest ? t.closest(".filt") : null;
+      if (filt && estAppels(activeTour)) {
+        write("appels:filtre", filt.dataset.filtre);
+        Array.prototype.forEach.call(filt.parentNode.querySelectorAll(".filt"), function (p) {
+          p.setAttribute("aria-pressed", p === filt ? "true" : "false");
+        });
+        appliquerFiltre();
+        return;
+      }
+      var telLink = t.closest ? t.closest(".act.tel") : null;
+      if (telLink && estAppels(activeTour) && telLink.dataset.stop) {
+        /* pas de preventDefault : le téléphone compose normalement */
+        var cs = stopState(activeTour.id, telLink.dataset.stop);
+        cs.a = (cs.a || 0) + 1;
+        cs.t = Date.now();
+        setStopState(activeTour.id, telLink.dataset.stop, cs);
+        var ligne = view.querySelector('[data-calls="' + telLink.dataset.stop + '"]');
+        if (ligne) { ligne.textContent = appelsLigne(cs); }
+        return;
+      }
+
       /* --- résultats de visite --- */
       var btn = t.closest ? t.closest(".out") : null;
       if (btn && activeTour) {
@@ -779,6 +975,8 @@
 
     view.addEventListener("input", function (ev) {
       var t = ev.target;
+
+      if (t.id === "appels-q") { appliquerFiltre(); return; }
 
       if (activeFiche && t.dataset && t.dataset.fk) {
         var f = getFiche(activeFiche);
@@ -839,11 +1037,16 @@
     } else if (hash.indexOf("#/fiches") === 0) {
       mode = "fiches";
       renderFiches();
+    } else if (hash.indexOf("#/appels") === 0 || MODE === "appels") {
+      /* la page séparée n'a que deux vues : la liste et les fiches */
+      mode = "appels";
+      renderAppels();
     } else if (hash.indexOf("#/archives") === 0) {
       mode = "archives";
       renderArchives();
     } else if (hash.indexOf("#/t/") === 0) {
       var tour = tourById(hash.slice(4));
+      if (estAppels(tour)) { location.hash = "#/appels"; return; }
       if (tour) {
         mode = isClosed(tour) ? "archives" : "actuelle";
         renderTour(tour);
@@ -860,19 +1063,25 @@
       }
     }
 
-    tabActuelle.setAttribute("aria-current", mode === "actuelle" ? "page" : "false");
-    tabArchives.setAttribute("aria-current", mode === "archives" ? "page" : "false");
-    tabFiches.setAttribute("aria-current", mode === "fiches" ? "page" : "false");
+    [[tabActuelle, "actuelle"], [tabAppels, "appels"], [tabArchives, "archives"], [tabFiches, "fiches"]]
+      .forEach(function (p) { if (p[0]) { p[0].setAttribute("aria-current", mode === p[1] ? "page" : "false"); } });
 
     updateCounts();
+  }
+
+  function setCount(tab, txt) {
+    var n = tab && tab.querySelector(".n");
+    if (n) { n.textContent = txt; }
   }
 
   function updateCounts() {
     var cur = courante();
     var s = cur ? statsOf(cur) : { done: 0, total: 0 };
-    tabActuelle.querySelector(".n").textContent = s.total ? s.done + "/" + s.total : "";
-    tabArchives.querySelector(".n").textContent = archivees().length || "";
-    tabFiches.querySelector(".n").textContent = allFiches().length || "";
+    var sa = APPELS ? statsOf(APPELS) : { done: 0, total: 0 };
+    setCount(tabActuelle, s.total ? s.done + "/" + s.total : "");
+    setCount(tabAppels, sa.total ? sa.done + "/" + sa.total : "");
+    setCount(tabArchives, archivees().length || "");
+    setCount(tabFiches, allFiches().length || "");
   }
 
   /* ================= thème ================= */
@@ -901,7 +1110,8 @@
   window.addEventListener("hashchange", render);
   render();
 
-  if ("serviceWorker" in navigator) {
+  /* le service worker du carnet ne couvre que /tournee/ */
+  if (MODE === "carnet" && "serviceWorker" in navigator) {
     window.addEventListener("load", function () {
       navigator.serviceWorker.register("sw.js").catch(function () {});
     });

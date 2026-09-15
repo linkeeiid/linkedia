@@ -4,20 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<title>Carnet de tournée</title>
+<title>Liste d'appels — LinkedIA</title>
 
-<meta name="description" content="Carnet de prospection terrain : tournée en cours, tournées passées et fiches clients.">
+<meta name="description" content="Prospection téléphonique : entreprises de la métropole de Lyon sans site internet.">
 <meta name="theme-color" content="#eeeeea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14181c" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Tournée">
+<meta name="apple-mobile-web-app-title" content="Appels">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
 
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-180.png">
-<link rel="icon" href="icon-180.png" type="image/png">
-<link rel="stylesheet" href="app.css">
+<link rel="apple-touch-icon" href="../tournee/icon-180.png">
+<link rel="icon" href="../tournee/icon-180.png" type="image/png">
+<link rel="stylesheet" href="../tournee/app.css">
 </head>
 <body>
 
@@ -33,10 +32,11 @@
 }
 </style>
 
+<!-- même code et même mémorisation que le carnet : débloqué ici = débloqué là-bas -->
 <div id="lkgate">
   <form id="lkgate-form" style="width:min(320px,86vw);text-align:center">
     <div style="font-size:34px;margin-bottom:10px">🔒</div>
-    <h1 style="font-size:18px;margin:0 0 4px">Carnet de tournée</h1>
+    <h1 style="font-size:18px;margin:0 0 4px">Liste d'appels</h1>
     <p style="margin:0 0 18px;opacity:.7;font-size:14px">Entre ton code pour accéder</p>
     <input id="lkgate-pin" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="8" aria-label="Code d'accès">
     <p id="lkgate-err" style="min-height:18px;margin:8px 0 0;color:#c0392b;font-size:13px"></p>
@@ -74,14 +74,13 @@
 
 <div class="bar">
   <div class="bar__inner">
-    <p class="brand">Carnet de tournée<small>LinkedIA · prospection terrain</small></p>
+    <p class="brand">Liste d'appels<small>LinkedIA · prospection téléphonique</small></p>
     <button class="iconbtn" id="theme" type="button" aria-label="Thème">◐</button>
   </div>
   <nav class="tabs" aria-label="Sections">
-    <a class="tab" id="tab-actuelle" href="#/actuelle">Actuelle <span class="n"></span></a>
-    <a class="tab" id="tab-appels" href="../appels-3c9e51/">Appels <span class="n"></span></a>
-    <a class="tab" id="tab-archives" href="#/archives">Passées <span class="n"></span></a>
+    <a class="tab" id="tab-appels" href="#/appels">Appels <span class="n"></span></a>
     <a class="tab" id="tab-fiches" href="#/fiches">Fiches <span class="n"></span></a>
+    <a class="tab" href="../tournee/">Carnet →</a>
   </nav>
   <div class="gauge"><div class="gauge__fill" id="gauge"></div></div>
 </div>
@@ -90,9 +89,9 @@
 
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script src="data/tournees.js"></script>
-<script src="data/appels.js"></script>
-<script src="data/fiche.js"></script>
-<script src="app.js"></script>
+<script>window.CARNET_MODE = "appels";</script>
+<script src="../tournee/data/appels.js"></script>
+<script src="../tournee/data/fiche.js"></script>
+<script src="../tournee/app.js"></script>
 </body>
 </html>
