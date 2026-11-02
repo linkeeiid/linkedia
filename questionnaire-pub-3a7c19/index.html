@@ -86,8 +86,8 @@
   .opts{display:grid; gap:9px}
   .opts.two{grid-template-columns:1fr 1fr}
   .opts.three{grid-template-columns:repeat(3,1fr)}
-  .duo + .q, .duo + .duo{margin-top:20px}
   @media (max-width:620px){ .opts.three{grid-template-columns:1fr} }
+  .duo + .q, .duo + .duo{margin-top:20px}
   @media (max-width:620px){ .opts.two{grid-template-columns:1fr} }
 
   .opt{display:flex; align-items:flex-start; gap:11px; padding:11px 13px; border:1px solid var(--line);
@@ -199,11 +199,12 @@
       <div class="brand">LinkedIA<span>Publicité en ligne · Meta, Google, TikTok</span></div>
     </div>
     <h1>Votre institut et la publicité en ligne : préparons-la ensemble</h1>
-    <p>Merci pour notre rendez-vous. Vos réponses me servent à réaliser l’étude de marché de votre institut,
-       puis à construire une stratégie publicitaire qui vous ressemble. Comptez 10 à 15 minutes.
+    <p>Merci pour notre rendez-vous. Vos réponses me servent à réaliser l’étude de marché de votre institut
+       (épilation laser et amincissement), puis à construire une stratégie publicitaire qui vous ressemble. Comptez 10 à 15 minutes.
        Répondez à ce que vous savez : nous verrons le reste ensemble. Tout ce que vous me confiez reste entre nous.</p>
     <div class="who">
-      <span>Préparé par <b>Jérémy Halimi</b> — LinkedIA</span>
+      <span>Préparé pour <b>YLC Esthétique</b></span>
+      <span>Par <b>Jérémy Halimi</b> — LinkedIA</span>
       <span><b>06 65 14 14 33</b></span>
       <span>contact@linkeedia.fr</span>
     </div>
@@ -290,9 +291,41 @@
       <div class="q"><label for="q_autres">Les autres soins que prennent souvent vos clientes laser</label><input type="text" id="q_autres" data-l="Autres soins vendus" placeholder="Soins visage, onglerie…"></div>
     </section>
 
+    <!-- Amincissement -->
+    <section>
+      <div class="sh"><div class="no">3</div><h2>L’amincissement chez vous</h2></div>
+      <p class="intro">Même logique que pour le laser : vos soins, vos prix, vos clientes.</p>
+      <div class="q"><span class="qlabel">Votre technique</span>
+        <div class="opts two" data-g="Technique d’amincissement">
+          <label class="opt"><input type="checkbox" name="mince_tech" value="Cryolipolyse"><span class="txt"><b>Cryolipolyse</b></span></label>
+          <label class="opt"><input type="checkbox" name="mince_tech" value="Radiofréquence"><span class="txt"><b>Radiofréquence</b></span></label>
+          <label class="opt"><input type="checkbox" name="mince_tech" value="Lipocavitation (ultrasons)"><span class="txt"><b>Lipocavitation</b><small>Ultrasons</small></span></label>
+          <label class="opt"><input type="checkbox" name="mince_tech" value="Palper-rouler mécanique"><span class="txt"><b>Palper-rouler mécanique</b></span></label>
+          <label class="opt"><input type="checkbox" name="mince_tech" value="Électrostimulation (EMS)"><span class="txt"><b>Électrostimulation</b><small>EMS</small></span></label>
+          <label class="opt"><input type="checkbox" name="mince_tech" value="Autre"><span class="txt"><b>Autre</b></span></label>
+        </div>
+      </div>
+      <div class="q"><label for="q_mince_appareil">Nom de l’appareil ou du soin</label><input type="text" id="q_mince_appareil" data-l="Appareil amincissement"></div>
+      <div class="q"><label for="q_mince_prix">Vos cures et leurs prix</label>
+        <p class="hint">Par exemple : « Cure 6 séances : 390 € » · « Séance découverte : 49 € »</p>
+        <textarea id="q_mince_prix" data-l="Cures et prix amincissement"></textarea></div>
+      <div class="duo">
+        <div class="q"><label for="q_mince_seances">Séances en moyenne par cliente</label><input type="text" id="q_mince_seances" data-l="Séances amincissement par cliente" placeholder="ex. 6"></div>
+        <div class="q"><label for="q_mince_valeur">Ce que vous rapporte une cliente amincissement en moyenne</label><input type="text" id="q_mince_valeur" data-l="Valeur d’une cliente amincissement (€)" placeholder="ex. 450 €"></div>
+      </div>
+      <div class="q"><span class="qlabel">Proposez-vous un bilan avant la première séance ?</span>
+        <div class="opts three" data-g="Bilan amincissement">
+          <label class="opt"><input type="radio" name="mince_bilan" value="Oui, gratuit"><span class="txt"><b>Oui, gratuit</b></span></label>
+          <label class="opt"><input type="radio" name="mince_bilan" value="Oui, payant"><span class="txt"><b>Oui, payant</b></span></label>
+          <label class="opt"><input type="radio" name="mince_bilan" value="Non"><span class="txt"><b>Non</b></span></label>
+        </div>
+      </div>
+      <div class="q"><label for="q_mince_clientes">Vos clientes amincissement : âge, attentes</label><input type="text" id="q_mince_clientes" data-l="Clientes amincissement" placeholder="ex. 30-55 ans, avant l’été…"></div>
+    </section>
+
     <!-- 3 -->
     <section>
-      <div class="sh"><div class="no">3</div><h2>Vos clientes</h2></div>
+      <div class="sh"><div class="no">4</div><h2>Vos clientes</h2></div>
       <p class="intro">Pour montrer vos publicités aux bonnes personnes, au bon endroit.</p>
       <div class="duo">
         <div class="q"><label for="q_age">Âge de vos clientes types</label><input type="text" id="q_age" data-l="Âge des clientes" placeholder="ex. 20-40 ans"></div>
@@ -306,7 +339,7 @@
 
     <!-- 4 -->
     <section>
-      <div class="sh"><div class="no">4</div><h2>Vos concurrents</h2></div>
+      <div class="sh"><div class="no">5</div><h2>Vos concurrents</h2></div>
       <p class="intro">L’étude de marché comparera votre offre à celle des centres autour de vous.</p>
       <div class="q"><label for="q_conc">Les centres laser, instituts ou cabinets que vous croisez le plus</label><textarea id="q_conc" data-l="Concurrents" placeholder="Noms, quartiers, et leurs prix si vous les connaissez"></textarea></div>
       <div class="q"><label for="q_diff">Ce que vous faites mieux qu’eux</label><textarea id="q_diff" data-l="Ce que vous faites mieux"></textarea></div>
@@ -314,7 +347,7 @@
 
     <!-- 5 -->
     <section>
-      <div class="sh"><div class="no">5</div><h2>Votre publicité jusqu’ici</h2></div>
+      <div class="sh"><div class="no">6</div><h2>Votre publicité jusqu’ici</h2></div>
       <p class="intro">Vous avez déjà obtenu de très bons résultats : comprendre ce qui a marché est le meilleur point de départ pour les retrouver.</p>
       <div class="duo">
         <div class="q"><label for="q_qui">Qui gérait vos publicités ?</label><input type="text" id="q_qui" data-l="Gérées par" placeholder="Freelance, agence, vous-même…"></div>
@@ -358,10 +391,45 @@
 
     <!-- 6 -->
     <section>
-      <div class="sh"><div class="no">6</div><h2>Vos objectifs</h2></div>
+      <div class="sh"><div class="no">7</div><h2>Vos objectifs</h2></div>
+      <p class="intro">Vous m’avez parlé d’environ 100 rendez-vous d’épilation laser et 30 rendez-vous d’amincissement par mois,
+         et surtout de vrais rendez-vous, pas de simples demandes de renseignements. Précisons-le ensemble.</p>
       <div class="duo">
-        <div class="q"><label for="q_objectif">Nouvelles clientes laser souhaitées par mois</label><input type="text" id="q_objectif" data-l="Objectif par mois" placeholder="ex. 20"></div>
-        <div class="q"><label for="q_capacite">Rendez-vous laser en plus possibles par semaine</label><input type="text" id="q_capacite" data-l="Capacité en plus par semaine" placeholder="ex. 10"></div>
+        <div class="q"><label for="q_obj_laser">Rendez-vous d’épilation laser souhaités par mois</label><input type="text" id="q_obj_laser" data-l="Objectif rendez-vous laser par mois" placeholder="ex. 100"></div>
+        <div class="q"><label for="q_obj_mince">Rendez-vous d’amincissement souhaités par mois</label><input type="text" id="q_obj_mince" data-l="Objectif rendez-vous amincissement par mois" placeholder="ex. 30"></div>
+      </div>
+      <div class="duo">
+        <div class="q"><label for="q_cap_laser">Rendez-vous laser que vous pouvez recevoir par semaine</label><input type="text" id="q_cap_laser" data-l="Capacité laser par semaine" placeholder="ex. 25"></div>
+        <div class="q"><label for="q_cap_mince">Rendez-vous amincissement par semaine</label><input type="text" id="q_cap_mince" data-l="Capacité amincissement par semaine" placeholder="ex. 8"></div>
+      </div>
+      <div class="q"><span class="qlabel">Pour vous, un rendez-vous réussi, c’est quand la personne…</span>
+        <div class="opts two" data-g="Rendez-vous qualifié">
+          <label class="opt"><input type="radio" name="qualif" value="a réservé un créneau dans l’agenda"><span class="txt"><b>A réservé un créneau dans votre agenda</b></span></label>
+          <label class="opt"><input type="radio" name="qualif" value="a confirmé au téléphone"><span class="txt"><b>A confirmé au téléphone</b></span></label>
+          <label class="opt"><input type="radio" name="qualif" value="est venue au rendez-vous"><span class="txt"><b>Est venue au rendez-vous</b></span></label>
+          <label class="opt"><input type="radio" name="qualif" value="a acheté une séance ou un forfait"><span class="txt"><b>A acheté une séance ou un forfait</b></span></label>
+        </div>
+      </div>
+      <div class="q"><span class="qlabel">Avec vos anciens contacts, qu’est-ce qui coinçait ?</span>
+        <div class="opts two" data-g="Problèmes des anciens contacts">
+          <label class="opt"><input type="checkbox" name="soucis" value="Ne répondaient pas au téléphone"><span class="txt"><b>Ils ne répondaient pas au téléphone</b></span></label>
+          <label class="opt"><input type="checkbox" name="soucis" value="Voulaient juste un renseignement ou un prix"><span class="txt"><b>Ils voulaient juste un renseignement ou un prix</b></span></label>
+          <label class="opt"><input type="checkbox" name="soucis" value="Réservaient mais ne venaient pas"><span class="txt"><b>Ils réservaient mais ne venaient pas</b></span></label>
+          <label class="opt"><input type="checkbox" name="soucis" value="Trouvaient trop cher"><span class="txt"><b>Ils trouvaient trop cher</b></span></label>
+          <label class="opt"><input type="checkbox" name="soucis" value="Habitaient trop loin"><span class="txt"><b>Ils habitaient trop loin</b></span></label>
+        </div>
+      </div>
+      <div class="duo">
+        <div class="q"><label for="q_joignables">Sur 10 contacts, combien arriviez-vous à joindre ?</label><input type="text" id="q_joignables" data-l="Contacts joignables sur 10" placeholder="ex. 4"></div>
+        <div class="q"><label for="q_lapins">Rendez-vous non honorés, environ</label><input type="text" id="q_lapins" data-l="Rendez-vous non honorés" placeholder="ex. 1 sur 5"></div>
+      </div>
+      <div class="q"><span class="qlabel">Seriez-vous d’accord pour demander un petit acompte à la réservation ?</span>
+        <p class="hint">Par exemple 20 €, déduits de la séance : c’est le moyen le plus efficace d’éviter les rendez-vous non honorés et les simples curieux.</p>
+        <div class="opts three" data-g="Acompte à la réservation">
+          <label class="opt"><input type="radio" name="acompte" value="Oui"><span class="txt"><b>Oui</b></span></label>
+          <label class="opt"><input type="radio" name="acompte" value="Non"><span class="txt"><b>Non</b></span></label>
+          <label class="opt"><input type="radio" name="acompte" value="À discuter"><span class="txt"><b>À discuter</b></span></label>
+        </div>
       </div>
       <div class="q"><label for="q_creux">Vos périodes ou créneaux à remplir en priorité</label><input type="text" id="q_creux" data-l="Créneaux à remplir" placeholder="Matinées, début de semaine, été…"></div>
       <div class="q"><span class="qlabel">Budget publicitaire mensuel envisagé</span>
@@ -389,7 +457,7 @@
 
     <!-- 7 -->
     <section>
-      <div class="sh"><div class="no">7</div><h2>Vos offres</h2></div>
+      <div class="sh"><div class="no">8</div><h2>Vos offres</h2></div>
       <p class="intro">Une bonne offre de bienvenue peut diviser le coût d’une nouvelle cliente. Cochez ce que vous seriez prête à proposer.</p>
       <div class="q"><div class="opts two" data-g="Offres possibles">
         <label class="opt"><input type="checkbox" name="offres" value="Consultation offerte"><span class="txt"><b>Consultation ou test offert</b></span></label>
@@ -398,6 +466,8 @@
         <label class="opt"><input type="checkbox" name="offres" value="Parrainage"><span class="txt"><b>Parrainage</b><small>Une séance offerte à la marraine</small></span></label>
         <label class="opt"><input type="checkbox" name="offres" value="Paiement en plusieurs fois"><span class="txt"><b>Paiement en plusieurs fois</b></span></label>
         <label class="opt"><input type="checkbox" name="offres" value="Offres de saison"><span class="txt"><b>Offres de saison</b><small>Préparer l’été dès l’automne</small></span></label>
+        <label class="opt"><input type="checkbox" name="offres" value="Bilan minceur offert"><span class="txt"><b>Bilan minceur offert</b></span></label>
+        <label class="opt"><input type="checkbox" name="offres" value="Séance découverte amincissement"><span class="txt"><b>Séance découverte amincissement</b></span></label>
       </div></div>
       <div class="q"><label for="q_offre_actuelle">Votre offre du moment</label><input type="text" id="q_offre_actuelle" data-l="Offre du moment"></div>
       <div class="q"><label for="q_jamais">Ce que vous ne voulez surtout pas</label><input type="text" id="q_jamais" data-l="À éviter" placeholder="Prix cassés, certaines formulations…"></div>
@@ -405,7 +475,7 @@
 
     <!-- 8 -->
     <section>
-      <div class="sh"><div class="no">8</div><h2>Pour démarrer en confiance</h2></div>
+      <div class="sh"><div class="no">9</div><h2>Pour démarrer en confiance</h2></div>
       <p class="intro">Vous avez déjà connu de bons résultats : c’est normal de vouloir être rassurée. Dites-moi ce qui compte pour vous.</p>
       <div class="q"><div class="opts" data-g="Ce qui me rassurerait">
         <label class="opt"><input type="checkbox" name="confiance" value="Des objectifs chiffrés validés ensemble"><span class="txt"><b>Des objectifs chiffrés, validés ensemble avant de commencer</b></span></label>
@@ -495,8 +565,8 @@
   form.addEventListener('input', function () { refresh(); clearTimeout(t); t = setTimeout(save, 400); });
   form.addEventListener('change', function () { refresh(); clearTimeout(t); t = setTimeout(save, 400); });
 
-  /* ---------- Récapitulatif envoyé par e-mail ---------- */
-  function recap() {
+  /* ---------- Récapitulatif envoyé par e-mail (découpé si long : rien n'est coupé) ---------- */
+  function blocks() {
     var out = [];
     form.querySelectorAll('section').forEach(function (sec) {
       var lines = [];
@@ -511,9 +581,18 @@
       });
       if (lines.length) out.push('== ' + sec.querySelector('h2').textContent.trim().toUpperCase() + ' ==\n' + lines.join('\n'));
     });
-    var txt = out.join('\n\n');
-    if (txt.length > 3800) txt = txt.slice(0, 3800) + '\n\n[…] Réponses longues : demander la version imprimée à la cliente.';
-    return txt || '(aucune réponse remplie)';
+    return out;
+  }
+  // Le formulaire du site accepte 4 000 caractères par message : au-delà, plusieurs e-mails numérotés
+  function parts() {
+    var res = [], cur = '';
+    blocks().forEach(function (b) {
+      while (b.length > 3700) { if (cur) { res.push(cur); cur = ''; } res.push(b.slice(0, 3700)); b = b.slice(3700); }
+      if (cur && (cur + '\n\n' + b).length > 3700) { res.push(cur); cur = b; }
+      else cur = cur ? cur + '\n\n' + b : b;
+    });
+    if (cur) res.push(cur);
+    return res.length ? res : ['(aucune réponse remplie)'];
   }
 
   /* ---------- Envoi ---------- */
@@ -533,14 +612,24 @@
     busy = true;
     go.disabled = true;
     go.textContent = 'Envoi en cours…';
-    fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: nom, email: mail, type: 'Questionnaire pub — institut', msg: recap(), website: document.getElementById('website').value })
-    }).then(function (r) {
-      if (!r.ok) throw new Error('http ' + r.status);
-      return r.json();
-    }).then(function () {
+    var list = parts();
+    var chain = Promise.resolve();
+    list.forEach(function (txt, i) {
+      chain = chain.then(function () {
+        return fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: nom,
+            email: mail,
+            type: 'Questionnaire pub — institut' + (list.length > 1 ? ' (' + (i + 1) + '/' + list.length + ')' : ''),
+            msg: txt,
+            website: document.getElementById('website').value
+          })
+        }).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); });
+      });
+    });
+    chain.then(function () {
       msg.className = 'msg ok';
       msg.textContent = 'C’est envoyé, merci ! Je reviens vers vous avec l’étude de marché de votre institut.';
       go.textContent = 'Réponses envoyées ✓';
