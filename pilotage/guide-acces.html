@@ -227,9 +227,10 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
           <ol>
             <li>Sur <b>reporting-worker</b> → <span class="ui">Générer un nouveau token</span>.</li>
             <li>App : <b>LinkedIA Reporting</b> · Expiration : <span class="ui">Jamais</span>.</li>
-            <li>Autorisation : coche <b>uniquement</b> celle-ci :</li>
+            <li>Autorisations : coche <b>ads_read</b> (les chiffres), et pour récupérer les demandes de contact des formulaires, ces quatre-là aussi :</li>
           </ol>
-          <div class="copy"><span class="val mono"><small>Autorisation</small>ads_read</span><button type="button">Copier</button></div>
+          <div class="copy"><span class="val mono"><small>Chiffres</small>ads_read</span><button type="button">Copier</button></div>
+          <div class="copy"><span class="val mono"><small>Demandes de contact</small>leads_retrieval, pages_show_list, pages_read_engagement, pages_manage_ads</span><button type="button">Copier</button></div>
           <ol start="4">
             <li><span class="ui">Générer le token</span>, puis copie-le tout de suite : Meta ne le réaffiche jamais (sinon, il suffit d'en générer un autre).</li>
           </ol>
