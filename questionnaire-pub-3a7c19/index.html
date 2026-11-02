@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Votre publicité en ligne — Questionnaire · LinkedIA</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../brand/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../brand/icon-192.png">
+<link rel="apple-touch-icon" href="../brand/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="LinkedIA">
+<meta property="og:title" content="Votre publicité en ligne — Questionnaire · LinkedIA">
+<meta property="og:description" content="Quelques questions sur votre institut, pour préparer votre étude de marché et votre stratégie publicitaire.">
+<meta property="og:image" content="https://linkeedia.fr/brand/og-linkedia.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  :root{
+    --ink:#0d0d0f; --paper:#fff; --greige:#f5f3ee; --lime:#c9f24d;
+    --muted:#7a746a; --line:#e4e0d8; --soft:#faf9f6;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--greige); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
+
+  .wrap{max-width:860px; margin:0 auto; padding:0 20px 80px}
+
+  /* ---------- En-tête ---------- */
+  header{background:var(--ink); color:#f5f3ee; margin-bottom:26px}
+  .hd{max-width:860px; margin:0 auto; padding:34px 20px 38px}
+  .idb{display:flex; align-items:center; gap:14px}
+  .idb .mark{width:58px; height:58px; flex:0 0 auto; border-radius:14px;
+    border:1px solid rgba(245,243,238,.14); display:block}
+  .hd .brand{font-size:19px; letter-spacing:-.01em; color:#f5f3ee; font-weight:700; line-height:1.15}
+  .hd .brand span{display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--lime); font-weight:700; margin-top:4px}
+  .hd h1{font-size:clamp(26px,5vw,38px); line-height:1.15; font-weight:700; letter-spacing:-.02em; margin:22px 0 0}
+  .hd p{color:#b8b2a7; font-size:15px; line-height:1.6; margin-top:14px; max-width:62ch}
+  .hd .who{margin-top:22px; padding-top:18px; border-top:1px solid rgba(245,243,238,.16);
+    display:flex; flex-wrap:wrap; gap:6px 26px; font-size:13.5px; color:#8f8a80}
+  .hd .who b{color:#f5f3ee; font-weight:600}
+
+  /* ---------- Barre de progression ---------- */
+  .prog{position:sticky; top:0; z-index:30; background:rgba(245,243,238,.94);
+    backdrop-filter:saturate(1.4) blur(6px); border-bottom:1px solid var(--line);
+    margin:-26px -20px 26px; padding:11px 20px; display:flex; align-items:center; gap:14px}
+  .prog .bar{flex:1; height:6px; background:#e0dcd3; border-radius:99px; overflow:hidden}
+  .prog .bar i{display:block; height:100%; width:0; background:var(--ink); border-radius:99px; transition:width .3s}
+  .prog .n{font-size:13px; font-weight:600; color:#5c574f; white-space:nowrap; font-variant-numeric:tabular-nums}
+
+  /* ---------- Sections ---------- */
+  section{background:var(--paper); border:1px solid var(--line); border-radius:16px;
+    padding:26px 26px 28px; margin-bottom:18px}
+  .sh{display:flex; align-items:baseline; gap:12px; margin-bottom:6px}
+  .sh .no{width:28px; height:28px; flex:0 0 auto; border-radius:50%; background:var(--ink); color:var(--lime);
+    font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; transform:translateY(3px)}
+  .sh h2{font-size:20px; line-height:1.25; font-weight:700; letter-spacing:-.01em}
+  .intro{color:#6b665d; font-size:14.5px; line-height:1.6; margin:0 0 20px 40px}
+
+  .tip{background:var(--soft); border-left:3px solid var(--lime); border-radius:0 10px 10px 0;
+    padding:13px 16px; margin:0 0 18px; font-size:14px; line-height:1.6; color:#4a463f}
+  .tip b{color:var(--ink)}
+
+  .q{margin-bottom:20px}
+  .q:last-child{margin-bottom:0}
+  .q > label, .qlabel{display:block; font-size:15px; font-weight:600; margin-bottom:8px; line-height:1.45}
+  .q .hint{font-size:13.5px; color:#8b857b; line-height:1.5; margin:-4px 0 9px}
+
+  input[type=text], input[type=email], input[type=tel], textarea{
+    width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--soft);
+    border:1px solid var(--line); border-radius:10px; padding:11px 13px}
+  textarea{min-height:96px; resize:vertical; line-height:1.55}
+  input:focus, textarea:focus{outline:0; border-color:var(--ink); background:#fff;
+    box-shadow:0 0 0 3px rgba(201,242,77,.35)}
+  input::placeholder, textarea::placeholder{color:#b3ada2}
+
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:620px){ .duo{grid-template-columns:1fr} }
+
+  /* ---------- Cases et boutons radio ---------- */
+  .opts{display:grid; gap:9px}
+  .opts.two{grid-template-columns:1fr 1fr}
+  .opts.three{grid-template-columns:repeat(3,1fr)}
+  .duo + .q, .duo + .duo{margin-top:20px}
+  @media (max-width:620px){ .opts.three{grid-template-columns:1fr} }
+  @media (max-width:620px){ .opts.two{grid-template-columns:1fr} }
+
+  .opt{display:flex; align-items:flex-start; gap:11px; padding:11px 13px; border:1px solid var(--line);
+    border-radius:10px; background:var(--soft); cursor:pointer; font-size:14.5px; line-height:1.45;
+    transition:border-color .15s, background .15s}
+  .opt:hover{border-color:#c9c4ba}
+  .opt input{appearance:none; -webkit-appearance:none; width:19px; height:19px; flex:0 0 auto;
+    border:1.5px solid #a9a49a; background:#fff; margin-top:1px; cursor:pointer; position:relative}
+  .opt input[type=checkbox]{border-radius:5px}
+  .opt input[type=radio]{border-radius:50%}
+  .opt input:checked{background:var(--ink); border-color:var(--ink)}
+  .opt input[type=checkbox]:checked::after{content:""; position:absolute; left:5.5px; top:2px;
+    width:5px; height:10px; border:solid var(--lime); border-width:0 2px 2px 0; transform:rotate(42deg)}
+  .opt input[type=radio]:checked::after{content:""; position:absolute; left:4px; top:4px;
+    width:7px; height:7px; border-radius:50%; background:var(--lime)}
+  .opt:has(input:checked){border-color:var(--ink); background:#fff}
+  .opt .txt b{display:block; font-weight:600}
+  .opt .txt small{display:block; color:#8b857b; font-size:13px; line-height:1.45; margin-top:2px}
+
+  .price{margin-left:auto; padding-left:10px; font-size:13.5px; font-weight:700; color:#4a463f; white-space:nowrap}
+
+  /* ---------- Formules ---------- */
+  .formules{display:grid; gap:12px}
+  .formule{border:1.5px solid var(--line); border-radius:14px; padding:16px 18px; background:var(--soft);
+    cursor:pointer; display:flex; gap:13px; align-items:flex-start}
+  .formule:has(input:checked){border-color:var(--ink); background:#fff; box-shadow:0 6px 22px rgba(0,0,0,.07)}
+  .formule input{appearance:none; -webkit-appearance:none; width:20px; height:20px; flex:0 0 auto;
+    border:1.5px solid #a9a49a; border-radius:50%; background:#fff; margin-top:3px; position:relative; cursor:pointer}
+  .formule input:checked{background:var(--ink); border-color:var(--ink)}
+  .formule input:checked::after{content:""; position:absolute; left:4.5px; top:4.5px; width:7px; height:7px;
+    border-radius:50%; background:var(--lime)}
+  .formule .t{font-size:16.5px; font-weight:700; letter-spacing:-.01em}
+  .formule .d{font-size:14px; color:#6b665d; line-height:1.5; margin-top:4px}
+  .formule .p{margin-left:auto; text-align:right; white-space:nowrap}
+  .formule .p b{font-size:19px; font-weight:700}
+  .formule .p small{display:block; font-size:12px; color:#8b857b; letter-spacing:.04em; text-transform:uppercase}
+
+  /* ---------- Envoi ---------- */
+  .send{background:var(--ink); color:#f5f3ee; border-radius:16px; padding:28px 26px 30px; margin-top:22px}
+  .send h2{font-size:21px; font-weight:700; letter-spacing:-.01em}
+  .send p{color:#a8a297; font-size:14.5px; line-height:1.6; margin-top:10px}
+  .send .req{margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:620px){ .send .req{grid-template-columns:1fr} }
+  .send label{display:block; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+    color:#8f8a80; font-weight:700; margin-bottom:7px}
+  .send input{background:#1b1a17; border-color:#33312c; color:#f5f3ee}
+  .send input::placeholder{color:#6b665d}
+  .send input:focus{background:#211f1c; border-color:var(--lime); box-shadow:none}
+  .actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; align-items:center}
+  button{font:inherit; font-weight:700; border-radius:11px; cursor:pointer; border:1px solid transparent;
+    padding:14px 24px; font-size:15.5px}
+  .go{background:var(--lime); color:#15140f}
+  .go:hover{filter:brightness(1.06)}
+  .go:disabled{opacity:.55; cursor:default}
+  .ghost{background:transparent; color:#f5f3ee; border-color:#43403a}
+  .ghost:hover{background:#1b1a17}
+  .msg{margin-top:16px; font-size:14.5px; line-height:1.6; display:none}
+  .msg.ok{display:block; color:#d4f57a}
+  .msg.ko{display:block; color:#ff9c8a}
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
+
+  footer{text-align:center; color:#8b857b; font-size:13px; line-height:1.7; margin-top:30px}
+  footer b{color:#4a463f}
+
+  .saved{font-size:13px; color:#8f8a80}
+
+  /* ---------- Impression ---------- */
+  @media print{
+    body{background:#fff; font-size:11px}
+    .prog, .actions, .saved{display:none !important}
+    /* fond blanc obligatoire : beaucoup d'imprimantes ignorent les aplats,
+       le texte clair sur noir deviendrait invisible */
+    header{background:#fff; color:#111; margin-bottom:14px; border-bottom:2px solid #111}
+    .hd{padding:16px 0 14px}
+    .hd .brand{color:#111}
+    .hd .brand span{color:#5c7a00}
+    .hd h1{color:#111; font-size:20px; margin-top:14px}
+    .hd p{color:#333; font-size:10.5px; margin-top:8px}
+    .hd .who{color:#555; border-top-color:#ccc; margin-top:12px; padding-top:10px; font-size:10px}
+    .hd .who b{color:#111}
+    .idb .mark{width:42px; height:42px; border-color:#ccc; border-radius:9px}
+    .tip{background:#f4f4f2; border-left-color:#8ab800; padding:7px 10px; margin-bottom:10px;
+      font-size:10px; line-height:1.45; break-inside:avoid}
+    .wrap{padding:0; max-width:none}
+    section{border-radius:0; border:0; border-top:1.5px solid #333; padding:12px 0 6px;
+      margin-bottom:0}
+    .sh h2{font-size:14px}
+    .intro{font-size:11px; margin-bottom:10px}
+    .opt{padding:5px 8px; font-size:10.5px; break-inside:avoid}
+    .q, .sh, .formule{break-inside:avoid}
+    .sh{break-after:avoid}
+    .opt .txt small{display:none}
+    .opt .txt small.keep{display:block; font-size:9.5px; color:#555}
+    input[type=text], input[type=email], input[type=tel], textarea{background:#fff; font-size:11px; padding:6px 8px}
+    textarea{min-height:52px}
+    .send{background:#fff; color:#111; border:1.5px solid #333; border-radius:0}
+    .send p, .send label{color:#555}
+    .send input{background:#fff; border-color:#aaa; color:#111}
+    .formule{padding:8px 10px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <div class="idb">
+      <img class="mark" src="../brand/icon-192.png" width="192" height="192" alt="LinkedIA">
+      <div class="brand">LinkedIA<span>Publicité en ligne · Meta, Google, TikTok</span></div>
+    </div>
+    <h1>Votre institut et la publicité en ligne : préparons-la ensemble</h1>
+    <p>Merci pour notre rendez-vous. Vos réponses me servent à réaliser l’étude de marché de votre institut,
+       puis à construire une stratégie publicitaire qui vous ressemble. Comptez 10 à 15 minutes.
+       Répondez à ce que vous savez : nous verrons le reste ensemble. Tout ce que vous me confiez reste entre nous.</p>
+    <div class="who">
+      <span>Préparé par <b>Jérémy Halimi</b> — LinkedIA</span>
+      <span><b>06 65 14 14 33</b></span>
+      <span>contact@linkeedia.fr</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="prog">
+    <div class="bar"><i id="pbar"></i></div>
+    <div class="n"><span id="pnum">0</span> réponse(s)</div>
+  </div>
+
+  <form id="f">
+
+    <!-- 1 -->
+    <section>
+      <div class="sh"><div class="no">1</div><h2>Votre institut</h2></div>
+      <p class="intro">Pour situer votre institut, votre zone et vos concurrents dans l’étude de marché.</p>
+      <div class="duo">
+        <div class="q"><label for="q_nom">Nom de l’institut</label><input type="text" id="q_nom" data-l="Institut"></div>
+        <div class="q"><label for="q_ville">Adresse ou ville / quartier</label><input type="text" id="q_ville" data-l="Adresse"></div>
+      </div>
+      <div class="duo">
+        <div class="q"><label for="q_depuis">Ouvert depuis</label><input type="text" id="q_depuis" data-l="Ouvert depuis" placeholder="ex. 2019"></div>
+        <div class="q"><label for="q_equipe">Nombre de personnes qui réalisent le laser</label><input type="text" id="q_equipe" data-l="Praticiennes laser" placeholder="ex. 2"></div>
+      </div>
+      <div class="duo">
+        <div class="q"><label for="q_site">Site internet</label><input type="text" id="q_site" data-l="Site" placeholder="www…"></div>
+        <div class="q"><label for="q_reseaux">Instagram, Facebook, TikTok</label><input type="text" id="q_reseaux" data-l="Réseaux" placeholder="@…"></div>
+      </div>
+      <div class="duo">
+        <div class="q"><label for="q_resa">Comment vos clientes réservent</label><input type="text" id="q_resa" data-l="Prise de rendez-vous" placeholder="Planity, Treatwell, téléphone, WhatsApp…"></div>
+        <div class="q"><label for="q_avis">Votre note Google</label><input type="text" id="q_avis" data-l="Avis Google" placeholder="ex. 4,8 ★ · 150 avis"></div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section>
+      <div class="sh"><div class="no">2</div><h2>L’épilation laser chez vous</h2></div>
+      <p class="intro">C’est le cœur des publicités : je dois connaître votre offre aussi bien que vous.</p>
+      <div class="q"><span class="qlabel">Votre technologie</span>
+        <div class="opts two" data-g="Technologie">
+          <label class="opt"><input type="radio" name="techno" value="Laser diode"><span class="txt"><b>Laser diode</b></span></label>
+          <label class="opt"><input type="radio" name="techno" value="Laser alexandrite / Nd:YAG"><span class="txt"><b>Alexandrite ou Nd:YAG</b></span></label>
+          <label class="opt"><input type="radio" name="techno" value="Lumière pulsée"><span class="txt"><b>Lumière pulsée</b></span></label>
+          <label class="opt"><input type="radio" name="techno" value="Je ne sais pas"><span class="txt"><b>Je ne sais pas exactement</b></span></label>
+        </div>
+      </div>
+      <div class="q"><label for="q_machine">Marque ou nom de l’appareil (si vous le connaissez)</label><input type="text" id="q_machine" data-l="Appareil"></div>
+      <div class="q"><span class="qlabel">Les zones les plus demandées</span>
+        <div class="opts two" data-g="Zones demandées">
+          <label class="opt"><input type="checkbox" name="zones" value="Aisselles"><span class="txt"><b>Aisselles</b></span></label>
+          <label class="opt"><input type="checkbox" name="zones" value="Maillot"><span class="txt"><b>Maillot</b></span></label>
+          <label class="opt"><input type="checkbox" name="zones" value="Jambes"><span class="txt"><b>Jambes</b></span></label>
+          <label class="opt"><input type="checkbox" name="zones" value="Visage"><span class="txt"><b>Visage</b></span></label>
+          <label class="opt"><input type="checkbox" name="zones" value="Bras"><span class="txt"><b>Bras</b></span></label>
+          <label class="opt"><input type="checkbox" name="zones" value="Dos / torse (hommes)"><span class="txt"><b>Dos, torse</b><small>Clientèle masculine</small></span></label>
+        </div>
+      </div>
+      <div class="q"><span class="qlabel">Votre clientèle laser</span>
+        <div class="opts three" data-g="Clientèle laser">
+          <label class="opt"><input type="radio" name="genre" value="Surtout des femmes"><span class="txt"><b>Surtout des femmes</b></span></label>
+          <label class="opt"><input type="radio" name="genre" value="Surtout des hommes"><span class="txt"><b>Surtout des hommes</b></span></label>
+          <label class="opt"><input type="radio" name="genre" value="Les deux"><span class="txt"><b>Les deux</b></span></label>
+        </div>
+      </div>
+      <div class="q"><label for="q_formules">Vos formules et leurs prix</label>
+        <p class="hint">Par exemple : « Aisselles, forfait 6 séances : 130 € » · « Maillot intégral, la séance : 49 € »</p>
+        <textarea id="q_formules" data-l="Formules et prix"></textarea></div>
+      <div class="duo">
+        <div class="q"><label for="q_seances">Nombre de séances en moyenne par cliente</label><input type="text" id="q_seances" data-l="Séances par cliente" placeholder="ex. 6 à 8"></div>
+        <div class="q"><label for="q_valeur">Ce que vous rapporte une cliente laser en moyenne</label>
+          <p class="hint">Toutes séances et soins compris, sur un an</p>
+          <input type="text" id="q_valeur" data-l="Valeur d’une cliente (€)" placeholder="ex. 400 €"></div>
+      </div>
+      <div class="q"><span class="qlabel">Proposez-vous une consultation ou un test avant la première séance ?</span>
+        <div class="opts three" data-g="Consultation / test">
+          <label class="opt"><input type="radio" name="consult" value="Oui, gratuite"><span class="txt"><b>Oui, gratuite</b></span></label>
+          <label class="opt"><input type="radio" name="consult" value="Oui, payante"><span class="txt"><b>Oui, payante</b></span></label>
+          <label class="opt"><input type="radio" name="consult" value="Non"><span class="txt"><b>Non</b></span></label>
+        </div>
+      </div>
+      <div class="q"><label for="q_autres">Les autres soins que prennent souvent vos clientes laser</label><input type="text" id="q_autres" data-l="Autres soins vendus" placeholder="Soins visage, onglerie…"></div>
+    </section>
+
+    <!-- 3 -->
+    <section>
+      <div class="sh"><div class="no">3</div><h2>Vos clientes</h2></div>
+      <p class="intro">Pour montrer vos publicités aux bonnes personnes, au bon endroit.</p>
+      <div class="duo">
+        <div class="q"><label for="q_age">Âge de vos clientes types</label><input type="text" id="q_age" data-l="Âge des clientes" placeholder="ex. 20-40 ans"></div>
+        <div class="q"><label for="q_zone">D’où viennent-elles ?</label><input type="text" id="q_zone" data-l="Zone de clientèle" placeholder="ex. 10 km autour, tout Lyon…"></div>
+      </div>
+      <div class="q"><label for="q_pourquoi">Pourquoi vous choisissent-elles plutôt qu’un autre institut ?</label><textarea id="q_pourquoi" data-l="Vos atouts"></textarea></div>
+      <div class="q"><label for="q_questions">Les questions ou hésitations qu’elles ont avant de réserver</label>
+        <p class="hint">Douleur, prix, nombre de séances, type de peau, résultats…</p>
+        <textarea id="q_questions" data-l="Questions et freins des clientes"></textarea></div>
+    </section>
+
+    <!-- 4 -->
+    <section>
+      <div class="sh"><div class="no">4</div><h2>Vos concurrents</h2></div>
+      <p class="intro">L’étude de marché comparera votre offre à celle des centres autour de vous.</p>
+      <div class="q"><label for="q_conc">Les centres laser, instituts ou cabinets que vous croisez le plus</label><textarea id="q_conc" data-l="Concurrents" placeholder="Noms, quartiers, et leurs prix si vous les connaissez"></textarea></div>
+      <div class="q"><label for="q_diff">Ce que vous faites mieux qu’eux</label><textarea id="q_diff" data-l="Ce que vous faites mieux"></textarea></div>
+    </section>
+
+    <!-- 5 -->
+    <section>
+      <div class="sh"><div class="no">5</div><h2>Votre publicité jusqu’ici</h2></div>
+      <p class="intro">Vous avez déjà obtenu de très bons résultats : comprendre ce qui a marché est le meilleur point de départ pour les retrouver.</p>
+      <div class="duo">
+        <div class="q"><label for="q_qui">Qui gérait vos publicités ?</label><input type="text" id="q_qui" data-l="Gérées par" placeholder="Freelance, agence, vous-même…"></div>
+        <div class="q"><label for="q_periode">Sur quelle période ?</label><input type="text" id="q_periode" data-l="Période" placeholder="ex. de janvier à juin 2026"></div>
+      </div>
+      <div class="q"><span class="qlabel">Sur quelles plateformes ?</span>
+        <div class="opts three" data-g="Plateformes utilisées">
+          <label class="opt"><input type="checkbox" name="plat" value="Facebook / Instagram"><span class="txt"><b>Facebook, Instagram</b></span></label>
+          <label class="opt"><input type="checkbox" name="plat" value="Google"><span class="txt"><b>Google</b></span></label>
+          <label class="opt"><input type="checkbox" name="plat" value="TikTok"><span class="txt"><b>TikTok</b></span></label>
+        </div>
+      </div>
+      <div class="duo">
+        <div class="q"><label for="q_budget_avant">Budget publicitaire par mois à l’époque</label><input type="text" id="q_budget_avant" data-l="Budget mensuel d’avant" placeholder="ex. 500 €"></div>
+        <div class="q"><label for="q_demandes">Demandes ou réservations obtenues par mois</label><input type="text" id="q_demandes" data-l="Demandes par mois" placeholder="ex. 60 demandes, 25 rendez-vous"></div>
+      </div>
+      <div class="q"><label for="q_marche">Ce qui marchait le mieux</label>
+        <p class="hint">Une vidéo, une offre, un message, une période…</p>
+        <textarea id="q_marche" data-l="Ce qui marchait le mieux"></textarea></div>
+      <div class="q"><label for="q_arret">Pourquoi avez-vous arrêté ?</label><textarea id="q_arret" data-l="Raison de l’arrêt"></textarea></div>
+      <div class="q"><span class="qlabel">Le compte publicitaire utilisé à l’époque</span>
+        <div class="opts" data-g="Compte publicitaire">
+          <label class="opt"><input type="radio" name="compte" value="À mon nom, j’y ai toujours accès"><span class="txt"><b>Il est à mon nom, j’y ai toujours accès</b><small>Idéal : tout l’historique de vos résultats y est conservé</small></span></label>
+          <label class="opt"><input type="radio" name="compte" value="Celui du prestataire"><span class="txt"><b>C’était celui de mon prestataire</b></span></label>
+          <label class="opt"><input type="radio" name="compte" value="Je ne sais pas"><span class="txt"><b>Je ne sais pas</b></span></label>
+        </div>
+      </div>
+      <div class="q"><span class="qlabel">Pour l’étude, m’autorisez-vous à consulter l’historique de vos anciennes campagnes ?</span>
+        <div class="opts two" data-g="Accès à l’historique">
+          <label class="opt"><input type="radio" name="histo" value="Oui"><span class="txt"><b>Oui</b><small>En lecture : je ne modifie rien</small></span></label>
+          <label class="opt"><input type="radio" name="histo" value="Parlons-en d’abord"><span class="txt"><b>Parlons-en d’abord</b></span></label>
+        </div>
+      </div>
+      <div class="q"><span class="qlabel">Avez-vous gardé les photos et vidéos des publicités qui marchaient ?</span>
+        <div class="opts two" data-g="Anciennes créations">
+          <label class="opt"><input type="radio" name="creas" value="Oui, j’ai les fichiers"><span class="txt"><b>Oui, j’ai les fichiers</b></span></label>
+          <label class="opt"><input type="radio" name="creas" value="Non"><span class="txt"><b>Non</b></span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section>
+      <div class="sh"><div class="no">6</div><h2>Vos objectifs</h2></div>
+      <div class="duo">
+        <div class="q"><label for="q_objectif">Nouvelles clientes laser souhaitées par mois</label><input type="text" id="q_objectif" data-l="Objectif par mois" placeholder="ex. 20"></div>
+        <div class="q"><label for="q_capacite">Rendez-vous laser en plus possibles par semaine</label><input type="text" id="q_capacite" data-l="Capacité en plus par semaine" placeholder="ex. 10"></div>
+      </div>
+      <div class="q"><label for="q_creux">Vos périodes ou créneaux à remplir en priorité</label><input type="text" id="q_creux" data-l="Créneaux à remplir" placeholder="Matinées, début de semaine, été…"></div>
+      <div class="q"><span class="qlabel">Budget publicitaire mensuel envisagé</span>
+        <p class="hint">Payé directement à Facebook ou Google avec votre carte, en plus de ma gestion.</p>
+        <div class="opts two" data-g="Budget envisagé">
+          <label class="opt"><input type="radio" name="budget" value="Moins de 300 €"><span class="txt"><b>Moins de 300 €</b></span></label>
+          <label class="opt"><input type="radio" name="budget" value="300 à 600 €"><span class="txt"><b>300 à 600 €</b></span></label>
+          <label class="opt"><input type="radio" name="budget" value="600 à 1 000 €"><span class="txt"><b>600 à 1 000 €</b></span></label>
+          <label class="opt"><input type="radio" name="budget" value="Plus de 1 000 €"><span class="txt"><b>Plus de 1 000 €</b></span></label>
+          <label class="opt"><input type="radio" name="budget" value="À définir ensemble"><span class="txt"><b>À définir ensemble</b></span></label>
+        </div>
+      </div>
+      <div class="q"><span class="qlabel">Quand une personne laisse ses coordonnées, qui la rappelle, et en combien de temps ?</span>
+        <p class="hint">C’est souvent ce qui fait la différence entre une demande et une cliente.</p>
+        <div class="opts two" data-g="Rappel des demandes">
+          <label class="opt"><input type="radio" name="rappel" value="Dans l’heure"><span class="txt"><b>Dans l’heure</b></span></label>
+          <label class="opt"><input type="radio" name="rappel" value="Dans la journée"><span class="txt"><b>Dans la journée</b></span></label>
+          <label class="opt"><input type="radio" name="rappel" value="Le lendemain ou plus"><span class="txt"><b>Le lendemain ou plus</b></span></label>
+          <label class="opt"><input type="radio" name="rappel" value="Réservation directe en ligne"><span class="txt"><b>Elles réservent directement en ligne</b></span></label>
+        </div>
+      </div>
+      <div class="q"><label for="q_qui_rappelle">Qui s’en occupe ?</label><input type="text" id="q_qui_rappelle" data-l="Qui rappelle" placeholder="Vous, l’accueil, une praticienne…"></div>
+      <div class="q"><label for="q_debut">Démarrage souhaité</label><input type="text" id="q_debut" data-l="Démarrage souhaité" placeholder="ex. dès que possible, mi-novembre…"></div>
+    </section>
+
+    <!-- 7 -->
+    <section>
+      <div class="sh"><div class="no">7</div><h2>Vos offres</h2></div>
+      <p class="intro">Une bonne offre de bienvenue peut diviser le coût d’une nouvelle cliente. Cochez ce que vous seriez prête à proposer.</p>
+      <div class="q"><div class="opts two" data-g="Offres possibles">
+        <label class="opt"><input type="checkbox" name="offres" value="Consultation offerte"><span class="txt"><b>Consultation ou test offert</b></span></label>
+        <label class="opt"><input type="checkbox" name="offres" value="Première séance à prix réduit"><span class="txt"><b>Première séance à prix réduit</b></span></label>
+        <label class="opt"><input type="checkbox" name="offres" value="Zone offerte pour un forfait"><span class="txt"><b>Une petite zone offerte pour un forfait</b></span></label>
+        <label class="opt"><input type="checkbox" name="offres" value="Parrainage"><span class="txt"><b>Parrainage</b><small>Une séance offerte à la marraine</small></span></label>
+        <label class="opt"><input type="checkbox" name="offres" value="Paiement en plusieurs fois"><span class="txt"><b>Paiement en plusieurs fois</b></span></label>
+        <label class="opt"><input type="checkbox" name="offres" value="Offres de saison"><span class="txt"><b>Offres de saison</b><small>Préparer l’été dès l’automne</small></span></label>
+      </div></div>
+      <div class="q"><label for="q_offre_actuelle">Votre offre du moment</label><input type="text" id="q_offre_actuelle" data-l="Offre du moment"></div>
+      <div class="q"><label for="q_jamais">Ce que vous ne voulez surtout pas</label><input type="text" id="q_jamais" data-l="À éviter" placeholder="Prix cassés, certaines formulations…"></div>
+    </section>
+
+    <!-- 8 -->
+    <section>
+      <div class="sh"><div class="no">8</div><h2>Pour démarrer en confiance</h2></div>
+      <p class="intro">Vous avez déjà connu de bons résultats : c’est normal de vouloir être rassurée. Dites-moi ce qui compte pour vous.</p>
+      <div class="q"><div class="opts" data-g="Ce qui me rassurerait">
+        <label class="opt"><input type="checkbox" name="confiance" value="Des objectifs chiffrés validés ensemble"><span class="txt"><b>Des objectifs chiffrés, validés ensemble avant de commencer</b></span></label>
+        <label class="opt"><input type="checkbox" name="confiance" value="Un tableau de bord de mes résultats"><span class="txt"><b>Un tableau de bord de mes résultats</b><small>Sur votre téléphone, mis à jour chaque jour</small></span></label>
+        <label class="opt"><input type="checkbox" name="confiance" value="Un point chaque semaine"><span class="txt"><b>Un point écrit chaque semaine</b><small>Ce qui a été fait, ce qui vient</small></span></label>
+        <label class="opt"><input type="checkbox" name="confiance" value="Un bilan à 15 jours"><span class="txt"><b>Un appel de bilan au bout de 15 jours</b></span></label>
+        <label class="opt"><input type="checkbox" name="confiance" value="Un premier mois test"><span class="txt"><b>Un premier mois de test, puis on décide ensemble</b></span></label>
+      </div></div>
+      <div class="q"><label for="q_confiance">Autre chose qui vous aiderait à vous décider ?</label><textarea id="q_confiance" data-l="Autre"></textarea></div>
+    </section>
+
+    <div class="send">
+      <h2>Envoyez-moi vos réponses</h2>
+      <p>Un clic et je reçois tout. Je m’en sers pour l’étude de marché de votre institut, et je reviens vers vous
+         avec mes recommandations. Vos réponses restent enregistrées sur votre téléphone : vous pouvez compléter plus tard.</p>
+      <div class="req">
+        <div><label for="s_nom">Votre nom *</label><input type="text" id="s_nom" autocomplete="name" required></div>
+        <div><label for="s_mail">Votre e-mail *</label><input type="email" id="s_mail" autocomplete="email" required></div>
+      </div>
+      <input type="text" class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="actions">
+        <button type="submit" class="go" id="go">Envoyer mes réponses</button>
+        <button type="button" class="ghost" onclick="window.print()">Imprimer / enregistrer en PDF</button>
+        <span class="saved" id="saved"></span>
+      </div>
+      <p class="msg" id="msg"></p>
+    </div>
+  </form>
+
+  <footer>
+    <b>LinkedIA — Jérémy Halimi</b><br>
+    06 65 14 14 33 · contact@linkeedia.fr
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var ENDPOINT = 'https://linkedia-contact.halimjeremy.workers.dev';
+  var KEY = 'linkedia-quest-pub-institut';
+  var form = document.getElementById('f');
+  var msg = document.getElementById('msg');
+  var go = document.getElementById('go');
+  var savedEl = document.getElementById('saved');
+  var TOTAL = form.querySelectorAll('section .q').length;
+
+  function fields() { return form.querySelectorAll('input, textarea'); }
+  function keyOf(el) { return el.id || (el.name + '|' + el.value); }
+
+  /* ---------- Progression ---------- */
+  function refresh() {
+    var done = 0;
+    form.querySelectorAll('section .q').forEach(function (q) {
+      var any = false;
+      q.querySelectorAll('input, textarea').forEach(function (el) {
+        if ((el.type === 'checkbox' || el.type === 'radio') ? el.checked : el.value.trim()) any = true;
+      });
+      if (any) done++;
+    });
+    document.getElementById('pnum').textContent = done + ' / ' + TOTAL;
+    document.getElementById('pbar').style.width = Math.min(100, (done / TOTAL) * 100) + '%';
+  }
+
+  /* ---------- Sauvegarde sur l'appareil ---------- */
+  function save() {
+    var d = {};
+    fields().forEach(function (el) {
+      if (el.classList.contains('hp')) return;
+      if (el.type === 'checkbox' || el.type === 'radio') d[keyOf(el)] = el.checked;
+      else d[keyOf(el)] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+    savedEl.textContent = 'Réponses enregistrées sur cet appareil';
+  }
+  function load() {
+    var d;
+    try { d = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return; }
+    fields().forEach(function (el) {
+      if (el.classList.contains('hp')) return;
+      var k = keyOf(el);
+      if (!(k in d)) return;
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!d[k];
+      else el.value = d[k];
+    });
+  }
+  var t;
+  form.addEventListener('input', function () { refresh(); clearTimeout(t); t = setTimeout(save, 400); });
+  form.addEventListener('change', function () { refresh(); clearTimeout(t); t = setTimeout(save, 400); });
+
+  /* ---------- Récapitulatif envoyé par e-mail ---------- */
+  function recap() {
+    var out = [];
+    form.querySelectorAll('section').forEach(function (sec) {
+      var lines = [];
+      sec.querySelectorAll('input[data-l], textarea[data-l]').forEach(function (el) {
+        var v = el.value.trim();
+        if (v) lines.push('- ' + el.dataset.l + ' : ' + v);
+      });
+      sec.querySelectorAll('.opts[data-g]').forEach(function (g) {
+        var vals = [];
+        g.querySelectorAll('input:checked').forEach(function (el) { vals.push(el.value); });
+        if (vals.length) lines.push('- ' + g.dataset.g + ' : ' + vals.join(' | '));
+      });
+      if (lines.length) out.push('== ' + sec.querySelector('h2').textContent.trim().toUpperCase() + ' ==\n' + lines.join('\n'));
+    });
+    var txt = out.join('\n\n');
+    if (txt.length > 3800) txt = txt.slice(0, 3800) + '\n\n[…] Réponses longues : demander la version imprimée à la cliente.';
+    return txt || '(aucune réponse remplie)';
+  }
+
+  /* ---------- Envoi ---------- */
+  var busy = false;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (busy) return;
+    var nom = document.getElementById('s_nom').value.trim();
+    var mail = document.getElementById('s_mail').value.trim();
+    msg.className = 'msg';
+    if (!nom || !mail || mail.indexOf('@') < 1) {
+      msg.className = 'msg ko';
+      msg.textContent = 'Merci d’indiquer votre nom et un e-mail valide avant l’envoi.';
+      (nom ? document.getElementById('s_mail') : document.getElementById('s_nom')).focus();
+      return;
+    }
+    busy = true;
+    go.disabled = true;
+    go.textContent = 'Envoi en cours…';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: nom, email: mail, type: 'Questionnaire pub — institut', msg: recap(), website: document.getElementById('website').value })
+    }).then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.json();
+    }).then(function () {
+      msg.className = 'msg ok';
+      msg.textContent = 'C’est envoyé, merci ! Je reviens vers vous avec l’étude de marché de votre institut.';
+      go.textContent = 'Réponses envoyées ✓';
+    }).catch(function () {
+      busy = false;
+      go.disabled = false;
+      go.textContent = 'Envoyer mes réponses';
+      msg.className = 'msg ko';
+      msg.innerHTML = 'L’envoi n’a pas abouti. Vous pouvez réessayer, ou m’écrire directement à ' +
+        '<a href="mailto:contact@linkeedia.fr" style="color:#c9f24d">contact@linkeedia.fr</a>.';
+    });
+  });
+
+  load();
+  refresh();
+})();
+</script>
+
+</body>
+</html>
