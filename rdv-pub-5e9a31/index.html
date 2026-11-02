@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Rendez-vous publicité — Fiche · LinkedIA</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../brand/icon-32.png">
+<link rel="apple-touch-icon" href="../brand/icon-180.png">
+<meta name="theme-color" content="#0d0d0f">
+<meta name="format-detection" content="telephone=no">
+<style>
+  *{box-sizing:border-box; margin:0; padding:0}
+  :root{
+    --ink:#0d0d0f; --paper:#fff; --greige:#f5f3ee; --lime:#c9f24d; --lime-d:#5c7a00;
+    --muted:#7a746a; --line:#e4e0d8; --soft:#faf9f6;
+  }
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+  body{background:var(--greige); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
+  a{color:inherit}
+  .wrap{max-width:860px; margin:0 auto; padding:0 16px 90px}
+
+  /* ---------- En-tête ---------- */
+  header{background:var(--ink); color:#f5f3ee}
+  .hd{max-width:860px; margin:0 auto; padding:28px 16px 30px}
+  .idb{display:flex; align-items:center; gap:13px}
+  .idb img{width:50px; height:50px; border-radius:13px; border:1px solid rgba(245,243,238,.14)}
+  .brand{font-size:18px; font-weight:700; line-height:1.15}
+  .brand span{display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--lime); margin-top:4px}
+  .hd h1{font-size:clamp(25px,6vw,36px); line-height:1.15; font-weight:700; letter-spacing:-.02em; margin-top:20px}
+  .hd p{color:#b8b2a7; font-size:15px; margin-top:10px; max-width:62ch}
+  .fiches{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; align-items:center}
+  .fiches select{font:inherit; font-size:14px; color:#f5f3ee; background:#1b1a17; border:1px solid #33312c;
+    border-radius:10px; padding:9px 12px; max-width:100%; min-width:0; flex:1 1 220px}
+  .btn-s{font:inherit; font-size:14px; font-weight:600; border-radius:10px; padding:9px 13px; cursor:pointer;
+    background:transparent; color:#f5f3ee; border:1px solid #43403a; white-space:nowrap}
+  .btn-s:hover{background:#1b1a17}
+
+  /* ---------- Barre collante ---------- */
+  .bar{position:sticky; top:0; z-index:40; background:rgba(245,243,238,.96); border-bottom:1px solid var(--line);
+    padding:10px 16px; display:flex; align-items:center; gap:10px}
+  .bar .prog{flex:1; min-width:60px; height:6px; background:#e0dcd3; border-radius:99px; overflow:hidden}
+  .bar .prog i{display:block; height:100%; width:0; background:var(--ink); border-radius:99px; transition:width .3s}
+  .bar .n{font-size:12.5px; font-weight:600; color:#5c574f; white-space:nowrap; font-variant-numeric:tabular-nums}
+  .pill{font:inherit; font-size:13px; font-weight:600; border-radius:99px; padding:7px 12px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--ink); white-space:nowrap}
+  .pill[aria-pressed=true]{background:var(--ink); color:var(--lime); border-color:var(--ink)}
+  .toc{display:flex; gap:6px; overflow-x:auto; padding:10px 16px 2px; scrollbar-width:none; max-width:860px; margin:0 auto}
+  .toc::-webkit-scrollbar{display:none}
+  .toc a{flex:0 0 auto; font-size:12.5px; font-weight:600; text-decoration:none; color:#5c574f;
+    background:#fff; border:1px solid var(--line); border-radius:99px; padding:5px 11px}
+  .toc a.done{background:var(--ink); color:var(--lime); border-color:var(--ink)}
+
+  /* ---------- Sections ---------- */
+  section{background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:22px 18px 24px; margin-top:16px; scroll-margin-top:64px}
+  @media (min-width:640px){ section{padding:26px 26px 28px} }
+  .sh{display:flex; align-items:baseline; gap:11px; margin-bottom:4px}
+  .sh .no{width:28px; height:28px; flex:0 0 auto; border-radius:50%; background:var(--ink); color:var(--lime);
+    font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; transform:translateY(3px)}
+  .sh h2{font-size:20px; line-height:1.25; font-weight:700; letter-spacing:-.01em}
+  .sh .time{margin-left:auto; font-size:12px; color:var(--muted); white-space:nowrap}
+  .intro{color:#6b665d; font-size:14.5px; margin:2px 0 16px 39px}
+
+  /* « À dire » : ce que Jeremy dit au client */
+  .say{position:relative; background:#11120e; color:#f1efe8; border-radius:14px; padding:14px 16px 15px 16px; margin:0 0 16px}
+  .say::before{content:"À dire"; display:inline-block; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    color:#11120e; background:var(--lime); border-radius:6px; padding:2px 7px; margin-bottom:8px}
+  .say p{font-size:15.5px; line-height:1.55}
+  .say p + p{margin-top:8px}
+  .say b{color:var(--lime); font-weight:600}
+  .note{background:var(--soft); border-left:3px solid var(--lime); border-radius:0 10px 10px 0; padding:11px 14px; margin:0 0 16px;
+    font-size:14px; line-height:1.55; color:#4a463f}
+  .note b{color:var(--ink)}
+  body.no-notes .say, body.no-notes .note{display:none}
+
+  .q{margin-bottom:18px}
+  .q:last-child{margin-bottom:0}
+  .q > label, .ql{display:block; font-size:15px; font-weight:600; margin-bottom:7px; line-height:1.45}
+  .q .hint{font-size:13.5px; color:#8b857b; line-height:1.5; margin:-3px 0 8px}
+  input[type=text], input[type=email], input[type=tel], input[type=date], input[type=number], input[type=url], textarea, select.f{
+    width:100%; font:inherit; font-size:16px; color:var(--ink); background:var(--soft);
+    border:1px solid var(--line); border-radius:10px; padding:11px 13px; min-width:0}
+  textarea{min-height:84px; resize:vertical; line-height:1.55}
+  input:focus, textarea:focus{outline:0; border-color:var(--ink); background:#fff; box-shadow:0 0 0 3px rgba(201,242,77,.35)}
+  input::placeholder, textarea::placeholder{color:#b3ada2}
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .trio{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+  @media (max-width:620px){ .duo, .trio{grid-template-columns:1fr} }
+  .suffix{display:flex; align-items:center; gap:8px}
+  .suffix input{flex:1}
+  .suffix span{font-weight:600; color:#5c574f; white-space:nowrap}
+
+  .opts{display:grid; gap:8px}
+  .opts.two{grid-template-columns:1fr 1fr}
+  .opts.three{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:620px){ .opts.two, .opts.three{grid-template-columns:1fr} }
+  .opt{display:flex; align-items:flex-start; gap:11px; padding:11px 13px; border:1px solid var(--line); border-radius:10px;
+    background:var(--soft); cursor:pointer; font-size:15px; line-height:1.4}
+  .opt input{appearance:none; -webkit-appearance:none; width:20px; height:20px; flex:0 0 auto; border:1.5px solid #a9a49a;
+    background:#fff; margin-top:0; cursor:pointer; position:relative}
+  .opt input[type=checkbox]{border-radius:5px}
+  .opt input[type=radio]{border-radius:50%}
+  .opt input:checked{background:var(--ink); border-color:var(--ink)}
+  .opt input[type=checkbox]:checked::after{content:""; position:absolute; left:6px; top:2px; width:5px; height:10px;
+    border:solid var(--lime); border-width:0 2px 2px 0; transform:rotate(42deg)}
+  .opt input[type=radio]:checked::after{content:""; position:absolute; left:4.5px; top:4.5px; width:8px; height:8px; border-radius:50%; background:var(--lime)}
+  .opt:has(input:checked){border-color:var(--ink); background:#fff}
+  .opt .t b{display:block; font-weight:600}
+  .opt .t small{display:block; color:#8b857b; font-size:13px; line-height:1.45; margin-top:1px}
+
+  .steps{counter-reset:s; list-style:none; margin:0 0 14px}
+  .steps li{counter-increment:s; position:relative; padding:0 0 9px 34px; font-size:15px; line-height:1.5}
+  .steps li::before{content:counter(s); position:absolute; left:0; top:1px; width:23px; height:23px; border-radius:7px;
+    background:#eceae4; color:#4a463f; font-size:12.5px; font-weight:700; display:flex; align-items:center; justify-content:center}
+  .ui{font-weight:600; background:#f0eee8; border-radius:5px; padding:0 5px; white-space:nowrap}
+  .bind{font-weight:700; background:var(--lime); color:#15140f; border-radius:5px; padding:0 5px}
+  .bind.empty{background:#ffe1d6; color:#8a2c0d}
+  .sub{border:1px solid var(--line); border-radius:13px; padding:16px 15px; margin-top:14px}
+  .sub h3{font-size:16px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px}
+  .sub h3 .tag{font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+    background:var(--soft); border:1px solid var(--line); border-radius:99px; padding:2px 8px}
+  details.more{margin-top:10px; font-size:14.5px}
+  details.more summary{cursor:pointer; font-weight:600; color:#4a463f}
+  details.more[open] summary{margin-bottom:8px}
+  .demo{display:flex; align-items:center; gap:12px; flex-wrap:wrap; background:var(--soft); border:1px dashed #c9c4ba; border-radius:12px; padding:13px 14px; margin-bottom:16px}
+  .demo a{background:var(--ink); color:var(--lime); text-decoration:none; font-weight:700; border-radius:10px; padding:10px 15px; white-space:nowrap}
+  .demo span{font-size:14px; color:#5c574f; flex:1 1 200px}
+
+  /* ---------- Récap + actions ---------- */
+  .recap{white-space:pre-wrap; background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:14px; font-size:14px; line-height:1.55; margin-bottom:16px}
+  .end{background:var(--ink); color:#f5f3ee; border-radius:16px; padding:24px 20px 26px; margin-top:18px}
+  .end h2{font-size:20px; font-weight:700}
+  .end p{color:#a8a297; font-size:14.5px; margin-top:8px}
+  .actions{display:grid; gap:10px; margin-top:18px}
+  @media (min-width:620px){ .actions{grid-template-columns:1fr 1fr} }
+  .actions button, .actions a{font:inherit; font-weight:700; font-size:15px; border-radius:11px; cursor:pointer; border:1px solid transparent;
+    padding:13px 18px; text-align:center; text-decoration:none}
+  .go{background:var(--lime); color:#15140f}
+  .go:disabled{opacity:.55; cursor:default}
+  .ghost{background:transparent; color:#f5f3ee; border-color:#43403a !important}
+  .msg{margin-top:14px; font-size:14.5px; display:none}
+  .msg.ok{display:block; color:#d4f57a}
+  .msg.ko{display:block; color:#ff9c8a}
+  .saved{font-size:13px; color:#8f8a80; margin-top:12px}
+  footer{text-align:center; color:#8b857b; font-size:13px; line-height:1.7; margin-top:26px}
+
+  /* ---------- Objections ---------- */
+  dialog{border:0; border-radius:18px; padding:0; width:min(620px,94vw); max-height:86vh; margin:auto; box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  dialog::backdrop{background:rgba(13,13,15,.55)}
+  .dlg{padding:20px 20px 22px; overflow:auto; max-height:86vh}
+  .dlg h2{font-size:19px; font-weight:700; display:flex; justify-content:space-between; align-items:center; gap:10px}
+  .dlg h2 button{font:inherit; font-size:22px; line-height:1; background:none; border:0; cursor:pointer; padding:4px 8px}
+  .obj{border-top:1px solid var(--line); padding:13px 0}
+  .obj:first-of-type{border-top:0}
+  .obj b{display:block; font-size:15px}
+  .obj p{font-size:15px; color:#3d3a34; margin-top:4px}
+
+  /* ---------- Verrou (même code que le carnet) ---------- */
+  #lkgate{position:fixed; inset:0; z-index:99999; display:flex; align-items:center; justify-content:center; background:var(--ink); color:#f5f3ee; padding:20px}
+  #lkgate form{width:min(320px,86vw); text-align:center}
+  #lkgate input{text-align:center; letter-spacing:.4em; font-size:22px; background:#1b1a17; border:1px solid #33312c; color:#f5f3ee; margin-top:16px}
+  #lkgate button{margin-top:10px; width:100%; padding:12px; border:0; border-radius:12px; background:var(--lime); color:#15140f; font:inherit; font-weight:700; cursor:pointer}
+
+  @media print{
+    body{background:#fff; font-size:11px}
+    .bar, .toc, .say, .note, .actions, .saved, .fiches, .demo, details.more, #lkgate{display:none !important}
+    header{background:#fff; color:#111; border-bottom:2px solid #111}
+    .hd{padding:10px 0}
+    .hd p{color:#333}
+    section{border:0; border-top:1.5px solid #333; border-radius:0; padding:10px 0; margin:0; break-inside:avoid}
+    .opt{padding:4px 8px; font-size:10.5px}
+    .opt:not(:has(input:checked)){display:none}
+    input, textarea{background:#fff !important; font-size:11px; padding:5px 8px}
+    .end{background:#fff; color:#111; border:1px solid #333}
+  }
+</style>
+</head>
+<body>
+
+<div id="lkgate">
+  <form id="lkgate-form">
+    <div style="font-size:32px">🔒</div>
+    <p style="font-weight:700;font-size:18px;margin-top:8px">Fiche rendez-vous</p>
+    <p style="opacity:.7;font-size:14px">Ton code habituel (le même que le carnet)</p>
+    <input id="lkgate-pin" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="8" aria-label="Code d’accès">
+    <p id="lkgate-err" style="min-height:18px;margin-top:8px;color:#ff9c8a;font-size:13px"></p>
+    <button type="submit">Entrer</button>
+  </form>
+</div>
+
+<header>
+  <div class="hd">
+    <div class="idb">
+      <img src="../brand/icon-192.png" width="50" height="50" alt="LinkedIA">
+      <div class="brand">LinkedIA<span>Rendez-vous publicité</span></div>
+    </div>
+    <h1>La fiche du rendez-vous, du bonjour à la signature</h1>
+    <p>Suis les étapes dans l’ordre. Les encadrés noirs « À dire » sont tes phrases ; les encadrés verts expliquent pourquoi tu poses la question. Tout s’enregistre sur ce téléphone au fur et à mesure.</p>
+    <div class="fiches">
+      <select id="ficheSel" aria-label="Fiche en cours"></select>
+      <button type="button" class="btn-s" id="newFiche">＋ Nouvelle fiche</button>
+    </div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="prog" aria-hidden="true"><i id="pbar"></i></div>
+  <span class="n" id="pnum">0/11</span>
+  <button type="button" class="pill" id="notesBtn" aria-pressed="true">Antisèche</button>
+  <button type="button" class="pill" id="objBtn">Objections</button>
+</div>
+<nav class="toc" id="toc" aria-label="Étapes"></nav>
+
+<div class="wrap">
+<form id="f" autocomplete="off" onsubmit="return false">
+
+  <!-- 0 ─ Préparation -->
+  <section id="s0" data-t="Préparer">
+    <div class="sh"><span class="no">0</span><h2>Avant d’entrer</h2><span class="time">2 min</span></div>
+    <p class="intro">Tes infos à toi : remplies une fois, elles servent pour toutes les fiches.</p>
+    <div class="duo">
+      <div class="q"><label for="prep_meta">ID de ton portefeuille Meta LinkedIA</label>
+        <p class="hint">business.facebook.com → Paramètres → Infos sur l’entreprise</p>
+        <input type="text" id="prep_meta" data-prep data-l="ID portefeuille Meta LinkedIA" inputmode="numeric" placeholder="15 à 16 chiffres"></div>
+      <div class="q"><label for="prep_mcc">N° de ton compte administrateur Google Ads</label>
+        <p class="hint">En haut à droite de Google Ads, format 123-456-7890</p>
+        <input type="text" id="prep_mcc" data-prep data-l="N° MCC Google Ads" placeholder="123-456-7890"></div>
+      <div class="q"><label for="prep_tiktok">ID de ton Business Center TikTok</label>
+        <input type="text" id="prep_tiktok" data-prep data-l="ID Business Center TikTok" inputmode="numeric" placeholder="facultatif"></div>
+      <div class="q"><label for="prep_fee">Ton prix de gestion</label>
+        <div class="suffix"><input type="number" id="prep_fee" data-prep data-l="Prix de gestion" inputmode="decimal" placeholder="ex. 250"><span>€ / mois</span></div></div>
+    </div>
+    <div class="note"><b>Ton objectif du jour :</b> repartir avec son accord, son budget et ses accès. Tu ne lui demandes jamais ses mots de passe. Si tu n’as pas encore fixé ton prix : pour un petit commerce local, une gestion se facture souvent 150 à 300 € par mois, en plus du budget pub.</div>
+  </section>
+
+  <!-- 1 ─ Ouverture -->
+  <section id="s1" data-t="Ouverture">
+    <div class="sh"><span class="no">1</span><h2>L’ouverture</h2><span class="time">1 min</span></div>
+    <div class="say"><p>« Merci de me recevoir. L’idée aujourd’hui : comprendre votre activité, voir si la publicité en ligne peut vous amener des clients, et si oui, comment on s’organise. Ça prend vingt minutes, et vous n’êtes engagée à rien. »</p></div>
+    <div class="duo">
+      <div class="q"><label for="rdv_date">Date du rendez-vous</label><input type="date" id="rdv_date" data-l="Date du rendez-vous"></div>
+      <div class="q"><label for="rdv_lieu">Lieu</label><input type="text" id="rdv_lieu" data-l="Lieu" placeholder="Boutique, salon, visio…"></div>
+    </div>
+  </section>
+
+  <!-- 2 ─ L’entreprise -->
+  <section id="s2" data-t="Entreprise">
+    <div class="sh"><span class="no">2</span><h2>Son entreprise</h2><span class="time">3 min</span></div>
+    <div class="say"><p>« Pour commencer, racontez-moi votre activité en deux mots. Qui sont vos clients, et comment est-ce qu’ils vous trouvent aujourd’hui ? »</p></div>
+    <div class="duo">
+      <div class="q"><label for="ent_nom">Nom de l’entreprise</label><input type="text" id="ent_nom" data-l="Entreprise" placeholder="Institut Éclat"></div>
+      <div class="q"><label for="ent_activite">Activité</label><input type="text" id="ent_activite" data-l="Activité" placeholder="Institut de beauté"></div>
+      <div class="q"><label for="ent_ville">Ville / quartier</label><input type="text" id="ent_ville" data-l="Ville" placeholder="Lyon 6e"></div>
+      <div class="q"><label for="ent_zone">D’où viennent ses clients ?</label><input type="text" id="ent_zone" data-l="Zone de clientèle" placeholder="10 km autour, toute la France…"></div>
+      <div class="q"><label for="ct_nom">Nom et prénom de la personne</label><input type="text" id="ct_nom" data-l="Contact" placeholder="Prénom Nom"></div>
+      <div class="q"><label for="ct_role">Son rôle</label><input type="text" id="ct_role" data-l="Rôle" placeholder="Gérante, associée…"></div>
+      <div class="q"><label for="ct_tel">Téléphone</label><input type="tel" id="ct_tel" data-l="Téléphone" placeholder="06…"></div>
+      <div class="q"><label for="ct_mail">E-mail</label><input type="email" id="ct_mail" data-l="E-mail" placeholder="prenom@…"></div>
+      <div class="q"><label for="ent_site">Site internet</label><input type="text" id="ent_site" data-l="Site" placeholder="www…"></div>
+      <div class="q"><label for="ent_insta">Instagram / Facebook / TikTok</label><input type="text" id="ent_insta" data-l="Réseaux" placeholder="@…"></div>
+    </div>
+    <div class="q"><span class="ql">Aujourd’hui, ses clients la trouvent par…</span>
+      <div class="opts two" data-g="Sources actuelles">
+        <label class="opt"><input type="checkbox" name="sources" value="Bouche-à-oreille"><span class="t"><b>Bouche-à-oreille</b></span></label>
+        <label class="opt"><input type="checkbox" name="sources" value="Google / fiche Google"><span class="t"><b>Google, fiche Google</b></span></label>
+        <label class="opt"><input type="checkbox" name="sources" value="Instagram / Facebook"><span class="t"><b>Instagram, Facebook</b></span></label>
+        <label class="opt"><input type="checkbox" name="sources" value="Passage"><span class="t"><b>Passage devant la boutique</b></span></label>
+        <label class="opt"><input type="checkbox" name="sources" value="Plateformes"><span class="t"><b>Plateformes</b><small>Planity, TheFork, Uber Eats, Doctolib…</small></span></label>
+        <label class="opt"><input type="checkbox" name="sources" value="Site internet"><span class="t"><b>Son site internet</b></span></label>
+      </div></div>
+    <div class="q"><span class="ql">Sa fiche Google</span>
+      <div class="opts two" data-g="Fiche Google">
+        <label class="opt"><input type="radio" name="gmb" value="Complète, avec des avis"><span class="t"><b>Complète, avec des avis</b></span></label>
+        <label class="opt"><input type="radio" name="gmb" value="Incomplète ou peu d’avis"><span class="t"><b>Incomplète, peu d’avis</b></span></label>
+        <label class="opt"><input type="radio" name="gmb" value="Pas de fiche"><span class="t"><b>Pas de fiche</b></span></label>
+        <label class="opt"><input type="radio" name="gmb" value="Ne sait pas"><span class="t"><b>Elle ne sait pas</b></span></label>
+      </div></div>
+    <div class="note"><b>Bonus à proposer :</b> fiche vide ou mal remplie ? C’est le moment de parler du Pack Visibilité Google (290 €) : la pub marche mieux quand la fiche inspire confiance.</div>
+  </section>
+
+  <!-- 3 ─ Objectif -->
+  <section id="s3" data-t="Objectif">
+    <div class="sh"><span class="no">3</span><h2>Ce qu’elle veut obtenir</h2><span class="time">3 min</span></div>
+    <div class="say"><p>« Si la publicité marche, concrètement, qu’est-ce qui se passe pour vous ? Plus de réservations, plus d’appels, plus de ventes ? »</p>
+      <p>« Et un client, il vous rapporte combien en moyenne ? »</p></div>
+    <div class="note"><b>Pourquoi :</b> c’est ce que le dashboard comptera (« coût par réservation ») et ce qui permet de calculer ce que la pub lui rapporte.</div>
+    <div class="q"><span class="ql">Le résultat qui compte</span>
+      <div class="opts two" data-g="Résultat principal">
+        <label class="opt"><input type="radio" name="obj" value="reservations"><span class="t"><b>Réservations</b><small>Institut, restaurant, coiffeur</small></span></label>
+        <label class="opt"><input type="radio" name="obj" value="ventes"><span class="t"><b>Ventes en ligne</b><small>Boutique en ligne</small></span></label>
+        <label class="opt"><input type="radio" name="obj" value="devis"><span class="t"><b>Demandes de devis</b><small>Artisan, nettoyage, BTP</small></span></label>
+        <label class="opt"><input type="radio" name="obj" value="contacts"><span class="t"><b>Appels, contacts</b></span></label>
+        <label class="opt"><input type="radio" name="obj" value="messages"><span class="t"><b>Messages</b><small>WhatsApp, Messenger, Instagram</small></span></label>
+        <label class="opt"><input type="radio" name="obj" value="prospects"><span class="t"><b>Prospects</b><small>Formulaires</small></span></label>
+      </div></div>
+    <div class="trio">
+      <div class="q"><label for="obj_nb">Combien en plus par mois ?</label><input type="number" id="obj_nb" data-l="Objectif par mois" inputmode="numeric" placeholder="ex. 30"></div>
+      <div class="q"><label for="obj_valeur">Un client rapporte en moyenne</label><div class="suffix"><input type="number" id="obj_valeur" data-l="Valeur moyenne d’un client (€)" inputmode="decimal" placeholder="ex. 60"><span>€</span></div></div>
+      <div class="q"><label for="obj_capa">Clients en plus possibles / semaine</label><input type="number" id="obj_capa" data-l="Capacité en plus par semaine" inputmode="numeric" placeholder="ex. 10"></div>
+    </div>
+    <div class="q"><span class="ql">Ses clients reviennent…</span>
+      <div class="opts three" data-g="Fidélité">
+        <label class="opt"><input type="radio" name="retour" value="Une seule fois"><span class="t"><b>Une seule fois</b></span></label>
+        <label class="opt"><input type="radio" name="retour" value="Régulièrement"><span class="t"><b>Régulièrement</b></span></label>
+        <label class="opt"><input type="radio" name="retour" value="Abonnement"><span class="t"><b>Abonnement, forfait</b></span></label>
+      </div></div>
+    <div class="q"><label for="obj_saison">Périodes fortes et creuses</label><input type="text" id="obj_saison" data-l="Saisonnalité" placeholder="Fêtes, été, rentrée…"></div>
+    <div class="note"><b>Capacité :</b> inutile d’amener 40 clients par semaine à quelqu’un qui ne peut en recevoir que 10. Si elle est déjà pleine, on vise les créneaux creux.</div>
+  </section>
+
+  <!-- 4 ─ Offre et cible -->
+  <section id="s4" data-t="Offre">
+    <div class="sh"><span class="no">4</span><h2>L’offre et la cible</h2><span class="time">3 min</span></div>
+    <div class="say"><p>« Qu’est-ce que vous voulez qu’on mette en avant en premier ? Et votre client idéal, il ressemble à quoi ? »</p></div>
+    <div class="duo">
+      <div class="q"><label for="off_produit">Produit ou service à pousser</label><input type="text" id="off_produit" data-l="À mettre en avant" placeholder="Soin visage, menu du midi…"></div>
+      <div class="q"><label for="off_prix">Son prix</label><input type="text" id="off_prix" data-l="Prix" placeholder="ex. 59 €"></div>
+    </div>
+    <div class="q"><span class="ql">Une offre de bienvenue possible ?</span>
+      <div class="opts two" data-g="Offre de bienvenue">
+        <label class="opt"><input type="radio" name="promo" value="Oui"><span class="t"><b>Oui</b><small>−10 %, cadeau, livraison offerte…</small></span></label>
+        <label class="opt"><input type="radio" name="promo" value="Non"><span class="t"><b>Non</b></span></label>
+      </div></div>
+    <div class="q"><label for="off_promo">Laquelle ?</label><input type="text" id="off_promo" data-l="Offre" placeholder="ex. −20 % sur le premier soin"></div>
+    <div class="duo">
+      <div class="q"><label for="cib_profil">Client idéal</label><input type="text" id="cib_profil" data-l="Client idéal" placeholder="Femmes 25-45 ans, actives…"></div>
+      <div class="q"><label for="cib_interets">Ses centres d’intérêt</label><input type="text" id="cib_interets" data-l="Centres d’intérêt" placeholder="Bien-être, mode, sport…"></div>
+      <div class="q"><label for="off_diff">Ce qui la différencie</label><input type="text" id="off_diff" data-l="Différence" placeholder="Produits bio, ouvert le dimanche…"></div>
+      <div class="q"><label for="off_conc">Ses concurrents</label><input type="text" id="off_conc" data-l="Concurrents" placeholder="Noms, rues"></div>
+      <div class="q"><label for="off_avis">Avis Google</label><input type="text" id="off_avis" data-l="Avis Google" placeholder="ex. 4,8 ★ · 120 avis"></div>
+      <div class="q"><label for="off_interdit">À ne surtout pas dire</label><input type="text" id="off_interdit" data-l="À éviter" placeholder="Prix cassés, promesses santé…"></div>
+    </div>
+  </section>
+
+  <!-- 5 ─ Historique -->
+  <section id="s5" data-t="Historique">
+    <div class="sh"><span class="no">5</span><h2>La pub qu’elle a déjà faite</h2><span class="time">2 min</span></div>
+    <div class="say"><p>« Vous avez déjà fait de la publicité ? Qu’est-ce qui a marché, et qu’est-ce qui vous a déçue ? »</p></div>
+    <div class="q"><div class="opts two" data-g="Pub déjà faite">
+      <label class="opt"><input type="radio" name="hist" value="Jamais"><span class="t"><b>Jamais</b></span></label>
+      <label class="opt"><input type="radio" name="hist" value="Boost de publications"><span class="t"><b>Elle a « boosté » des publications</b></span></label>
+      <label class="opt"><input type="radio" name="hist" value="Campagnes elle-même"><span class="t"><b>Des campagnes, elle-même</b></span></label>
+      <label class="opt"><input type="radio" name="hist" value="Agence ou freelance"><span class="t"><b>Avec une agence, un freelance</b></span></label>
+    </div></div>
+    <div class="duo">
+      <div class="q"><label for="hist_budget">Budget à l’époque</label><input type="text" id="hist_budget" data-l="Ancien budget" placeholder="ex. 200 € / mois"></div>
+      <div class="q"><label for="hist_acces">Qui a accès aux comptes aujourd’hui ?</label><input type="text" id="hist_acces" data-l="Accès actuels" placeholder="Elle, son fils, l’ancienne agence…"></div>
+    </div>
+    <div class="q"><label for="hist_bilan">Ce qui a marché, ce qui a déçu</label><textarea id="hist_bilan" data-l="Bilan" placeholder="Beaucoup de likes mais pas de clients…"></textarea></div>
+    <div class="note"><b>Si elle a été déçue :</b> c’est souvent un « boost » sans ciblage ni suivi. Réponds que cette fois chaque résultat est compté, et que tu coupes ce qui ne marche pas au bout de quelques jours.</div>
+  </section>
+
+  <!-- 6 ─ Budget -->
+  <section id="s6" data-t="Budget">
+    <div class="sh"><span class="no">6</span><h2>Budget et fonctionnement</h2><span class="time">3 min</span></div>
+    <div class="say"><p>« Le budget publicitaire, vous le payez directement à Facebook ou à Google, avec votre carte. Je ne touche pas à cet argent : moi, je facture uniquement la gestion, <b data-bind="fee">mon tarif</b>. »</p>
+      <p>« Pour un premier test, je conseille 5 à 10 € par jour pendant un mois. Ça suffit pour voir ce qui marche, et on ajuste ensuite avec les chiffres. »</p></div>
+    <div class="q"><span class="ql">Budget pub par mois</span>
+      <div class="opts two" data-g="Budget pub mensuel">
+        <label class="opt"><input type="radio" name="budget" value="150 € (5 €/jour)"><span class="t"><b>150 €</b><small>5 € par jour</small></span></label>
+        <label class="opt"><input type="radio" name="budget" value="300 € (10 €/jour)"><span class="t"><b>300 €</b><small>10 € par jour</small></span></label>
+        <label class="opt"><input type="radio" name="budget" value="600 € (20 €/jour)"><span class="t"><b>600 €</b><small>20 € par jour</small></span></label>
+        <label class="opt"><input type="radio" name="budget" value="Autre"><span class="t"><b>Autre montant</b></span></label>
+      </div></div>
+    <div class="q"><label for="bud_autre">Autre montant</label><div class="suffix"><input type="number" id="bud_autre" data-l="Budget (autre)" inputmode="decimal"><span>€ / mois</span></div></div>
+    <div class="q"><span class="ql">Où on diffuse</span>
+      <div class="opts three" data-g="Plateformes">
+        <label class="opt"><input type="checkbox" name="plateformes" value="Meta"><span class="t"><b>Facebook + Instagram</b></span></label>
+        <label class="opt"><input type="checkbox" name="plateformes" value="Google Ads"><span class="t"><b>Google</b></span></label>
+        <label class="opt"><input type="checkbox" name="plateformes" value="TikTok"><span class="t"><b>TikTok</b></span></label>
+      </div></div>
+    <div class="q"><span class="ql">Durée</span>
+      <div class="opts three" data-g="Durée">
+        <label class="opt"><input type="radio" name="duree" value="Test d'1 mois"><span class="t"><b>Test d’1 mois</b></span></label>
+        <label class="opt"><input type="radio" name="duree" value="3 mois"><span class="t"><b>3 mois</b></span></label>
+        <label class="opt"><input type="radio" name="duree" value="Sans durée fixe"><span class="t"><b>Sans durée fixe</b></span></label>
+      </div></div>
+    <div class="duo">
+      <div class="q"><label for="bud_debut">Démarrage souhaité</label><input type="date" id="bud_debut" data-l="Démarrage"></div>
+      <div class="q"><label for="bud_frais">Frais de gestion annoncés</label><div class="suffix"><input type="number" id="bud_frais" data-l="Frais de gestion (€/mois)" inputmode="decimal"><span>€ / mois</span></div></div>
+    </div>
+    <div class="q"><div class="opts" data-g="Règles">
+      <label class="opt"><input type="checkbox" name="regles" value="Elle paie la pub avec sa carte"><span class="t"><b>Elle paie la pub avec sa propre carte</b><small>Directement à Meta / Google : tu n’avances jamais d’argent</small></span></label>
+      <label class="opt"><input type="checkbox" name="regles" value="Mandat écrit à signer"><span class="t"><b>Mandat écrit à signer</b><small>Obligatoire quand tu achètes de la pub pour un client (loi Sapin) : tu l’envoies après le rendez-vous</small></span></label>
+    </div></div>
+  </section>
+
+  <!-- 7 ─ Suivi -->
+  <section id="s7" data-t="Suivi">
+    <div class="sh"><span class="no">7</span><h2>Le suivi : son tableau de bord</h2><span class="time">2 min</span></div>
+    <div class="say"><p>« Vous aurez un lien sur votre téléphone pour voir vos résultats en clair : combien de clients la pub vous a amenés, combien ça a coûté, ce que ça a rapporté. C’est mis à jour chaque nuit. Et chaque semaine, je vous écris ce que j’ai fait et ce que je prépare. Je vous montre. »</p></div>
+    <div class="demo"><a href="../pilotage/#/demo" target="_blank" rel="noopener">Ouvrir la démo</a><span>Montre la vue d’ensemble, puis une boutique en ligne (les ventes tombent en direct), puis « Voir comme le client ».</span></div>
+    <div class="note"><b>À savoir pour rester honnête :</b> la démo est une simulation sur des clients fictifs, accélérée pour qu’il se passe quelque chose pendant le rendez-vous. Ses vrais chiffres à elle se mettent à jour chaque nuit (et quand tu cliques « Actualiser »), pas à la seconde.</div>
+    <div class="duo">
+      <div class="q"><span class="ql">Son lien, par</span>
+        <div class="opts" data-g="Lien envoyé par">
+          <label class="opt"><input type="radio" name="lien" value="SMS"><span class="t"><b>SMS</b></span></label>
+          <label class="opt"><input type="radio" name="lien" value="E-mail"><span class="t"><b>E-mail</b></span></label>
+          <label class="opt"><input type="radio" name="lien" value="WhatsApp"><span class="t"><b>WhatsApp</b></span></label>
+        </div></div>
+      <div class="q"><span class="ql">Le point de la semaine, par</span>
+        <div class="opts" data-g="Point de la semaine par">
+          <label class="opt"><input type="radio" name="point" value="SMS"><span class="t"><b>SMS</b></span></label>
+          <label class="opt"><input type="radio" name="point" value="E-mail"><span class="t"><b>E-mail</b></span></label>
+          <label class="opt"><input type="radio" name="point" value="Dans le dashboard seulement"><span class="t"><b>Dans le dashboard</b></span></label>
+        </div></div>
+    </div>
+    <div class="q"><label for="suivi_rdv">Point mensuel : jour et heure préférés</label><input type="text" id="suivi_rdv" data-l="Point mensuel" placeholder="Lundi matin, par téléphone…"></div>
+  </section>
+
+  <!-- 8 ─ Accès -->
+  <section id="s8" data-t="Accès">
+    <div class="sh"><span class="no">8</span><h2>Les accès, sur place</h2><span class="time">5 min</span></div>
+    <div class="say"><p>« Je n’ai jamais besoin de vos mots de passe. Vous me donnez un accès depuis votre compte, vous restez propriétaire, et vous pouvez le retirer quand vous voulez. On le fait ensemble maintenant, ça prend cinq minutes. »</p></div>
+
+    <div class="sub">
+      <h3>Facebook + Instagram <span class="tag">Meta</span></h3>
+      <div class="q"><span class="ql">Elle a un portefeuille business et un compte publicitaire ?</span>
+        <div class="opts three" data-g="Compte Meta">
+          <label class="opt"><input type="radio" name="meta_bm" value="Oui"><span class="t"><b>Oui</b></span></label>
+          <label class="opt"><input type="radio" name="meta_bm" value="Non, à créer"><span class="t"><b>Non, à créer</b></span></label>
+          <label class="opt"><input type="radio" name="meta_bm" value="Ne sait pas"><span class="t"><b>Elle ne sait pas</b></span></label>
+        </div></div>
+      <ol class="steps">
+        <li>Sur son téléphone ou son PC : <span class="ui">business.facebook.com/settings</span></li>
+        <li><span class="ui">Partenaires</span> → <span class="ui">Ajouter</span> → <span class="ui">Donner à un partenaire l’accès à vos éléments</span></li>
+        <li>Elle saisit l’ID de LinkedIA : <span class="bind" data-bind="prep_meta">ton ID (étape 0)</span></li>
+        <li>Elle coche son <b>compte publicitaire</b> (« Gérer les campagnes »), sa <b>Page</b>, son <b>Instagram</b> et son <b>pixel</b> → <span class="ui">Enregistrer</span></li>
+      </ol>
+      <details class="more"><summary>Elle n’a pas de compte publicitaire ?</summary>
+        <ol class="steps">
+          <li><span class="ui">business.facebook.com</span> → créer un portefeuille business avec sa Page</li>
+          <li><span class="ui">Comptes publicitaires</span> → <span class="ui">Ajouter</span> → <span class="ui">Créer</span> : devise EUR, fuseau Paris</li>
+          <li><span class="ui">Paiements</span> → elle ajoute <b>sa</b> carte</li>
+          <li>Puis le partage à LinkedIA ci-dessus</li>
+        </ol></details>
+      <div class="q" style="margin-top:12px"><label for="acc_meta">ID de son compte publicitaire</label>
+        <p class="hint">Dans le Gestionnaire de publicités, en haut : « act_ » suivi de chiffres</p>
+        <input type="text" id="acc_meta" data-l="Compte pub Meta" placeholder="act_123456789"></div>
+      <div class="opts two" data-g="Accès Meta">
+        <label class="opt done"><input type="checkbox" name="meta_ok" value="Accès partenaire donné"><span class="t"><b>Accès partenaire donné</b></span></label>
+        <label class="opt done"><input type="checkbox" name="meta_ok" value="Page + Instagram"><span class="t"><b>Page + Instagram partagés</b></span></label>
+        <label class="opt done"><input type="checkbox" name="meta_ok" value="Pixel partagé"><span class="t"><b>Pixel partagé</b></span></label>
+        <label class="opt done"><input type="checkbox" name="meta_ok" value="Sa carte en moyen de paiement"><span class="t"><b>Sa carte en moyen de paiement</b></span></label>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3>Google <span class="tag">Google Ads</span></h3>
+      <ol class="steps">
+        <li>Note son numéro client Google Ads (10 chiffres, en haut à droite)</li>
+        <li>Tu lui envoies une invitation depuis ton compte LinkedIA <span class="bind" data-bind="prep_mcc">ton n° (étape 0)</span></li>
+        <li>Elle accepte : <span class="ui">Admin</span> → <span class="ui">Accès et sécurité</span> → onglet <span class="ui">Gestionnaires</span> → <span class="ui">Accepter</span></li>
+      </ol>
+      <details class="more"><summary>Elle n’a pas de compte Google Ads ?</summary>
+        <p style="font-size:14.5px">Tu le crées depuis ton compte administrateur (Comptes → + → Créer un compte), puis elle y ajoute <b>sa</b> carte dans Facturation.</p></details>
+      <div class="q" style="margin-top:12px"><label for="acc_google">Son numéro client Google Ads</label><input type="text" id="acc_google" data-l="Compte Google Ads" placeholder="123-456-7890"></div>
+      <div class="opts two" data-g="Accès Google">
+        <label class="opt done"><input type="checkbox" name="g_ok" value="Invitation envoyée"><span class="t"><b>Invitation envoyée</b></span></label>
+        <label class="opt done"><input type="checkbox" name="g_ok" value="Invitation acceptée"><span class="t"><b>Invitation acceptée</b></span></label>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3>TikTok <span class="tag">si elle y tient</span></h3>
+      <ol class="steps">
+        <li><span class="ui">business.tiktok.com</span> → son Business Center → <span class="ui">Partenaires</span> → <span class="ui">Ajouter un partenaire</span></li>
+        <li>ID du Business Center LinkedIA : <span class="bind" data-bind="prep_tiktok">ton ID (étape 0)</span>, accès « Opérateur »</li>
+      </ol>
+      <div class="q"><label for="acc_tiktok">ID de son compte publicitaire TikTok</label><input type="text" id="acc_tiktok" data-l="Compte pub TikTok" inputmode="numeric" placeholder="19 chiffres"></div>
+    </div>
+
+    <div class="sub">
+      <h3>Mesurer les résultats</h3>
+      <div class="q"><span class="ql">Le pixel Meta sur son site</span>
+        <div class="opts three" data-g="Pixel">
+          <label class="opt"><input type="radio" name="pixel" value="Installé"><span class="t"><b>Déjà installé</b></span></label>
+          <label class="opt"><input type="radio" name="pixel" value="À installer"><span class="t"><b>À installer</b><small>Tu t’en occupes</small></span></label>
+          <label class="opt"><input type="radio" name="pixel" value="Pas de site"><span class="t"><b>Pas de site</b></span></label>
+        </div></div>
+      <div class="q"><label for="trk_outil">Outil de réservation ou de commande</label><input type="text" id="trk_outil" data-l="Outil de réservation / boutique" placeholder="Planity, TheFork, Shopify, WooCommerce, téléphone…"></div>
+      <div class="note"><b>Pourquoi :</b> sans pixel ni outil qui remonte les réservations, les plateformes ne peuvent pas compter les résultats, et le dashboard non plus. Si c’est toi qui as fait son site, propose de l’installer.</div>
+    </div>
+  </section>
+
+  <!-- 9 ─ Visuels -->
+  <section id="s9" data-t="Visuels">
+    <div class="sh"><span class="no">9</span><h2>Les photos et vidéos</h2><span class="time">2 min</span></div>
+    <div class="say"><p>« Pour les pubs, rien ne marche mieux que de vraies photos et vidéos de chez vous. Vous en avez ? Sinon, je passe en tourner un jour où il y a du monde. »</p></div>
+    <div class="q"><span class="ql">Ce qu’elle a déjà</span>
+      <div class="opts three" data-g="Visuels disponibles">
+        <label class="opt"><input type="radio" name="visuels" value="Beaucoup"><span class="t"><b>Beaucoup</b></span></label>
+        <label class="opt"><input type="radio" name="visuels" value="Quelques-uns"><span class="t"><b>Quelques-uns</b></span></label>
+        <label class="opt"><input type="radio" name="visuels" value="Rien"><span class="t"><b>Rien</b></span></label>
+      </div></div>
+    <div class="q"><span class="ql">Qui s’en occupe</span>
+      <div class="opts three" data-g="Visuels fournis par">
+        <label class="opt"><input type="radio" name="visuels_qui" value="Elle les envoie"><span class="t"><b>Elle les envoie</b></span></label>
+        <label class="opt"><input type="radio" name="visuels_qui" value="Je viens tourner"><span class="t"><b>Je viens tourner</b></span></label>
+        <label class="opt"><input type="radio" name="visuels_qui" value="Les deux"><span class="t"><b>Les deux</b></span></label>
+      </div></div>
+    <div class="duo">
+      <div class="q"><label for="cre_date">Date de tournage</label><input type="date" id="cre_date" data-l="Tournage"></div>
+      <div class="q"><label for="cre_lien">Où elle envoie ses fichiers</label><input type="text" id="cre_lien" data-l="Envoi des fichiers" placeholder="WhatsApp, Google Drive, WeTransfer…"></div>
+    </div>
+    <div class="q"><label for="cre_idees">Idées de vidéos, ce qui la rend unique en image</label><textarea id="cre_idees" data-l="Idées de visuels" placeholder="Avant / après, coulisses, l’équipe, un client content…"></textarea></div>
+  </section>
+
+  <!-- 10 ─ Conclusion -->
+  <section id="s10" data-t="Conclusion">
+    <div class="sh"><span class="no">10</span><h2>On conclut</h2><span class="time">2 min</span></div>
+    <div class="say"><p id="closing">« Je récapitule : … Ça vous va ? »</p></div>
+    <div class="q"><span class="ql">Sa décision</span>
+      <div class="opts three" data-g="Décision">
+        <label class="opt"><input type="radio" name="decision" value="Oui, on démarre"><span class="t"><b>Oui, on démarre</b></span></label>
+        <label class="opt"><input type="radio" name="decision" value="Elle réfléchit"><span class="t"><b>Elle réfléchit</b></span></label>
+        <label class="opt"><input type="radio" name="decision" value="Pas maintenant"><span class="t"><b>Pas maintenant</b></span></label>
+      </div></div>
+    <div class="note"><b>Elle réfléchit ?</b> Fixe la date de relance devant elle : « Je vous rappelle jeudi à 10 h, ça vous va ? »</div>
+    <div class="q"><label for="relance">Date de relance</label><input type="date" id="relance" data-l="Relance"></div>
+    <div class="q"><span class="ql">Après le rendez-vous</span>
+      <div class="opts two" data-g="Suite">
+        <label class="opt done"><input type="checkbox" name="suite" value="Mandat envoyé"><span class="t"><b>Mandat envoyé</b></span></label>
+        <label class="opt done"><input type="checkbox" name="suite" value="Accès vérifiés"><span class="t"><b>Accès vérifiés</b></span></label>
+        <label class="opt done"><input type="checkbox" name="suite" value="Visuels reçus"><span class="t"><b>Visuels reçus</b></span></label>
+        <label class="opt done"><input type="checkbox" name="suite" value="Client créé dans le dashboard"><span class="t"><b>Client créé dans le dashboard</b></span></label>
+        <label class="opt done"><input type="checkbox" name="suite" value="Campagnes lancées"><span class="t"><b>Campagnes lancées</b></span></label>
+        <label class="opt done"><input type="checkbox" name="suite" value="Lien envoyé + 1er point"><span class="t"><b>Lien envoyé + 1er point de la semaine</b></span></label>
+      </div></div>
+    <div class="q"><label for="notes">Notes libres</label><textarea id="notes" data-l="Notes" placeholder="Tout ce qui ne rentre pas ailleurs"></textarea></div>
+  </section>
+
+  <div class="end">
+    <h2>Le récap</h2>
+    <p>Il se met à jour tout seul. Envoie-le dans ta boîte mail pour le garder, et crée le client dans le dashboard en un clic.</p>
+    <div class="recap" id="recap" style="background:#1b1a17;border-color:#33312c;color:#e9e6de;margin-top:14px"></div>
+    <div class="actions">
+      <button type="button" class="go" id="send">M’envoyer la fiche par e-mail</button>
+      <a class="go" id="toDash" href="../pilotage/#/nouveau-client" target="_blank" rel="noopener">Créer ce client dans le dashboard</a>
+      <button type="button" class="ghost" onclick="window.print()">Imprimer / PDF</button>
+      <button type="button" class="ghost" id="newFiche2">Nouvelle fiche</button>
+    </div>
+    <p class="msg" id="msg"></p>
+    <p class="saved" id="saved"></p>
+    <input type="text" id="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+  </div>
+</form>
+
+<footer><b>LinkedIA — Jérémy Halimi</b><br>06 65 14 14 33 · contact@linkeedia.fr</footer>
+</div>
+
+<dialog id="objDlg" aria-labelledby="objTitle">
+  <div class="dlg">
+    <h2 id="objTitle">Si elle dit… <button type="button" aria-label="Fermer" onclick="this.closest('dialog').close()">×</button></h2>
+    <div class="obj"><b>« C’est trop cher. »</b><p>« C’est vous qui fixez le budget : on peut commencer à 5 € par jour. Et vous voyez où va chaque euro, dans votre lien. »</p></div>
+    <div class="obj"><b>« J’ai déjà essayé, ça n’a pas marché. »</b><p>« Souvent, c’était un “boost” sans ciblage ni suivi. Là, on compte chaque réservation, et on coupe au bout de quelques jours ce qui ne rapporte rien. »</p></div>
+    <div class="obj"><b>« Je n’ai pas le temps. »</b><p>« Vous n’avez presque rien à faire : cinq minutes aujourd’hui pour l’accès, quelques photos, et vous lisez votre point chaque semaine. »</p></div>
+    <div class="obj"><b>« Mon neveu s’en occupe / je booste moi-même. »</b><p>« Gardez la main sur vos publications. Moi je m’occupe des campagnes, et je vous montre les chiffres : vous comparez. »</p></div>
+    <div class="obj"><b>« Et si je veux arrêter ? »</b><p>« Vous retirez mon accès en un clic, vous gardez vos comptes et vos audiences. La durée, on l’écrit ensemble dans le mandat. »</p></div>
+    <div class="obj"><b>« Ça marche vraiment pour un commerce comme le mien ? »</b><p>« On fait un test d’un mois avec un petit budget, et on regarde les chiffres ensemble. Ce sont eux qui décident, pas moi. »</p></div>
+    <div class="obj"><b>« Je dois en parler à mon associé(e). »</b><p>« Bien sûr. Je vous laisse la démo et le récap par e-mail, et je vous rappelle [jour] à [heure] pour en parler à deux. »</p></div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Verrou : même code et même mémoire que le carnet ---------- */
+  (function () {
+    var KEY = 'lk_tournee_ok', H = 'cf820c86e58c16ff09ebacd16f47278637f18a71a863a63910d6b02644c91765', SALT = 'lk-tournee:';
+    var g = document.getElementById('lkgate');
+    try { if (localStorage.getItem(KEY) === '1') { g.remove(); return; } } catch (e) {}
+    var pin = document.getElementById('lkgate-pin'), err = document.getElementById('lkgate-err');
+    setTimeout(function () { try { pin.focus(); } catch (e) {} }, 60);
+    document.getElementById('lkgate-form').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var v = (pin.value || '').trim();
+      if (!v) return;
+      crypto.subtle.digest('SHA-256', new TextEncoder().encode(SALT + v)).then(function (h) {
+        var hex = Array.prototype.map.call(new Uint8Array(h), function (x) { return ('0' + x.toString(16)).slice(-2); }).join('');
+        if (hex === H) { try { localStorage.setItem(KEY, '1'); } catch (e) {} g.remove(); }
+        else { err.textContent = 'Code incorrect'; pin.value = ''; pin.focus(); }
+      });
+    });
+  })();
+
+  var ENDPOINT = 'https://linkedia-contact.halimjeremy.workers.dev';
+  var DASH = '../pilotage/';
+  var IDX = 'lk-rdvpub-index', CUR = 'lk-rdvpub-cur', PREP = 'lk-rdvpub-prep', NOTES = 'lk-rdvpub-notes';
+  var form = document.getElementById('f');
+  var sel = document.getElementById('ficheSel');
+  var $ = function (id) { return document.getElementById(id); };
+  var store = {
+    get: function (k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+
+  /* ---------- Fiches multiples (une par client) ---------- */
+  var index = store.get(IDX, []);
+  var cur = store.get(CUR, null);
+  function newId() { return 'f' + Date.now().toString(36); }
+  function ensureFiche() {
+    if (!cur || !index.some(function (f) { return f.id === cur; })) {
+      cur = newId();
+      index.unshift({ id: cur, nom: '', maj: Date.now() });
+      store.set(IDX, index); store.set(CUR, cur);
+    }
+  }
+  function fillSelect() {
+    sel.innerHTML = '';
+    index.forEach(function (f) {
+      var o = document.createElement('option');
+      o.value = f.id;
+      o.textContent = (f.nom || 'Nouvelle fiche') + ' · ' + new Date(f.maj).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+      if (f.id === cur) o.selected = true;
+      sel.appendChild(o);
+    });
+  }
+
+  function fields() { return form.querySelectorAll('input:not(#website), textarea'); }
+  function keyOf(el) { return el.id || (el.name + '|' + el.value); }
+
+  function collect() {
+    var d = {};
+    fields().forEach(function (el) {
+      if (el.hasAttribute('data-prep')) return;
+      if (el.type === 'checkbox' || el.type === 'radio') { if (el.checked) d[keyOf(el)] = true; }
+      else if (el.value.trim()) d[keyOf(el)] = el.value;
+    });
+    return d;
+  }
+  function apply(d) {
+    fields().forEach(function (el) {
+      if (el.hasAttribute('data-prep')) return;
+      var k = keyOf(el);
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!d[k];
+      else el.value = d[k] || '';
+    });
+  }
+  function loadPrep() {
+    var p = store.get(PREP, {});
+    form.querySelectorAll('[data-prep]').forEach(function (el) { el.value = p[el.id] || ''; });
+  }
+  function savePrep() {
+    var p = {};
+    form.querySelectorAll('[data-prep]').forEach(function (el) { if (el.value.trim()) p[el.id] = el.value.trim(); });
+    store.set(PREP, p);
+  }
+
+  var timer;
+  function save() {
+    savePrep();
+    store.set('lk-rdvpub:' + cur, collect());
+    var nom = $('ent_nom').value.trim();
+    index.forEach(function (f) { if (f.id === cur) { f.nom = nom; f.maj = Date.now(); } });
+    store.set(IDX, index);
+    fillSelect();
+    $('saved').textContent = 'Enregistré sur ce téléphone à ' + new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  }
+  function openFiche(id) {
+    cur = id; store.set(CUR, cur);
+    apply(store.get('lk-rdvpub:' + cur, {}));
+    if (!$('rdv_date').value) $('rdv_date').value = new Date().toISOString().slice(0, 10);
+    if (!$('bud_frais').value && $('prep_fee').value) $('bud_frais').value = $('prep_fee').value;
+    fillSelect(); refresh();
+  }
+  function createFiche() {
+    save();
+    var id = newId();
+    index.unshift({ id: id, nom: '', maj: Date.now() });
+    store.set(IDX, index);
+    openFiche(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ---------- Valeurs utiles ---------- */
+  function val(id) { var el = $(id); return el ? el.value.trim() : ''; }
+  function radio(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
+  function checks(name) { return Array.prototype.map.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (el) { return el.value; }); }
+  var GOAL = { reservations: 'réservations', ventes: 'ventes', devis: 'demandes de devis', contacts: 'appels et contacts', messages: 'messages', prospects: 'prospects' };
+  function budgetTxt() { var b = radio('budget'); return b === 'Autre' ? (val('bud_autre') ? val('bud_autre') + ' € par mois' : '') : b.replace(' (', ' par mois (').replace('/jour)', ' par jour)'); }
+
+  /* ---------- Phrases et liens qui se remplissent tout seuls ---------- */
+  function binds() {
+    document.querySelectorAll('[data-bind]').forEach(function (el) {
+      var k = el.getAttribute('data-bind');
+      if (k === 'fee') { var fee = val('bud_frais') || val('prep_fee'); el.textContent = fee ? fee + ' € par mois' : 'mon tarif'; return; }
+      var v = val(k);
+      if (!el.dataset.ph) el.dataset.ph = el.textContent;
+      el.textContent = v || el.dataset.ph;
+      el.classList.toggle('empty', !v);
+    });
+    var pf = checks('plateformes').map(function (p) { return p === 'Meta' ? 'Facebook et Instagram' : p === 'Google Ads' ? 'Google' : p; });
+    var parts = [];
+    if (pf.length) parts.push('on démarre sur ' + pf.join(' et '));
+    if (budgetTxt()) parts.push('avec ' + budgetTxt() + ' de budget, payé directement par vous');
+    if (radio('obj')) parts.push('objectif : ' + (val('obj_nb') ? val('obj_nb') + ' ' : 'plus de ') + GOAL[radio('obj')] + ' par mois');
+    var fee = val('bud_frais') || val('prep_fee');
+    $('closing').textContent = '« Je récapitule : ' + (parts.length ? parts.join(', ') : 'on démarre par un test d’un mois') +
+      '. ' + (fee ? 'Ma gestion, c’est ' + fee + ' € par mois. ' : '') +
+      'Je vous envoie le mandat à signer, je prépare les premières pubs, et vous recevez votre lien de résultats. Ça vous va ? »';
+  }
+
+  /* ---------- Progression par étape ---------- */
+  var sections = Array.prototype.slice.call(form.querySelectorAll('section'));
+  function sectionDone(sec) {
+    var any = false;
+    sec.querySelectorAll('input:not(#website), textarea').forEach(function (el) {
+      if ((el.type === 'checkbox' || el.type === 'radio') ? el.checked : el.value.trim()) any = true;
+    });
+    return any;
+  }
+  function refresh() {
+    var done = 0;
+    sections.forEach(function (sec) {
+      var ok = sectionDone(sec);
+      if (ok) done++;
+      var a = document.querySelector('.toc a[href="#' + sec.id + '"]');
+      if (a) a.classList.toggle('done', ok);
+    });
+    $('pnum').textContent = done + '/' + sections.length;
+    $('pbar').style.width = (done / sections.length) * 100 + '%';
+    binds();
+    $('recap').textContent = recap();
+    $('toDash').href = DASH + '#/nouveau-client?d=' + encodeURIComponent(JSON.stringify(prefill()));
+  }
+
+  /* ---------- Récap texte (e-mail + écran) ---------- */
+  function recap() {
+    var out = [];
+    sections.forEach(function (sec) {
+      if (sec.id === 's0') return;
+      var lines = [];
+      sec.querySelectorAll('input[data-l], textarea[data-l]').forEach(function (el) {
+        var v = el.value.trim();
+        if (v) lines.push('- ' + el.getAttribute('data-l') + ' : ' + v);
+      });
+      sec.querySelectorAll('.opts[data-g]').forEach(function (g) {
+        var vals = Array.prototype.map.call(g.querySelectorAll('input:checked'), function (el) { return GOAL[el.value] && el.name === 'obj' ? GOAL[el.value] : el.value; });
+        if (vals.length) lines.push('- ' + g.getAttribute('data-g') + ' : ' + vals.join(', '));
+      });
+      if (lines.length) out.push(sec.querySelector('h2').textContent.trim().toUpperCase() + '\n' + lines.join('\n'));
+    });
+    return out.join('\n\n') || 'Rien de rempli pour l’instant.';
+  }
+
+  /* ---------- Fiche préremplie pour le dashboard ---------- */
+  function prefill() {
+    var goal = radio('obj');
+    var v = parseFloat((val('obj_valeur') || '').replace(',', '.'));
+    var accounts = {};
+    if (val('acc_meta')) accounts.meta = val('acc_meta');
+    if (val('acc_google')) accounts.google = val('acc_google').replace(/\D/g, '');
+    if (val('acc_tiktok')) accounts.tiktok = val('acc_tiktok').replace(/\D/g, '');
+    return {
+      name: val('ent_nom'),
+      sector: [val('ent_activite'), val('ent_ville')].filter(Boolean).join(' · '),
+      goal: goal || 'reservations',
+      valueMode: goal === 'ventes' && radio('pixel') === 'Installé' ? 'platform' : v > 0 ? 'estimate' : 'none',
+      estValue: v > 0 ? v : null,
+      accounts: accounts
+    };
+  }
+
+  /* ---------- Envoi par e-mail (formulaire du site → ta boîte) ---------- */
+  var busy = false;
+  $('send').addEventListener('click', function () {
+    if (busy) return;
+    var msg = $('msg');
+    var nom = val('ent_nom') || val('ct_nom');
+    if (!nom) { msg.className = 'msg ko'; msg.textContent = 'Indique au moins le nom de l’entreprise (étape 2).'; $('ent_nom').focus(); return; }
+    busy = true;
+    var btn = $('send');
+    btn.disabled = true; btn.textContent = 'Envoi…';
+    var txt = recap();
+    if (txt.length > 3900) txt = txt.slice(0, 3900) + '\n[…] fiche complète : bouton Imprimer / PDF';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: 'Fiche RDV · ' + nom, email: 'contact@linkeedia.fr', type: 'Fiche rendez-vous pub', msg: txt, website: $('website').value })
+    }).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function () {
+        msg.className = 'msg ok'; msg.textContent = 'Fiche envoyée dans ta boîte mail.';
+        btn.textContent = 'Envoyée ✓';
+        setTimeout(function () { btn.disabled = false; btn.textContent = 'M’envoyer la fiche par e-mail'; busy = false; }, 4000);
+      })
+      .catch(function () {
+        busy = false; btn.disabled = false; btn.textContent = 'M’envoyer la fiche par e-mail';
+        msg.className = 'msg ko'; msg.textContent = 'L’envoi n’a pas abouti (réseau ?). La fiche reste enregistrée sur ce téléphone : réessaie plus tard, ou imprime-la.';
+      });
+  });
+
+  /* ---------- Sommaire, antisèche, objections ---------- */
+  var toc = $('toc');
+  sections.forEach(function (sec, i) {
+    var a = document.createElement('a');
+    a.href = '#' + sec.id;
+    a.textContent = i + '. ' + sec.getAttribute('data-t');
+    toc.appendChild(a);
+  });
+  function setNotes(on) {
+    document.body.classList.toggle('no-notes', !on);
+    $('notesBtn').setAttribute('aria-pressed', on ? 'true' : 'false');
+    $('notesBtn').textContent = on ? 'Antisèche' : 'Antisèche masquée';
+    store.set(NOTES, on);
+  }
+  $('notesBtn').addEventListener('click', function () { setNotes(document.body.classList.contains('no-notes')); });
+  $('objBtn').addEventListener('click', function () { $('objDlg').showModal(); });
+  $('objDlg').addEventListener('click', function (e) { if (e.target === this) this.close(); });
+
+  sel.addEventListener('change', function () { var id = sel.value; save(); openFiche(id); });
+  $('newFiche').addEventListener('click', createFiche);
+  $('newFiche2').addEventListener('click', function () { if (confirm('Commencer une nouvelle fiche ? Celle-ci reste enregistrée dans la liste en haut.')) createFiche(); });
+
+  function onEdit() { refresh(); clearTimeout(timer); timer = setTimeout(save, 400); }
+  form.addEventListener('input', onEdit);
+  form.addEventListener('change', onEdit);
+
+  setNotes(store.get(NOTES, true));
+  loadPrep();
+  ensureFiche();
+  openFiche(cur);
+})();
+</script>
+</body>
+</html>

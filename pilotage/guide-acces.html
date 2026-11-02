@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guide des accès — LinkedIA</title>
+<link rel="icon" href="brand/icon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f9fafb; --card:#fff; --ink:#111827; --ink2:#374151; --muted:#6b7280; --line:#e5e7eb; --soft:#f3f4f6;
+  --blue:#2563eb; --blue-soft:#eff6ff; --blue-ink:#1d4ed8; --green:#047857; --green-soft:#ecfdf5;
+  --amber-soft:#fffbeb; --amber-ink:#92400e; --amber-line:#fde68a; --red-soft:#fef2f2; --red-ink:#b91c1c;
+  --code:#f3f4f6;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#030712; --card:#111827; --ink:#f3f4f6; --ink2:#d1d5db; --muted:#9ca3af; --line:#1f2937; --soft:#1f2937;
+    --blue:#3b82f6; --blue-soft:rgba(59,130,246,.12); --blue-ink:#93c5fd; --green:#34d399; --green-soft:rgba(16,185,129,.1);
+    --amber-soft:rgba(245,158,11,.1); --amber-ink:#fcd34d; --amber-line:rgba(245,158,11,.3); --red-soft:rgba(239,68,68,.1); --red-ink:#fca5a5;
+    --code:#1f2937; color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01"}
+a{color:var(--blue)}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);padding:24px 16px 64px;gap:0}.toc{display:none}}
+.toc{position:sticky;top:24px;align-self:start}
+.toc .brand{display:flex;align-items:center;gap:10px;margin-bottom:28px;font-weight:600;font-size:14px}
+.toc .brand img{width:36px;height:36px;border-radius:9px}
+.toc .brand small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.toc a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--ink2);text-decoration:none;font-size:14px;font-weight:500}
+.toc a:hover{background:var(--soft)}
+.toc a svg{width:16px;height:16px;flex:none}
+.toc .prog{margin-top:24px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:13px;color:var(--muted)}
+.bar{height:6px;border-radius:9px;background:var(--soft);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--blue);border-radius:9px;transition:width .3s}
+h1{font-size:clamp(30px,4.2vw,40px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px;font-weight:600}
+.lead{font-size:17px;color:var(--ink2);max-width:680px;margin:0}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.intro{margin:28px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:700px){.intro{grid-template-columns:minmax(0,1fr)}}
+.intro .card{padding:16px 18px}
+.intro b{display:block;font-size:14px;margin-bottom:2px}
+.intro span{font-size:13px;color:var(--muted)}
+.ids{margin-top:28px;padding:20px 22px}
+.ids h2{font-size:17px;margin:0 0 4px;letter-spacing:-.01em}
+.ids p{margin:0 0 16px;color:var(--muted);font-size:14px}
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:700px){.fields{grid-template-columns:minmax(0,1fr)}}
+label{font-size:13px;font-weight:500;color:var(--ink2);display:block}
+input[type=text]{margin-top:6px;width:100%;height:40px;border:1px solid var(--line);border-radius:9px;padding:0 12px;font:inherit;font-size:14px;background:var(--bg);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:transparent}
+section.platform{margin-top:56px}
+.ph{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ph .logo{width:48px;height:48px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-content:center}
+.ph .logo svg{width:26px;height:26px}
+.ph h2{font-size:26px;letter-spacing:-.025em;margin:0;line-height:1.2;font-weight:600}
+.ph .sub{font-size:14px;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:4px 10px;border-radius:99px;background:var(--soft);color:var(--ink2);white-space:nowrap}
+.pill.blue{background:var(--blue-soft);color:var(--blue-ink)}
+.ph .pill{margin-left:auto}
+@media (max-width:600px){.ph .pill{margin-left:0}}
+.why{margin:14px 0 0;color:var(--ink2);max-width:720px}
+.steps{margin-top:20px;display:grid;gap:12px}
+.step{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:18px 20px}
+.step .n{width:30px;height:30px;border-radius:50%;background:var(--blue-soft);color:var(--blue-ink);display:grid;place-content:center;font-weight:600;font-size:14px;margin-top:1px}
+.step.done .n{background:var(--green);color:#fff}
+.step h3{margin:0;font-size:16px;letter-spacing:-.01em;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.step h3 .who{font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap}
+.step p,.step li{color:var(--ink2);font-size:14.5px}
+.step p{margin:6px 0 0}
+.step ol,.step ul{margin:8px 0 0;padding-left:20px}
+.step li{margin:3px 0}
+.step li::marker{color:var(--muted)}
+.chk{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;user-select:none}
+.chk input{width:16px;height:16px;accent-color:var(--green)}
+.ui{font-weight:600;color:var(--ink)}
+code,.url{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;background:var(--code);padding:2px 6px;border-radius:6px;word-break:break-all}
+.copy{display:flex;align-items:stretch;gap:0;margin-top:10px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg)}
+.copy .val{flex:1;min-width:0;padding:10px 12px;font-size:14px;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+.copy .val.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+.copy button{flex:none;border:0;border-left:1px solid var(--line);background:var(--card);color:var(--blue);font:inherit;font-size:13px;font-weight:600;padding:0 14px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.copy button:hover{background:var(--blue-soft)}
+.copy button.ok{color:var(--green)}
+.copy small{display:block;font-size:11px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.note{margin-top:12px;padding:12px 14px;border-radius:10px;font-size:14px;line-height:1.55}
+.note.warn{background:var(--amber-soft);color:var(--amber-ink);border:1px solid var(--amber-line)}
+.note.info{background:var(--blue-soft);color:var(--blue-ink)}
+.note.ok{background:var(--green-soft);color:var(--green)}
+.note.danger{background:var(--red-soft);color:var(--red-ink)}
+.note b{font-weight:600}
+.msg{margin-top:12px}
+.fill{background:var(--blue-soft);color:var(--blue-ink);border-radius:5px;padding:0 4px;font-weight:600}
+.fill.empty{background:var(--amber-soft);color:var(--amber-ink)}
+.order{margin-top:28px;padding:20px 22px}
+.order h2{font-size:17px;margin:0 0 10px}
+.order ol{margin:0;padding-left:20px;color:var(--ink2)}
+.order li{margin:6px 0}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="toc" aria-label="Sommaire">
+    <div class="brand"><img src="brand/icon-180.png" alt=""><span>LinkedIA<small>Guide des accès API</small></span></div>
+    <a href="#depart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Par où commencer</a>
+    <a href="#meta"><svg viewBox="0 0 24 24"><path d="M3 14.6c0-4.3 2.1-8.1 4.8-8.1 2 0 3.5 2 5.3 5.2l1.2 2.1c1.4 2.4 2.4 3.6 3.7 3.6 1.4 0 2.5-1.3 2.5-3.4 0-3.3-1.6-6.1-3.7-6.1-1.5 0-2.7 1.2-4.3 3.8l-1.5 2.5c-1.5 2.4-2.8 3.7-4.5 3.7C4.4 17.9 3 16.6 3 14.6Z" fill="none" stroke="#0866FF" stroke-width="2.2" stroke-linejoin="round"/></svg>Meta</a>
+    <a href="#google"><svg viewBox="0 0 24 24"><path d="M10.6 4.6 4.8 14.7" stroke="#FBBC04" stroke-width="4.6" stroke-linecap="round"/><path d="M10.6 4.6l6.9 12" stroke="#4285F4" stroke-width="4.6" stroke-linecap="round"/><circle cx="5.4" cy="17.4" r="2.9" fill="#34A853"/></svg>Google Ads</a>
+    <a href="#tiktok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.1 1.6 3.6 3.9 3.8v3.1a7 7 0 0 1-3.9-1.2v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.2a2.5 2.5 0 1 0 1.6 2.3V3h3.1Z"/></svg>TikTok</a>
+    <a href="#clients"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4V5Z"/></svg>Messages aux clients</a>
+    <a href="#cles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3"/></svg>Où mettre les clés</a>
+    <div class="prog"><span id="progTxt">0 étape faite</span><div class="bar"><i id="progBar"></i></div></div>
+  </nav>
+
+  <main>
+    <p class="eyebrow">Dashboard LinkedIA · accès API</p>
+    <h1>Brancher Meta, Google Ads et TikTok</h1>
+    <p class="lead">Chaque nuit, le dashboard lit les chiffres des comptes publicitaires de tes clients. En <b>lecture seule</b> : il ne peut rien modifier et rien dépenser. Ce guide te fait obtenir les trois accès, étape par étape.</p>
+
+    <div class="intro" id="depart">
+      <div class="card"><b>≈ 2 h en tout</b><span>de ton côté, réparties sur quelques jours (TikTok valide en 2 à 3 jours ouvrés).</span></div>
+      <div class="card"><b>0 €</b><span>Aucun abonnement : les trois API sont gratuites pour ton usage.</span></div>
+      <div class="card"><b>Sur ordinateur</b><span>Fais tout depuis le PC, connecté avec contact@linkeedia.fr quand c'est possible.</span></div>
+    </div>
+
+    <div class="card order">
+      <h2>L'ordre conseillé</h2>
+      <ol>
+        <li><b>TikTok, étapes 1 à 3, dès aujourd'hui</b> : c'est la seule validation qui fait attendre (2 à 3 jours ouvrés).</li>
+        <li><b>Google Ads</b> : environ 30 min, accès souvent accordé en quelques minutes.</li>
+        <li><b>Meta</b> : environ 30 min, aucune validation à attendre.</li>
+        <li>Envoyer à chaque client le <a href="#clients">message qui lui correspond</a>.</li>
+        <li>Au fur et à mesure, colle chaque clé dans le dashboard, page <b>Connexions</b> : il vérifie tout de suite qu'elle marche.</li>
+      </ol>
+    </div>
+
+    <div class="card ids">
+      <h2>Tes identifiants</h2>
+      <p>Tu les obtiens pendant le guide. Une fois saisis ici, ils remplissent automatiquement les messages pour tes clients (gardés seulement dans ce navigateur).</p>
+      <div class="fields">
+        <label>ID du portefeuille business Meta<input type="text" data-key="metaId" placeholder="15 à 16 chiffres" inputmode="numeric"></label>
+        <label>N° du compte administrateur Google Ads<input type="text" data-key="mccId" placeholder="123-456-7890"></label>
+        <label>ID du Business Center TikTok<input type="text" data-key="tiktokId" placeholder="19 chiffres" inputmode="numeric"></label>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════ META ═══════════════════════════ -->
+    <section class="platform" id="meta">
+      <div class="ph">
+        <span class="logo"><svg viewBox="0 0 24 24"><path d="M3 14.6c0-4.3 2.1-8.1 4.8-8.1 2 0 3.5 2 5.3 5.2l1.2 2.1c1.4 2.4 2.4 3.6 3.7 3.6 1.4 0 2.5-1.3 2.5-3.4 0-3.3-1.6-6.1-3.7-6.1-1.5 0-2.7 1.2-4.3 3.8l-1.5 2.5c-1.5 2.4-2.8 3.7-4.5 3.7C4.4 17.9 3 16.6 3 14.6Z" fill="none" stroke="#0866FF" stroke-width="2.2" stroke-linejoin="round"/></svg></span>
+        <div><h2>Meta</h2><div class="sub">Facebook · Instagram · Marketing API v26</div></div>
+        <span class="pill blue">≈ 30 min · pas de validation</span>
+      </div>
+      <p class="why">Ton agence = un <b>portefeuille business</b>. Un « utilisateur système » (un compte robot, qui ne se connecte jamais à ta place) reçoit un jeton en lecture seule. Le dashboard s'en sert pour lire les chiffres des comptes que tes clients t'ont partagés.</p>
+
+      <div class="steps">
+        <div class="card step" data-step="meta-0"><span class="n">1</span><div>
+          <h3>Sécuriser ton Facebook <span class="who">5 min</span></h3>
+          <p>Ton profil perso donnera accès aux comptes pub de tous tes clients : active la <span class="ui">double authentification</span> (Paramètres → Espace comptes → Mot de passe et sécurité → Authentification à deux facteurs). Meta l'exige de toute façon pour les administrateurs.</p>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="meta-1"><span class="n">2</span><div>
+          <h3>Créer le portefeuille business LinkedIA <span class="who">5 min</span></h3>
+          <ol>
+            <li>Va sur <a href="https://business.facebook.com/" target="_blank" rel="noopener">business.facebook.com</a> → <span class="ui">Créer un portefeuille business</span> (ou « Créer un compte »).</li>
+            <li>Nom de l'entreprise, ton nom, adresse e-mail professionnelle :</li>
+          </ol>
+          <div class="copy"><span class="val"><small>Nom</small>LinkedIA</span><button type="button">Copier</button></div>
+          <div class="copy"><span class="val"><small>E-mail</small>contact@linkeedia.fr</span><button type="button">Copier</button></div>
+          <ol start="3">
+            <li>Ouvre <span class="ui">Paramètres</span> → <span class="ui">Infos sur l'entreprise</span> et copie l'<span class="ui">ID du portefeuille business</span> dans le champ « Tes identifiants » en haut de ce guide.</li>
+          </ol>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="meta-2"><span class="n">3</span><div>
+          <h3>Créer l'application « LinkedIA Reporting » <span class="who">10 min</span></h3>
+          <ol>
+            <li>Va sur <a href="https://developers.facebook.com/apps/creation/" target="_blank" rel="noopener">developers.facebook.com/apps/creation</a>. La première fois, Meta te fait accepter les conditions développeur et vérifier ton téléphone.</li>
+            <li><span class="ui">Détails de l'app</span> : nom et e-mail de contact :</li>
+          </ol>
+          <div class="copy"><span class="val"><small>Nom de l'app</small>LinkedIA Reporting</span><button type="button">Copier</button></div>
+          <ol start="3">
+            <li><span class="ui">Cas d'usage</span> : choisis <span class="ui">Créer et gérer des publicités avec l'API Marketing</span> (« Create &amp; manage ads with Marketing API »).</li>
+            <li><span class="ui">Entreprise</span> : sélectionne le portefeuille <b>LinkedIA</b>. Il n'a pas besoin d'être vérifié.</li>
+            <li>Suivant jusqu'à <span class="ui">Accéder au tableau de bord</span>. <b>Laisse l'app en mode Développement</b> : pas besoin de la passer « en ligne ».</li>
+          </ol>
+          <div class="note warn"><b>Ne te trompe pas de cas d'usage :</b> Meta ne permet plus de le changer ensuite. Si c'est raté, supprime l'app et recommence.</div>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="meta-3"><span class="n">4</span><div>
+          <h3>Créer l'utilisateur système <span class="who">5 min</span></h3>
+          <ol>
+            <li><a href="https://business.facebook.com/settings/system-users" target="_blank" rel="noopener">Paramètres de l'entreprise</a> → <span class="ui">Utilisateurs</span> → <span class="ui">Utilisateurs système</span> → <span class="ui">Ajouter</span>.</li>
+            <li>Nom, puis rôle <span class="ui">Employé</span> (pas besoin d'administrateur) :</li>
+          </ol>
+          <div class="copy"><span class="val mono"><small>Nom</small>reporting-worker</span><button type="button">Copier</button></div>
+          <ol start="3">
+            <li>Sélectionne-le → <span class="ui">Attribuer des éléments</span> → <span class="ui">Apps</span> → <b>LinkedIA Reporting</b> → coche <span class="ui">Gérer l'app</span> → Enregistrer.</li>
+          </ol>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="meta-4"><span class="n">5</span><div>
+          <h3>Lui donner les comptes pub des clients <span class="who">2 min par client</span></h3>
+          <p>À faire chaque fois qu'un client t'a partagé son compte (voir <a href="#clients">messages aux clients</a>) :</p>
+          <ol>
+            <li>Utilisateur système <b>reporting-worker</b> → <span class="ui">Attribuer des éléments</span> → <span class="ui">Comptes publicitaires</span>.</li>
+            <li>Coche le compte du client → accès partiel <span class="ui">Voir les performances</span> uniquement → Enregistrer.</li>
+          </ol>
+          <div class="note info">Toi, tu gardes « Gérer les campagnes » pour piloter. Le robot, lui, n'a que la lecture.</div>
+          <label class="chk"><input type="checkbox">Fait pour le premier client</label>
+        </div></div>
+
+        <div class="card step" data-step="meta-5"><span class="n">6</span><div>
+          <h3>Générer le jeton d'accès <span class="who">3 min</span></h3>
+          <ol>
+            <li>Sur <b>reporting-worker</b> → <span class="ui">Générer un nouveau token</span>.</li>
+            <li>App : <b>LinkedIA Reporting</b> · Expiration : <span class="ui">Jamais</span>.</li>
+            <li>Autorisation : coche <b>uniquement</b> celle-ci :</li>
+          </ol>
+          <div class="copy"><span class="val mono"><small>Autorisation</small>ads_read</span><button type="button">Copier</button></div>
+          <ol start="4">
+            <li><span class="ui">Générer le token</span>, puis copie-le tout de suite : Meta ne le réaffiche jamais (sinon, il suffit d'en générer un autre).</li>
+          </ol>
+          <div class="note danger"><b>Ce jeton est un mot de passe.</b> Ne l'envoie ni par message, ni par e-mail, ni dans le chat : colle-le directement dans le dashboard, page <span class="ui">Connexions → Meta</span> (voir <a href="#cles">où mettre les clés</a>).</div>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+      </div>
+      <div class="note warn" style="margin-top:14px"><b>À vérifier au premier branchement.</b> D'après la documentation Meta, ce montage (ton robot qui lit des comptes partagés avec ton entreprise) passe sans validation. On le confirme avec le premier client. Si Meta répond « permission refusée », il faudra demander l'accès avancé <code>ads_read</code> et faire vérifier l'entreprise (avis de situation INSEE + domaine linkeedia.fr). Compte quelques jours de plus dans ce cas.</div>
+    </section>
+
+    <!-- ═══════════════════════════ GOOGLE ═══════════════════════════ -->
+    <section class="platform" id="google">
+      <div class="ph">
+        <span class="logo"><svg viewBox="0 0 24 24"><path d="M10.6 4.6 4.8 14.7" stroke="#FBBC04" stroke-width="4.6" stroke-linecap="round"/><path d="M10.6 4.6l6.9 12" stroke="#4285F4" stroke-width="4.6" stroke-linecap="round"/><circle cx="5.4" cy="17.4" r="2.9" fill="#34A853"/></svg></span>
+        <div><h2>Google Ads</h2><div class="sub">Recherche · Shopping · YouTube · Google Ads API v26</div></div>
+        <span class="pill blue">≈ 30 min · accès en quelques minutes</span>
+      </div>
+      <p class="why">Ton agence = un <b>compte administrateur</b> (MCC) qui regroupe les comptes de tes clients. Le dashboard se connecte avec un <b>compte de service</b> (un compte robot Google) en lecture seule.</p>
+      <div class="note info">Nouveauté du 9 septembre 2026 : Google a supprimé le « jeton développeur » et le formulaire du Centre API. L'accès se demande maintenant depuis Google Cloud, et le niveau « Explorer » suffit largement pour quelques dizaines de clients.</div>
+
+      <div class="steps">
+        <div class="card step" data-step="g-1"><span class="n">1</span><div>
+          <h3>Créer le compte administrateur Google Ads <span class="who">5 min</span></h3>
+          <ol>
+            <li>Va sur <a href="https://ads.google.com/home/tools/manager-accounts/" target="_blank" rel="noopener">ads.google.com/home/tools/manager-accounts</a> avec ton compte Google habituel (celui de la Search Console et de la fiche Google).</li>
+            <li>Nom du compte : <b>LinkedIA</b> · Utilisation : <span class="ui">Gérer les comptes d'autres personnes</span> · Pays France · Fuseau Paris · Devise EUR.</li>
+            <li>Ton numéro de compte (format 123-456-7890) s'affiche en haut à droite : recopie-le dans « Tes identifiants » en haut du guide.</li>
+          </ol>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="g-2"><span class="n">2</span><div>
+          <h3>Associer les comptes de tes clients <span class="who">2 min par client</span></h3>
+          <ol>
+            <li>Dans le compte administrateur : <span class="ui">Comptes</span> → bouton <span class="ui">+</span> → <span class="ui">Associer un compte existant</span>.</li>
+            <li>Saisis le numéro client Google Ads du client → <span class="ui">Envoyer la demande</span>.</li>
+            <li>Le client accepte de son côté (voir <a href="#clients">son message</a>).</li>
+          </ol>
+          <label class="chk"><input type="checkbox">Fait pour le premier client</label>
+        </div></div>
+
+        <div class="card step" data-step="g-3"><span class="n">3</span><div>
+          <h3>Créer le projet Google Cloud et activer l'API <span class="who">5 min</span></h3>
+          <ol>
+            <li>Va sur <a href="https://console.cloud.google.com/projectcreate" target="_blank" rel="noopener">console.cloud.google.com</a> (même compte Google) → <span class="ui">Nouveau projet</span> :</li>
+          </ol>
+          <div class="copy"><span class="val mono"><small>Nom du projet</small>linkedia-reporting</span><button type="button">Copier</button></div>
+          <ol start="2">
+            <li>Dans le projet : <span class="ui">API et services</span> → <span class="ui">Bibliothèque</span> → cherche <b>Google Ads API</b> → <span class="ui">Activer</span>.</li>
+          </ol>
+          <div class="note warn"><b>N'active pas l'essai gratuit</b> et n'ajoute pas de facturation au projet. Google signale qu'un projet en essai gratuit, ou avec une facturation suspendue, se fait refuser l'accès. Un projet sans facturation fonctionne.</div>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="g-4"><span class="n">4</span><div>
+          <h3>Demander le niveau d'accès « Explorer » <span class="who">2 min</span></h3>
+          <ol>
+            <li>Ouvre <a href="https://console.cloud.google.com/google/ads-apis/overview" target="_blank" rel="noopener">la page Google Ads API Overview</a> du projet.</li>
+            <li><span class="ui">Upgrade access level</span> (Augmenter le niveau d'accès) → <b>Explorer</b> → valide.</li>
+          </ol>
+          <p>La validation est automatique, en général en quelques minutes. Explorer permet de lire les vrais comptes (2 880 requêtes par jour : le dashboard en utilise une soixantaine pour 20 clients).</p>
+          <label class="chk"><input type="checkbox">Accès Explorer accordé</label>
+        </div></div>
+
+        <div class="card step" data-step="g-5"><span class="n">5</span><div>
+          <h3>Créer le compte de service et sa clé <span class="who">5 min</span></h3>
+          <ol>
+            <li><span class="ui">IAM et administration</span> → <span class="ui">Comptes de service</span> → <span class="ui">Créer un compte de service</span> :</li>
+          </ol>
+          <div class="copy"><span class="val mono"><small>Nom</small>reporting-worker</span><button type="button">Copier</button></div>
+          <ol start="2">
+            <li>Aucun rôle à ajouter → <span class="ui">OK</span>. Note son adresse : <code>reporting-worker@linkedia-reporting.iam.gserviceaccount.com</code> (la tienne peut finir par quelques chiffres en plus).</li>
+            <li>Ouvre-le → onglet <span class="ui">Clés</span> → <span class="ui">Ajouter une clé</span> → <span class="ui">Créer une clé</span> → <b>JSON</b>. Un fichier <code>.json</code> se télécharge.</li>
+          </ol>
+          <div class="note danger"><b>Ce fichier est une clé secrète.</b> Garde-le sur ton PC, ne l'envoie à personne. Tu le choisiras dans le dashboard, page <span class="ui">Connexions → Google Ads</span>.</div>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="g-6"><span class="n">6</span><div>
+          <h3>Donner au robot l'accès en lecture seule <span class="who">2 min</span></h3>
+          <ol>
+            <li>Retour dans ton compte administrateur Google Ads → <span class="ui">Admin</span> → <span class="ui">Accès et sécurité</span> → <span class="ui">Utilisateurs</span> → <span class="ui">+</span>.</li>
+            <li>Colle l'adresse du compte de service → niveau d'accès <span class="ui">Lecture seule</span> → <span class="ui">Envoyer l'invitation</span>.</li>
+          </ol>
+          <p>Comme il est ajouté au compte administrateur, il voit d'un coup tous les comptes clients associés, présents et futurs.</p>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ TIKTOK ═══════════════════════════ -->
+    <section class="platform" id="tiktok">
+      <div class="ph">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.1 1.6 3.6 3.9 3.8v3.1a7 7 0 0 1-3.9-1.2v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.2a2.5 2.5 0 1 0 1.6 2.3V3h3.1Z"/></svg></span>
+        <div><h2>TikTok</h2><div class="sub">TikTok API for Business v1.3</div></div>
+        <span class="pill blue">≈ 30 min + 2 à 3 jours de validation</span>
+      </div>
+      <p class="why">Ton agence = un <b>Business Center</b>. Tu crées une application développeur que TikTok valide. Ensuite, une seule autorisation donne au dashboard l'accès à tous les comptes pub de tes clients.</p>
+
+      <div class="steps">
+        <div class="card step" data-step="t-1"><span class="n">1</span><div>
+          <h3>Créer le Business Center LinkedIA <span class="who">5 min</span></h3>
+          <ol>
+            <li>Va sur <a href="https://business.tiktok.com/" target="_blank" rel="noopener">business.tiktok.com</a> → crée ton compte TikTok for Business (avec contact@linkeedia.fr) → <span class="ui">Créer un Business Center</span>, nom <b>LinkedIA</b>.</li>
+            <li>Note l'<span class="ui">ID du Business Center</span> (Paramètres du Business Center) dans « Tes identifiants » en haut du guide.</li>
+          </ol>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="t-2"><span class="n">2</span><div>
+          <h3>Devenir développeur <span class="who">10 min</span></h3>
+          <ol>
+            <li>Va sur <a href="https://business-api.tiktok.com/portal" target="_blank" rel="noopener">business-api.tiktok.com/portal</a> → <span class="ui">Become a Developer</span>.</li>
+            <li>Profil : <b>agence / partenaire marketing</b>. Puis :</li>
+          </ol>
+          <div class="copy"><span class="val"><small>Company name</small>LinkedIA</span><button type="button">Copier</button></div>
+          <div class="copy"><span class="val mono"><small>Company website</small>https://linkeedia.fr</span><button type="button">Copier</button></div>
+          <div class="copy"><span class="val mono"><small>E-mail</small>contact@linkeedia.fr</span><button type="button">Copier</button></div>
+          <ol start="3"><li>Valide les codes reçus par e-mail et par SMS.</li></ol>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+
+        <div class="card step" data-step="t-3"><span class="n">3</span><div>
+          <h3>Créer l'application et l'envoyer en validation <span class="who">10 min</span></h3>
+          <ol><li><span class="ui">My Apps</span> → <span class="ui">Create an App</span>, puis remplis :</li></ol>
+          <div class="copy"><span class="val"><small>App name</small>LinkedIA Reporting</span><button type="button">Copier</button></div>
+          <div class="copy"><span class="val"><small>App description</small>Read-only reporting dashboard for the clients of LinkedIA, a French digital marketing agency. Once a day, the app reads campaign performance (spend, impressions, clicks, conversions) of the ad accounts our clients have shared with our Business Center, and displays it to each client in a private dashboard. The app never creates, edits or pauses ads.</span><button type="button">Copier</button></div>
+          <div class="copy"><span class="val mono"><small>Advertiser redirect URL</small>https://linkedia-ads.halimjeremy.workers.dev/tiktok/callback</span><button type="button">Copier</button></div>
+          <ol start="2">
+            <li><span class="ui">Scope of permission</span> : coche <b>Ad Account Management</b> (lecture des infos du compte) et <b>Reporting</b>. Rien d'autre : TikTok refuse les demandes qui réclament plus que ce que la description annonce.</li>
+            <li><span class="ui">Submit</span>. Le statut passe en <b>Pending</b> : comptes 2 à 3 jours ouvrés.</li>
+          </ol>
+          <div class="note info">L'adresse de retour est celle de ton robot Cloudflare <code>linkedia-ads</code>. Elle doit être recopiée telle quelle (la bonne adresse est aussi affichée dans le tutoriel du dashboard, étape 6).</div>
+          <label class="chk"><input type="checkbox">Envoyé en validation</label>
+        </div></div>
+
+        <div class="card step" data-step="t-4"><span class="n">4</span><div>
+          <h3>Après la validation : récupérer App ID et Secret <span class="who">2 min</span></h3>
+          <ol>
+            <li><span class="ui">My Apps</span> → ton app → <span class="ui">Basic Information</span> : note l'<b>App ID</b> et le <b>Secret</b>.</li>
+            <li>Colle-les dans le dashboard (<span class="ui">Connexions → TikTok</span>), puis clique <b>Autoriser mes comptes TikTok</b> et coche les comptes de tes clients. Pour un nouveau client plus tard, refais ce clic.</li>
+          </ol>
+          <div class="note danger"><b>Le Secret est un mot de passe</b> : même consigne que pour Meta, il ne circule pas par message.</div>
+          <label class="chk"><input type="checkbox">Fait</label>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ CLIENTS ═══════════════════════════ -->
+    <section class="platform" id="clients">
+      <div class="ph">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4V5Z"/></svg></span>
+        <div><h2>Messages à envoyer aux clients</h2><div class="sub">Ils restent propriétaires, ils te donnent juste l'accès</div></div>
+      </div>
+      <p class="why">Copie le message de la plateforme concernée et envoie-le par SMS ou par e-mail. Les identifiants surlignés viennent du champ « Tes identifiants » en haut du guide. Les intitulés des menus peuvent varier légèrement selon les comptes. Si le client bloque, propose de le faire avec lui en partage d'écran : c'est 5 minutes.</p>
+
+      <div class="steps">
+        <div class="card step"><span class="n">M</span><div>
+          <h3>Meta (Facebook et Instagram)</h3>
+          <div class="copy msg"><span class="val" data-tpl>Bonjour, pour que je puisse gérer vos publicités Facebook et Instagram, il faut me donner accès à votre compte publicitaire. Vous en restez propriétaire et vous pourrez retirer l'accès quand vous voulez.
+
+1. Ouvrez business.facebook.com/settings
+2. Menu « Partenaires » → « Ajouter » → « Donner à un partenaire l'accès à vos éléments »
+3. Saisissez l'identifiant de LinkedIA : {{metaId}}
+4. Cochez votre compte publicitaire (accès « Gérer les campagnes »), votre Page Facebook, votre compte Instagram et votre jeu de données (pixel)
+5. Validez
+
+Merci ! Jeremy, LinkedIA</span><button type="button">Copier</button></div>
+        </div></div>
+
+        <div class="card step"><span class="n">G</span><div>
+          <h3>Google Ads</h3>
+          <div class="copy msg"><span class="val" data-tpl>Bonjour, pour gérer vos campagnes Google Ads, j'ai besoin de relier votre compte à mon compte d'agence. Vous en restez propriétaire et vous pourrez retirer l'accès quand vous voulez.
+
+1. Envoyez-moi votre numéro client Google Ads (10 chiffres en haut à droite de Google Ads, format 123-456-7890)
+2. Je vous envoie une invitation depuis le compte LinkedIA ({{mccId}})
+3. Dans Google Ads : « Admin » → « Accès et sécurité » → onglet « Gestionnaires » → « Accepter »
+
+Merci ! Jeremy, LinkedIA</span><button type="button">Copier</button></div>
+        </div></div>
+
+        <div class="card step"><span class="n">T</span><div>
+          <h3>TikTok</h3>
+          <div class="copy msg"><span class="val" data-tpl>Bonjour, pour gérer vos publicités TikTok, il faut partager votre compte publicitaire avec mon Business Center. Vous en restez propriétaire et vous pourrez retirer l'accès quand vous voulez.
+
+1. Ouvrez business.tiktok.com et votre Business Center
+2. Menu « Partenaires » → « Ajouter un partenaire »
+3. Saisissez l'identifiant du Business Center LinkedIA : {{tiktokId}}
+4. Choisissez votre compte publicitaire avec l'accès « Opérateur » (gestion des campagnes) et validez
+
+Pas de Business Center ? Envoyez-moi simplement l'ID de votre compte publicitaire : je vous envoie une demande d'accès à accepter.
+
+Merci ! Jeremy, LinkedIA</span><button type="button">Copier</button></div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ CLÉS ═══════════════════════════ -->
+    <section class="platform" id="cles">
+      <div class="ph">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3"/></svg></span>
+        <div><h2>Où mettre les clés</h2><div class="sub">Dashboard → Connexions</div></div>
+      </div>
+      <p class="why">Tu colles les clés dans la page <b>Connexions</b> du dashboard (connecté avec ton mot de passe). Elles partent chiffrées chez ton robot Cloudflare <code>linkedia-ads</code>, qui lit les API chaque nuit et ne renvoie que les chiffres. Une fois enregistrées, plus personne ne peut les relire, pas même depuis le dashboard.</p>
+      <div class="card" style="margin-top:16px;padding:18px 20px">
+        <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <thead><tr style="text-align:left;color:var(--muted);font-size:12px"><th style="padding:6px 8px 10px 0;font-weight:500">Clé</th><th style="padding:6px 8px 10px;font-weight:500">Vient de</th><th style="padding:6px 0 10px 8px;font-weight:500">Où la coller</th></tr></thead>
+          <tbody>
+            <tr style="border-top:1px solid var(--line)"><td style="padding:10px 8px 10px 0">Jeton utilisateur système</td><td style="padding:10px 8px">Meta, étape 6</td><td style="padding:10px 0 10px 8px">Connexions → Meta</td></tr>
+            <tr style="border-top:1px solid var(--line)"><td style="padding:10px 8px 10px 0">Fichier JSON du compte de service</td><td style="padding:10px 8px">Google, étape 5</td><td style="padding:10px 0 10px 8px">Connexions → Google Ads (bouton « Choisir le fichier »)</td></tr>
+            <tr style="border-top:1px solid var(--line)"><td style="padding:10px 8px 10px 0">N° du compte administrateur</td><td style="padding:10px 8px">Google, étape 1</td><td style="padding:10px 0 10px 8px">Connexions → Google Ads</td></tr>
+            <tr style="border-top:1px solid var(--line)"><td style="padding:10px 8px 10px 0">App ID et Secret</td><td style="padding:10px 8px">TikTok, étape 4</td><td style="padding:10px 0 10px 8px">Connexions → TikTok</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note ok">Chaque clé est testée à l'enregistrement : le dashboard te dit tout de suite combien de comptes il voit. Ensuite, ajoute tes clients (bouton « Ajouter un client ») : leurs 6 derniers mois de chiffres arrivent en quelques secondes, puis se mettent à jour chaque nuit.</div>
+    </section>
+
+    <footer>Guide établi le 1er novembre 2026 à partir des documentations Meta (Marketing API v26), Google (Google Ads API v26, accès par projet Cloud depuis le 9 septembre 2026) et TikTok (API for Business v1.3). Les plateformes changent souvent leurs menus : si un intitulé ne correspond pas, envoie une capture d'écran.</footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  var store = {
+    get: function (k) { try { return localStorage.getItem("lk-guide-" + k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem("lk-guide-" + k, v); } catch (e) {} }
+  };
+
+  // Identifiants → messages clients
+  var inputs = document.querySelectorAll("input[data-key]");
+  var tpls = document.querySelectorAll("[data-tpl]");
+  tpls.forEach(function (el) { el.dataset.raw = el.textContent; });
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function render() {
+    var vals = {};
+    inputs.forEach(function (i) { vals[i.dataset.key] = i.value.trim(); });
+    tpls.forEach(function (el) {
+      el.innerHTML = esc(el.dataset.raw).replace(/\{\{(\w+)\}\}/g, function (_, k) {
+        return vals[k] ? '<span class="fill">' + esc(vals[k]) + "</span>" : '<span class="fill empty">[à compléter en haut du guide]</span>';
+      });
+    });
+  }
+  inputs.forEach(function (i) {
+    i.value = store.get(i.dataset.key) || "";
+    i.addEventListener("input", function () { store.set(i.dataset.key, i.value); render(); });
+  });
+  render();
+
+  // Boutons Copier
+  document.querySelectorAll(".copy button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var val = btn.parentElement.querySelector(".val");
+      var clone = val.cloneNode(true);
+      var label = clone.querySelector("small");
+      if (label) label.remove();
+      var text = clone.textContent.trim();
+      var done = function () {
+        btn.textContent = "Copié ✓"; btn.classList.add("ok");
+        setTimeout(function () { btn.textContent = "Copier"; btn.classList.remove("ok"); }, 1600);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+      function fallback() {
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) {}
+        ta.remove();
+      }
+    });
+  });
+
+  // Étapes cochées + progression
+  var steps = document.querySelectorAll(".step[data-step]");
+  function progress() {
+    var n = document.querySelectorAll(".step[data-step].done").length;
+    document.getElementById("progTxt").textContent = n + (n > 1 ? " étapes faites" : " étape faite") + " sur " + steps.length;
+    document.getElementById("progBar").style.width = (n / steps.length * 100) + "%";
+  }
+  steps.forEach(function (s) {
+    var cb = s.querySelector(".chk input");
+    if (!cb) return;
+    var key = "step-" + s.dataset.step;
+    cb.checked = store.get(key) === "1";
+    s.classList.toggle("done", cb.checked);
+    cb.addEventListener("change", function () {
+      store.set(key, cb.checked ? "1" : "0");
+      s.classList.toggle("done", cb.checked);
+      progress();
+    });
+  });
+  progress();
+})();
+</script>
+</body>
+</html>
