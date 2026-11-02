@@ -2,616 +2,612 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Votre publicité en ligne — Questionnaire · LinkedIA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Lancement de vos campagnes — Group YLC Esthetic · LinkedIA</title>
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../brand/icon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="../brand/icon-192.png">
 <link rel="apple-touch-icon" href="../brand/icon-180.png">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="LinkedIA">
-<meta property="og:title" content="Votre publicité en ligne — Questionnaire · LinkedIA">
-<meta property="og:description" content="Quelques questions sur votre institut, pour préparer votre étude de marché et votre stratégie publicitaire.">
-<meta property="og:image" content="https://linkeedia.fr/brand/og-linkedia.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f9fafb">
 <style>
-  *{box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  *{box-sizing:border-box; margin:0; padding:0}
+  [hidden]{display:none !important}
   :root{
-    --ink:#0d0d0f; --paper:#fff; --greige:#f5f3ee; --lime:#c9f24d;
-    --muted:#7a746a; --line:#e4e0d8; --soft:#faf9f6;
+    --bg:#f9fafb; --card:#fff; --line:#e5e7eb; --line-2:#f3f4f6; --ink:#111827; --ink-2:#374151; --muted:#6b7280; --faint:#9ca3af;
+    --blue:#2563eb; --blue-d:#1d4ed8; --blue-soft:#eff6ff; --green:#059669; --green-soft:#ecfdf5; --ring:rgba(37,99,235,.18);
   }
-  html{scroll-behavior:smooth}
-  body{background:var(--greige); color:var(--ink);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg); color:var(--ink); font:15px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; min-height:100dvh}
+  button, input, textarea{font:inherit; color:inherit}
 
-  .wrap{max-width:860px; margin:0 auto; padding:0 20px 80px}
+  /* Barre du haut */
+  .top{position:sticky; top:0; z-index:20; background:rgba(249,250,251,.92); backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line)}
+  .top-in{max-width:1080px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; gap:12px}
+  .top img{width:36px; height:36px; border-radius:10px; box-shadow:0 0 0 1px rgba(17,24,39,.08)}
+  .top .t{min-width:0; flex:1}
+  .top .t b{display:block; font-size:14px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .top .t span{display:block; font-size:12.5px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .count{font-size:13px; font-weight:600; color:var(--ink-2); white-space:nowrap; font-variant-numeric:tabular-nums}
+  .bar{height:3px; background:var(--line-2)}
+  .bar i{display:block; height:100%; width:0; background:var(--blue); transition:width .35s ease}
 
-  /* ---------- En-tête ---------- */
-  header{background:var(--ink); color:#f5f3ee; margin-bottom:26px}
-  .hd{max-width:860px; margin:0 auto; padding:34px 20px 38px}
-  .idb{display:flex; align-items:center; gap:14px}
-  .idb .mark{width:58px; height:58px; flex:0 0 auto; border-radius:14px;
-    border:1px solid rgba(245,243,238,.14); display:block}
-  .hd .brand{font-size:19px; letter-spacing:-.01em; color:#f5f3ee; font-weight:700; line-height:1.15}
-  .hd .brand span{display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
-    color:var(--lime); font-weight:700; margin-top:4px}
-  .hd h1{font-size:clamp(26px,5vw,38px); line-height:1.15; font-weight:700; letter-spacing:-.02em; margin:22px 0 0}
-  .hd p{color:#b8b2a7; font-size:15px; line-height:1.6; margin-top:14px; max-width:62ch}
-  .hd .who{margin-top:22px; padding-top:18px; border-top:1px solid rgba(245,243,238,.16);
-    display:flex; flex-wrap:wrap; gap:6px 26px; font-size:13.5px; color:#8f8a80}
-  .hd .who b{color:#f5f3ee; font-weight:600}
+  .layout{max-width:1080px; margin:0 auto; padding:28px 18px 120px; display:grid; gap:28px}
+  @media (min-width:900px){ .layout{grid-template-columns:240px minmax(0,1fr); padding-bottom:60px} }
 
-  /* ---------- Barre de progression ---------- */
-  .prog{position:sticky; top:0; z-index:30; background:rgba(245,243,238,.94);
-    backdrop-filter:saturate(1.4) blur(6px); border-bottom:1px solid var(--line);
-    margin:-26px -20px 26px; padding:11px 20px; display:flex; align-items:center; gap:14px}
-  .prog .bar{flex:1; height:6px; background:#e0dcd3; border-radius:99px; overflow:hidden}
-  .prog .bar i{display:block; height:100%; width:0; background:var(--ink); border-radius:99px; transition:width .3s}
-  .prog .n{font-size:13px; font-weight:600; color:#5c574f; white-space:nowrap; font-variant-numeric:tabular-nums}
+  /* Étapes (ordinateur) */
+  .steps{display:none}
+  @media (min-width:900px){
+    .steps{display:block; position:sticky; top:88px; align-self:start}
+    .steps p{font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding:0 10px 8px}
+    .steps button{width:100%; display:flex; align-items:center; gap:10px; padding:9px 10px; border:0; background:none; border-radius:9px; cursor:pointer; text-align:left; font-size:14px; color:var(--ink-2)}
+    .steps button:hover{background:#f3f4f6}
+    .steps button[aria-current=step]{background:var(--blue-soft); color:var(--blue-d); font-weight:600}
+    .steps .dot{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:1.5px solid #d1d5db; display:grid; place-content:center; font-size:11.5px; font-weight:600; color:var(--muted); background:#fff}
+    .steps button[aria-current=step] .dot{border-color:var(--blue); color:var(--blue)}
+    .steps .done .dot{background:var(--green); border-color:var(--green); color:#fff}
+  }
 
-  /* ---------- Sections ---------- */
-  section{background:var(--paper); border:1px solid var(--line); border-radius:16px;
-    padding:26px 26px 28px; margin-bottom:18px}
-  .sh{display:flex; align-items:baseline; gap:12px; margin-bottom:6px}
-  .sh .no{width:28px; height:28px; flex:0 0 auto; border-radius:50%; background:var(--ink); color:var(--lime);
-    font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; transform:translateY(3px)}
-  .sh h2{font-size:20px; line-height:1.25; font-weight:700; letter-spacing:-.01em}
-  .intro{color:#6b665d; font-size:14.5px; line-height:1.6; margin:0 0 20px 40px}
+  /* Carte d'étape */
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .step{display:none}
+  .step.on{display:block; animation:in .25s ease}
+  @keyframes in{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){ .step.on{animation:none} .bar i{transition:none} }
+  .head{padding:24px 24px 4px}
+  @media (min-width:640px){ .head{padding:30px 32px 4px} }
+  .eyebrow{font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--blue)}
+  h1, h2{font-size:clamp(22px,3.6vw,27px); line-height:1.2; letter-spacing:-.02em; margin-top:6px; font-weight:650}
+  h2:focus{outline:none}
+  .lead{color:var(--muted); margin-top:8px; max-width:62ch}
+  .body{padding:18px 24px 26px; display:grid; gap:22px}
+  @media (min-width:640px){ .body{padding:20px 32px 30px} }
 
-  .tip{background:var(--soft); border-left:3px solid var(--lime); border-radius:0 10px 10px 0;
-    padding:13px 16px; margin:0 0 18px; font-size:14px; line-height:1.6; color:#4a463f}
-  .tip b{color:var(--ink)}
+  .q > .ql, .q > label.ql{display:block; font-weight:600; font-size:14.5px; margin-bottom:8px}
+  .q .hint{font-size:13px; color:var(--muted); margin:-4px 0 9px}
+  .grid2{display:grid; gap:14px}
+  @media (min-width:640px){ .grid2{grid-template-columns:1fr 1fr} }
+  input[type=text], input[type=email], input[type=date], input[type=number], textarea{
+    width:100%; min-width:0; height:44px; padding:0 13px; border:1px solid var(--line); border-radius:10px; background:#fff; font-size:15px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04); transition:border-color .15s, box-shadow .15s}
+  textarea{height:auto; min-height:92px; padding:11px 13px; resize:vertical; line-height:1.5}
+  input:focus, textarea:focus{outline:0; border-color:var(--blue); box-shadow:0 0 0 4px var(--ring)}
+  input::placeholder, textarea::placeholder{color:var(--faint)}
+  .suffix{display:flex; align-items:center; gap:8px}
+  .suffix span{color:var(--muted); font-size:14px; white-space:nowrap}
 
-  .q{margin-bottom:20px}
-  .q:last-child{margin-bottom:0}
-  .q > label, .qlabel{display:block; font-size:15px; font-weight:600; margin-bottom:8px; line-height:1.45}
-  .q .hint{font-size:13.5px; color:#8b857b; line-height:1.5; margin:-4px 0 9px}
+  /* Choix en cartes et en pastilles */
+  .choices{display:grid; gap:9px}
+  @media (min-width:640px){ .choices.c2{grid-template-columns:1fr 1fr} .choices.c3{grid-template-columns:repeat(3,1fr)} }
+  .choice{position:relative; display:flex; gap:11px; align-items:flex-start; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:#fff; cursor:pointer; transition:border-color .15s, background .15s}
+  .choice:hover{border-color:#cbd5e1}
+  .choice input{position:absolute; opacity:0; pointer-events:none}
+  .choice .box{flex:0 0 auto; width:20px; height:20px; margin-top:1px; border:1.5px solid #cbd5e1; border-radius:6px; display:grid; place-content:center; background:#fff}
+  .choice input[type=radio] + .box{border-radius:50%}
+  .choice .t b{display:block; font-weight:600; font-size:14.5px}
+  .choice .t small{display:block; color:var(--muted); font-size:13px; margin-top:1px}
+  .choice:has(input:checked){border-color:var(--blue); background:var(--blue-soft); box-shadow:0 0 0 1px var(--blue)}
+  .choice input:checked + .box{background:var(--blue); border-color:var(--blue)}
+  .choice input[type=checkbox]:checked + .box::after{content:""; width:5px; height:10px; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(42deg) translate(-1px,-1px)}
+  .choice input[type=radio]:checked + .box::after{content:""; width:8px; height:8px; border-radius:50%; background:#fff}
+  .choice input:focus-visible + .box{box-shadow:0 0 0 4px var(--ring)}
+  .tag{display:inline-block; margin-left:6px; font-size:11px; font-weight:600; color:var(--green); background:var(--green-soft); border-radius:99px; padding:1px 7px; vertical-align:1px}
 
-  input[type=text], input[type=email], input[type=tel], textarea{
-    width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--soft);
-    border:1px solid var(--line); border-radius:10px; padding:11px 13px}
-  textarea{min-height:96px; resize:vertical; line-height:1.55}
-  input:focus, textarea:focus{outline:0; border-color:var(--ink); background:#fff;
-    box-shadow:0 0 0 3px rgba(201,242,77,.35)}
-  input::placeholder, textarea::placeholder{color:#b3ada2}
+  .chips{display:flex; flex-wrap:wrap; gap:8px}
+  .chip{position:relative; display:inline-flex; align-items:center; gap:7px; height:38px; padding:0 13px; border:1px solid var(--line); border-radius:99px; background:#fff; cursor:pointer; font-size:14px; font-weight:500; color:var(--ink-2); transition:all .15s}
+  .chip:hover{border-color:#cbd5e1}
+  .chip input{position:absolute; opacity:0; pointer-events:none}
+  .chip:has(input:checked){background:var(--ink); border-color:var(--ink); color:#fff}
+  .chip:has(input:checked)::before{content:"✓"; font-size:12.5px}
+  .chip:has(input:focus-visible){box-shadow:0 0 0 4px var(--ring)}
 
-  .duo{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-  @media (max-width:620px){ .duo{grid-template-columns:1fr} }
+  .info{display:flex; gap:10px; background:var(--blue-soft); border:1px solid #dbeafe; color:#1e3a8a; border-radius:12px; padding:12px 14px; font-size:14px}
+  .info b{font-weight:600}
 
-  /* ---------- Cases et boutons radio ---------- */
-  .opts{display:grid; gap:9px}
-  .opts.two{grid-template-columns:1fr 1fr}
-  .opts.three{grid-template-columns:repeat(3,1fr)}
-  @media (max-width:620px){ .opts.three{grid-template-columns:1fr} }
-  .duo + .q, .duo + .duo{margin-top:20px}
-  @media (max-width:620px){ .opts.two{grid-template-columns:1fr} }
+  /* Pied d'étape */
+  .foot{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:16px 24px; border-top:1px solid var(--line-2)}
+  @media (min-width:640px){ .foot{padding:18px 32px} }
+  @media (max-width:899px){
+    .foot{position:fixed; left:0; right:0; bottom:0; z-index:15; background:rgba(255,255,255,.96); backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 18px calc(12px + env(safe-area-inset-bottom))}
+  }
+  .btn{height:44px; padding:0 18px; border-radius:10px; border:1px solid transparent; font-weight:600; font-size:15px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; white-space:nowrap}
+  .btn.primary{background:var(--blue); color:#fff; box-shadow:0 1px 2px rgba(16,24,40,.08)}
+  .btn.primary:hover{background:var(--blue-d)}
+  .btn.primary:disabled{opacity:.6; cursor:default}
+  .btn.ghost{background:#fff; border-color:var(--line); color:var(--ink-2)}
+  .btn.ghost:hover{background:#f9fafb}
+  .btn[hidden]{display:none}
+  .saved{font-size:12.5px; color:var(--muted)}
+  @media (max-width:520px){ .saved{display:none} }
 
-  .opt{display:flex; align-items:flex-start; gap:11px; padding:11px 13px; border:1px solid var(--line);
-    border-radius:10px; background:var(--soft); cursor:pointer; font-size:14.5px; line-height:1.45;
-    transition:border-color .15s, background .15s}
-  .opt:hover{border-color:#c9c4ba}
-  .opt input{appearance:none; -webkit-appearance:none; width:19px; height:19px; flex:0 0 auto;
-    border:1.5px solid #a9a49a; background:#fff; margin-top:1px; cursor:pointer; position:relative}
-  .opt input[type=checkbox]{border-radius:5px}
-  .opt input[type=radio]{border-radius:50%}
-  .opt input:checked{background:var(--ink); border-color:var(--ink)}
-  .opt input[type=checkbox]:checked::after{content:""; position:absolute; left:5.5px; top:2px;
-    width:5px; height:10px; border:solid var(--lime); border-width:0 2px 2px 0; transform:rotate(42deg)}
-  .opt input[type=radio]:checked::after{content:""; position:absolute; left:4px; top:4px;
-    width:7px; height:7px; border-radius:50%; background:var(--lime)}
-  .opt:has(input:checked){border-color:var(--ink); background:#fff}
-  .opt .txt b{display:block; font-weight:600}
-  .opt .txt small{display:block; color:#8b857b; font-size:13px; line-height:1.45; margin-top:2px}
-
-  .price{margin-left:auto; padding-left:10px; font-size:13.5px; font-weight:700; color:#4a463f; white-space:nowrap}
-
-  /* ---------- Formules ---------- */
-  .formules{display:grid; gap:12px}
-  .formule{border:1.5px solid var(--line); border-radius:14px; padding:16px 18px; background:var(--soft);
-    cursor:pointer; display:flex; gap:13px; align-items:flex-start}
-  .formule:has(input:checked){border-color:var(--ink); background:#fff; box-shadow:0 6px 22px rgba(0,0,0,.07)}
-  .formule input{appearance:none; -webkit-appearance:none; width:20px; height:20px; flex:0 0 auto;
-    border:1.5px solid #a9a49a; border-radius:50%; background:#fff; margin-top:3px; position:relative; cursor:pointer}
-  .formule input:checked{background:var(--ink); border-color:var(--ink)}
-  .formule input:checked::after{content:""; position:absolute; left:4.5px; top:4.5px; width:7px; height:7px;
-    border-radius:50%; background:var(--lime)}
-  .formule .t{font-size:16.5px; font-weight:700; letter-spacing:-.01em}
-  .formule .d{font-size:14px; color:#6b665d; line-height:1.5; margin-top:4px}
-  .formule .p{margin-left:auto; text-align:right; white-space:nowrap}
-  .formule .p b{font-size:19px; font-weight:700}
-  .formule .p small{display:block; font-size:12px; color:#8b857b; letter-spacing:.04em; text-transform:uppercase}
-
-  /* ---------- Envoi ---------- */
-  .send{background:var(--ink); color:#f5f3ee; border-radius:16px; padding:28px 26px 30px; margin-top:22px}
-  .send h2{font-size:21px; font-weight:700; letter-spacing:-.01em}
-  .send p{color:#a8a297; font-size:14.5px; line-height:1.6; margin-top:10px}
-  .send .req{margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:14px}
-  @media (max-width:620px){ .send .req{grid-template-columns:1fr} }
-  .send label{display:block; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
-    color:#8f8a80; font-weight:700; margin-bottom:7px}
-  .send input{background:#1b1a17; border-color:#33312c; color:#f5f3ee}
-  .send input::placeholder{color:#6b665d}
-  .send input:focus{background:#211f1c; border-color:var(--lime); box-shadow:none}
-  .actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; align-items:center}
-  button{font:inherit; font-weight:700; border-radius:11px; cursor:pointer; border:1px solid transparent;
-    padding:14px 24px; font-size:15.5px}
-  .go{background:var(--lime); color:#15140f}
-  .go:hover{filter:brightness(1.06)}
-  .go:disabled{opacity:.55; cursor:default}
-  .ghost{background:transparent; color:#f5f3ee; border-color:#43403a}
-  .ghost:hover{background:#1b1a17}
-  .msg{margin-top:16px; font-size:14.5px; line-height:1.6; display:none}
-  .msg.ok{display:block; color:#d4f57a}
-  .msg.ko{display:block; color:#ff9c8a}
+  /* Récapitulatif */
+  .recap{display:grid; gap:12px}
+  .recap section{border:1px solid var(--line); border-radius:12px; padding:13px 15px}
+  .recap h3{font-size:13px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; display:flex; justify-content:space-between; gap:10px}
+  .recap h3 button{border:0; background:none; color:var(--blue); font-weight:600; font-size:13px; cursor:pointer; text-transform:none; letter-spacing:0}
+  .recap dl{margin-top:6px; display:grid; gap:4px; font-size:14px}
+  .recap dt{color:var(--muted); display:inline}
+  .recap dd{display:inline; font-weight:500}
+  .recap .empty{color:var(--faint); font-size:13.5px; margin-top:4px}
+  .msg{font-size:14px; display:none; border-radius:10px; padding:11px 13px}
+  .msg.ok{display:block; background:var(--green-soft); color:#065f46}
+  .msg.ko{display:block; background:#fef2f2; color:#991b1b}
   .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
-
-  footer{text-align:center; color:#8b857b; font-size:13px; line-height:1.7; margin-top:30px}
-  footer b{color:#4a463f}
-
-  .saved{font-size:13px; color:#8f8a80}
-
-  /* ---------- Impression ---------- */
-  @media print{
-    body{background:#fff; font-size:11px}
-    .prog, .actions, .saved{display:none !important}
-    /* fond blanc obligatoire : beaucoup d'imprimantes ignorent les aplats,
-       le texte clair sur noir deviendrait invisible */
-    header{background:#fff; color:#111; margin-bottom:14px; border-bottom:2px solid #111}
-    .hd{padding:16px 0 14px}
-    .hd .brand{color:#111}
-    .hd .brand span{color:#5c7a00}
-    .hd h1{color:#111; font-size:20px; margin-top:14px}
-    .hd p{color:#333; font-size:10.5px; margin-top:8px}
-    .hd .who{color:#555; border-top-color:#ccc; margin-top:12px; padding-top:10px; font-size:10px}
-    .hd .who b{color:#111}
-    .idb .mark{width:42px; height:42px; border-color:#ccc; border-radius:9px}
-    .tip{background:#f4f4f2; border-left-color:#8ab800; padding:7px 10px; margin-bottom:10px;
-      font-size:10px; line-height:1.45; break-inside:avoid}
-    .wrap{padding:0; max-width:none}
-    section{border-radius:0; border:0; border-top:1.5px solid #333; padding:12px 0 6px;
-      margin-bottom:0}
-    .sh h2{font-size:14px}
-    .intro{font-size:11px; margin-bottom:10px}
-    .opt{padding:5px 8px; font-size:10.5px; break-inside:avoid}
-    .q, .sh, .formule{break-inside:avoid}
-    .sh{break-after:avoid}
-    .opt .txt small{display:none}
-    .opt .txt small.keep{display:block; font-size:9.5px; color:#555}
-    input[type=text], input[type=email], input[type=tel], textarea{background:#fff; font-size:11px; padding:6px 8px}
-    textarea{min-height:52px}
-    .send{background:#fff; color:#111; border:1.5px solid #333; border-radius:0}
-    .send p, .send label{color:#555}
-    .send input{background:#fff; border-color:#aaa; color:#111}
-    .formule{padding:8px 10px}
-  }
+  .done-screen{padding:40px 28px; text-align:center}
+  .done-screen .ok{width:56px; height:56px; border-radius:50%; background:var(--green-soft); color:var(--green); display:grid; place-content:center; margin:0 auto; font-size:26px}
+  footer{text-align:center; color:var(--faint); font-size:12.5px; margin-top:22px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="hd">
-    <div class="idb">
-      <img class="mark" src="../brand/icon-192.png" width="192" height="192" alt="LinkedIA">
-      <div class="brand">LinkedIA<span>Publicité en ligne · Meta, Google, TikTok</span></div>
-    </div>
-    <h1>Votre institut et la publicité en ligne : préparons-la ensemble</h1>
-    <p>Merci pour notre rendez-vous. Vos réponses me servent à réaliser l’étude de marché de votre institut
-       (épilation laser et amincissement), puis à construire une stratégie publicitaire qui vous ressemble. Comptez 10 à 15 minutes.
-       Répondez à ce que vous savez : nous verrons le reste ensemble. Tout ce que vous me confiez reste entre nous.</p>
-    <div class="who">
-      <span>Préparé pour <b>YLC Esthétique</b></span>
-      <span>Par <b>Jérémy Halimi</b> — LinkedIA</span>
-      <span><b>06 65 14 14 33</b></span>
-      <span>contact@linkeedia.fr</span>
-    </div>
+<div class="top">
+  <div class="top-in">
+    <img src="../brand/icon-180.png" width="36" height="36" alt="LinkedIA">
+    <div class="t"><b>Lancement de vos campagnes</b><span>Group YLC Esthetic · préparé par Jérémy, LinkedIA</span></div>
+    <span class="count" id="count">1 / 8</span>
   </div>
-</header>
+  <div class="bar"><i id="bar"></i></div>
+</div>
 
-<div class="wrap">
+<div class="layout">
+  <nav class="steps" aria-label="Étapes"><p>Étapes</p><div id="nav"></div></nav>
 
-  <div class="prog">
-    <div class="bar"><i id="pbar"></i></div>
-    <div class="n"><span id="pnum">0</span> réponse(s)</div>
-  </div>
-
-  <form id="f">
+  <form id="f" class="card" novalidate>
 
     <!-- 1 -->
-    <section>
-      <div class="sh"><div class="no">1</div><h2>Votre institut</h2></div>
-      <p class="intro">Pour situer votre institut, votre zone et vos concurrents dans l’étude de marché.</p>
-      <div class="duo">
-        <div class="q"><label for="q_nom">Nom de l’institut</label><input type="text" id="q_nom" data-l="Institut"></div>
-        <div class="q"><label for="q_ville">Adresse ou ville / quartier</label><input type="text" id="q_ville" data-l="Adresse"></div>
+    <section class="step" data-title="Vos priorités">
+      <div class="head">
+        <p class="eyebrow">Étape 1</p>
+        <h2 tabindex="-1">Vos priorités</h2>
+        <p class="lead">Suite à notre rendez-vous, je confirme ici l’essentiel pour lancer vos campagnes. Cinq minutes, et vous pouvez vous arrêter et reprendre plus tard.</p>
       </div>
-      <div class="duo">
-        <div class="q"><label for="q_depuis">Ouvert depuis</label><input type="text" id="q_depuis" data-l="Ouvert depuis" placeholder="ex. 2019"></div>
-        <div class="q"><label for="q_equipe">Nombre de personnes qui réalisent le laser</label><input type="text" id="q_equipe" data-l="Praticiennes laser" placeholder="ex. 2"></div>
-      </div>
-      <div class="duo">
-        <div class="q"><label for="q_site">Site internet</label><input type="text" id="q_site" data-l="Site" placeholder="www…"></div>
-        <div class="q"><label for="q_reseaux">Instagram, Facebook, TikTok</label><input type="text" id="q_reseaux" data-l="Réseaux" placeholder="@…"></div>
-      </div>
-      <div class="duo">
-        <div class="q"><label for="q_resa">Comment vos clientes réservent</label><input type="text" id="q_resa" data-l="Prise de rendez-vous" placeholder="Planity, Treatwell, téléphone, WhatsApp…"></div>
-        <div class="q"><label for="q_avis">Votre note Google</label><input type="text" id="q_avis" data-l="Avis Google" placeholder="ex. 4,8 ★ · 150 avis"></div>
+      <div class="body">
+        <div class="q"><span class="ql">Vos objectifs par mois</span>
+          <div class="grid2">
+            <label><span class="hint" style="display:block;margin:0 0 6px">Rendez-vous d’épilation laser</span><input type="number" id="obj_laser" data-l="Objectif rendez-vous laser / mois" inputmode="numeric" value="100"></label>
+            <label><span class="hint" style="display:block;margin:0 0 6px">Rendez-vous d’amincissement</span><input type="number" id="obj_mince" data-l="Objectif rendez-vous amincissement / mois" inputmode="numeric" value="30"></label>
+          </div>
+        </div>
+        <div class="q"><span class="ql">Ce qu’on met en avant en premier</span>
+          <p class="hint">Vos prestations telles qu’elles apparaissent sur Planity.</p>
+          <div class="chips" data-g="Prestations à mettre en avant">
+            <label class="chip"><input type="checkbox" name="prio" value="Laser aisselles + maillot intégral + SIF">Laser aisselles + maillot + SIF</label>
+            <label class="chip"><input type="checkbox" name="prio" value="Laser + jambes">Laser + jambes</label>
+            <label class="chip"><input type="checkbox" name="prio" value="Signature 24">Signature 24</label>
+            <label class="chip"><input type="checkbox" name="prio" value="Laser visage">Laser visage</label>
+            <label class="chip"><input type="checkbox" name="prio" value="Rasping">Rasping</label>
+            <label class="chip"><input type="checkbox" name="prio" value="Dipotens">Dipotens</label>
+            <label class="chip"><input type="checkbox" name="prio" value="G5">G5</label>
+            <label class="chip"><input type="checkbox" name="prio" value="Bodysculpt">Bodysculpt</label>
+            <label class="chip"><input type="checkbox" name="prio" value="Popolift">Popolift</label>
+          </div>
+        </div>
+        <div class="q"><span class="ql">Rendez-vous en plus que vous pouvez recevoir par semaine</span>
+          <div class="grid2">
+            <div class="suffix"><input type="number" id="cap_laser" data-l="Capacité laser / semaine" inputmode="numeric" placeholder="ex. 25"><span>en laser</span></div>
+            <div class="suffix"><input type="number" id="cap_mince" data-l="Capacité amincissement / semaine" inputmode="numeric" placeholder="ex. 8"><span>en amincissement</span></div>
+          </div>
+        </div>
+        <div class="q"><span class="ql">Les créneaux à remplir en priorité</span>
+          <div class="chips" data-g="Créneaux à remplir">
+            <label class="chip"><input type="checkbox" name="creneaux" value="Matinées">Matinées</label>
+            <label class="chip"><input type="checkbox" name="creneaux" value="Début de semaine">Début de semaine</label>
+            <label class="chip"><input type="checkbox" name="creneaux" value="Fin de journée">Fin de journée</label>
+            <label class="chip"><input type="checkbox" name="creneaux" value="Samedi">Samedi</label>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- 2 -->
-    <section>
-      <div class="sh"><div class="no">2</div><h2>L’épilation laser chez vous</h2></div>
-      <p class="intro">C’est le cœur des publicités : je dois connaître votre offre aussi bien que vous.</p>
-      <div class="q"><span class="qlabel">Votre technologie</span>
-        <div class="opts two" data-g="Technologie">
-          <label class="opt"><input type="radio" name="techno" value="Laser diode"><span class="txt"><b>Laser diode</b></span></label>
-          <label class="opt"><input type="radio" name="techno" value="Laser alexandrite / Nd:YAG"><span class="txt"><b>Alexandrite ou Nd:YAG</b></span></label>
-          <label class="opt"><input type="radio" name="techno" value="Lumière pulsée"><span class="txt"><b>Lumière pulsée</b></span></label>
-          <label class="opt"><input type="radio" name="techno" value="Je ne sais pas"><span class="txt"><b>Je ne sais pas exactement</b></span></label>
+    <section class="step" data-title="Votre offre d’accueil">
+      <div class="head">
+        <p class="eyebrow">Étape 2</p>
+        <h2 tabindex="-1">Votre offre d’accueil</h2>
+        <p class="lead">Autour de vous, la plupart des centres proposent un bilan ou une séance d’essai offerts. C’est ce qui transforme un clic en rendez-vous.</p>
+      </div>
+      <div class="body">
+        <div class="q"><span class="ql">L’offre qu’on met dans les publicités</span>
+          <div class="choices c2" data-g="Offre d’accueil">
+            <label class="choice"><input type="radio" name="offre" value="Bilan offert"><span class="box"></span><span class="t"><b>Bilan offert<span class="tag">conseillé</span></b><small>Laser ou minceur, 30 minutes, déjà proposé sur Planity</small></span></label>
+            <label class="choice"><input type="radio" name="offre" value="1re séance à prix réduit"><span class="box"></span><span class="t"><b>1re séance à prix réduit</b><small>Par exemple une petite zone</small></span></label>
+            <label class="choice"><input type="radio" name="offre" value="Zone offerte sur un forfait"><span class="box"></span><span class="t"><b>Une zone offerte sur un forfait</b></span></label>
+            <label class="choice"><input type="radio" name="offre" value="Pas d’offre, on met en avant les prix"><span class="box"></span><span class="t"><b>Pas d’offre</b><small>On met en avant vos prix et la Signature 24</small></span></label>
+          </div>
         </div>
-      </div>
-      <div class="q"><label for="q_machine">Marque ou nom de l’appareil (si vous le connaissez)</label><input type="text" id="q_machine" data-l="Appareil"></div>
-      <div class="q"><span class="qlabel">Les zones les plus demandées</span>
-        <div class="opts two" data-g="Zones demandées">
-          <label class="opt"><input type="checkbox" name="zones" value="Aisselles"><span class="txt"><b>Aisselles</b></span></label>
-          <label class="opt"><input type="checkbox" name="zones" value="Maillot"><span class="txt"><b>Maillot</b></span></label>
-          <label class="opt"><input type="checkbox" name="zones" value="Jambes"><span class="txt"><b>Jambes</b></span></label>
-          <label class="opt"><input type="checkbox" name="zones" value="Visage"><span class="txt"><b>Visage</b></span></label>
-          <label class="opt"><input type="checkbox" name="zones" value="Bras"><span class="txt"><b>Bras</b></span></label>
-          <label class="opt"><input type="checkbox" name="zones" value="Dos / torse (hommes)"><span class="txt"><b>Dos, torse</b><small>Clientèle masculine</small></span></label>
+        <div class="q"><label class="ql" for="offre_detail">Le détail, si besoin</label><input type="text" id="offre_detail" data-l="Détail de l’offre" placeholder="ex. 1re séance aisselles à 29 €"></div>
+        <div class="q"><span class="ql">Comment la personne réserve</span>
+          <div class="choices" data-g="Réservation">
+            <label class="choice"><input type="radio" name="resa" value="Directement sur Planity"><span class="box"></span><span class="t"><b>Elle réserve directement son bilan sur Planity<span class="tag">conseillé</span></b><small>Un vrai rendez-vous, pas un numéro à rappeler</small></span></label>
+            <label class="choice"><input type="radio" name="resa" value="Formulaire puis rappel"><span class="box"></span><span class="t"><b>Elle laisse ses coordonnées, vous la rappelez</b><small>Les demandes arrivent dans votre tableau de bord</small></span></label>
+            <label class="choice"><input type="radio" name="resa" value="Les deux"><span class="box"></span><span class="t"><b>Les deux, selon la publicité</b></span></label>
+          </div>
         </div>
-      </div>
-      <div class="q"><span class="qlabel">Votre clientèle laser</span>
-        <div class="opts three" data-g="Clientèle laser">
-          <label class="opt"><input type="radio" name="genre" value="Surtout des femmes"><span class="txt"><b>Surtout des femmes</b></span></label>
-          <label class="opt"><input type="radio" name="genre" value="Surtout des hommes"><span class="txt"><b>Surtout des hommes</b></span></label>
-          <label class="opt"><input type="radio" name="genre" value="Les deux"><span class="txt"><b>Les deux</b></span></label>
+        <div class="grid2">
+          <div class="q"><span class="ql">Acompte à la réservation</span>
+            <div class="chips" data-g="Acompte">
+              <label class="chip"><input type="radio" name="acompte" value="Oui">Oui</label>
+              <label class="chip"><input type="radio" name="acompte" value="Non">Non</label>
+              <label class="chip"><input type="radio" name="acompte" value="À discuter">À discuter</label>
+            </div></div>
+          <div class="q"><span class="ql">Paiement en plusieurs fois (Signature 24)</span>
+            <div class="chips" data-g="Paiement en plusieurs fois">
+              <label class="chip"><input type="radio" name="pfois" value="Oui">Oui</label>
+              <label class="chip"><input type="radio" name="pfois" value="Non">Non</label>
+              <label class="chip"><input type="radio" name="pfois" value="À voir">À voir</label>
+            </div></div>
         </div>
+        <div class="q"><span class="ql">Les demandes sont rappelées</span>
+          <div class="chips" data-g="Délai de rappel">
+            <label class="chip"><input type="radio" name="rappel" value="Dans l’heure">Dans l’heure</label>
+            <label class="chip"><input type="radio" name="rappel" value="Dans la journée">Dans la journée</label>
+            <label class="chip"><input type="radio" name="rappel" value="Le lendemain">Le lendemain</label>
+          </div></div>
       </div>
-      <div class="q"><label for="q_formules">Vos formules et leurs prix</label>
-        <p class="hint">Par exemple : « Aisselles, forfait 6 séances : 130 € » · « Maillot intégral, la séance : 49 € »</p>
-        <textarea id="q_formules" data-l="Formules et prix"></textarea></div>
-      <div class="duo">
-        <div class="q"><label for="q_seances">Nombre de séances en moyenne par cliente</label><input type="text" id="q_seances" data-l="Séances par cliente" placeholder="ex. 6 à 8"></div>
-        <div class="q"><label for="q_valeur">Ce que vous rapporte une cliente laser en moyenne</label>
-          <p class="hint">Toutes séances et soins compris, sur un an</p>
-          <input type="text" id="q_valeur" data-l="Valeur d’une cliente (€)" placeholder="ex. 400 €"></div>
-      </div>
-      <div class="q"><span class="qlabel">Proposez-vous une consultation ou un test avant la première séance ?</span>
-        <div class="opts three" data-g="Consultation / test">
-          <label class="opt"><input type="radio" name="consult" value="Oui, gratuite"><span class="txt"><b>Oui, gratuite</b></span></label>
-          <label class="opt"><input type="radio" name="consult" value="Oui, payante"><span class="txt"><b>Oui, payante</b></span></label>
-          <label class="opt"><input type="radio" name="consult" value="Non"><span class="txt"><b>Non</b></span></label>
-        </div>
-      </div>
-      <div class="q"><label for="q_autres">Les autres soins que prennent souvent vos clientes laser</label><input type="text" id="q_autres" data-l="Autres soins vendus" placeholder="Soins visage, onglerie…"></div>
-    </section>
-
-    <!-- Amincissement -->
-    <section>
-      <div class="sh"><div class="no">3</div><h2>L’amincissement chez vous</h2></div>
-      <p class="intro">Même logique que pour le laser : vos soins, vos prix, vos clientes.</p>
-      <div class="q"><span class="qlabel">Votre technique</span>
-        <div class="opts two" data-g="Technique d’amincissement">
-          <label class="opt"><input type="checkbox" name="mince_tech" value="Cryolipolyse"><span class="txt"><b>Cryolipolyse</b></span></label>
-          <label class="opt"><input type="checkbox" name="mince_tech" value="Radiofréquence"><span class="txt"><b>Radiofréquence</b></span></label>
-          <label class="opt"><input type="checkbox" name="mince_tech" value="Lipocavitation (ultrasons)"><span class="txt"><b>Lipocavitation</b><small>Ultrasons</small></span></label>
-          <label class="opt"><input type="checkbox" name="mince_tech" value="Palper-rouler mécanique"><span class="txt"><b>Palper-rouler mécanique</b></span></label>
-          <label class="opt"><input type="checkbox" name="mince_tech" value="Électrostimulation (EMS)"><span class="txt"><b>Électrostimulation</b><small>EMS</small></span></label>
-          <label class="opt"><input type="checkbox" name="mince_tech" value="Autre"><span class="txt"><b>Autre</b></span></label>
-        </div>
-      </div>
-      <div class="q"><label for="q_mince_appareil">Nom de l’appareil ou du soin</label><input type="text" id="q_mince_appareil" data-l="Appareil amincissement"></div>
-      <div class="q"><label for="q_mince_prix">Vos cures et leurs prix</label>
-        <p class="hint">Par exemple : « Cure 6 séances : 390 € » · « Séance découverte : 49 € »</p>
-        <textarea id="q_mince_prix" data-l="Cures et prix amincissement"></textarea></div>
-      <div class="duo">
-        <div class="q"><label for="q_mince_seances">Séances en moyenne par cliente</label><input type="text" id="q_mince_seances" data-l="Séances amincissement par cliente" placeholder="ex. 6"></div>
-        <div class="q"><label for="q_mince_valeur">Ce que vous rapporte une cliente amincissement en moyenne</label><input type="text" id="q_mince_valeur" data-l="Valeur d’une cliente amincissement (€)" placeholder="ex. 450 €"></div>
-      </div>
-      <div class="q"><span class="qlabel">Proposez-vous un bilan avant la première séance ?</span>
-        <div class="opts three" data-g="Bilan amincissement">
-          <label class="opt"><input type="radio" name="mince_bilan" value="Oui, gratuit"><span class="txt"><b>Oui, gratuit</b></span></label>
-          <label class="opt"><input type="radio" name="mince_bilan" value="Oui, payant"><span class="txt"><b>Oui, payant</b></span></label>
-          <label class="opt"><input type="radio" name="mince_bilan" value="Non"><span class="txt"><b>Non</b></span></label>
-        </div>
-      </div>
-      <div class="q"><label for="q_mince_clientes">Vos clientes amincissement : âge, attentes</label><input type="text" id="q_mince_clientes" data-l="Clientes amincissement" placeholder="ex. 30-55 ans, avant l’été…"></div>
     </section>
 
     <!-- 3 -->
-    <section>
-      <div class="sh"><div class="no">4</div><h2>Vos clientes</h2></div>
-      <p class="intro">Pour montrer vos publicités aux bonnes personnes, au bon endroit.</p>
-      <div class="duo">
-        <div class="q"><label for="q_age">Âge de vos clientes types</label><input type="text" id="q_age" data-l="Âge des clientes" placeholder="ex. 20-40 ans"></div>
-        <div class="q"><label for="q_zone">D’où viennent-elles ?</label><input type="text" id="q_zone" data-l="Zone de clientèle" placeholder="ex. 10 km autour, tout Lyon…"></div>
+    <section class="step" data-title="Vos appareils">
+      <div class="head">
+        <p class="eyebrow">Étape 3</p>
+        <h2 tabindex="-1">Vos appareils</h2>
+        <p class="lead">Pour des annonces exactes : nommer la bonne technologie rassure vos futures clientes, et respecte les règles des plateformes.</p>
       </div>
-      <div class="q"><label for="q_pourquoi">Pourquoi vous choisissent-elles plutôt qu’un autre institut ?</label><textarea id="q_pourquoi" data-l="Vos atouts"></textarea></div>
-      <div class="q"><label for="q_questions">Les questions ou hésitations qu’elles ont avant de réserver</label>
-        <p class="hint">Douleur, prix, nombre de séances, type de peau, résultats…</p>
-        <textarea id="q_questions" data-l="Questions et freins des clientes"></textarea></div>
+      <div class="body">
+        <div class="q"><span class="ql">Votre épilation</span>
+          <div class="choices c2" data-g="Technologie d’épilation">
+            <label class="choice"><input type="radio" name="techno" value="Laser diode"><span class="box"></span><span class="t"><b>Laser diode</b></span></label>
+            <label class="choice"><input type="radio" name="techno" value="Laser alexandrite"><span class="box"></span><span class="t"><b>Laser alexandrite</b></span></label>
+            <label class="choice"><input type="radio" name="techno" value="Laser Nd:YAG"><span class="box"></span><span class="t"><b>Laser Nd:YAG</b></span></label>
+            <label class="choice"><input type="radio" name="techno" value="Lumière pulsée"><span class="box"></span><span class="t"><b>Lumière pulsée (IPL)</b></span></label>
+          </div></div>
+        <div class="grid2">
+          <div class="q"><label class="ql" for="laser_marque">Marque et modèle de l’appareil</label><input type="text" id="laser_marque" data-l="Appareil d’épilation"></div>
+          <div class="q"><label class="ql" for="mince_tech">Technologie du Rasping et du Dipotens</label><input type="text" id="mince_tech" data-l="Technologie Rasping / Dipotens" placeholder="ex. radiofréquence, ultrasons…"></div>
+        </div>
+        <div class="q"><label class="ql" for="formations">Formations ou certifications à mettre en avant</label><input type="text" id="formations" data-l="Formations" placeholder="ex. formation laser 2025, marque de l’appareil…"></div>
+      </div>
     </section>
 
     <!-- 4 -->
-    <section>
-      <div class="sh"><div class="no">5</div><h2>Vos concurrents</h2></div>
-      <p class="intro">L’étude de marché comparera votre offre à celle des centres autour de vous.</p>
-      <div class="q"><label for="q_conc">Les centres laser, instituts ou cabinets que vous croisez le plus</label><textarea id="q_conc" data-l="Concurrents" placeholder="Noms, quartiers, et leurs prix si vous les connaissez"></textarea></div>
-      <div class="q"><label for="q_diff">Ce que vous faites mieux qu’eux</label><textarea id="q_diff" data-l="Ce que vous faites mieux"></textarea></div>
+    <section class="step" data-title="Vos anciennes campagnes">
+      <div class="head">
+        <p class="eyebrow">Étape 4</p>
+        <h2 tabindex="-1">Vos anciennes campagnes</h2>
+        <p class="lead">Vous avez déjà eu de très bons résultats : on repart de ce qui a fonctionné, pas de zéro.</p>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="q"><label class="ql" for="old_periode">Sur quelle période ?</label><input type="text" id="old_periode" data-l="Période" placeholder="ex. janvier à juin 2026"></div>
+          <div class="q"><label class="ql" for="old_budget">Budget publicitaire par mois</label><input type="text" id="old_budget" data-l="Budget mensuel d’avant" placeholder="ex. 1 500 €"></div>
+        </div>
+        <div class="q"><span class="ql">Sur quelles plateformes ?</span>
+          <div class="chips" data-g="Plateformes d’avant">
+            <label class="chip"><input type="checkbox" name="old_plat" value="Facebook / Instagram">Facebook, Instagram</label>
+            <label class="chip"><input type="checkbox" name="old_plat" value="Google">Google</label>
+            <label class="chip"><input type="checkbox" name="old_plat" value="TikTok">TikTok</label>
+          </div></div>
+        <div class="q"><label class="ql" for="old_resultats">Vos résultats par mois</label><input type="text" id="old_resultats" data-l="Résultats d’avant" placeholder="ex. 120 demandes, 60 rendez-vous, 15 € la demande"></div>
+        <div class="q"><label class="ql" for="old_marche">Ce qui marchait le mieux</label><textarea id="old_marche" data-l="Ce qui marchait" placeholder="Une vidéo, une offre, une période…"></textarea></div>
+        <div class="q"><span class="ql">Le compte publicitaire utilisé</span>
+          <div class="choices" data-g="Compte publicitaire d’avant">
+            <label class="choice"><input type="radio" name="compte" value="À mon nom, j’y ai accès"><span class="box"></span><span class="t"><b>Il est à mon nom, j’y ai toujours accès</b><small>Idéal : tout l’historique y est conservé</small></span></label>
+            <label class="choice"><input type="radio" name="compte" value="Celui de mon prestataire"><span class="box"></span><span class="t"><b>C’était celui de mon prestataire</b></span></label>
+            <label class="choice"><input type="radio" name="compte" value="Je ne sais pas"><span class="box"></span><span class="t"><b>Je ne sais pas</b></span></label>
+          </div></div>
+        <div class="grid2">
+          <div class="q"><span class="ql">J’analyse cet historique avant de lancer ?</span>
+            <div class="chips" data-g="Analyse de l’historique">
+              <label class="chip"><input type="radio" name="audit" value="Oui">Oui</label>
+              <label class="chip"><input type="radio" name="audit" value="Parlons-en">Parlons-en</label>
+            </div></div>
+          <div class="q"><span class="ql">Vous avez les vidéos et photos des publicités ?</span>
+            <div class="chips" data-g="Fichiers des anciennes créas">
+              <label class="chip"><input type="radio" name="creas" value="Oui">Oui</label>
+              <label class="chip"><input type="radio" name="creas" value="Non">Non</label>
+            </div></div>
+        </div>
+      </div>
     </section>
 
     <!-- 5 -->
-    <section>
-      <div class="sh"><div class="no">6</div><h2>Votre publicité jusqu’ici</h2></div>
-      <p class="intro">Vous avez déjà obtenu de très bons résultats : comprendre ce qui a marché est le meilleur point de départ pour les retrouver.</p>
-      <div class="duo">
-        <div class="q"><label for="q_qui">Qui gérait vos publicités ?</label><input type="text" id="q_qui" data-l="Gérées par" placeholder="Freelance, agence, vous-même…"></div>
-        <div class="q"><label for="q_periode">Sur quelle période ?</label><input type="text" id="q_periode" data-l="Période" placeholder="ex. de janvier à juin 2026"></div>
+    <section class="step" data-title="Google Ads">
+      <div class="head">
+        <p class="eyebrow">Étape 5</p>
+        <h2 tabindex="-1">Google Ads</h2>
+        <p class="lead">Google montre vos annonces aux personnes qui cherchent déjà une épilation laser près de chez elles : moins de monde que sur Instagram, mais des personnes décidées.</p>
       </div>
-      <div class="q"><span class="qlabel">Sur quelles plateformes ?</span>
-        <div class="opts three" data-g="Plateformes utilisées">
-          <label class="opt"><input type="checkbox" name="plat" value="Facebook / Instagram"><span class="txt"><b>Facebook, Instagram</b></span></label>
-          <label class="opt"><input type="checkbox" name="plat" value="Google"><span class="txt"><b>Google</b></span></label>
-          <label class="opt"><input type="checkbox" name="plat" value="TikTok"><span class="txt"><b>TikTok</b></span></label>
+      <div class="body">
+        <div class="grid2">
+          <div class="q"><span class="ql">Un compte Google Ads ?</span>
+            <div class="chips" data-g="Compte Google Ads">
+              <label class="chip"><input type="radio" name="gads" value="Oui">Oui</label>
+              <label class="chip"><input type="radio" name="gads" value="Non, à créer">Non, à créer</label>
+              <label class="chip"><input type="radio" name="gads" value="Je ne sais pas">Je ne sais pas</label>
+            </div></div>
+          <div class="q"><label class="ql" for="gads_id">Son numéro, si vous l’avez</label><input type="text" id="gads_id" data-l="N° client Google Ads" placeholder="123-456-7890"></div>
         </div>
-      </div>
-      <div class="duo">
-        <div class="q"><label for="q_budget_avant">Budget publicitaire par mois à l’époque</label><input type="text" id="q_budget_avant" data-l="Budget mensuel d’avant" placeholder="ex. 500 €"></div>
-        <div class="q"><label for="q_demandes">Demandes ou réservations obtenues par mois</label><input type="text" id="q_demandes" data-l="Demandes par mois" placeholder="ex. 60 demandes, 25 rendez-vous"></div>
-      </div>
-      <div class="q"><label for="q_marche">Ce qui marchait le mieux</label>
-        <p class="hint">Une vidéo, une offre, un message, une période…</p>
-        <textarea id="q_marche" data-l="Ce qui marchait le mieux"></textarea></div>
-      <div class="q"><label for="q_arret">Pourquoi avez-vous arrêté ?</label><textarea id="q_arret" data-l="Raison de l’arrêt"></textarea></div>
-      <div class="q"><span class="qlabel">Le compte publicitaire utilisé à l’époque</span>
-        <div class="opts" data-g="Compte publicitaire">
-          <label class="opt"><input type="radio" name="compte" value="À mon nom, j’y ai toujours accès"><span class="txt"><b>Il est à mon nom, j’y ai toujours accès</b><small>Idéal : tout l’historique de vos résultats y est conservé</small></span></label>
-          <label class="opt"><input type="radio" name="compte" value="Celui du prestataire"><span class="txt"><b>C’était celui de mon prestataire</b></span></label>
-          <label class="opt"><input type="radio" name="compte" value="Je ne sais pas"><span class="txt"><b>Je ne sais pas</b></span></label>
-        </div>
-      </div>
-      <div class="q"><span class="qlabel">Pour l’étude, m’autorisez-vous à consulter l’historique de vos anciennes campagnes ?</span>
-        <div class="opts two" data-g="Accès à l’historique">
-          <label class="opt"><input type="radio" name="histo" value="Oui"><span class="txt"><b>Oui</b><small>En lecture : je ne modifie rien</small></span></label>
-          <label class="opt"><input type="radio" name="histo" value="Parlons-en d’abord"><span class="txt"><b>Parlons-en d’abord</b></span></label>
-        </div>
-      </div>
-      <div class="q"><span class="qlabel">Avez-vous gardé les photos et vidéos des publicités qui marchaient ?</span>
-        <div class="opts two" data-g="Anciennes créations">
-          <label class="opt"><input type="radio" name="creas" value="Oui, j’ai les fichiers"><span class="txt"><b>Oui, j’ai les fichiers</b></span></label>
-          <label class="opt"><input type="radio" name="creas" value="Non"><span class="txt"><b>Non</b></span></label>
-        </div>
+        <div class="q"><span class="ql">Votre fiche Google (Maps)</span>
+          <div class="chips" data-g="Fiche Google">
+            <label class="chip"><input type="radio" name="gmb" value="Oui, à mon nom">Oui, à mon nom</label>
+            <label class="chip"><input type="radio" name="gmb" value="Non">Non</label>
+            <label class="chip"><input type="radio" name="gmb" value="Je ne sais pas">Je ne sais pas</label>
+          </div></div>
+        <div class="q"><span class="ql">Les recherches sur lesquelles vous voulez apparaître</span>
+          <p class="hint">Cochez tout ce qui vous parle ; j’ajouterai les variantes.</p>
+          <div class="chips" data-g="Mots-clés Google">
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser Décines">épilation laser Décines</label>
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser Meyzieu">épilation laser Meyzieu</label>
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser Vaulx-en-Velin">épilation laser Vaulx-en-Velin</label>
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser Villeurbanne">épilation laser Villeurbanne</label>
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser Lyon Est">épilation laser Lyon Est</label>
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser prix">épilation laser prix</label>
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser maillot">épilation laser maillot</label>
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser aisselles">épilation laser aisselles</label>
+            <label class="chip"><input type="checkbox" name="kw" value="épilation laser jambes">épilation laser jambes</label>
+            <label class="chip"><input type="checkbox" name="kw" value="institut de beauté Décines">institut de beauté Décines</label>
+            <label class="chip"><input type="checkbox" name="kw" value="amincissement Décines">amincissement Décines</label>
+            <label class="chip"><input type="checkbox" name="kw" value="massage minceur G5">massage minceur G5</label>
+          </div></div>
+        <div class="q"><label class="ql" for="kw_autres">D’autres recherches à viser</label><input type="text" id="kw_autres" data-l="Autres mots-clés"></div>
+        <div class="q"><span class="ql">Les villes à couvrir</span>
+          <div class="chips" data-g="Villes Google">
+            <label class="chip"><input type="checkbox" name="villes" value="Décines-Charpieu">Décines-Charpieu</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Meyzieu">Meyzieu</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Vaulx-en-Velin">Vaulx-en-Velin</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Villeurbanne">Villeurbanne</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Chassieu">Chassieu</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Genas">Genas</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Bron">Bron</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Saint-Priest">Saint-Priest</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Jonage">Jonage</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Lyon 3e">Lyon 3e</label>
+            <label class="chip"><input type="checkbox" name="villes" value="Lyon 8e">Lyon 8e</label>
+          </div></div>
+        <div class="q"><span class="ql">Ce qu’on pousse sur Google</span>
+          <div class="choices c2" data-g="Prestations sur Google">
+            <label class="choice"><input type="radio" name="gpush" value="Le laser seulement"><span class="box"></span><span class="t"><b>Le laser seulement<span class="tag">conseillé</span></b><small>C’est ce qui se cherche le plus sur Google</small></span></label>
+            <label class="choice"><input type="radio" name="gpush" value="Laser et amincissement"><span class="box"></span><span class="t"><b>Laser et amincissement</b></span></label>
+          </div></div>
+        <div class="q"><span class="ql">Où mènent les annonces</span>
+          <div class="choices" data-g="Page d’arrivée Google">
+            <label class="choice"><input type="radio" name="landing" value="Page dédiée créée par LinkedIA"><span class="box"></span><span class="t"><b>Une page dédiée à vos annonces<span class="tag">conseillé</span></b><small>Je la crée, avec votre bouton de réservation Planity : elle permet de compter chaque rendez-vous venu de Google</small></span></label>
+            <label class="choice"><input type="radio" name="landing" value="Page Planity"><span class="box"></span><span class="t"><b>Votre page Planity</b><small>Plus simple, mais Google ne peut pas mesurer les réservations</small></span></label>
+          </div></div>
       </div>
     </section>
 
     <!-- 6 -->
-    <section>
-      <div class="sh"><div class="no">7</div><h2>Vos objectifs</h2></div>
-      <p class="intro">Vous m’avez parlé d’environ 100 rendez-vous d’épilation laser et 30 rendez-vous d’amincissement par mois,
-         et surtout de vrais rendez-vous, pas de simples demandes de renseignements. Précisons-le ensemble.</p>
-      <div class="duo">
-        <div class="q"><label for="q_obj_laser">Rendez-vous d’épilation laser souhaités par mois</label><input type="text" id="q_obj_laser" data-l="Objectif rendez-vous laser par mois" placeholder="ex. 100"></div>
-        <div class="q"><label for="q_obj_mince">Rendez-vous d’amincissement souhaités par mois</label><input type="text" id="q_obj_mince" data-l="Objectif rendez-vous amincissement par mois" placeholder="ex. 30"></div>
+    <section class="step" data-title="Budget et démarrage">
+      <div class="head">
+        <p class="eyebrow">Étape 6</p>
+        <h2 tabindex="-1">Budget et démarrage</h2>
+        <p class="lead">Le budget publicitaire est payé directement à Facebook et à Google avec votre carte. Il se précise après le premier mois, sur votre coût réel par rendez-vous.</p>
       </div>
-      <div class="duo">
-        <div class="q"><label for="q_cap_laser">Rendez-vous laser que vous pouvez recevoir par semaine</label><input type="text" id="q_cap_laser" data-l="Capacité laser par semaine" placeholder="ex. 25"></div>
-        <div class="q"><label for="q_cap_mince">Rendez-vous amincissement par semaine</label><input type="text" id="q_cap_mince" data-l="Capacité amincissement par semaine" placeholder="ex. 8"></div>
-      </div>
-      <div class="q"><span class="qlabel">Pour vous, un rendez-vous réussi, c’est quand la personne…</span>
-        <div class="opts two" data-g="Rendez-vous qualifié">
-          <label class="opt"><input type="radio" name="qualif" value="a réservé un créneau dans l’agenda"><span class="txt"><b>A réservé un créneau dans votre agenda</b></span></label>
-          <label class="opt"><input type="radio" name="qualif" value="a confirmé au téléphone"><span class="txt"><b>A confirmé au téléphone</b></span></label>
-          <label class="opt"><input type="radio" name="qualif" value="est venue au rendez-vous"><span class="txt"><b>Est venue au rendez-vous</b></span></label>
-          <label class="opt"><input type="radio" name="qualif" value="a acheté une séance ou un forfait"><span class="txt"><b>A acheté une séance ou un forfait</b></span></label>
+      <div class="body">
+        <div class="q"><span class="ql">Budget publicitaire par mois pour démarrer</span>
+          <div class="choices c2" data-g="Budget publicitaire">
+            <label class="choice"><input type="radio" name="budget" value="Moins de 1 500 €"><span class="box"></span><span class="t"><b>Moins de 1 500 €</b></span></label>
+            <label class="choice"><input type="radio" name="budget" value="1 500 à 3 000 €"><span class="box"></span><span class="t"><b>1 500 à 3 000 €</b></span></label>
+            <label class="choice"><input type="radio" name="budget" value="3 000 à 5 000 €"><span class="box"></span><span class="t"><b>3 000 à 5 000 €</b><small>Ordre de grandeur pour 130 rendez-vous par mois</small></span></label>
+            <label class="choice"><input type="radio" name="budget" value="À définir ensemble"><span class="box"></span><span class="t"><b>À définir ensemble</b></span></label>
+          </div></div>
+        <div class="q"><span class="ql">Répartition entre les plateformes</span>
+          <div class="choices" data-g="Répartition">
+            <label class="choice"><input type="radio" name="split" value="3/4 Facebook-Instagram, 1/4 Google"><span class="box"></span><span class="t"><b>3/4 Facebook et Instagram, 1/4 Google<span class="tag">conseillé</span></b><small>On compare le coût d’un rendez-vous au bout de 3 à 4 semaines, puis on ajuste</small></span></label>
+            <label class="choice"><input type="radio" name="split" value="Moitié-moitié"><span class="box"></span><span class="t"><b>Moitié-moitié</b></span></label>
+            <label class="choice"><input type="radio" name="split" value="Je vous laisse décider après le test"><span class="box"></span><span class="t"><b>Je vous laisse décider après le premier mois</b></span></label>
+          </div></div>
+        <div class="grid2">
+          <div class="q"><label class="ql" for="debut">Démarrage souhaité</label><input type="date" id="debut" data-l="Démarrage"></div>
+          <div class="q"><span class="ql">Le point de la semaine, par</span>
+            <div class="chips" data-g="Point de la semaine">
+              <label class="chip"><input type="radio" name="point" value="SMS">SMS</label>
+              <label class="chip"><input type="radio" name="point" value="E-mail">E-mail</label>
+              <label class="chip"><input type="radio" name="point" value="WhatsApp">WhatsApp</label>
+            </div></div>
         </div>
       </div>
-      <div class="q"><span class="qlabel">Avec vos anciens contacts, qu’est-ce qui coinçait ?</span>
-        <div class="opts two" data-g="Problèmes des anciens contacts">
-          <label class="opt"><input type="checkbox" name="soucis" value="Ne répondaient pas au téléphone"><span class="txt"><b>Ils ne répondaient pas au téléphone</b></span></label>
-          <label class="opt"><input type="checkbox" name="soucis" value="Voulaient juste un renseignement ou un prix"><span class="txt"><b>Ils voulaient juste un renseignement ou un prix</b></span></label>
-          <label class="opt"><input type="checkbox" name="soucis" value="Réservaient mais ne venaient pas"><span class="txt"><b>Ils réservaient mais ne venaient pas</b></span></label>
-          <label class="opt"><input type="checkbox" name="soucis" value="Trouvaient trop cher"><span class="txt"><b>Ils trouvaient trop cher</b></span></label>
-          <label class="opt"><input type="checkbox" name="soucis" value="Habitaient trop loin"><span class="txt"><b>Ils habitaient trop loin</b></span></label>
-        </div>
-      </div>
-      <div class="duo">
-        <div class="q"><label for="q_joignables">Sur 10 contacts, combien arriviez-vous à joindre ?</label><input type="text" id="q_joignables" data-l="Contacts joignables sur 10" placeholder="ex. 4"></div>
-        <div class="q"><label for="q_lapins">Rendez-vous non honorés, environ</label><input type="text" id="q_lapins" data-l="Rendez-vous non honorés" placeholder="ex. 1 sur 5"></div>
-      </div>
-      <div class="q"><span class="qlabel">Seriez-vous d’accord pour demander un petit acompte à la réservation ?</span>
-        <p class="hint">Par exemple 20 €, déduits de la séance : c’est le moyen le plus efficace d’éviter les rendez-vous non honorés et les simples curieux.</p>
-        <div class="opts three" data-g="Acompte à la réservation">
-          <label class="opt"><input type="radio" name="acompte" value="Oui"><span class="txt"><b>Oui</b></span></label>
-          <label class="opt"><input type="radio" name="acompte" value="Non"><span class="txt"><b>Non</b></span></label>
-          <label class="opt"><input type="radio" name="acompte" value="À discuter"><span class="txt"><b>À discuter</b></span></label>
-        </div>
-      </div>
-      <div class="q"><label for="q_creux">Vos périodes ou créneaux à remplir en priorité</label><input type="text" id="q_creux" data-l="Créneaux à remplir" placeholder="Matinées, début de semaine, été…"></div>
-      <div class="q"><span class="qlabel">Budget publicitaire mensuel envisagé</span>
-        <p class="hint">Payé directement à Facebook ou Google avec votre carte, en plus de ma gestion.</p>
-        <div class="opts two" data-g="Budget envisagé">
-          <label class="opt"><input type="radio" name="budget" value="Moins de 300 €"><span class="txt"><b>Moins de 300 €</b></span></label>
-          <label class="opt"><input type="radio" name="budget" value="300 à 600 €"><span class="txt"><b>300 à 600 €</b></span></label>
-          <label class="opt"><input type="radio" name="budget" value="600 à 1 000 €"><span class="txt"><b>600 à 1 000 €</b></span></label>
-          <label class="opt"><input type="radio" name="budget" value="Plus de 1 000 €"><span class="txt"><b>Plus de 1 000 €</b></span></label>
-          <label class="opt"><input type="radio" name="budget" value="À définir ensemble"><span class="txt"><b>À définir ensemble</b></span></label>
-        </div>
-      </div>
-      <div class="q"><span class="qlabel">Quand une personne laisse ses coordonnées, qui la rappelle, et en combien de temps ?</span>
-        <p class="hint">C’est souvent ce qui fait la différence entre une demande et une cliente.</p>
-        <div class="opts two" data-g="Rappel des demandes">
-          <label class="opt"><input type="radio" name="rappel" value="Dans l’heure"><span class="txt"><b>Dans l’heure</b></span></label>
-          <label class="opt"><input type="radio" name="rappel" value="Dans la journée"><span class="txt"><b>Dans la journée</b></span></label>
-          <label class="opt"><input type="radio" name="rappel" value="Le lendemain ou plus"><span class="txt"><b>Le lendemain ou plus</b></span></label>
-          <label class="opt"><input type="radio" name="rappel" value="Réservation directe en ligne"><span class="txt"><b>Elles réservent directement en ligne</b></span></label>
-        </div>
-      </div>
-      <div class="q"><label for="q_qui_rappelle">Qui s’en occupe ?</label><input type="text" id="q_qui_rappelle" data-l="Qui rappelle" placeholder="Vous, l’accueil, une praticienne…"></div>
-      <div class="q"><label for="q_debut">Démarrage souhaité</label><input type="text" id="q_debut" data-l="Démarrage souhaité" placeholder="ex. dès que possible, mi-novembre…"></div>
     </section>
 
     <!-- 7 -->
-    <section>
-      <div class="sh"><div class="no">8</div><h2>Vos offres</h2></div>
-      <p class="intro">Une bonne offre de bienvenue peut diviser le coût d’une nouvelle cliente. Cochez ce que vous seriez prête à proposer.</p>
-      <div class="q"><div class="opts two" data-g="Offres possibles">
-        <label class="opt"><input type="checkbox" name="offres" value="Consultation offerte"><span class="txt"><b>Consultation ou test offert</b></span></label>
-        <label class="opt"><input type="checkbox" name="offres" value="Première séance à prix réduit"><span class="txt"><b>Première séance à prix réduit</b></span></label>
-        <label class="opt"><input type="checkbox" name="offres" value="Zone offerte pour un forfait"><span class="txt"><b>Une petite zone offerte pour un forfait</b></span></label>
-        <label class="opt"><input type="checkbox" name="offres" value="Parrainage"><span class="txt"><b>Parrainage</b><small>Une séance offerte à la marraine</small></span></label>
-        <label class="opt"><input type="checkbox" name="offres" value="Paiement en plusieurs fois"><span class="txt"><b>Paiement en plusieurs fois</b></span></label>
-        <label class="opt"><input type="checkbox" name="offres" value="Offres de saison"><span class="txt"><b>Offres de saison</b><small>Préparer l’été dès l’automne</small></span></label>
-        <label class="opt"><input type="checkbox" name="offres" value="Bilan minceur offert"><span class="txt"><b>Bilan minceur offert</b></span></label>
-        <label class="opt"><input type="checkbox" name="offres" value="Séance découverte amincissement"><span class="txt"><b>Séance découverte amincissement</b></span></label>
-      </div></div>
-      <div class="q"><label for="q_offre_actuelle">Votre offre du moment</label><input type="text" id="q_offre_actuelle" data-l="Offre du moment"></div>
-      <div class="q"><label for="q_jamais">Ce que vous ne voulez surtout pas</label><input type="text" id="q_jamais" data-l="À éviter" placeholder="Prix cassés, certaines formulations…"></div>
+    <section class="step" data-title="Démarrer en confiance">
+      <div class="head">
+        <p class="eyebrow">Étape 7</p>
+        <h2 tabindex="-1">Démarrer en confiance</h2>
+        <p class="lead">C’est normal de vouloir être rassurée. Cochez ce qui compte pour vous : je m’y engage par écrit.</p>
+      </div>
+      <div class="body">
+        <div class="choices" data-g="Ce qui me rassure">
+          <label class="choice"><input type="checkbox" name="confiance" value="Analyse de mes anciennes campagnes avant de commencer"><span class="box"></span><span class="t"><b>Une analyse de vos anciennes campagnes avant de commencer</b></span></label>
+          <label class="choice"><input type="checkbox" name="confiance" value="Objectifs chiffrés validés ensemble"><span class="box"></span><span class="t"><b>Des objectifs chiffrés, validés ensemble</b></span></label>
+          <label class="choice"><input type="checkbox" name="confiance" value="Tableau de bord + suivi des demandes"><span class="box"></span><span class="t"><b>Votre tableau de bord et le suivi de chaque demande</b><small>Sur votre téléphone, mis à jour chaque jour</small></span></label>
+          <label class="choice"><input type="checkbox" name="confiance" value="Point écrit chaque semaine"><span class="box"></span><span class="t"><b>Un point écrit chaque semaine</b></span></label>
+          <label class="choice"><input type="checkbox" name="confiance" value="Bilan à 15 jours"><span class="box"></span><span class="t"><b>Un appel de bilan au bout de 15 jours</b></span></label>
+          <label class="choice"><input type="checkbox" name="confiance" value="Premier mois test"><span class="box"></span><span class="t"><b>Un premier mois test, puis on décide ensemble</b></span></label>
+        </div>
+        <div class="q"><label class="ql" for="confiance_libre">Ce qui vous ferait dire « on y va »</label><textarea id="confiance_libre" data-l="Pour dire « on y va »"></textarea></div>
+      </div>
     </section>
 
     <!-- 8 -->
-    <section>
-      <div class="sh"><div class="no">9</div><h2>Pour démarrer en confiance</h2></div>
-      <p class="intro">Vous avez déjà connu de bons résultats : c’est normal de vouloir être rassurée. Dites-moi ce qui compte pour vous.</p>
-      <div class="q"><div class="opts" data-g="Ce qui me rassurerait">
-        <label class="opt"><input type="checkbox" name="confiance" value="Des objectifs chiffrés validés ensemble"><span class="txt"><b>Des objectifs chiffrés, validés ensemble avant de commencer</b></span></label>
-        <label class="opt"><input type="checkbox" name="confiance" value="Un tableau de bord de mes résultats"><span class="txt"><b>Un tableau de bord de mes résultats</b><small>Sur votre téléphone, mis à jour chaque jour</small></span></label>
-        <label class="opt"><input type="checkbox" name="confiance" value="Un point chaque semaine"><span class="txt"><b>Un point écrit chaque semaine</b><small>Ce qui a été fait, ce qui vient</small></span></label>
-        <label class="opt"><input type="checkbox" name="confiance" value="Un bilan à 15 jours"><span class="txt"><b>Un appel de bilan au bout de 15 jours</b></span></label>
-        <label class="opt"><input type="checkbox" name="confiance" value="Un premier mois test"><span class="txt"><b>Un premier mois de test, puis on décide ensemble</b></span></label>
-      </div></div>
-      <div class="q"><label for="q_confiance">Autre chose qui vous aiderait à vous décider ?</label><textarea id="q_confiance" data-l="Autre"></textarea></div>
+    <section class="step" data-title="Récapitulatif" data-recap>
+      <div class="head">
+        <p class="eyebrow">Étape 8</p>
+        <h2 tabindex="-1">Récapitulatif</h2>
+        <p class="lead">Vérifiez, puis envoyez : je reviens vers vous avec le plan de lancement chiffré.</p>
+      </div>
+      <div class="body">
+        <div class="recap" id="recap"></div>
+        <div class="grid2">
+          <div class="q"><label class="ql" for="s_nom">Votre nom</label><input type="text" id="s_nom" autocomplete="name"></div>
+          <div class="q"><label class="ql" for="s_mail">Votre e-mail</label><input type="email" id="s_mail" autocomplete="email"></div>
+        </div>
+        <input type="text" class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="msg" id="msg" role="status"></p>
+      </div>
     </section>
 
-    <div class="send">
-      <h2>Envoyez-moi vos réponses</h2>
-      <p>Un clic et je reçois tout. Je m’en sers pour l’étude de marché de votre institut, et je reviens vers vous
-         avec mes recommandations. Vos réponses restent enregistrées sur votre téléphone : vous pouvez compléter plus tard.</p>
-      <div class="req">
-        <div><label for="s_nom">Votre nom *</label><input type="text" id="s_nom" autocomplete="name" required></div>
-        <div><label for="s_mail">Votre e-mail *</label><input type="email" id="s_mail" autocomplete="email" required></div>
-      </div>
-      <input type="text" class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="actions">
-        <button type="submit" class="go" id="go">Envoyer mes réponses</button>
-        <button type="button" class="ghost" onclick="window.print()">Imprimer / enregistrer en PDF</button>
-        <span class="saved" id="saved"></span>
-      </div>
-      <p class="msg" id="msg"></p>
+    <div class="done-screen" id="done" hidden>
+      <div class="ok">✓</div>
+      <h1 style="margin-top:16px">Merci, c’est bien reçu</h1>
+      <p class="lead" style="margin:10px auto 0">Je prépare votre plan de lancement et je reviens vers vous très vite. Vos réponses restent enregistrées sur cet appareil.</p>
+    </div>
+
+    <div class="foot" id="foot">
+      <button type="button" class="btn ghost" id="prev">Précédent</button>
+      <span class="saved" id="saved"></span>
+      <button type="button" class="btn primary" id="next">Continuer</button>
     </div>
   </form>
-
-  <footer>
-    <b>LinkedIA — Jérémy Halimi</b><br>
-    06 65 14 14 33 · contact@linkeedia.fr
-  </footer>
 </div>
+
+<footer>LinkedIA — Jérémy Halimi · 06 65 14 14 33 · contact@linkeedia.fr</footer>
 
 <script>
 (function () {
   'use strict';
   var ENDPOINT = 'https://linkedia-contact.halimjeremy.workers.dev';
-  var KEY = 'linkedia-quest-pub-institut';
+  var KEY = 'linkedia-lancement-ylc';
   var form = document.getElementById('f');
+  var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+  var nav = document.getElementById('nav');
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
   var msg = document.getElementById('msg');
-  var go = document.getElementById('go');
-  var savedEl = document.getElementById('saved');
-  var TOTAL = form.querySelectorAll('section .q').length;
+  var cur = 0;
 
-  function fields() { return form.querySelectorAll('input, textarea'); }
+  function fields() { return form.querySelectorAll('input:not(.hp), textarea'); }
   function keyOf(el) { return el.id || (el.name + '|' + el.value); }
-
-  /* ---------- Progression ---------- */
-  function refresh() {
-    var done = 0;
-    form.querySelectorAll('section .q').forEach(function (q) {
-      var any = false;
-      q.querySelectorAll('input, textarea').forEach(function (el) {
-        if ((el.type === 'checkbox' || el.type === 'radio') ? el.checked : el.value.trim()) any = true;
-      });
-      if (any) done++;
+  function answered(sec) {
+    var any = false;
+    sec.querySelectorAll('input:not(.hp), textarea').forEach(function (el) {
+      if ((el.type === 'checkbox' || el.type === 'radio') ? el.checked : (el.value.trim() && el.value !== el.defaultValue)) any = true;
     });
-    document.getElementById('pnum').textContent = done + ' / ' + TOTAL;
-    document.getElementById('pbar').style.width = Math.min(100, (done / TOTAL) * 100) + '%';
+    return any;
   }
 
   /* ---------- Sauvegarde sur l'appareil ---------- */
   function save() {
-    var d = {};
+    var d = { _step: cur };
     fields().forEach(function (el) {
-      if (el.classList.contains('hp')) return;
       if (el.type === 'checkbox' || el.type === 'radio') d[keyOf(el)] = el.checked;
       else d[keyOf(el)] = el.value;
     });
     try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
-    savedEl.textContent = 'Réponses enregistrées sur cet appareil';
+    document.getElementById('saved').textContent = 'Enregistré sur cet appareil';
   }
   function load() {
     var d;
-    try { d = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return; }
+    try { d = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { d = {}; }
     fields().forEach(function (el) {
-      if (el.classList.contains('hp')) return;
       var k = keyOf(el);
       if (!(k in d)) return;
       if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!d[k];
       else el.value = d[k];
     });
+    return typeof d._step === 'number' ? Math.min(d._step, steps.length - 1) : 0;
   }
-  var t;
-  form.addEventListener('input', function () { refresh(); clearTimeout(t); t = setTimeout(save, 400); });
-  form.addEventListener('change', function () { refresh(); clearTimeout(t); t = setTimeout(save, 400); });
 
-  /* ---------- Récapitulatif envoyé par e-mail (découpé si long : rien n'est coupé) ---------- */
+  /* ---------- Récapitulatif ---------- */
   function blocks() {
     var out = [];
-    form.querySelectorAll('section').forEach(function (sec) {
+    steps.forEach(function (sec, i) {
+      if (sec.hasAttribute('data-recap')) return;
       var lines = [];
-      sec.querySelectorAll('input[data-l], textarea[data-l]').forEach(function (el) {
+      sec.querySelectorAll('[data-l]').forEach(function (el) {
         var v = el.value.trim();
-        if (v) lines.push('- ' + el.dataset.l + ' : ' + v);
+        if (v) lines.push([el.getAttribute('data-l'), v]);
       });
-      sec.querySelectorAll('.opts[data-g]').forEach(function (g) {
-        var vals = [];
-        g.querySelectorAll('input:checked').forEach(function (el) { vals.push(el.value); });
-        if (vals.length) lines.push('- ' + g.dataset.g + ' : ' + vals.join(' | '));
+      sec.querySelectorAll('[data-g]').forEach(function (g) {
+        var vals = Array.prototype.map.call(g.querySelectorAll('input:checked'), function (el) { return el.value; });
+        if (vals.length) lines.push([g.getAttribute('data-g'), vals.join(', ')]);
       });
-      if (lines.length) out.push('== ' + sec.querySelector('h2').textContent.trim().toUpperCase() + ' ==\n' + lines.join('\n'));
+      out.push({ i: i, title: sec.getAttribute('data-title'), lines: lines });
     });
     return out;
   }
-  // Le formulaire du site accepte 4 000 caractères par message : au-delà, plusieurs e-mails numérotés
-  function parts() {
-    var res = [], cur = '';
-    blocks().forEach(function (b) {
-      while (b.length > 3700) { if (cur) { res.push(cur); cur = ''; } res.push(b.slice(0, 3700)); b = b.slice(3700); }
-      if (cur && (cur + '\n\n' + b).length > 3700) { res.push(cur); cur = b; }
-      else cur = cur ? cur + '\n\n' + b : b;
-    });
-    if (cur) res.push(cur);
-    return res.length ? res : ['(aucune réponse remplie)'];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function renderRecap() {
+    document.getElementById('recap').innerHTML = blocks().map(function (b) {
+      return '<section><h3>' + esc(b.title) + '<button type="button" data-go="' + b.i + '">Modifier</button></h3>' +
+        (b.lines.length
+          ? '<dl>' + b.lines.map(function (l) { return '<div><dt>' + esc(l[0]) + ' : </dt><dd>' + esc(l[1]) + '</dd></div>'; }).join('') + '</dl>'
+          : '<p class="empty">Rien de renseigné</p>') + '</section>';
+    }).join('');
   }
+  document.getElementById('recap').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-go]');
+    if (b) show(Number(b.getAttribute('data-go')));
+  });
 
-  /* ---------- Envoi ---------- */
+  /* ---------- Navigation entre les étapes ---------- */
+  function renderNav() {
+    nav.innerHTML = '';
+    steps.forEach(function (sec, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = (i !== cur && i < steps.length - 1 && answered(sec)) ? 'done' : '';
+      if (i === cur) b.setAttribute('aria-current', 'step');
+      b.innerHTML = '<span class="dot">' + (b.className === 'done' ? '✓' : (i + 1)) + '</span>' + esc(sec.getAttribute('data-title'));
+      b.addEventListener('click', function () { show(i); });
+      nav.appendChild(b);
+    });
+  }
+  function show(i, focus) {
+    cur = Math.max(0, Math.min(i, steps.length - 1));
+    steps.forEach(function (s, j) { s.classList.toggle('on', j === cur); });
+    var last = cur === steps.length - 1;
+    prev.hidden = cur === 0;
+    next.textContent = last ? 'Envoyer mes réponses' : (cur === steps.length - 2 ? 'Voir le récapitulatif' : 'Continuer');
+    document.getElementById('count').textContent = (cur + 1) + ' / ' + steps.length;
+    document.getElementById('bar').style.width = ((cur + 1) / steps.length) * 100 + '%';
+    if (last) renderRecap();
+    renderNav();
+    save();
+    if (focus !== false) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      var h = steps[cur].querySelector('h2');
+      if (h) h.focus({ preventScroll: true });
+    }
+  }
+  prev.addEventListener('click', function () { show(cur - 1); });
+  next.addEventListener('click', function () {
+    if (cur < steps.length - 1) show(cur + 1);
+    else send();
+  });
+
+  var t;
+  form.addEventListener('input', function () { clearTimeout(t); t = setTimeout(function () { save(); renderNav(); }, 400); });
+  form.addEventListener('change', function () { save(); renderNav(); });
+
+  /* ---------- Envoi (plusieurs e-mails numérotés si c'est long) ---------- */
+  function parts() {
+    var res = [], acc = '';
+    blocks().forEach(function (b) {
+      if (!b.lines.length) return;
+      var txt = '== ' + b.title.toUpperCase() + ' ==\n' + b.lines.map(function (l) { return '- ' + l[0] + ' : ' + l[1]; }).join('\n');
+      while (txt.length > 3700) { if (acc) { res.push(acc); acc = ''; } res.push(txt.slice(0, 3700)); txt = txt.slice(3700); }
+      if (acc && (acc + '\n\n' + txt).length > 3700) { res.push(acc); acc = txt; } else acc = acc ? acc + '\n\n' + txt : txt;
+    });
+    if (acc) res.push(acc);
+    return res.length ? res : ['(aucune réponse)'];
+  }
   var busy = false;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  function send() {
     if (busy) return;
     var nom = document.getElementById('s_nom').value.trim();
     var mail = document.getElementById('s_mail').value.trim();
     msg.className = 'msg';
-    if (!nom || !mail || mail.indexOf('@') < 1) {
+    if (!nom || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
       msg.className = 'msg ko';
-      msg.textContent = 'Merci d’indiquer votre nom et un e-mail valide avant l’envoi.';
+      msg.textContent = 'Indiquez votre nom et un e-mail valide pour envoyer.';
       (nom ? document.getElementById('s_mail') : document.getElementById('s_nom')).focus();
       return;
     }
     busy = true;
-    go.disabled = true;
-    go.textContent = 'Envoi en cours…';
+    next.disabled = true;
+    next.textContent = 'Envoi…';
     var list = parts();
     var chain = Promise.resolve();
     list.forEach(function (txt, i) {
@@ -622,7 +618,7 @@
           body: JSON.stringify({
             name: nom,
             email: mail,
-            type: 'Questionnaire pub — institut' + (list.length > 1 ? ' (' + (i + 1) + '/' + list.length + ')' : ''),
+            type: 'Lancement campagnes YLC' + (list.length > 1 ? ' (' + (i + 1) + '/' + list.length + ')' : ''),
             msg: txt,
             website: document.getElementById('website').value
           })
@@ -630,23 +626,22 @@
       });
     });
     chain.then(function () {
-      msg.className = 'msg ok';
-      msg.textContent = 'C’est envoyé, merci ! Je reviens vers vous avec l’étude de marché de votre institut.';
-      go.textContent = 'Réponses envoyées ✓';
+      steps.forEach(function (s) { s.classList.remove('on'); });
+      document.getElementById('foot').hidden = true;
+      document.getElementById('done').hidden = false;
+      document.getElementById('bar').style.width = '100%';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(function () {
       busy = false;
-      go.disabled = false;
-      go.textContent = 'Envoyer mes réponses';
+      next.disabled = false;
+      next.textContent = 'Envoyer mes réponses';
       msg.className = 'msg ko';
-      msg.innerHTML = 'L’envoi n’a pas abouti. Vous pouvez réessayer, ou m’écrire directement à ' +
-        '<a href="mailto:contact@linkeedia.fr" style="color:#c9f24d">contact@linkeedia.fr</a>.';
+      msg.innerHTML = 'L’envoi n’a pas abouti. Réessayez, ou écrivez-moi à <a href="mailto:contact@linkeedia.fr">contact@linkeedia.fr</a>. Vos réponses restent enregistrées.';
     });
-  });
+  }
 
-  load();
-  refresh();
+  show(load(), false);
 })();
 </script>
-
 </body>
 </html>
