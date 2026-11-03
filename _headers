@@ -13,6 +13,10 @@
   X-Robots-Tag: noindex, nofollow
   Referrer-Policy: no-referrer
 
+/previsionnel/*
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer
+
 /questionnaire/*
   X-Robots-Tag: noindex, nofollow
   Referrer-Policy: no-referrer

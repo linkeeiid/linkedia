@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Votre prévisionnel — Group YLC Esthetic · LinkedIA</title>
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../../brand/icon-180.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
+<style>
+  *{box-sizing:border-box; margin:0; padding:0}
+  :root{
+    --paper:#fff; --sand:#f5f0e9; --sand-2:#ece4d9; --ink:#1f1d1b; --graphite:#6f6a64; --silver:#99928a;
+    --hair:#ebe5dd; --hair-2:#d8d0c5; --taupe:#b39a7f; --taupe-d:#86694d; --green:#2b7a4b; --green-soft:#e8f3ec; --amber:#874a05; --amber-soft:#fbf0e1;
+    --ease:cubic-bezier(.19,1,.22,1);
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",system-ui,sans-serif;
+    --serif:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--paper); color:var(--ink); font:17px/1.5 var(--sans); letter-spacing:-.011em; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px; margin:0 auto; padding:0 20px}
+  .nw{white-space:nowrap}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* En-tête */
+  .hero{display:grid; gap:28px; padding:28px 0 8px}
+  @media (min-width:860px){ .hero{grid-template-columns:1.1fr .9fr; align-items:center; padding-top:56px} }
+  .ylc{width:210px; color:var(--ink)}
+  .with{margin-top:12px; font-size:13px; font-weight:500; color:var(--silver)}
+  h1{font:600 clamp(46px,7vw,80px)/.95 var(--serif); letter-spacing:-.02em; margin-top:28px}
+  .lead{color:var(--graphite); margin-top:16px; max-width:46ch; font-size:18px}
+  .hero-img{border-radius:24px; overflow:hidden; aspect-ratio:4/5; max-height:520px; background:var(--sand)}
+  .hero-img img{width:100%; height:100%; object-fit:cover; display:block}
+  @media (max-width:859px){ .hero-img{aspect-ratio:16/10} }
+
+  section{padding:56px 0 8px}
+  .eyebrow{font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--taupe-d)}
+  h2{font:600 clamp(32px,4.4vw,46px)/1.05 var(--serif); letter-spacing:-.012em; margin-top:10px; text-wrap:balance}
+  .intro{color:var(--graphite); margin-top:12px; max-width:62ch}
+
+  /* Résultats passés */
+  .camps{display:grid; gap:12px; margin-top:28px}
+  @media (min-width:760px){ .camps{grid-template-columns:repeat(3,1fr)} }
+  .camp{border:1px solid var(--hair); border-radius:20px; padding:20px}
+  .camp.main{background:var(--sand); border-color:transparent}
+  .camp-h{display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:14px; font-weight:600}
+  .pill{font-size:11px; font-weight:600; border-radius:980px; padding:2px 9px; background:var(--green-soft); color:var(--green); white-space:nowrap}
+  .pill.off{background:var(--sand-2); color:var(--graphite)}
+  .big{font:600 44px/1 var(--sans); letter-spacing:-.045em; margin-top:18px}
+  .big small{font-size:15px; font-weight:500; letter-spacing:-.01em; color:var(--graphite); margin-left:4px}
+  .camp dl{display:grid; grid-template-columns:1fr auto; gap:6px 12px; margin-top:16px; font-size:14px}
+  .camp dt{color:var(--graphite)}
+  .camp dd{font-weight:600; text-align:right}
+  .total{display:flex; flex-wrap:wrap; gap:8px 28px; margin-top:16px; padding:16px 20px; border-radius:16px; border:1px dashed var(--hair-2); font-size:15px; color:var(--graphite)}
+  .total b{color:var(--ink)}
+
+  /* Ce qu'on en retient */
+  .points{display:grid; gap:12px; margin-top:28px}
+  @media (min-width:760px){ .points{grid-template-columns:1fr 1fr} }
+  .point{display:flex; gap:16px; padding:20px; border-radius:20px; border:1px solid var(--hair)}
+  .point i{flex:0 0 auto; width:40px; height:40px; border-radius:12px; background:var(--sand); display:grid; place-content:center; font-style:normal}
+  .point i svg{width:20px; height:20px}
+  .point b{display:block; font-size:16px; font-weight:600; letter-spacing:-.016em}
+  .point p{font-size:14.5px; color:var(--graphite); margin-top:4px; line-height:1.45}
+
+  /* Scénarios */
+  .scen{display:grid; gap:12px; margin-top:28px}
+  @media (min-width:760px){ .scen{grid-template-columns:repeat(3,1fr)} }
+  .sc{border:1px solid var(--hair); border-radius:20px; padding:20px; display:flex; flex-direction:column}
+  .sc.mid{border-color:var(--ink); box-shadow:inset 0 0 0 1px var(--ink)}
+  .sc-h{font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--graphite)}
+  .sc.mid .sc-h{color:var(--ink)}
+  .sc .big{font-size:40px}
+  .sc .per{font-size:14px; color:var(--graphite); margin-top:4px}
+  .sc ul{list-style:none; margin-top:16px; padding-top:14px; border-top:1px solid var(--hair); display:grid; gap:8px; font-size:14px}
+  .sc li{display:flex; justify-content:space-between; gap:12px}
+  .sc li span:first-child{color:var(--graphite)}
+  .sc li span:last-child{font-weight:600; text-align:right; white-space:nowrap}
+  .note{margin-top:14px; font-size:14px; color:var(--graphite); background:var(--sand); border-radius:14px; padding:12px 16px; line-height:1.45}
+
+  /* Simulateur */
+  .sim{margin-top:28px; border-radius:24px; background:var(--sand); padding:22px}
+  @media (min-width:760px){ .sim{padding:30px} }
+  .sim-grid{display:grid; gap:24px}
+  @media (min-width:760px){ .sim-grid{grid-template-columns:1fr 1fr; gap:36px} }
+  .ctl label{display:flex; justify-content:space-between; align-items:baseline; gap:10px; font-size:15px; font-weight:600}
+  .ctl output{font:600 30px/1 var(--sans); letter-spacing:-.04em}
+  .ctl + .ctl{margin-top:22px}
+  .seg{display:flex; padding:3px; gap:2px; border-radius:14px; background:#fff; margin-top:10px}
+  .seg button{flex:1; min-height:40px; border:0; border-radius:11px; background:none; font:inherit; font-size:14.5px; font-weight:500; cursor:pointer}
+  .seg button[aria-pressed=true]{background:var(--ink); color:#fff; font-weight:600}
+  input[type=range]{-webkit-appearance:none; appearance:none; width:100%; height:30px; background:none; cursor:pointer; margin-top:8px}
+  input[type=range]::-webkit-slider-runnable-track{height:6px; border-radius:3px; background:linear-gradient(90deg,var(--ink) 0 var(--p,50%),var(--hair-2) var(--p,50%))}
+  input[type=range]::-moz-range-track{height:6px; border-radius:3px; background:linear-gradient(90deg,var(--ink) 0 var(--p,50%),var(--hair-2) var(--p,50%))}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:28px; height:28px; margin-top:-11px; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(40,25,10,.3)}
+  input[type=range]::-moz-range-thumb{width:28px; height:28px; border:0; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(40,25,10,.3)}
+  input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(31,29,27,.2)}
+  .hint{font-size:13px; color:var(--graphite); margin-top:4px}
+  .res{display:grid; gap:12px}
+  .r{background:#fff; border-radius:18px; padding:16px 18px}
+  .r-h{display:flex; justify-content:space-between; font-size:14px; font-weight:600}
+  .r-h span:last-child{color:var(--graphite); font-weight:500}
+  .r .big{font-size:38px; margin-top:10px}
+  .bar{height:8px; border-radius:4px; background:var(--sand-2); margin-top:12px; overflow:hidden}
+  .bar i{display:block; height:100%; border-radius:4px; background:var(--ink); transition:width .6s var(--ease)}
+  .bar.tp i{background:var(--taupe)}
+  .r small{display:block; font-size:13px; color:var(--graphite); margin-top:8px}
+
+  /* Suite */
+  .steps{list-style:none; margin-top:28px; display:grid; gap:0; border-top:1px solid var(--hair)}
+  .steps li{display:grid; grid-template-columns:110px 1fr; gap:16px; padding:18px 0; border-bottom:1px solid var(--hair)}
+  .steps .w{font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--taupe-d); padding-top:2px}
+  .steps b{display:block; font-weight:600}
+  .steps p{font-size:14.5px; color:var(--graphite); margin-top:2px}
+  @media (max-width:520px){ .steps li{grid-template-columns:1fr; gap:4px} }
+
+  footer{margin-top:64px; padding:28px 20px 40px; text-align:center; font-size:13px; color:var(--silver); border-top:1px solid var(--hair)}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .8s var(--ease), transform .8s var(--ease)}
+  .reveal.in{opacity:1; transform:none}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none; transition:none} .bar i{transition:none} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <div class="ylc" data-logo></div>
+      <p class="with">Préparé avec LinkedIA · novembre 2026</p>
+      <h1>Votre prévisionnel</h1>
+      <p class="lead">Ce que vos publicités ont déjà donné, ce qu’on en retient, et le budget à prévoir pour viser <b class="nw">100 rendez-vous laser</b> et <b class="nw">30 en amincissement</b> par mois.</p>
+    </div>
+    <div class="hero-img"><img src="../../questionnaire/ylc-esthetic/img/accueil.webp" alt="" width="960" height="1440"></div>
+  </header>
+
+  <section class="reveal">
+    <p class="eyebrow">Vos campagnes passées</p>
+    <h2>Ce que vos publicités ont déjà donné</h2>
+    <p class="intro">Les chiffres de votre compte publicitaire Facebook et Instagram, toutes périodes confondues.</p>
+    <div class="camps">
+      <article class="camp main">
+        <p class="camp-h">Amincissement (V2)<span class="pill">Active</span></p>
+        <p class="big num">357<small>demandes</small></p>
+        <dl class="num">
+          <dt>Budget dépensé</dt><dd>699 €</dd>
+          <dt>Coût par demande</dt><dd>1,96 €</dd>
+          <dt>Taux de clic</dt><dd>4,1 %</dd>
+          <dt>Clics qui remplissent le formulaire</dt><dd>22 %</dd>
+        </dl>
+      </article>
+      <article class="camp">
+        <p class="camp-h">Amincissement (V1)<span class="pill off">Terminée</span></p>
+        <p class="big num">116<small>demandes</small></p>
+        <dl class="num">
+          <dt>Budget dépensé</dt><dd>239 €</dd>
+          <dt>Coût par demande</dt><dd>2,06 €</dd>
+          <dt>Taux de clic</dt><dd>3,3 %</dd>
+          <dt>Clics qui remplissent le formulaire</dt><dd>26 %</dd>
+        </dl>
+      </article>
+      <article class="camp">
+        <p class="camp-h">Épilation laser<span class="pill off">Terminée</span></p>
+        <p class="big num">13<small>demandes</small></p>
+        <dl class="num">
+          <dt>Budget dépensé</dt><dd>66 €</dd>
+          <dt>Coût par demande</dt><dd>5,06 €</dd>
+          <dt>Taux de clic</dt><dd>2,0 %</dd>
+          <dt>Clics qui remplissent le formulaire</dt><dd>12 %</dd>
+        </dl>
+      </article>
+    </div>
+    <p class="total num">Au total&nbsp;: <span><b>1 004 €</b> dépensés</span><span><b>486</b> demandes</span><span><b>141 rendez-vous</b>, soit <b>29 %</b> des demandes</span><span><b>7,12 €</b> le rendez-vous</span></p>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Ce qu’on en retient</p>
+    <h2>Une base solide, et un vrai chantier&nbsp;: le laser</h2>
+    <p class="intro">141 rendez-vous pour 1 004 € de publicité&nbsp;: <b>7,12 € le rendez-vous</b>. C’est un très bon point de départ.</p>
+    <div class="points">
+      <div class="point"><i data-i="spark"></i><div><b>Votre publicité amincissement fonctionne</b><p>Un taux de clic de 4 % et des demandes à 2 €, c’est très bon pour l’esthétique, où l’on voit plutôt 5 à 15 €. On la garde et on la décline.</p></div></div>
+      <div class="point"><i data-i="filter"></i><div><b>Une demande sur trois devient un rendez-vous</b><p>29 %, c’est un bon taux. Les deux autres tiers, ce sont surtout des personnes injoignables ou qui cherchaient un prix&nbsp;: la page avec vos conditions avant de réserver les triera en amont.</p></div></div>
+      <div class="point"><i data-i="target"></i><div><b>Le laser reste à tester vraiment</b><p>66 € et 13 demandes, c’est trop peu pour conclure. C’est pourtant votre premier objectif&nbsp;: il aura la plus grosse part du budget au lancement.</p></div></div>
+      <div class="point"><i data-i="scale"></i><div><b>Un changement d’échelle</b><p>Ces résultats ont été obtenus avec de petits budgets. En les augmentant, le coût par demande monte un peu&nbsp;: les scénarios ci-dessous en tiennent compte.</p></div></div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Le prévisionnel</p>
+    <h2>Le budget pour <span class="nw">130 rendez-vous</span> par mois</h2>
+    <p class="intro">Trois scénarios, du plus prudent au plus favorable. Ils reposent sur vos chiffres passés&nbsp;: le coût d’une demande, et la part des demandes qui deviennent un rendez-vous (29 % chez vous jusqu’ici). Pour le laser, encore peu testé, on part de ce même repère.</p>
+    <div class="scen" id="scen"></div>
+    <p class="note">Ce sont des repères pour décider du budget de départ, pas des promesses. Les vrais chiffres se mesurent dès les deux premières semaines, et le budget s’ajuste sur votre coût réel par rendez-vous.</p>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Simulateur</p>
+    <h2>Et avec votre budget&nbsp;?</h2>
+    <p class="intro">Choisissez un budget mensuel et sa répartition&nbsp;: les rendez-vous attendus s’affichent selon le scénario.</p>
+    <div class="sim">
+      <div class="sim-grid">
+        <div>
+          <div class="ctl">
+            <label for="budget">Budget publicitaire par mois <output id="bOut" class="num"></output></label>
+            <input type="range" id="budget" min="500" max="6000" step="100" value="2700">
+          </div>
+          <div class="ctl">
+            <label for="split">Part du laser <output id="sOut" class="num"></output></label>
+            <input type="range" id="split" min="40" max="95" step="5" value="85">
+            <p class="hint" id="sHint"></p>
+          </div>
+          <div class="ctl">
+            <label>Scénario</label>
+            <div class="seg" role="group" aria-label="Scénario" id="scSeg"></div>
+          </div>
+        </div>
+        <div class="res" aria-live="polite">
+          <div class="r"><p class="r-h"><span>Épilation laser</span><span>objectif 100</span></p><p class="big num" id="rL"></p><div class="bar"><i id="bL"></i></div><small id="dL"></small></div>
+          <div class="r"><p class="r-h"><span>Amincissement</span><span>objectif 30</span></p><p class="big num" id="rM"></p><div class="bar tp"><i id="bM"></i></div><small id="dM"></small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">La suite</p>
+    <h2>Ce qui affinera ces chiffres</h2>
+    <ol class="steps">
+      <li><span class="w">Avant</span><div><b>Le détail par prestation</b><p>Vos 141 rendez-vous, répartis entre laser et amincissement, et combien de personnes sont vraiment venues&nbsp;: de quoi affiner encore les scénarios.</p></div></li>
+      <li><span class="w">Semaine 1</span><div><b>Lancement</b><p>Votre publicité amincissement relancée telle quelle, plusieurs publicités laser en test, la page avec vos conditions avant de réserver.</p></div></li>
+      <li><span class="w">Semaines 2-3</span><div><b>Le tri</b><p>On garde ce qui donne des rendez-vous, pas seulement des demandes, et on coupe le reste.</p></div></li>
+      <li><span class="w">Jour 15</span><div><b>Point d’étape</b><p>Votre coût réel par rendez-vous, comparé à ces scénarios, et le budget ajusté pour la suite.</p></div></li>
+    </ol>
+  </section>
+</div>
+
+<footer>LinkedIA · 06 65 14 14 33 · contact@linkeedia.fr</footer>
+
+<script>
+(function () {
+  'use strict';
+  var nf = new Intl.NumberFormat('fr-FR');
+  var eur = function (v) { return nf.format(Math.round(v)) + ' €'; };
+  // Hypothèses : coût d'une demande (€) et part des demandes qui deviennent un rendez-vous
+  var SC = [
+    { k: 'prudent', name: 'Prudent', laser: { cpl: 10, rate: 0.25 }, mince: { cpl: 4, rate: 0.2 } },
+    { k: 'median', name: 'Médian', laser: { cpl: 7, rate: 0.30 }, mince: { cpl: 3, rate: 0.25 } },
+    { k: 'favorable', name: 'Favorable', laser: { cpl: 5, rate: 0.35 }, mince: { cpl: 2.2, rate: 0.29 } }
+  ];
+  var GOAL = { laser: 100, mince: 30 };
+  var budgetFor = function (h, goal) { return goal / h.rate * h.cpl; };
+
+  // Logo et icônes
+  var MARK = '<circle cx="40" cy="40" r="37"/><path d="M29 17 40 31 51 17M40 31v26h12M42.4 45.6A9 9 0 1 0 42.4 58.4"/>';
+  document.querySelectorAll('[data-logo]').forEach(function (el) {
+    el.innerHTML = '<svg viewBox="0 0 290 80" role="img" aria-label="Group YLC Esthetic"><g fill="none" stroke="currentColor" stroke-width="1.4">' + MARK +
+      '<path d="M150 31.5h136M168 27.5h118"/></g><g fill="currentColor" font-family="\'Cormorant Garamond\',Georgia,serif" font-weight="600">' +
+      '<text x="88" y="33" font-size="16" textLength="56" lengthAdjust="spacing">GROUP</text><text x="88" y="61" font-size="24" textLength="198" lengthAdjust="spacing">YLC ESTHETIC</text></g></svg>';
+  });
+  var ICONS = {
+    spark: '<path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/>',
+    filter: '<path d="M4 5h16l-6 7.5V19l-4-2v-4.5z"/>',
+    target: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+    scale: '<path d="M4 19h16M7 15l4-4 3 3 5-6"/><path d="M15 8h4v4"/>'
+  };
+  document.querySelectorAll('[data-i]').forEach(function (el) {
+    el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[el.getAttribute('data-i')] + '</svg>';
+  });
+
+  // Les trois scénarios
+  document.getElementById('scen').innerHTML = SC.map(function (s) {
+    var bl = budgetFor(s.laser, GOAL.laser), bm = budgetFor(s.mince, GOAL.mince);
+    return '<article class="sc' + (s.k === 'median' ? ' mid' : '') + '"><p class="sc-h">' + s.name + '</p>' +
+      '<p class="big num">' + eur(Math.round((bl + bm) / 50) * 50) + '</p><p class="per">par mois</p><ul class="num">' +
+      '<li><span>Laser</span><span>' + eur(Math.round(bl / 50) * 50) + '</span></li>' +
+      '<li><span>Amincissement</span><span>' + eur(Math.round(bm / 50) * 50) + '</span></li>' +
+      '<li><span>Coût d’une demande</span><span>' + nf.format(s.laser.cpl) + ' € · ' + nf.format(s.mince.cpl) + ' €</span></li>' +
+      '<li><span>Demandes → rendez-vous</span><span>' + Math.round(s.laser.rate * 100) + ' % · ' + Math.round(s.mince.rate * 100) + ' %</span></li>' +
+      '<li><span>Coût d’un rendez-vous</span><span>' + eur(s.laser.cpl / s.laser.rate) + ' · ' + eur(s.mince.cpl / s.mince.rate) + '</span></li>' +
+      '</ul></article>';
+  }).join('');
+
+  // Simulateur
+  var cur = 1, b = document.getElementById('budget'), sp = document.getElementById('split');
+  var seg = document.getElementById('scSeg');
+  seg.innerHTML = SC.map(function (s, i) { return '<button type="button" data-i="' + i + '" aria-pressed="' + (i === cur) + '">' + s.name + '</button>'; }).join('');
+  seg.addEventListener('click', function (e) {
+    var t = e.target.closest('button'); if (!t) return;
+    cur = Number(t.getAttribute('data-i'));
+    seg.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === t)); });
+    render();
+  });
+  function fill(el) { el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min) * 100) + '%'); }
+  function render() {
+    var s = SC[cur], B = Number(b.value), share = Number(sp.value) / 100;
+    var bl = B * share, bm = B - bl;
+    var rl = bl / s.laser.cpl * s.laser.rate, rm = bm / s.mince.cpl * s.mince.rate;
+    document.getElementById('bOut').textContent = eur(B);
+    document.getElementById('sOut').textContent = Math.round(share * 100) + ' %';
+    document.getElementById('sHint').textContent = eur(bl) + ' pour le laser, ' + eur(bm) + ' pour l’amincissement';
+    document.getElementById('rL').textContent = '≈ ' + nf.format(Math.round(rl)) + ' rendez-vous';
+    document.getElementById('rM').textContent = '≈ ' + nf.format(Math.round(rm)) + ' rendez-vous';
+    document.getElementById('bL').style.width = Math.min(100, rl / GOAL.laser * 100) + '%';
+    document.getElementById('bM').style.width = Math.min(100, rm / GOAL.mince * 100) + '%';
+    document.getElementById('dL').textContent = 'Environ ' + nf.format(Math.round(bl / s.laser.cpl)) + ' demandes' + (rl >= GOAL.laser ? ' : objectif atteint' : '');
+    document.getElementById('dM').textContent = 'Environ ' + nf.format(Math.round(bm / s.mince.cpl)) + ' demandes' + (rm >= GOAL.mince ? ' : objectif atteint' : '');
+    fill(b); fill(sp);
+  }
+  b.addEventListener('input', render);
+  sp.addEventListener('input', render);
+  render();
+
+  // Apparition au défilement
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px' }) : null;
+  document.querySelectorAll('.reveal').forEach(function (el) { io ? io.observe(el) : el.classList.add('in'); });
+})();
+</script>
+</body>
+</html>
