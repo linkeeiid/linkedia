@@ -286,6 +286,17 @@
   .rcard:has(input:checked) .mk-call .mk-panel{transform:translateY(16px)}
   @keyframes ring{25%{transform:rotate(-16deg)} 75%{transform:rotate(16deg)}}
 
+  /* Parcours déjà convenu : publicité → page avec formulaire (affiché, pas demandé) */
+  .agreed{border:1px solid var(--hair); border-radius:18px; overflow:hidden}
+  .agreed-t{display:block; padding:16px}
+  .agreed-k{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--green); margin-bottom:6px}
+  .agreed-k svg{width:14px; height:14px}
+  .agreed-t b{display:block; font-size:16px; font-weight:600; letter-spacing:-.016em; line-height:1.3}
+  .agreed-t small{display:block; font-size:14px; color:var(--graphite); margin-top:4px; line-height:1.45}
+  .mock.on .mk-notif{transform:translate(-50%,0)}
+  .mock.on .mk-panel{transform:translateY(16px)}
+  .on .mock.on .mk-notif{transition-delay:.9s}
+
   /* Appareils : la longueur d'onde sur le spectre */
   .spec{position:relative; display:block; height:16px; margin-top:12px}
   .spec .bar{position:absolute; left:0; right:0; top:6px; height:4px; border-radius:2px;
@@ -561,31 +572,16 @@
             </div>
             <label class="fld"><span>Le détail, si besoin</span><input type="text" id="offre_detail" data-l="Détail de l’offre" placeholder="ex. 1re séance aisselles à 29 €"></label>
 
-            <div class="q">
-              <span class="ql">Comment la personne réserve</span>
-              <div class="resa" data-g="Réservation">
-                <label class="rcard"><input type="radio" name="resa" value="Directement sur Planity">
-                  <span class="mock mk-book" aria-hidden="true">
-                    <span class="mk-panel">
-                      <span class="mk-h">Bilan offert · 30 min</span>
-                      <span class="mk-days"><i>Lun</i><i class="on">Mar</i><i>Mer</i><i>Jeu</i></span>
-                      <span class="mk-slots"><i>09:30</i><i>10:15</i><i>11:00</i><i class="pick">14:30</i><i>15:15</i><i>16:00</i></span>
-                    </span>
-                    <span class="mk-toast"><i data-i="check"></i>Rendez-vous réservé</span>
-                  </span>
-                  <span class="t"><b>Elle réserve son bilan sur Planity<span class="badge">Conseillé</span></b><small>Un vrai rendez-vous, pas un numéro à rappeler</small></span><span class="tick"></span></label>
-                <label class="rcard"><input type="radio" name="resa" value="Formulaire puis rappel">
-                  <span class="mock mk-call" aria-hidden="true">
-                    <span class="mk-panel">
-                      <span class="mk-h">Être rappelée</span>
-                      <span class="mk-f"></span><span class="mk-f"></span>
-                      <span class="mk-btn">Envoyer</span>
-                    </span>
-                    <span class="mk-notif"><i data-i="phone"></i><span><b>Nouvelle demande</b>à rappeler aujourd’hui</span></span>
-                  </span>
-                  <span class="t"><b>Elle laisse son numéro, vous la rappelez</b><small>Les demandes arrivent dans votre tableau de bord</small></span><span class="tick"></span></label>
-                <label class="card"><input type="radio" name="resa" value="Les deux"><span class="ic" data-i="layers"></span><span class="t"><b>Les deux, selon la publicité</b></span><span class="tick"></span></label>
-              </div>
+            <div class="agreed">
+              <span class="mock mk-call on" aria-hidden="true">
+                <span class="mk-panel">
+                  <span class="mk-h">Avant de réserver</span>
+                  <span class="mk-f"></span><span class="mk-f"></span>
+                  <span class="mk-btn">Envoyer ma demande</span>
+                </span>
+                <span class="mk-notif"><i data-i="phone"></i><span><b>Nouvelle demande</b>dans votre tableau de bord</span></span>
+              </span>
+              <span class="agreed-t"><span class="agreed-k"><i data-i="check"></i>Déjà convenu ensemble</span><b>Un clic sur la publicité mène à votre page, avec un formulaire</b><small>Il explique clairement vos conditions avant la réservation. Vous me les donnez au fur et à mesure&nbsp;; chaque demande arrive dans votre tableau de bord.</small></span>
             </div>
 
             <div class="segs3">
@@ -692,14 +688,6 @@
               <div class="cards c2" data-g="Prestations sur Google">
                 <label class="card"><input type="radio" name="gpush" value="Le laser seulement"><span class="ic" data-i="zap"></span><span class="t"><b>Le laser seulement<span class="badge">Conseillé</span></b><small>C’est ce qui se cherche le plus sur Google</small></span><span class="tick"></span></label>
                 <label class="card"><input type="radio" name="gpush" value="Laser et amincissement"><span class="ic" data-i="layers"></span><span class="t"><b>Laser et amincissement</b></span><span class="tick"></span></label>
-              </div>
-            </div>
-
-            <div class="q">
-              <span class="ql">Où mènent les annonces</span>
-              <div class="cards" data-g="Page d’arrivée Google">
-                <label class="card"><input type="radio" name="landing" value="Page dédiée créée par LinkedIA"><span class="ic" data-i="page"></span><span class="t"><b>Une page dédiée à vos annonces<span class="badge">Conseillé</span></b><small>Je la crée, avec votre bouton de réservation Planity&nbsp;: chaque rendez-vous venu de Google est compté</small></span><span class="tick"></span></label>
-                <label class="card"><input type="radio" name="landing" value="Page Planity"><span class="ic" data-i="calendar"></span><span class="t"><b>Votre page Planity</b><small>Plus simple, mais Google ne peut pas compter les réservations</small></span><span class="tick"></span></label>
               </div>
             </div>
 
@@ -1026,9 +1014,7 @@
     var service = /amincissement|minceur/.test(kw) ? 'Amincissement' : /institut/.test(kw) ? 'Institut de beauté' : 'Épilation laser';
     var city = (kw.match(/Meyzieu|Vaulx-en-Velin|Villeurbanne|Lyon Est/) || [])[0];
     var offer = OFFERS[one('offre')];
-    var how = one('resa') === 'Formulaire puis rappel'
-      ? 'Laissez votre numéro, on vous rappelle ' + (RAPPEL[one('rappel')] || 'rapidement') + '.'
-      : 'Réservez votre bilan en ligne sur Planity.';
+    var how = 'Demandez votre bilan en une minute, on vous rappelle ' + (RAPPEL[one('rappel')] || 'rapidement') + '.';
     swapText($('gt'), service + ' à <span class="nw">Décines-Charpieu</span>' + (offer ? ' · ' + offer : ''));
     swapText($('gd'), (city ? 'À quelques minutes de <b>' + city + '</b>. ' : 'Votre institut à <b>Décines-Charpieu</b>. ') + how);
     var links = picked('prio').slice(0, 3).map(function (p) { return p.replace(/^Laser aisselles.*/, 'Aisselles + maillot').replace(/^Laser \+ jambes$/, 'Jambes'); });
