@@ -65,6 +65,7 @@ Disallow: /apercu-badache-9c4e7f/
 Disallow: /rdv-pub-5e9a31/
 Disallow: /questionnaire-pub-3a7c19/
 Disallow: /etude-ylc-8b2e47/
+Disallow: /dashboard/
 Disallow: /pilotage/
 
 Sitemap: https://linkeedia.fr/sitemap.xml

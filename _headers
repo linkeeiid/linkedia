@@ -1,4 +1,9 @@
 # En-têtes Cloudflare Pages (seulement les espaces privés ; le reste du site n'est pas concerné)
+/dashboard/*
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer
+  X-Content-Type-Options: nosniff
+
 /pilotage/*
   X-Robots-Tag: noindex, nofollow
   Referrer-Policy: no-referrer
