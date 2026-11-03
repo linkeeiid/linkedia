@@ -118,6 +118,20 @@
   .steps p{font-size:14.5px; color:var(--graphite); margin-top:2px}
   @media (max-width:520px){ .steps li{grid-template-columns:1fr; gap:4px} }
 
+  /* Absences */
+  .ns{list-style:none; margin-top:28px; border-top:1px solid var(--hair)}
+  .ns li{display:grid; grid-template-columns:150px 1fr; gap:18px; padding:22px 0; border-bottom:1px solid var(--hair)}
+  .ns-w{font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--taupe-d); padding-top:3px}
+  .ns b{display:block; font-size:17px; font-weight:600; letter-spacing:-.016em}
+  .ns p{font-size:15px; color:var(--graphite); margin-top:6px; line-height:1.5; max-width:62ch}
+  @media (max-width:620px){ .ns li{grid-template-columns:1fr; gap:6px} }
+  .msg{position:relative; margin-top:12px; background:var(--sand); border-radius:16px 16px 16px 4px; padding:14px 16px; max-width:560px}
+  .msg p{margin:0; color:var(--ink); font-size:15px; padding-right:64px}
+  .copy{position:absolute; top:10px; right:10px; border:0; border-radius:980px; background:#fff; padding:5px 11px; font:inherit; font-size:12.5px; font-weight:600; cursor:pointer; box-shadow:0 1px 2px rgba(40,25,10,.12)}
+  .copy:hover{background:var(--ink); color:#fff}
+  .ns-dash{margin-top:22px; border-radius:20px; border:1px solid var(--hair); padding:20px}
+  .ns-dash b{font-size:16px; font-weight:600}
+  .ns-dash p{font-size:14.5px; color:var(--graphite); margin-top:6px; line-height:1.5}
   footer{margin-top:64px; padding:28px 20px 40px; text-align:center; font-size:13px; color:var(--silver); border-top:1px solid var(--hair)}
   .reveal{opacity:0; transform:translateY(16px); transition:opacity .8s var(--ease), transform .8s var(--ease)}
   .reveal.in{opacity:1; transform:none}
@@ -225,12 +239,45 @@
     </div>
   </section>
 
+  <section class="reveal" id="absences">
+    <p class="eyebrow">Éviter les absences</p>
+    <h2>Chaque rendez-vous manqué, c’est une demande payée pour rien</h2>
+    <p class="intro">Les absences se jouent surtout avant le rendez-vous. Voici la méthode, étape par étape, avec les messages prêts à envoyer.</p>
+
+    <ol class="ns">
+      <li><span class="ns-w">Avant de réserver</span><div><b>Ne faire venir que les personnes décidées</b>
+        <p>La page de la publicité affiche vos conditions avant la demande (déroulé du bilan, prix des séances, contre-indications). Celles qui cherchaient juste un prix ne réservent pas&nbsp;: elles ne deviennent pas des absences.</p>
+        <p>Le bilan offert est présenté comme un vrai rendez-vous&nbsp;: 30 minutes, avec un diagnostic de la zone et un programme personnalisé. Gratuit ne doit pas vouloir dire «&nbsp;sans valeur&nbsp;».</p></div></li>
+      <li><span class="ns-w">À l’appel</span><div><b>Rappeler vite, réserver proche</b>
+        <p>Rappel dans l’heure&nbsp;: l’envie est encore là. Proposez deux créneaux précis dans les 2 à 5 jours («&nbsp;mardi 14&nbsp;h 30 ou jeudi 10&nbsp;h&nbsp;?&nbsp;») plutôt qu’une date lointaine&nbsp;: plus le rendez-vous est loin, plus on l’oublie.</p>
+        <p>Faites-lui répéter le jour et l’heure, et dites que la place lui est réservée.</p></div></li>
+      <li><span class="ns-w">Juste après</span><div><b>Une confirmation écrite tout de suite</b>
+        <p>Par SMS ou WhatsApp, avec la date, l’adresse et comment se préparer.</p>
+        <div class="msg"><button type="button" class="copy">Copier</button><p>Bonjour [Prénom], c’est [votre prénom] de Group YLC Esthetic. Votre bilan [laser / minceur] est bien réservé le [jour] à [heure], au 13 avenue Franklin Roosevelt à Décines. [Pour le laser : pensez à raser la zone la veille.] En cas d’empêchement, répondez simplement à ce message et on décale. À très vite&nbsp;!</p></div></div></li>
+      <li><span class="ns-w">La veille</span><div><b>Un rappel qui demande une réponse</b>
+        <p>Demander «&nbsp;OK&nbsp;» engage bien plus qu’un simple rappel. Sans réponse, un appel rapide en fin de journée.</p>
+        <div class="msg"><button type="button" class="copy">Copier</button><p>Bonjour [Prénom], petit rappel&nbsp;: on vous attend demain à [heure] pour votre bilan. Pouvez-vous nous répondre OK pour confirmer&nbsp;? Si vous avez un empêchement, on vous trouve un autre créneau.</p></div></div></li>
+      <li><span class="ns-w">Le jour même</span><div><b>Un dernier mot, 2 à 3 heures avant</b>
+        <div class="msg"><button type="button" class="copy">Copier</button><p>On vous attend à [heure]&nbsp;! L’institut est au 13 avenue Franklin Roosevelt à Décines. À tout à l’heure.</p></div></div></li>
+      <li><span class="ns-w">Si elle ne vient pas</span><div><b>Relancer le jour même, sans reproche</b>
+        <p>Beaucoup d’absences sont des oublis&nbsp;: un message bienveillant en récupère une bonne partie.</p>
+        <div class="msg"><button type="button" class="copy">Copier</button><p>Bonjour [Prénom], nous ne vous avons pas vue aujourd’hui, j’espère que tout va bien. Voulez-vous qu’on vous propose un autre créneau cette semaine&nbsp;?</p></div></div></li>
+    </ol>
+
+    <div class="ns-dash">
+      <b>Dans votre espace de suivi</b>
+      <p>La veille, l’onglet «&nbsp;À traiter&nbsp;» liste les rendez-vous du lendemain à confirmer. Après chaque rendez-vous, un clic sur «&nbsp;Venue&nbsp;» ou «&nbsp;Absente&nbsp;» dans l’agenda&nbsp;: votre taux de présence se calcule tout seul, et les absentes apparaissent dans «&nbsp;À traiter&nbsp;» pour être recontactées.</p>
+      <p>Si les absences restent élevées malgré tout, la piste suivante sera une empreinte bancaire à la réservation, sur Planity. On en reparlera seulement si c’est nécessaire.</p>
+    </div>
+  </section>
+
   <section class="reveal">
     <p class="eyebrow">La suite</p>
     <h2>Ce qui affinera ces chiffres</h2>
     <ol class="steps">
       <li><span class="w">Avant</span><div><b>Le détail par prestation</b><p>Vos 141 rendez-vous, répartis entre laser et amincissement, et combien de personnes sont vraiment venues&nbsp;: de quoi affiner encore les scénarios.</p></div></li>
       <li><span class="w">Semaine 1</span><div><b>Lancement</b><p>Votre publicité amincissement relancée telle quelle, plusieurs publicités laser en test, la page avec vos conditions avant de réserver.</p></div></li>
+      <li><span class="w">Dès le 1er jour</span><div><b>Les absences suivies</b><p>Confirmations la veille et taux de présence dans votre espace, pour agir tout de suite si les absences remontent.</p></div></li>
       <li><span class="w">Semaines 2-3</span><div><b>Le tri</b><p>On garde ce qui donne des rendez-vous, pas seulement des demandes, et on coupe le reste.</p></div></li>
       <li><span class="w">Jour 15</span><div><b>Point d’étape</b><p>Votre coût réel par rendez-vous, comparé à ces scénarios, et le budget ajusté pour la suite.</p></div></li>
     </ol>
@@ -312,6 +359,15 @@
   b.addEventListener('input', render);
   sp.addEventListener('input', render);
   render();
+
+  // Messages types : bouton Copier
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.nextElementSibling.textContent;
+      var done = function () { btn.textContent = "Copié"; setTimeout(function () { btn.textContent = "Copier"; }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, done); else done();
+    });
+  });
 
   // Apparition au défilement
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
