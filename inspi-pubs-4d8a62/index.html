@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Pubs qui tournent</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout : un « ticket de commande » — bandeau, méthode, puis fiches annonceurs empilées, chaque fiche = chiffres + accroches + à reprendre + liens */
+:root{
+  --bg:#F5F5F1;
+  --paper:#FFFFFF;
+  --ink:#16171A;
+  --muted:#5D5F66;
+  --line:#DADAD3;
+  --mustard:#F2B705;
+  --mustard-soft:#FCEFC2;
+  --tomato:#C8341F;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131416;--paper:#1C1D21;--ink:#EDEDE8;--muted:#A3A5AC;--line:#33353B;
+  --mustard:#F5C026;--mustard-soft:#3A3115;--tomato:#F07059;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131416;--paper:#1C1D21;--ink:#EDEDE8;--muted:#A3A5AC;--line:#33353B;
+  --mustard:#F5C026;--mustard-soft:#3A3115;--tomato:#F07059;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+.wrap{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--mustard);outline-offset:2px}
+
+header{display:flex;flex-direction:column;gap:14px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,7vw,60px);line-height:1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1 mark{background:var(--mustard);color:#16171A;padding:0 .12em}
+.lede{max-width:62ch;margin:0;color:var(--muted);font-size:17px}
+
+.method{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sig{background:var(--paper);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:6px}
+.sig b{font-family:var(--display);font-weight:400;font-size:17px}
+.sig span{color:var(--muted);font-size:14px}
+@media (max-width:640px){.method{grid-template-columns:minmax(0,1fr)}}
+
+section{display:flex;flex-direction:column;gap:20px}
+.sec-head{display:flex;flex-direction:column;gap:6px;border-top:3px solid var(--ink);padding-top:14px}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(24px,4.5vw,34px);line-height:1.1;margin:0;text-wrap:balance}
+.sec-head p{margin:0;color:var(--muted);max-width:62ch}
+
+.ad{background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column}
+.ad-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px;padding:18px 20px 0}
+h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0;line-height:1.15}
+.who{font-size:14px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:12px 20px 0}
+.chip{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;border:1px dashed var(--line);padding:4px 8px;white-space:nowrap}
+.chip strong{font-weight:600}
+.chip.hot{border-style:solid;border-color:var(--tomato);color:var(--tomato)}
+.body{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;padding:16px 20px 18px}
+@media (max-width:640px){.body{grid-template-columns:minmax(0,1fr)}}
+.lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.hooks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.hooks li{font-weight:600;line-height:1.35}
+.hooks li::before{content:"« "}
+.hooks li::after{content:" »"}
+.steal{margin:0;background:var(--mustard-soft);padding:12px 14px;font-size:15px}
+.links{display:flex;flex-wrap:wrap;gap:8px;padding:12px 20px 16px;border-top:1px dashed var(--line)}
+.links a{font-family:var(--mono);font-size:13px;text-decoration:none;border:1px solid var(--ink);padding:5px 10px;transition:background .15s}
+.links a:hover{background:var(--mustard);color:#16171A}
+
+.recipe{background:var(--ink);color:var(--bg);padding:24px 22px;display:flex;flex-direction:column;gap:16px}
+.recipe h2{color:var(--bg)}
+.recipe ol{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.recipe li::marker{font-family:var(--display);color:var(--mustard)}
+.recipe b{color:var(--mustard)}
+
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:14px;max-width:70ch;margin:0}
+footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="kicker">Bibliothèque publicitaire Meta · relevé du 7 novembre 2026</div>
+  <h1>Les pubs qui <mark>tournent</mark> et qu'on relance</h1>
+  <p class="lede">Une sélection de pubs Facebook et Instagram encore actives en France, choisies parce qu'elles durent ou parce que l'annonceur les relance sans arrêt. D'abord les restaurants, ensuite les fabricants d'emballage pour fast-food.</p>
+</header>
+
+<div class="method" aria-label="Comment on a choisi">
+  <div class="sig"><b>Elle dure</b><span>La pub est active depuis des semaines ou des mois. Personne ne paie des mois une pub qui ne vend pas.</span></div>
+  <div class="sig"><b>Elle revient</b><span>La même accroche est relancée vague après vague, avec de nouveaux visuels.</span></div>
+  <div class="sig"><b>Elle est dupliquée</b><span>Des dizaines de copies actives en même temps : l'annonceur met plus de budget dessus.</span></div>
+</div>
+
+<section>
+  <div class="sec-head">
+    <div class="kicker">Partie 1</div>
+    <h2>Restaurants : les pubs relancées en continu</h2>
+    <p>Des restaurants, du smash burger au gastronomique, qui gardent la même idée et la relancent régulièrement.</p>
+  </div>
+
+  <article class="ad">
+    <div class="ad-top"><h3>Starsmash</h3><span class="who">Smash burgers, la marque du youtubeur Amixem</span></div>
+    <div class="chips">
+      <span class="chip hot"><strong>1 seule offre</strong> relancée en boucle</span>
+      <span class="chip"><strong>66</strong> pubs</span>
+      <span class="chip">vagues <strong>24/10 · 03/11 · 04/11 · 06/11</strong></span>
+    </div>
+    <div class="body">
+      <div><p class="lbl">L'accroche</p><ul class="hooks"><li>Menu à 10 € 🍔 exclu WhatsApp</li></ul></div>
+      <div><p class="lbl">À reprendre</p><p class="steal">Un prix rond, une exclusivité, un seul canal. Ils dupliquent ce message à chaque vague au lieu d'en inventer un nouveau : c'est le signe le plus clair d'une offre qui vend. En plus, chaque client qui écrit sur WhatsApp devient un contact à relancer gratuitement.</p></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/ads/library/?id=3565672083593808" target="_blank" rel="noopener">Voir la pub 1</a><a href="https://www.facebook.com/ads/library/?id=1031653713276215" target="_blank" rel="noopener">Voir la pub 2</a></div>
+  </article>
+
+  <article class="ad">
+    <div class="ad-top"><h3>AfterBurger</h3><span class="who">Smash burgers, livraison de nuit et food truck</span></div>
+    <div class="chips">
+      <span class="chip hot"><strong>7 vagues</strong> en 15 jours</span>
+      <span class="chip"><strong>62</strong> pubs</span>
+      <span class="chip">du <strong>22/10</strong> au <strong>06/11</strong></span>
+    </div>
+    <div class="body">
+      <div><p class="lbl">Les accroches</p><ul class="hooks">
+        <li>Le food truck dont ils se souviendront.</li>
+        <li>Smash Burgers à volonté !</li>
+        <li>After Burger, burgers de nuit</li>
+        <li>Ton smash burger livré chez toi</li>
+        <li>Vous invitez. On régale.</li>
+      </ul></div>
+      <div><p class="lbl">À reprendre</p><p class="steal">« Le food truck dont ils se souviendront » revient dans quatre vagues : c'est leur accroche gagnante, ils ne changent que l'image. Et une pub par usage : la nuit, la livraison, les événements. Chaque type de client a sa pub.</p></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/ads/library/?id=2345717632893299" target="_blank" rel="noopener">Food truck</a><a href="https://www.facebook.com/ads/library/?id=2154914141764838" target="_blank" rel="noopener">À volonté</a><a href="https://www.facebook.com/ads/library/?id=1387546346542476" target="_blank" rel="noopener">Livraison</a><a href="https://www.facebook.com/ads/library/?id=1133111315878662" target="_blank" rel="noopener">Burgers de nuit</a></div>
+  </article>
+
+  <article class="ad">
+    <div class="ad-top"><h3>Les Inséparables</h3><span class="who">Restaurant, déjeuner et dîner à deux</span></div>
+    <div class="chips">
+      <span class="chip hot"><strong>relancées chaque jour</strong></span>
+      <span class="chip"><strong>1 plat</strong> par pub</span>
+      <span class="chip">vagues <strong>06/11 · 07/11</strong></span>
+    </div>
+    <div class="body">
+      <div><p class="lbl">Les accroches</p><ul class="hooks">
+        <li>Le premier plaisir : le homard.</li>
+        <li>Croustillant.</li>
+        <li>On déjeune à deux ?</li>
+        <li>Le ceviche ouvre le menu.</li>
+        <li>Gardez une place.</li>
+      </ul></div>
+      <div><p class="lbl">À reprendre</p><p class="steal">Un titre de deux ou trois mots, une seule photo de plat. Le même jeu de titres est relancé le lendemain avec d'autres visuels. C'est le format le plus simple à copier pour un restaurant : dix plats, dix pubs.</p></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/ads/library/?id=1658123492464674" target="_blank" rel="noopener">Homard</a><a href="https://www.facebook.com/ads/library/?id=1643666997141383" target="_blank" rel="noopener">Croustillant</a><a href="https://www.facebook.com/ads/library/?id=3468634936671067" target="_blank" rel="noopener">À deux</a></div>
+  </article>
+
+  <article class="ad">
+    <div class="ad-top"><h3>Perruche</h3><span class="who">Restaurant sur un toit, Paris</span></div>
+    <div class="chips">
+      <span class="chip hot"><strong>3 vagues</strong> en 24 h</span>
+      <span class="chip">en <strong>français + anglais</strong></span>
+    </div>
+    <div class="body">
+      <div><p class="lbl">L'accroche</p><ul class="hooks"><li>Dînez sur les toits de Paris</li></ul></div>
+      <div><p class="lbl">À reprendre</p><p class="steal">Ils vendent le lieu, pas la carte. Si le restaurant a un atout que les autres n'ont pas (terrasse, vue, déco, four à bois), c'est lui qui fait le titre.</p></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/ads/library/?id=1096829910020196" target="_blank" rel="noopener">Voir la pub</a></div>
+  </article>
+</section>
+
+<div class="recipe">
+  <h2>Ce qu'on peut faire tout de suite</h2>
+  <ol>
+    <li><b>Une offre simple et chiffrée, réservée à un canal.</b> Exemple : « Menu à 10 € exclu WhatsApp ». C'est le format le plus relancé de tout ce relevé.</li>
+    <li><b>Une pub par plat ou par usage.</b> Titre de 2 ou 3 mots, une photo, comme Les Inséparables. Ou une pub pour le midi, une pour le soir, une pour la livraison, comme AfterBurger.</li>
+    <li><b>Garder l'accroche qui marche, changer l'image.</b> Quand un titre ramène des clients, on le relance tel quel avec de nouvelles photos ou vidéos.</li>
+    <li><b>Relancer tous les 3 à 7 jours.</b> Une nouvelle série régulièrement, pour que les gens ne voient pas toujours la même pub.</li>
+  </ol>
+</div>
+
+<section>
+  <div class="sec-head">
+    <div class="kicker">Partie 2</div>
+    <h2>Emballage fast-food : ceux qui cartonnent</h2>
+    <p>Boîtes, papier anti-gras, sacs et gobelets avec le logo du restaurant.</p>
+  </div>
+
+  <article class="ad">
+    <div class="ad-top"><h3>Envases BC</h3><span class="who">Papier anti-gras, boîtes et sacs personnalisés · Espagne, vend en France</span></div>
+    <div class="chips">
+      <span class="chip hot"><strong>117</strong> actives</span>
+      <span class="chip"><strong>611</strong> pubs au total</span>
+      <span class="chip">vagues <strong>26/10 · 28/10 · 03/11 · 05/11</strong></span>
+    </div>
+    <div class="body">
+      <div><p class="lbl">Les accroches</p><ul class="hooks"><li>Contactez-nous &gt;</li><li>Personaliza tu papel antigrasa &gt;</li><li>Dos medidas, desde 0,79 €</li></ul></div>
+      <div><p class="lbl">À reprendre</p><p class="steal">Le meilleur exemple de « ça marche, on relance » : une nouvelle série tous les 2 à 5 jours, en trois langues. Ils gardent le même bouton et testent des dizaines de visuels. Le prix d'appel (« dès 0,79 € ») rassure tout de suite le restaurateur.</p></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/ads/library/?id=1184623360665617" target="_blank" rel="noopener">Pub FR 1</a><a href="https://www.facebook.com/ads/library/?id=1866748327645966" target="_blank" rel="noopener">Pub FR 2</a><a href="https://www.facebook.com/ads/library/?id=1123674483481169" target="_blank" rel="noopener">Papier anti-gras</a><a href="https://www.facebook.com/ads/library/?id=1771737190569254" target="_blank" rel="noopener">Dès 0,79 €</a></div>
+  </article>
+
+  <article class="ad">
+    <div class="ad-top"><h3>Fusenpack</h3><span class="who">Emballage à emporter sur mesure · international</span></div>
+    <div class="chips">
+      <span class="chip hot"><strong>≈115</strong> actives</span>
+      <span class="chip">une vague <strong>presque chaque jour</strong></span>
+      <span class="chip">du <strong>31/10</strong> au <strong>06/11</strong></span>
+    </div>
+    <div class="body">
+      <div><p class="lbl">Les accroches</p><ul class="hooks">
+        <li>Fried Chicken, One Brand</li>
+        <li>Fast Food, Strong Branding</li>
+        <li>Japanese Takeout, Your Brand</li>
+        <li>Mexican Food, Branded</li>
+        <li>Sized to your pies</li>
+      </ul></div>
+      <div><p class="lbl">À reprendre</p><p class="steal">Une pub par type de restaurant : poulet frit, japonais, mexicain, pizza, indien. Chaque restaurateur voit une boîte faite pour sa cuisine, avec un logo, et se reconnaît. C'est l'idée la plus facile à transposer.</p></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/ads/library/?id=1467925175522372" target="_blank" rel="noopener">Poulet frit</a><a href="https://www.facebook.com/ads/library/?id=1668158304985357" target="_blank" rel="noopener">Fast-food</a><a href="https://www.facebook.com/ads/library/?id=1151225451235277" target="_blank" rel="noopener">Mexicain</a><a href="https://www.facebook.com/ads/library/?id=2732084737193751" target="_blank" rel="noopener">Pizza</a></div>
+  </article>
+
+  <article class="ad">
+    <div class="ad-top"><h3>PAPA France</h3><span class="who">Packaging pour les pros de l'alimentaire</span></div>
+    <div class="chips">
+      <span class="chip hot">active depuis le <strong>06/02/2026</strong></span>
+      <span class="chip"><strong>9 mois</strong> sans arrêt</span>
+    </div>
+    <div class="body">
+      <div><p class="lbl">L'accroche</p><ul class="hooks"><li>Emballage alimentaire</li></ul></div>
+      <div><p class="lbl">À reprendre</p><p class="steal">L'inverse d'Envases BC : très peu de pubs, mais une qui tourne sans interruption depuis février. Quand une pub marche, on la laisse tourner.</p></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/ads/library/?id=1235529725389759" target="_blank" rel="noopener">Voir la pub</a><a href="https://www.facebook.com/ads/library/?id=2134471663966669" target="_blank" rel="noopener">Pub 2</a></div>
+  </article>
+
+  <article class="ad">
+    <div class="ad-top"><h3>Moonpack</h3><span class="who">Boîtes et sacs personnalisés</span></div>
+    <div class="chips">
+      <span class="chip hot">active depuis le <strong>18/12/2025</strong></span>
+      <span class="chip"><strong>≈11 mois</strong></span>
+    </div>
+    <div class="body">
+      <div><p class="lbl">L'accroche</p><ul class="hooks"><li>Boîte 100 % personnalisée</li></ul></div>
+      <div><p class="lbl">À reprendre</p><p class="steal">La pub la plus ancienne du relevé encore en ligne. Un catalogue qui fait défiler les modèles (kraft, blanc, bicolore) : le client choisit directement son format.</p></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/ads/library/?id=1839322197459222" target="_blank" rel="noopener">Voir la pub</a></div>
+  </article>
+</section>
+
+<p class="note">La bibliothèque Meta ne montre ni les ventes ni les clics, on juge donc sur la durée et les relances. Pour confirmer une pub gagnante, regarde sur sa page la date « Diffusion commencée le » et la mention « X publicités utilisent ce créatif ». Les chiffres viennent du relevé du 7 novembre 2026 et bougent tous les jours.</p>
+
+<footer>Relevé LinkedIA · source : Meta Ad Library, pubs actives en France</footer>
+</div>
+</body>
+</html>
