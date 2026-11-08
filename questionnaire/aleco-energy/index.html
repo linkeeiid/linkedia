@@ -18,13 +18,13 @@
   *{box-sizing:border-box; margin:0; padding:0}
   [hidden]{display:none !important}
   :root{
-    /* Palette provisoire : à remplacer par les couleurs du client (surtout --pri et --warm) */
+    /* Couleurs d'Aleco Energy : indigo et vert de son logo */
     --paper:#fff; --sand:#f3f2ed; --sand-2:#e7e5dd; --ink:#17201b; --graphite:#5c645e; --silver:#858b86;
     --hair:#e8e7e1; --hair-2:#d4d3ca;
-    --pri:#1f4b3b; --pri-2:#2f6652; --pri-soft:#e4eee8; --pri-mid:#a8c3b6;   /* vert sapin : choix, boutons, maisons */
-    --warm:#c47a3e; --warm-d:#93572a; --glow:#f1c27f;                      /* cuivre : repères, fenêtres allumées */
+    --pri:#2221b8; --pri-2:#3b39cc; --pri-soft:#ececfb; --pri-mid:#b4b3ee;   /* indigo du logo : choix, boutons, maisons */
+    --warm:#12b86c; --warm-d:#0a7a47; --glow:#8ff0c0;                      /* vert « Energy » du logo : repères, fenêtres allumées */
     --ok:#1f6b47; --ok-soft:#e6f2eb; --amber:#874a05; --amber-soft:#fbf0e1; --red:#a3322b; --red-soft:#fbeceb;
-    --shadow:20,35,28;
+    --shadow:24,23,80;
     --ease:cubic-bezier(.19,1,.22,1); --spring:cubic-bezier(.34,1.56,.64,1);
     --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",Inter,"Segoe UI",system-ui,sans-serif;
     --serif:"Newsreader","Iowan Old Style","Palatino Linotype",Georgia,serif;
@@ -107,6 +107,9 @@
   .brand .wm{gap:14px}
   .brand .wm svg{width:46px; height:46px}
   .brand .wm-t{font-size:clamp(26px,3vw,32px)}
+  .wm-img{display:block; height:30px; width:auto; max-width:100%}
+  .brand .wm-img{height:clamp(52px,6vw,64px)}
+  .wm-t.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
   .with{margin-top:14px; font-size:13px; font-weight:500; color:var(--silver); letter-spacing:.02em}
   .h1{font:600 clamp(48px,6vw,80px)/.98 var(--serif); letter-spacing:-.03em; margin-top:34px}
   .screen .lead{font-size:18px; margin-top:20px}
@@ -146,7 +149,7 @@
     transition:background .2s, border-color .2s, box-shadow .2s; -webkit-appearance:none; appearance:none}
   input[type=date]{min-height:52px}
   textarea{height:auto; min-height:112px; padding:14px 16px; resize:vertical; line-height:1.47}
-  input:focus, textarea:focus{outline:0; background:#fff; border-color:var(--pri); box-shadow:0 0 0 4px rgba(31,75,59,.1)}
+  input:focus, textarea:focus{outline:0; background:#fff; border-color:var(--pri); box-shadow:0 0 0 4px rgba(34,33,184,.1)}
   ::placeholder{color:var(--silver); opacity:1}
   .sw{display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--pri); flex:0 0 auto}
   .sw.lt{background:var(--pri-mid)}
@@ -160,7 +163,7 @@
   .stp input{flex:1; min-width:0; width:100%; height:auto; padding:2px 0; border:0; border-radius:10px; background:none; text-align:center;
     font:600 64px/1 var(--sans); letter-spacing:-.05em; font-variant-numeric:tabular-nums; -moz-appearance:textfield; appearance:textfield}
   .stp input::-webkit-inner-spin-button, .stp input::-webkit-outer-spin-button{-webkit-appearance:none; margin:0}
-  .stp input:focus{background:none; border:0; box-shadow:0 0 0 3px rgba(31,75,59,.12)}
+  .stp input:focus{background:none; border:0; box-shadow:0 0 0 3px rgba(34,33,184,.12)}
   .stp input.bump{animation:bump .4s var(--ease)}
   @keyframes bump{from{transform:translateY(var(--dy,30%)); opacity:.15} to{transform:none; opacity:1}}
   .stp-b{position:relative; flex:0 0 auto; width:46px; height:46px; border-radius:50%; border:1px solid var(--hair-2); background:#fff;
@@ -273,7 +276,7 @@
   .radar .vg.in{fill:var(--pri)}
   .radar .ring{fill:none; stroke:var(--hair-2); stroke-width:1; stroke-dasharray:3 5}
   .radar .ring-l{font:500 10px var(--sans); fill:var(--silver)}
-  .radar .rz{fill:rgba(31,75,59,.09); stroke:var(--pri); stroke-width:1.5; vector-effect:non-scaling-stroke; transform-box:fill-box; transform-origin:center; transition:transform .7s var(--ease)}
+  .radar .rz{fill:rgba(34,33,184,.09); stroke:var(--pri); stroke-width:1.5; vector-effect:non-scaling-stroke; transform-box:fill-box; transform-origin:center; transition:transform .7s var(--ease)}
   .radar .pin{fill:var(--warm)}
   .radar-c{position:absolute; left:50%; top:50%; transform:translate(-50%, 16px); max-width:70%; padding:4px 10px; border-radius:980px; background:#fff; font-size:12.5px; font-weight:600; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; box-shadow:0 4px 14px -6px rgba(var(--shadow),.35)}
   .radar .dots-cap{text-align:center; margin-top:12px}
@@ -288,17 +291,17 @@
   input[type=range]{-webkit-appearance:none; appearance:none; display:block; width:100%; height:30px; background:none; cursor:pointer; transition:opacity .3s}
   input[type=range].off{opacity:.45}
   input[type=range]::-webkit-slider-runnable-track{height:6px; border-radius:3px;
-    background:linear-gradient(90deg, var(--pri) 0 var(--p,50%), transparent var(--p,50%)), linear-gradient(90deg, transparent var(--z1,0%), rgba(196,122,62,.5) var(--z1,0%) var(--z2,0%), transparent var(--z2,0%)), var(--hair)}
+    background:linear-gradient(90deg, var(--pri) 0 var(--p,50%), transparent var(--p,50%)), linear-gradient(90deg, transparent var(--z1,0%), rgba(18,184,108,.5) var(--z1,0%) var(--z2,0%), transparent var(--z2,0%)), var(--hair)}
   input[type=range]::-moz-range-track{height:6px; border-radius:3px;
-    background:linear-gradient(90deg, var(--pri) 0 var(--p,50%), transparent var(--p,50%)), linear-gradient(90deg, transparent var(--z1,0%), rgba(196,122,62,.5) var(--z1,0%) var(--z2,0%), transparent var(--z2,0%)), var(--hair)}
+    background:linear-gradient(90deg, var(--pri) 0 var(--p,50%), transparent var(--p,50%)), linear-gradient(90deg, transparent var(--z1,0%), rgba(18,184,108,.5) var(--z1,0%) var(--z2,0%), transparent var(--z2,0%)), var(--hair)}
   input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:30px; height:30px; margin-top:-12px; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(var(--shadow),.3), 0 0 0 .5px rgba(var(--shadow),.1); transition:transform .25s var(--spring)}
   input[type=range]::-moz-range-thumb{width:30px; height:30px; border:0; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(var(--shadow),.3), 0 0 0 .5px rgba(var(--shadow),.1)}
   input[type=range]:active::-webkit-slider-thumb{transform:scale(1.12)}
   input[type=range]:focus-visible{outline:none}
-  input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(31,75,59,.2), 0 2px 6px rgba(var(--shadow),.3)}
+  input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(34,33,184,.2), 0 2px 6px rgba(var(--shadow),.3)}
   .range-l{display:flex; justify-content:space-between; font-size:13px; color:var(--silver); margin-top:4px; font-variant-numeric:tabular-nums}
   .zone{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--graphite); margin-top:12px; line-height:1.35}
-  .zone i{width:22px; height:6px; border-radius:3px; background:rgba(196,122,62,.5); flex:0 0 auto}
+  .zone i{width:22px; height:6px; border-radius:3px; background:rgba(18,184,108,.5); flex:0 0 auto}
   .free-row{margin-top:16px}
 
   /* Simulateur : de la publicité au chantier signé */
@@ -969,6 +972,7 @@
 <script>
 /* ====== Nom du client : à remplacer ici quand on le connaîtra (titre, barre du haut, accueil, aperçu, envoi) ====== */
 var CLIENT = "Aleco Energy";
+var LOGO = "img/logo.png"; // logo du client (vide : symbole maison + nom)
 
 (function () {
   'use strict';
@@ -1034,7 +1038,9 @@ var CLIENT = "Aleco Energy";
   // Logo provisoire : une maison dans un carré arrondi + le nom du client
   var MARK = '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M8.5 16.2 16 10l7.5 6.2M11 14.3V23h10v-8.7M14.3 23v-4.6h3.4V23" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   each(document.querySelectorAll('[data-logo]'), function (el) {
-    el.innerHTML = '<span class="wm" role="img">' + MARK + '<span class="wm-t"></span></span>';
+    el.innerHTML = LOGO
+      ? '<span class="wm" role="img"><img class="wm-img" src="' + LOGO + '" alt=""><span class="wm-t sr"></span></span>'
+      : '<span class="wm" role="img">' + MARK + '<span class="wm-t"></span></span>';
     el.querySelector('.wm').setAttribute('aria-label', CLIENT);
     el.querySelector('.wm-t').textContent = CLIENT;
   });
