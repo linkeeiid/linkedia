@@ -778,7 +778,7 @@
                 <li><i data-i="x"></i><span><b>Pas de travaux «&nbsp;à 1&nbsp;€&nbsp;» ni «&nbsp;gratuits&nbsp;».</b> Les offres d’isolation à 1&nbsp;€ ont pris fin en 2021&nbsp;; promettre un prix ou un reste à charge que le devis ne tiendra pas est une pratique commerciale trompeuse.</span></li>
                 <li><i data-i="x"></i><span><b>Pas de montant d’aide présenté comme acquis.</b> MaPrimeRénov’ dépend des revenus et du projet, et n’est accordée qu’après validation de l’Anah&nbsp;: on parle d’estimation.</span></li>
                 <li><i data-i="x"></i><span><b>Pas de logo officiel qui laisse croire à un lien avec l’État</b> (Marianne, MaPrimeRénov’, France Rénov’)&nbsp;: se présenter comme agréé par un organisme public sans l’être est une pratique trompeuse.</span></li>
-                <li><i data-i="x"></i><span><b>Pas de démarchage.</b> Appeler, envoyer un SMS ou écrire sur les réseaux sociaux sans demande est interdit pour ces travaux (loi du 30&nbsp;juin 2025). On ne rappelle que les personnes qui l’ont demandé dans le formulaire.</span></li>
+                <li><i data-i="x"></i><span><b>Pas de démarchage.</b> Appeler, envoyer un SMS ou écrire sur les réseaux sociaux sans demande est interdit pour ces travaux (loi du 30&nbsp;juin 2025). Même une personne qui a laissé son numéro ne peut pas être rappelée pour lui vendre des travaux (position de l’administration, 2021)&nbsp;: elle réserve elle-même sa visite technique, ou vous appelle. Vous l’appelez ensuite seulement pour organiser cette visite.</span></li>
                 <li class="ok"><i data-i="check"></i><span><b>La mention France Rénov’ sur chaque publicité.</b> Obligatoire depuis le 1<sup>er</sup>&nbsp;octobre 2026, avec un lien vers le service public&nbsp;: elle est déjà prévue, comme dans l’aperçu ci-dessus.</span></li>
               </ul>
             </div>
@@ -786,15 +786,15 @@
         </section>
 
         <!-- 5. Demandes -->
-        <section class="step" data-k="demandes" data-title="Vos demandes" data-photo="demandes" data-cap="Une demande se refroidit vite&nbsp;: la rapidité du rappel compte autant que la publicité.">
+        <section class="step" data-k="demandes" data-title="Vos demandes" data-photo="demandes" data-cap="Une demande se refroidit vite&nbsp;: la visite doit se caler tant que l’envie est là.">
           <p class="eyebrow">Vos demandes</p>
           <h2 class="h" tabindex="-1"><span class="mask"><span>Que <span class="nw">se passe-t-il</span> quand une demande arrive&nbsp;?</span></span></h2>
           <div class="qs">
-            <label class="fld"><span>Qui rappelle les demandes&nbsp;?</span><input type="text" id="qui_rappelle" data-l="Qui rappelle les demandes" placeholder="Prénom et rôle, ex. Karim, conseiller"></label>
+            <label class="fld"><span>Qui organise les visites techniques&nbsp;?</span><input type="text" id="qui_rappelle" data-l="Qui organise les visites techniques" placeholder="Prénom et rôle, ex. Karim, conseiller"></label>
 
             <div class="segs3">
-              <div><span class="ql">Les demandes sont rappelées</span>
-                <div class="seg" data-g="Délai de rappel"><label><input type="radio" name="rappel" value="Dans l’heure">Dans l’heure</label><label><input type="radio" name="rappel" value="Dans la journée">Dans la journée</label><label><input type="radio" name="rappel" value="Le lendemain">Le lendemain</label></div></div>
+              <div><span class="ql">Une visite demandée est confirmée</span>
+                <div class="seg" data-g="Délai de confirmation de la visite"><label><input type="radio" name="rappel" value="Dans l’heure">Dans l’heure</label><label><input type="radio" name="rappel" value="Dans la journée">Dans la journée</label><label><input type="radio" name="rappel" value="Le lendemain">Le lendemain</label></div></div>
               <div><span class="ql">La visite technique se fait</span>
                 <div class="seg" data-g="Visite technique"><label><input type="radio" name="visite" value="À domicile"><i data-i="house"></i>À domicile</label><label><input type="radio" name="visite" value="En visio"><i data-i="video"></i>En visio</label><label><input type="radio" name="visite" value="Les deux">Les deux</label></div></div>
             </div>
@@ -842,7 +842,7 @@
                 </span>
                 <span class="mk-notif"><i data-i="phone"></i><span><b>Nouvelle demande</b>dans votre tableau de bord</span></span>
               </span>
-              <span class="agreed-t"><span class="agreed-k"><i data-i="check"></i>Le parcours prévu</span><b>Un clic sur la publicité mène à votre page, avec un formulaire qui trie les demandes</b><small>Vous ne rappelez que des propriétaires de votre zone, avec un vrai projet. Chaque demande arrive dans votre tableau de bord, avec ses réponses.</small></span>
+              <span class="agreed-t"><span class="agreed-k"><i data-i="check"></i>Le parcours prévu</span><b>Un clic sur la publicité mène à votre page&nbsp;: un formulaire qui trie, puis la personne demande sa visite technique</b><small>Elle réserve sa visite (ou vous appelle d’un clic)&nbsp;; vous l’appelez ensuite uniquement pour l’organiser, ce que la loi permet. Que des propriétaires de votre zone, avec un vrai projet, et chaque demande arrive dans votre tableau de bord avec ses réponses.</small></span>
             </div>
 
             <div class="q">
@@ -858,14 +858,15 @@
                 <label class="chip"><input type="checkbox" name="fq" value="Personnes au foyer et revenu fiscal (pour estimer les aides)">Revenus, pour estimer les aides</label>
                 <label class="chip"><input type="checkbox" name="fq" value="Projet souhaité">Projet souhaité</label>
                 <label class="chip"><input type="checkbox" name="fq" value="Délai du projet">Délai du projet</label>
+                <label class="chip"><input type="checkbox" name="fq" value="Créneau souhaité pour la visite technique">Créneau de visite</label>
               </div>
             </div>
             <div class="q">
               <span class="ql">Ce que la personne accepte avant d’envoyer</span>
-              <p class="hint">Des cases à cocher obligatoires&nbsp;: elles engagent la personne, filtrent les curieux et prouvent qu’elle a demandé à être rappelée.</p>
+              <p class="hint">Des cases à cocher obligatoires&nbsp;: elles engagent la personne, filtrent les curieux et prouvent qu’elle a elle-même demandé la visite technique.</p>
               <div class="chips" data-g="Engagements du formulaire">
                 <label class="chip"><input type="checkbox" name="fe" value="Je suis propriétaire du logement">Être propriétaire</label>
-                <label class="chip"><input type="checkbox" name="fe" value="J’accepte d’être rappelé(e) par téléphone au sujet de mon projet">Accepter d’être rappelé(e)</label>
+                <label class="chip"><input type="checkbox" name="fe" value="Je demande une visite technique à mon domicile et accepte d’être contacté(e) pour l’organiser">Demander la visite technique</label>
                 <label class="chip"><input type="checkbox" name="fe" value="Je serai présent(e) lors de la visite technique">Être présent(e) à la visite</label>
                 <label class="chip"><input type="checkbox" name="fe" value="J’ai compris que les aides dépendent de mes revenus et ne sont pas garanties">Aides non garanties</label>
                 <label class="chip"><input type="checkbox" name="fe" value="Les informations données sont exactes">Informations exactes</label>
