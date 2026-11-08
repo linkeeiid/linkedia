@@ -70,5 +70,6 @@ Disallow: /etude-ylc-8b2e47/
 Disallow: /dashboard/
 Disallow: /pilotage/
 Disallow: /inspi-pubs-4d8a62/
+Disallow: /presentation/
 
 Sitemap: https://linkeedia.fr/sitemap.xml
