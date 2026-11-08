@@ -1,5 +1,5 @@
-:HL["/dashboard/_next/static/chunks/318biwo8wnpms.css","style"]
+:HL["/dashboard/_next/static/chunks/2ha-0hz8y3krq.css","style"]
 :HL["/dashboard/_next/static/media/07c7676b89ed2778-s.p.2bn3s6zvc0dyp.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"client","t":"d","k":"aleco-energy","s":["demo"]},"h":65632,"c":"$Q2"}]]
-0:{"b":"Po2kCQpLJfc7Nxu4xc77d","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"1kJ_2Dd_MZAn-gQtyAM6h","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
