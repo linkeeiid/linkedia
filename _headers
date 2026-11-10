@@ -36,3 +36,7 @@
 /presentation/*
   X-Robots-Tag: noindex, nofollow
   Referrer-Policy: no-referrer
+
+/Subly/*
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless
