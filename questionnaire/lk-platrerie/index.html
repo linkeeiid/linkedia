@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<!-- Questionnaire « nouveau site + publicités » de LK Plâtrerie. Nom : constante CLIENT en tête du script. Couleurs : :root (--yel = jaune du logo). -->
+<title>Votre nouveau site · LK Plâtrerie · LinkedIA</title>
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../brand/icon-32.png">
+<link rel="apple-touch-icon" href="../../brand/icon-180.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="img/accueil.webp">
+<style>
+  *{box-sizing:border-box; margin:0; padding:0}
+  [hidden]{display:none !important}
+  :root{
+    /* LK Plâtrerie : le noir et le jaune de son logo, sur un blanc « plâtre » */
+    --paper:#fff; --sand:#f5f3ee; --sand-2:#ebe8e0; --ink:#1a1916; --graphite:#5e5b54; --silver:#8b887f;
+    --hair:#ebe8e1; --hair-2:#d8d4ca;
+    --yel:#f6b210; --yel-d:#875f00; --yel-soft:#fdf4d8;
+    --ok:#1f6b47; --ok-soft:#e6f2eb; --amber:#874a05; --amber-soft:#fbf0e1; --red:#a3322b; --red-soft:#fbeceb;
+    --shadow:26,25,22;
+    --ease:cubic-bezier(.19,1,.22,1); --spring:cubic-bezier(.34,1.56,.64,1);
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",system-ui,sans-serif;
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    color-scheme:light;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--paper); color:var(--ink); font:17px/1.47 var(--sans); letter-spacing:-.011em; -webkit-font-smoothing:antialiased; min-height:100dvh}
+  button, input, textarea{font:inherit; color:inherit; letter-spacing:inherit}
+  button{cursor:pointer; -webkit-tap-highlight-color:transparent}
+  label{-webkit-tap-highlight-color:transparent}
+  :focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+  svg{display:block}
+
+  /* ---------- Logo du client ---------- */
+  .wm{display:inline-flex; align-items:center; gap:10px; min-width:0; max-width:100%; color:var(--ink)}
+  .wm-img{display:block; width:34px; height:34px; border-radius:50%; flex:0 0 auto}
+  .wm-t{font:700 19px/1.1 var(--display); letter-spacing:-.015em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0}
+
+  /* ---------- Barre du haut ---------- */
+  .top{position:sticky; top:0; z-index:30; background:#fff; border-bottom:1px solid var(--hair)}
+  .top-in{max-width:1440px; margin:0 auto; height:58px; padding:0 20px; display:flex; align-items:center; gap:14px}
+  .tlogo{display:flex; flex:0 1 auto; min-width:0; max-width:44%}
+  .tsep{flex:0 0 auto; width:1px; height:22px; background:var(--hair-2)}
+  .ttl{font-size:14px; color:var(--graphite); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0}
+  .prog{margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:14px; transition:opacity .4s}
+  body.intro .prog{opacity:0; visibility:hidden}
+  .prog-t{font-size:13px; font-weight:500; color:var(--graphite); white-space:nowrap}
+  .segs{display:flex; gap:4px}
+  .segs i{position:relative; width:22px; height:4px; border-radius:2px; background:var(--hair); overflow:hidden}
+  .segs i::after{content:""; position:absolute; inset:0; background:var(--yel); transform:scaleX(0); transform-origin:left; transition:transform .7s var(--ease)}
+  .segs i.on::after{transform:none}
+  @media (max-width:1099px){ .prog-t{display:none} }
+  @media (max-width:640px){ .tsep, .ttl{display:none} .segs i{width:13px} .tlogo{max-width:none} .wm-t{font-size:17px} .wm-img{width:30px; height:30px} }
+
+  /* ---------- Scène : photo + colonne ---------- */
+  .stage{max-width:1440px; margin:0 auto; display:grid}
+  @media (min-width:960px){ .stage{grid-template-columns:minmax(0,45fr) minmax(0,55fr)} }
+  .photo{position:relative; overflow:hidden; background:var(--sand); height:210px; margin:12px 12px 0; border-radius:20px; isolation:isolate}
+  body.intro .photo{height:38vh; min-height:250px}
+  @media (min-width:960px){
+    .photo, body.intro .photo{position:sticky; top:74px; align-self:start; height:calc(100dvh - 90px); min-height:540px; margin:16px 0 16px 16px; border-radius:26px}
+  }
+  .photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0}
+  .photo img.on{opacity:1; z-index:2}
+  .photo img.on.under{z-index:1}
+  .photo img.in{animation:wipe 1.1s var(--ease) both}
+  @keyframes wipe{from{clip-path:inset(100% 0 0 0)} to{clip-path:inset(0 0 0 0)}}
+  /* Une seule animation continue, et seulement sur ordinateur : le lent zoom de la photo */
+  @media (min-width:960px) and (prefers-reduced-motion:no-preference){
+    .photo img.on{animation:kb 24s ease-in-out infinite alternate}
+    .photo img.on.in{animation:wipe 1.1s var(--ease) both, kb 24s ease-in-out infinite alternate}
+  }
+  @keyframes kb{from{transform:scale(1.001)} to{transform:scale(1.08)}}
+  .cap{position:absolute; left:0; right:0; bottom:0; z-index:3; padding:54px 20px 16px; color:#fff;
+    background:linear-gradient(to top, rgba(16,15,12,.72), rgba(16,15,12,.32) 55%, rgba(16,15,12,0))}
+  .cap p{font:italic 500 18px/1.25 var(--display); letter-spacing:-.005em; max-width:32ch; text-wrap:balance; text-shadow:0 1px 12px rgba(0,0,0,.3)}
+  .cap p.swap{animation:capin .9s var(--ease) both}
+  @keyframes capin{from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none}}
+  @media (min-width:960px){ .cap{padding:120px 40px 36px} .cap p{font-size:28px; line-height:1.18} }
+  .cap p::before{content:""; display:block; width:34px; height:4px; border-radius:2px; background:var(--yel); margin-bottom:14px}
+
+  .main{min-width:0; padding:30px 20px 128px}
+  @media (min-width:960px){ .main{padding:64px clamp(36px,5vw,88px) 72px} body.intro .main{min-height:calc(100dvh - 58px); display:flex; align-items:center} }
+  .inner{width:100%; max-width:600px; margin:0 auto}
+
+  /* ---------- Titres ---------- */
+  .eyebrow{font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--yel-d)}
+  .h{font:700 clamp(30px,3.8vw,44px)/1.05 var(--display); letter-spacing:-.022em; margin-top:10px; text-wrap:balance}
+  .h:focus, .h1:focus{outline:none}
+  .mask{display:block; overflow:hidden; padding-bottom:.12em; margin-bottom:-.12em}
+  .mask > span{display:block}
+  .nw{white-space:nowrap}
+  .on .mask > span, .screen .mask > span{animation:rise 1s var(--ease) both}
+  .mask + .mask > span{animation-delay:.09s}
+  @keyframes rise{from{transform:translateY(108%)} to{transform:none}}
+  .lead{color:var(--graphite); margin-top:14px; max-width:52ch}
+
+  /* ---------- Accueil ---------- */
+  .brand{display:flex; min-width:0}
+  .brand .wm{gap:14px}
+  .brand .wm-img{width:clamp(54px,6vw,64px); height:clamp(54px,6vw,64px)}
+  .brand .wm-t{font-size:clamp(24px,3vw,30px)}
+  .with{margin-top:14px; font-size:13px; font-weight:500; color:var(--silver); letter-spacing:.02em}
+  .h1{font:800 clamp(46px,6vw,78px)/.96 var(--display); letter-spacing:-.035em; margin-top:30px}
+  .h1 .yl{color:var(--yel-d)}
+  .screen .lead{font-size:18px; margin-top:20px}
+  .cta{display:flex; align-items:center; flex-wrap:wrap; gap:12px 18px; margin-top:30px}
+  .small{font-size:14px; color:var(--graphite)}
+  .path-h{margin-top:44px; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--silver)}
+  .path{list-style:none; margin-top:14px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 14px}
+  .path li{display:flex; align-items:center; gap:10px; font-size:15px; font-weight:500; min-width:0; line-height:1.25}
+  .path .ic{flex:0 0 auto; width:32px; height:32px; border-radius:50%; background:var(--sand); color:var(--ink); display:grid; place-content:center; transition:background .3s, color .3s}
+  .path .ic svg{width:16px; height:16px}
+  .path li.done .ic{background:var(--ink); color:var(--yel)}
+  @media (min-width:960px){
+    .path{grid-template-columns:minmax(0,1fr); gap:0; position:relative}
+    .path::before{content:""; position:absolute; left:16px; top:18px; bottom:18px; width:1px; background:var(--hair-2)}
+    .path li{height:40px; position:relative}
+  }
+  .screen .cta, .screen .path-h, .screen .path, .screen .lead, .screen .with, .screen .brand{animation:up .8s var(--ease) both}
+  .screen .brand{animation-delay:0s} .screen .with{animation-delay:.05s} .screen .lead{animation-delay:.2s} .screen .cta{animation-delay:.28s}
+  .screen .path-h{animation-delay:.36s} .screen .path{animation-delay:.42s}
+
+  /* ---------- Étapes ---------- */
+  .step{display:none}
+  .step.on{display:block}
+  .qs{display:grid; grid-template-columns:minmax(0,1fr); gap:40px; margin-top:34px}
+  .on .qs > *{animation:up .7s var(--ease) both; animation-delay:calc(var(--i,0) * 70ms + 160ms)}
+  @keyframes up{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none}}
+  .q{min-width:0}
+  .ql{display:block; font-size:17px; font-weight:600; letter-spacing:-.016em; margin-bottom:14px}
+  .ql.sm{font-size:15px; margin:18px 0 10px}
+  .hint{font-size:14.5px; color:var(--graphite); margin:-8px 0 16px; line-height:1.45}
+  .grid2{display:grid; gap:18px}
+  @media (min-width:640px){ .grid2{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  .fld{display:grid; gap:8px; min-width:0}
+  .fld > span{font-size:15px; font-weight:600; letter-spacing:-.012em}
+  .fld > small{font-size:14px; color:var(--graphite); margin-top:-4px; line-height:1.4}
+  .fld.sub{margin-top:12px}
+  .fld.sub > span{font-size:14px; font-weight:500; color:var(--graphite)}
+  input[type=text], input[type=email], input[type=tel], input[type=date], textarea{
+    width:100%; min-width:0; height:52px; padding:0 16px; border:1px solid transparent; border-radius:14px; background:var(--sand); font-size:17px;
+    transition:background .2s, border-color .2s, box-shadow .2s; -webkit-appearance:none; appearance:none}
+  input[type=date]{min-height:52px}
+  textarea{height:auto; min-height:112px; padding:14px 16px; resize:vertical; line-height:1.47}
+  input:focus, textarea:focus{outline:0; background:#fff; border-color:var(--ink); box-shadow:0 0 0 4px rgba(246,178,16,.3)}
+  ::placeholder{color:var(--silver); opacity:1}
+
+  .note{display:block; font-size:14.5px; line-height:1.45; border-radius:14px; padding:12px 14px; margin-top:12px; background:var(--sand); color:var(--ink)}
+  .note.warn{background:var(--amber-soft); color:var(--amber)}
+  .note.ok{background:var(--ok-soft); color:var(--ok)}
+  .note.info{display:flex; gap:12px; align-items:flex-start; margin:0; background:var(--yel-soft); color:#4a3700}
+  .note.info svg, .note.warn svg{width:20px; height:20px; flex:0 0 auto; margin-top:1px}
+  .note.warn.fx{display:flex; gap:12px; align-items:flex-start}
+  .note b{font-weight:600}
+
+  /* Pastilles */
+  .chips{display:flex; flex-wrap:wrap; gap:8px}
+  .chip{position:relative; display:inline-flex; align-items:center; gap:7px; min-height:42px; padding:9px 16px; border-radius:980px; background:var(--sand); font-size:15px; font-weight:500; line-height:1.2; cursor:pointer;
+    transition:background .25s, color .25s, transform .3s var(--spring)}
+  .chip:hover{background:var(--sand-2)}
+  .chip:active{transform:scale(.96)}
+  .chip input{position:absolute; opacity:0; pointer-events:none; width:1px; height:1px}
+  .chip:has(input:checked){background:var(--ink); color:#fff}
+  .chip:has(input:checked)::before{content:""; width:10px; height:5px; margin-top:-3px; border:solid var(--yel); border-width:0 0 2px 2px; transform:rotate(-45deg); animation:tick .35s var(--spring)}
+  @keyframes tick{from{transform:rotate(-45deg) scale(0)} to{transform:rotate(-45deg) scale(1)}}
+  .chip:has(input:focus-visible){outline:2px solid var(--ink); outline-offset:2px}
+  .mini-btn{display:inline-flex; align-items:center; gap:8px; margin-top:14px; min-height:40px; padding:0 16px; border-radius:980px; border:1px solid var(--hair-2); background:#fff; font-size:14.5px; font-weight:500; transition:background .2s}
+  .mini-btn:hover{background:var(--sand)}
+  .mini-btn svg{width:16px; height:16px}
+
+  /* Coche ronde (cartes) */
+  .tick{position:absolute; top:14px; right:14px; width:22px; height:22px; border-radius:50%; box-shadow:inset 0 0 0 1.5px var(--hair-2); display:grid; place-content:center; transition:background .25s, box-shadow .25s}
+  .tick::after{content:""; width:9px; height:5px; margin-top:-2px; border:solid var(--yel); border-width:0 0 2px 2px; transform:rotate(-45deg) scale(0); transition:transform .4s var(--spring)}
+  :checked ~ .tick{background:var(--ink); box-shadow:none}
+  :checked ~ .tick::after{transform:rotate(-45deg) scale(1)}
+
+  /* Cartes de choix */
+  .cards{display:grid; grid-template-columns:minmax(0,1fr); gap:10px}
+  @media (min-width:640px){ .cards.c2{grid-template-columns:repeat(2,minmax(0,1fr))} .cards.c2 .wide{grid-column:1 / -1} }
+  .card{position:relative; display:flex; gap:14px; align-items:flex-start; padding:16px; border-radius:18px; border:1px solid var(--hair); cursor:pointer; transition:border-color .25s, background .25s; min-width:0}
+  .card:hover{border-color:var(--hair-2)}
+  .card input{position:absolute; opacity:0; pointer-events:none}
+  .card .ic{flex:0 0 auto; width:42px; height:42px; border-radius:13px; background:var(--sand); display:grid; place-content:center; transition:background .3s, color .3s, transform .6s var(--spring)}
+  .card .ic svg{width:22px; height:22px}
+  .card .t{flex:1; min-width:0; padding-right:30px}
+  .card .t b{display:block; font-size:16px; font-weight:600; letter-spacing:-.016em; line-height:1.3}
+  .card .t small{display:block; font-size:14px; color:var(--graphite); margin-top:3px; line-height:1.42}
+  .card:has(input:checked){border-color:var(--ink); background:#fffaec}
+  .card:has(input:checked) .ic{background:var(--ink); color:var(--yel); transform:rotate(-6deg) scale(1.05)}
+  .card:has(input:focus-visible), .sty:has(input:focus-visible){outline:2px solid var(--ink); outline-offset:2px}
+  .t b:has(.badge){display:flex; flex-wrap:wrap; align-items:center; gap:4px 8px}
+  .badge{display:inline-block; font-size:11px; font-weight:600; letter-spacing:0; color:var(--ok); background:var(--ok-soft); border-radius:980px; padding:2px 8px; white-space:nowrap}
+  .badge.was{color:var(--yel-d); background:var(--yel-soft)}
+  .badge.reg{color:#3b3832; background:var(--sand-2)}
+  .card:has(input:checked) .badge{background:#fff}
+
+  /* Choix segmentés */
+  .seg{display:flex; padding:3px; gap:2px; border-radius:14px; background:var(--sand)}
+  .seg label{position:relative; flex:1; min-width:0; display:flex; align-items:center; justify-content:center; gap:7px; min-height:44px; padding:6px 8px; border-radius:11px;
+    font-size:14.5px; font-weight:500; line-height:1.2; text-align:center; cursor:pointer; transition:background .3s, box-shadow .3s}
+  .seg input{position:absolute; opacity:0; pointer-events:none}
+  .seg label:has(input:checked){background:#fff; font-weight:600; box-shadow:0 1px 3px rgba(var(--shadow),.16), 0 0 0 .5px rgba(var(--shadow),.08)}
+  .seg label:has(input:checked)::after{content:""; position:absolute; left:50%; bottom:4px; width:16px; height:3px; margin-left:-8px; border-radius:2px; background:var(--yel)}
+  .seg label:has(input:focus-visible){outline:2px solid var(--ink); outline-offset:1px}
+
+  /* Compteurs */
+  .caps{display:grid; gap:10px}
+  .capr{display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid var(--hair); border-radius:18px; padding:9px 10px 9px 16px; min-width:0}
+  .capr > span{display:flex; align-items:center; gap:10px; font-size:15px; font-weight:600; line-height:1.3; min-width:0}
+  .capr > span svg{width:20px; height:20px; flex:0 0 auto; color:var(--graphite)}
+  .stp{display:flex; align-items:center; gap:6px; flex:0 0 auto}
+  .stp input{flex:0 0 64px; width:64px; min-width:0; height:auto; padding:2px 0; border:0; border-radius:10px; background:none; text-align:center;
+    font:700 26px/1 var(--display); letter-spacing:-.03em; font-variant-numeric:tabular-nums; -moz-appearance:textfield; appearance:textfield}
+  .stp input::-webkit-inner-spin-button, .stp input::-webkit-outer-spin-button{-webkit-appearance:none; margin:0}
+  .stp input:focus{background:none; border:0; box-shadow:0 0 0 3px rgba(246,178,16,.35)}
+  .stp input.bump{animation:bump .4s var(--ease)}
+  @keyframes bump{from{transform:translateY(var(--dy,30%)); opacity:.15} to{transform:none; opacity:1}}
+  .stp-b{position:relative; flex:0 0 auto; width:38px; height:38px; border-radius:50%; border:1px solid var(--hair-2); background:#fff;
+    touch-action:manipulation; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; transition:background .2s, transform .25s var(--spring)}
+  .stp-b:hover{background:var(--sand)}
+  .stp-b:active{transform:scale(.9)}
+  .stp-b::before, .stp-b[data-d="1"]::after{content:""; position:absolute; left:50%; top:50%; width:13px; height:2px; border-radius:1px; background:var(--ink); transform:translate(-50%,-50%)}
+  .stp-b[data-d="1"]::after{transform:translate(-50%,-50%) rotate(90deg)}
+  @media (max-width:420px){ .capr{padding-left:12px} .capr > span{font-size:14px} .capr > span svg{display:none} .stp input{flex-basis:54px; width:54px; font-size:23px} .stp-b{width:34px; height:34px} }
+
+  /* Chiffres clés, tels qu'ils apparaîtront */
+  .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,118px),1fr)); gap:1px; background:#3a3833; border-radius:18px; overflow:hidden; margin-top:12px}
+  .kpis > div{background:var(--ink); color:#fff; padding:16px 14px; min-width:0}
+  .kpis > div.n{animation:capin .5s var(--ease) both}
+  .kpis b{display:block; font:800 30px/1 var(--display); color:var(--yel); letter-spacing:-.025em; font-variant-numeric:tabular-nums; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .kpis small{display:block; font-size:12.5px; color:rgba(255,255,255,.72); margin-top:6px; line-height:1.3}
+  .kpis-l{font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--silver); margin-top:16px}
+
+  /* Montants (curseurs) */
+  .amount{display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 10px}
+  .amount output{font:800 clamp(46px,6vw,60px)/1 var(--display); letter-spacing:-.04em; font-variant-numeric:tabular-nums}
+  .amount output.free{font-size:clamp(30px,4vw,38px); letter-spacing:-.025em}
+  .amount span{font-size:16px; color:var(--graphite)}
+  .range{margin-top:14px}
+  input[type=range]{-webkit-appearance:none; appearance:none; display:block; width:100%; height:30px; background:none; cursor:pointer; transition:opacity .3s}
+  input[type=range].off{opacity:.45}
+  input[type=range]::-webkit-slider-runnable-track{height:6px; border-radius:3px; background:linear-gradient(90deg, var(--yel) 0 var(--p,50%), var(--hair) var(--p,50%))}
+  input[type=range]::-moz-range-track{height:6px; border-radius:3px; background:linear-gradient(90deg, var(--yel) 0 var(--p,50%), var(--hair) var(--p,50%))}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:30px; height:30px; margin-top:-12px; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(var(--shadow),.3), 0 0 0 .5px rgba(var(--shadow),.1); transition:transform .25s var(--spring)}
+  input[type=range]::-moz-range-thumb{width:30px; height:30px; border:0; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(var(--shadow),.3), 0 0 0 .5px rgba(var(--shadow),.1)}
+  input[type=range]:active::-webkit-slider-thumb{transform:scale(1.12)}
+  input[type=range]:focus-visible{outline:none}
+  input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(246,178,16,.4), 0 2px 6px rgba(var(--shadow),.3)}
+  .range-l{display:flex; justify-content:space-between; font-size:13px; color:var(--silver); margin-top:4px; font-variant-numeric:tabular-nums}
+  .free-row{margin-top:14px}
+  .dots-cap{font-size:15px; color:var(--graphite); margin-top:14px; line-height:1.45}
+  .dots-cap b{color:var(--ink); font-weight:600}
+  .est{display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; margin-top:14px; padding:14px 16px; border-radius:14px; background:var(--sand)}
+  .est b{font:700 clamp(20px,2.4vw,24px)/1.15 var(--display); letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+  .est span{font-size:14px; color:var(--graphite)}
+
+  /* Carte du secteur */
+  .radar{background:var(--sand); border-radius:20px; padding:14px 14px 16px; margin-top:16px}
+  .radar-h{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 12px; margin-bottom:8px}
+  .radar-h b{font-size:14px; font-weight:600; display:flex; align-items:center; gap:8px; min-width:0}
+  .radar-h b i{width:10px; height:10px; border-radius:50%; background:var(--yel); box-shadow:0 0 0 2px var(--ink); flex:0 0 auto}
+  .tabs{display:inline-flex; padding:3px; gap:2px; border-radius:12px; background:#fff}
+  .tabs button{border:0; background:none; font-size:13px; font-weight:500; padding:6px 12px; border-radius:9px; transition:background .25s, color .25s}
+  .tabs button[aria-pressed="true"]{background:var(--ink); color:#fff}
+  .radar-in{position:relative; width:100%; max-width:470px; margin:0 auto}
+  .radar svg{width:100%; height:auto; aspect-ratio:1; overflow:hidden}
+  .radar .vg{fill:#c6c1b5; transition:fill .45s}
+  .radar .vg.in{fill:var(--ink)}
+  .radar .tl{font:500 8.4px var(--sans); fill:#9a958a; letter-spacing:0; transition:fill .45s}
+  .radar .tl.in{fill:var(--ink); font-weight:600}
+  .radar .ring{fill:none; stroke:var(--hair-2); stroke-width:1; stroke-dasharray:3 5}
+  .radar .ring-l{font:500 7.6px var(--sans); fill:var(--silver)}
+  .radar .rz{fill:rgba(246,178,16,.17); stroke:var(--yel); stroke-width:1.6; vector-effect:non-scaling-stroke; transform-box:fill-box; transform-origin:center; transition:transform .7s var(--ease)}
+  .radar .riv{fill:none; stroke:#b9d0dd; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+  .radar .riv-l{font:italic 500 7.8px var(--sans); fill:#7d9fb3}
+  .radar .ctry{font:600 7.4px var(--sans); letter-spacing:.2em; fill:#aaa496}
+  .radar .pin{fill:var(--yel); stroke:var(--ink); stroke-width:1.8}
+  .radar .pin-c{fill:var(--ink)}
+  .radar .dots-cap{text-align:center; margin-top:10px}
+
+  /* Un chantier en trois temps */
+  .etapes{position:relative; aspect-ratio:4/3; border-radius:18px; overflow:hidden; background:var(--sand)}
+  .etapes img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .8s var(--ease)}
+  .etapes img.on{opacity:1}
+  .et-n{position:absolute; left:12px; top:12px; z-index:2; padding:5px 10px; border-radius:980px; background:rgba(26,25,22,.8); color:#fff; font-size:12.5px; font-weight:600}
+  .et-tabs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin-top:10px}
+  .et-tabs button{position:relative; border:1px solid var(--hair); background:#fff; border-radius:12px; padding:9px 10px 12px; text-align:left; font-size:13.5px; font-weight:600; line-height:1.25; overflow:hidden; min-width:0}
+  .et-tabs button small{display:block; font-size:11.5px; font-weight:500; color:var(--silver); margin-bottom:2px}
+  .et-tabs button::after{content:""; position:absolute; left:0; bottom:0; height:3px; width:100%; background:var(--yel); transform:scaleX(0); transform-origin:left}
+  .et-tabs button[aria-pressed="true"]{border-color:var(--ink)}
+  .et-tabs button[aria-pressed="true"]::after{transform:scaleX(1); transition:transform var(--dur,.35s) linear}
+
+  /* Avant / projection IA : on glisse */
+  .ba{position:relative; aspect-ratio:4/3; border-radius:18px; overflow:hidden; background:var(--sand); --x:50%; touch-action:pan-y; cursor:ew-resize; -webkit-user-select:none; user-select:none}
+  .ba img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none}
+  .ba .ba-b{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+  .ba-line{position:absolute; top:0; bottom:0; left:var(--x); width:2px; margin-left:-1px; background:#fff; pointer-events:none}
+  .ba-k{position:absolute; top:50%; left:var(--x); width:44px; height:44px; margin:-22px 0 0 -22px; border-radius:50%; background:#fff; box-shadow:0 4px 16px rgba(0,0,0,.28); display:flex; align-items:center; justify-content:center; gap:2px; pointer-events:none}
+  .ba-k svg{width:14px; height:14px}
+  .ba-t{position:absolute; top:12px; z-index:2; padding:5px 10px; border-radius:980px; font-size:12px; font-weight:600; background:rgba(26,25,22,.8); color:#fff; pointer-events:none}
+  .ba-t.l{left:12px} .ba-t.r{right:12px; background:var(--yel); color:var(--ink)}
+  .ba:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+
+  /* Aperçu du carrousel Instagram */
+  .adprev{border:1px solid var(--hair); border-radius:22px; padding:18px; background:#fff; box-shadow:0 18px 40px -26px rgba(var(--shadow),.4)}
+  .prev-l{font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--silver); margin-bottom:12px}
+  .fb-note{font-size:13.5px; color:var(--graphite); margin-top:12px; line-height:1.45}
+  .ig{border:1px solid #dbdbdb; border-radius:12px; overflow:hidden; background:#fff; color:#0c0c0c; letter-spacing:0; max-width:420px; margin:0 auto; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif}
+  .ig-h{display:flex; align-items:center; gap:10px; padding:10px 12px}
+  .ig-av{width:32px; height:32px; border-radius:50%; overflow:hidden; flex:0 0 auto; box-shadow:0 0 0 1.5px #fff, 0 0 0 3px var(--yel)}
+  .ig-av img{width:100%; height:100%; display:block}
+  .ig-who{flex:1; min-width:0}
+  .ig-who b{display:block; font-size:13.5px; font-weight:600; line-height:1.2}
+  .ig-who small{display:block; font-size:11.5px; color:#737373}
+  .ig-more{display:flex; gap:3px; flex:0 0 auto} .ig-more i{width:3.5px; height:3.5px; border-radius:50%; background:#262626}
+  .ig-view{position:relative}
+  .ig-track{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch}
+  .ig-track::-webkit-scrollbar{display:none}
+  .ig-s{position:relative; flex:0 0 100%; aspect-ratio:1; scroll-snap-align:start; scroll-snap-stop:always; overflow:hidden; background:#ece9e1}
+  .ig-s > img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+  .ig-s .ov{position:absolute; left:0; right:0; bottom:0; padding:48px 16px 16px; background:linear-gradient(to top, rgba(12,12,10,.82), rgba(12,12,10,0)); color:#fff}
+  .ig-s .ov b{display:block; font:700 21px/1.12 var(--display); letter-spacing:-.015em; text-wrap:balance}
+  .ig-s .ov small{display:block; font-size:12px; margin-top:6px; color:rgba(255,255,255,.82)}
+  .ig-s .tag{position:absolute; left:12px; top:12px; z-index:2; padding:5px 9px; border-radius:6px; background:var(--yel); color:var(--ink); font-size:11.5px; font-weight:700; letter-spacing:.01em}
+  .ig-s .tag.dk{background:rgba(12,12,10,.74); color:#fff}
+  .ig-s .play{position:absolute; left:50%; top:46%; width:62px; height:62px; margin:-31px 0 0 -31px; border-radius:50%; background:rgba(255,255,255,.92); display:grid; place-content:center; color:var(--ink)}
+  .ig-s .play svg{width:24px; height:24px; margin-left:3px; fill:currentColor}
+  .ig-s.yl{background:var(--yel); color:var(--ink); display:flex; flex-direction:column; justify-content:space-between; padding:22px 46px}
+  .ig-s.yl .lg{display:flex; align-items:center; gap:10px; font:700 15px/1.1 var(--display)}
+  .ig-s.yl .lg img{display:block; width:40px; height:40px; border-radius:50%; flex:0 0 auto}
+  .ig-s.yl .big{display:block; font:800 34px/1 var(--display); letter-spacing:-.03em; text-wrap:balance}
+  .ig-s.yl .sub{font-size:14px; line-height:1.4; margin-top:10px; font-weight:500}
+  .ig-s.yl .btn{align-self:flex-start; padding:11px 16px; border-radius:10px; background:var(--ink); color:#fff; font-size:14px; font-weight:600}
+  .ig-s.yl .stars{font-size:22px; letter-spacing:3px}
+  .ig-s.yl .quote{font:600 22px/1.25 var(--display); letter-spacing:-.01em}
+  .ig-n{position:absolute; right:10px; top:10px; z-index:3; padding:3px 8px; border-radius:980px; background:rgba(12,12,10,.62); color:#fff; font-size:12px; font-weight:500}
+  .ig-arr{position:absolute; z-index:3; top:50%; width:30px; height:30px; margin-top:-15px; border-radius:50%; border:0; background:rgba(255,255,255,.92); color:#262626; display:grid; place-content:center; box-shadow:0 1px 5px rgba(0,0,0,.22); transition:opacity .25s}
+  .ig-arr svg{width:16px; height:16px}
+  .ig-arr.l{left:8px} .ig-arr.r{right:8px}
+  .ig-arr:disabled{opacity:0; pointer-events:none}
+  .ig-cta{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 12px; background:var(--ink); color:#fff; font-size:14px; font-weight:600}
+  .ig-cta svg{width:16px; height:16px}
+  .ig-act{position:relative; display:flex; align-items:center; gap:14px; padding:10px 12px 6px}
+  .ig-act svg{width:23px; height:23px}
+  .ig-act .bm{margin-left:auto}
+  .ig-dots{position:absolute; left:50%; top:50%; transform:translate(-50%,-30%); display:flex; gap:4px}
+  .ig-dots i{width:6px; height:6px; border-radius:50%; background:#c7c7c7; transition:background .25s}
+  .ig-dots i.on{background:#0095f6}
+  .ig-txt{padding:2px 12px 12px; font-size:13.5px; line-height:1.42}
+  .ig-txt.swap{animation:capin .55s var(--ease) both}
+  .ig-fr{display:flex; gap:10px; align-items:flex-start; padding:9px 12px 11px; border-top:1px solid #efefef; font-size:11.5px; line-height:1.38; color:#3b403d}
+  .ig-fr b{flex:0 0 auto; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 6px; border-radius:4px; background:#eef0f2; color:#1f2a24; white-space:nowrap}
+  @media (max-width:380px){ .ig-s .ov b{font-size:18px} .ig-s.yl .big{font-size:28px} }
+
+  /* Quatre directions de style, dessinées */
+  .styles{display:grid; grid-template-columns:minmax(0,1fr); gap:12px}
+  @media (min-width:640px){ .styles{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  .sty{position:relative; display:block; border:1px solid var(--hair); border-radius:18px; padding:10px 10px 14px; cursor:pointer; transition:border-color .25s, background .25s; min-width:0}
+  .sty:hover{border-color:var(--hair-2)}
+  .sty input{position:absolute; opacity:0; pointer-events:none}
+  .sty .t{display:block; padding:12px 6px 0}
+  .sty .t b{display:block; font-size:16px; font-weight:600; letter-spacing:-.016em; line-height:1.3}
+  .sty .t small{display:block; font-size:14px; color:var(--graphite); margin-top:3px; line-height:1.42}
+  .sty .t{position:relative; padding-right:36px}
+  .sty .tick{top:12px; right:4px}
+  .sty input:checked ~ .t .tick{background:var(--ink); box-shadow:none}
+  .sty input:checked ~ .t .tick::after{transform:rotate(-45deg) scale(1)}
+  .sty:has(input:checked){border-color:var(--ink); background:#fffaec}
+  .ms{position:relative; display:block; aspect-ratio:16/10; border-radius:10px; overflow:hidden; container-type:inline-size; font-family:var(--display); letter-spacing:0}
+  .ms img{position:absolute; object-fit:cover}
+  .ms-nav{position:absolute; z-index:2; left:0; right:0; top:0; display:flex; align-items:center; gap:2cqw; padding:3.4cqw 4cqw; font-size:2.3cqw; font-weight:700; letter-spacing:.08em}
+  .ms-logo{width:4.6cqw; height:4.6cqw; border-radius:50%; flex:0 0 auto; background:#000; box-shadow:inset 0 0 0 .55cqw var(--yel)}
+  .ms-nav em{font-style:normal; white-space:nowrap}
+  .ms-links{display:flex; gap:2.2cqw; margin-left:auto} .ms-links i{width:5.6cqw; height:.7cqw; border-radius:1cqw; background:currentColor; opacity:.45}
+  .ms-btn{padding:1.2cqw 2.4cqw; border-radius:1cqw; background:var(--yel); color:#121110; font-size:2.1cqw; white-space:nowrap}
+  .ms-hero{position:absolute; z-index:2; left:4.5cqw; top:27%; display:grid; gap:2.2cqw; justify-items:start}
+  .ms-k{font-size:2.2cqw; letter-spacing:.14em; font-weight:700; text-transform:uppercase}
+  .ms-h{font-size:6cqw; line-height:1; font-weight:700; letter-spacing:-.02em}
+  .ms-cta{font-size:2.3cqw; font-weight:700; padding:1.6cqw 3cqw; border-radius:1cqw; white-space:nowrap}
+  /* A : noir et jaune */
+  .ms-a{background:#121110; color:#fff}
+  .ms-a img{inset:0; width:100%; height:100%; opacity:.6}
+  .ms-a::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(90deg, #121110 22%, rgba(18,17,16,.15))}
+  .ms-a .ms-hero{top:auto; bottom:9%}
+  .ms-a .ms-k{color:var(--yel)}
+  .ms-a .ms-h{font-size:8.6cqw; line-height:.9; font-weight:800; text-transform:uppercase; letter-spacing:-.01em}
+  .ms-a .ms-cta{background:var(--yel); color:#121110}
+  /* B : blanc plâtre */
+  .ms-b{background:#f7f5f0; color:#1a1916}
+  .ms-b img{top:15%; right:4cqw; bottom:9%; width:44%; height:76%; border-radius:1.2cqw}
+  .ms-b .ms-logo{background:#1a1916}
+  .ms-b .ms-btn{background:#1a1916; color:#fff}
+  .ms-b .ms-k{color:#8a6100}
+  .ms-b .ms-h{max-width:46cqw; font-weight:600}
+  .ms-b .ms-cta{box-shadow:inset 0 0 0 .3cqw #1a1916}
+  /* C : bureau d'études */
+  .ms-c{background-color:#0f2234; background-image:linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px); background-size:5cqw 5cqw; color:#fff}
+  .ms-c img{top:22%; right:5cqw; width:40%; height:62%; border:.35cqw solid rgba(255,255,255,.75)}
+  .ms-c .ms-logo{background:#0f2234}
+  .ms-c .ms-btn{background:none; box-shadow:inset 0 0 0 .3cqw #fff; color:#fff}
+  .ms-c .ms-k{color:var(--yel); font-family:ui-monospace,Consolas,monospace; letter-spacing:.04em}
+  .ms-c .ms-h{font-weight:500; max-width:46cqw}
+  .ms-c .ms-cta{box-shadow:inset 0 0 0 .3cqw var(--yel); color:var(--yel)}
+  .ms-dim{position:relative; display:block; width:30cqw; height:.3cqw; margin:1cqw 0; background:var(--yel)}
+  .ms-dim::before, .ms-dim::after{content:""; position:absolute; top:-1.2cqw; width:.3cqw; height:2.7cqw; background:var(--yel)}
+  .ms-dim::before{left:0} .ms-dim::after{right:0}
+  .ms-dim em{position:absolute; left:50%; top:-3.6cqw; transform:translateX(-50%); font:500 1.9cqw ui-monospace,Consolas,monospace; color:var(--yel); font-style:normal; white-space:nowrap}
+  /* D : chaleureux */
+  .ms-d{background:#efe6da; color:#4a3a2c}
+  .ms-d img{top:16%; right:4cqw; width:45%; height:76%; border-radius:5cqw 5cqw 5cqw 1cqw}
+  .ms-d .ms-logo{background:#4a3a2c}
+  .ms-d .ms-btn{background:#4a3a2c; color:#fff; border-radius:10cqw}
+  .ms-d .ms-k{color:#9a6a2a}
+  .ms-d .ms-h{font-size:6.6cqw; max-width:44cqw}
+  .ms-d .ms-cta{background:#c4902e; color:#fff; border-radius:10cqw}
+
+  .logo-q{display:flex; align-items:center; gap:14px; padding:12px 14px; border-radius:16px; background:var(--sand); margin-bottom:12px; font-size:14px; color:var(--graphite); line-height:1.45}
+  .logo-q img{width:64px; height:64px; border-radius:50%; flex:0 0 auto}
+
+  /* Plan du site, qui se construit */
+  .tree{border:1px solid var(--hair); border-radius:18px; padding:14px 16px 16px; margin-top:14px; background:#fff}
+  .tree-h{display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap}
+  .tree-h b{font:700 15px/1.2 var(--display); letter-spacing:-.01em}
+  .tree-h small{font-size:13px; color:var(--graphite); font-weight:500}
+  .tree ul{list-style:none; margin-top:10px; display:grid; gap:1px; position:relative; padding-left:16px}
+  .tree ul::before{content:""; position:absolute; left:4px; top:4px; bottom:12px; width:1px; background:var(--hair-2)}
+  .tree li{position:relative; display:flex; align-items:baseline; gap:10px; min-width:0; font-size:14px; line-height:1.45; padding:3px 0}
+  .tree li::before{content:""; position:absolute; left:-12px; top:13px; width:8px; height:1px; background:var(--hair-2)}
+  .tree li .lb{flex:0 1 auto; min-width:0; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .tree li code{flex:1 1 0; min-width:0; text-align:right; font:12px/1.45 ui-monospace,"SF Mono",Consolas,monospace; color:var(--silver); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .tree li.sub{margin-left:16px}
+  .tree li.sub::before{left:-28px; width:24px}
+  .tree li.grp .lb{color:var(--graphite)}
+  .tree li.fix .lb{color:var(--graphite); font-weight:400}
+  .tree li.n{animation:capin .5s var(--ease) both}
+  .tree li .dot{position:absolute; left:-15px; top:10px; width:7px; height:7px; border-radius:50%; background:var(--yel); box-shadow:0 0 0 1.5px var(--ink)}
+
+  /* Formulaire de devis : maquette sur téléphone */
+  .phone{position:relative; width:100%; max-width:280px; margin:14px auto 0; border-radius:32px; background:var(--ink); padding:9px; box-shadow:0 24px 40px -26px rgba(var(--shadow),.65)}
+  .phone-in{position:relative; border-radius:24px; background:#fff; overflow:hidden; min-height:440px; padding:18px 14px 64px}
+  .fm-top{display:flex; align-items:center; gap:7px; font:700 11.5px/1 var(--display)}
+  .fm-top img{width:20px; height:20px; border-radius:50%}
+  .fm-top i{margin-left:auto; width:14px; height:9px; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink)}
+  .fm-h{font:700 18px/1.12 var(--display); letter-spacing:-.015em; margin:16px 0 4px}
+  .fm-row{display:grid; gap:3px; margin-top:9px}
+  .fm-row.n{animation:capin .45s var(--ease) both}
+  .fm-row em{font-style:normal; font-size:10.5px; font-weight:500; color:var(--graphite)}
+  .fm-f{display:block; height:26px; border-radius:7px; background:var(--sand); position:relative}
+  .fm-f.big{height:50px}
+  .fm-f.sel::after{content:""; position:absolute; right:9px; top:8px; width:5px; height:5px; border:solid var(--graphite); border-width:0 1.5px 1.5px 0; transform:rotate(45deg)}
+  .fm-f.sel b{position:absolute; left:9px; top:6px; font-size:10px; font-weight:500; color:var(--ink)}
+  .fm-f.drop{background:#fff; border:1.5px dashed var(--hair-2); display:grid; place-content:center; font-size:10px; color:var(--silver)}
+  .fm-pills{display:flex; gap:4px}
+  .fm-pills i{flex:1; height:24px; border-radius:7px; background:var(--sand); font-style:normal; font-size:10px; font-weight:500; display:grid; place-content:center}
+  .fm-pills i:first-child{background:var(--ink); color:#fff}
+  .fm-chk{display:flex; gap:7px; align-items:flex-start; font-size:10px; line-height:1.32; margin-top:11px; color:var(--ink)}
+  .fm-chk i{flex:0 0 12px; height:12px; border-radius:3px; background:var(--ink); margin-top:1px; position:relative}
+  .fm-chk i::after{content:""; position:absolute; left:3px; top:2px; width:5px; height:3px; border:solid var(--yel); border-width:0 0 1.5px 1.5px; transform:rotate(-45deg)}
+  .fm-more{font-size:10.5px; color:var(--silver); margin-top:7px}
+  .fm-btn{margin-top:12px; height:34px; border-radius:9px; background:var(--yel); color:var(--ink); font-size:12px; font-weight:700; display:grid; place-content:center}
+  .fm-bar{position:absolute; left:10px; right:10px; bottom:10px; display:flex; gap:6px}
+  .fm-bar span{flex:1; min-width:0; height:36px; border-radius:980px; display:flex; align-items:center; justify-content:center; gap:5px; font-size:11px; font-weight:600; background:var(--ink); color:#fff; white-space:nowrap; overflow:hidden}
+  .fm-bar span.wa{background:#25d366; color:#063a1d}
+  .fm-bar span.rdv{background:#fff; color:var(--ink); box-shadow:inset 0 0 0 1.5px var(--ink)}
+  .fm-bar svg{width:13px; height:13px; flex:0 0 auto}
+
+  /* Récapitulatif */
+  .recap{border-top:1px solid var(--hair)}
+  .recap section{padding:18px 0; border-bottom:1px solid var(--hair)}
+  .recap h3{display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:16px; font-weight:600; letter-spacing:-.016em}
+  .recap h3 button{border:0; background:none; color:var(--yel-d); font-size:15px; font-weight:500; padding:4px 0}
+  .recap h3 button:hover{color:var(--ink)}
+  .recap dl{display:grid; gap:7px; margin-top:10px; font-size:15px; line-height:1.4}
+  .recap dl div{display:grid; grid-template-columns:minmax(0,2fr) minmax(0,3fr); gap:14px}
+  .recap dt{color:var(--graphite)}
+  .recap dd{font-weight:500; overflow-wrap:anywhere; white-space:pre-line}
+  @media (max-width:520px){ .recap dl div{grid-template-columns:1fr; gap:1px} }
+  .recap .empty{color:var(--silver); font-size:15px; margin-top:6px}
+  .msg{display:none; font-size:15px; border-radius:14px; padding:12px 14px}
+  .msg.ko{display:block; background:var(--red-soft); color:#8c1f1a}
+  .msg a{color:inherit}
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
+
+  /* Envoyé */
+  .done .check{width:72px; height:72px}
+  .check circle{fill:none; stroke:var(--ok); stroke-width:2.5; stroke-dasharray:214; stroke-dashoffset:214; animation:draw .9s var(--ease) forwards}
+  .check path{fill:none; stroke:var(--ok); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:40; stroke-dashoffset:40; animation:draw .55s .6s var(--ease) forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .done .h{margin-top:22px}
+  .next-l{list-style:none; display:grid; gap:10px; margin-top:28px}
+  .next-l li{display:flex; gap:14px; align-items:center; padding:14px 16px; border:1px solid var(--hair); border-radius:16px; font-size:15px; line-height:1.35; animation:up .7s var(--ease) both}
+  .next-l li:nth-child(1){animation-delay:.7s} .next-l li:nth-child(2){animation-delay:.8s} .next-l li:nth-child(3){animation-delay:.9s}
+  .next-l .ic{flex:0 0 auto; width:38px; height:38px; border-radius:50%; background:var(--ink); color:var(--yel); display:grid; place-content:center}
+  .next-l .ic svg{width:18px; height:18px}
+  .next-l b{display:block; font-weight:600}
+  .next-l small{display:block; color:var(--graphite); font-size:14px}
+
+  /* ---------- Navigation ---------- */
+  .nav{display:flex; align-items:center; gap:12px; margin-top:48px; padding-top:24px; border-top:1px solid var(--hair)}
+  .saved{flex:1; font-size:13px; color:var(--silver); text-align:center; opacity:0; transition:opacity .5s}
+  .saved.show{opacity:1}
+  .back{flex:0 0 auto; width:52px; height:52px; border-radius:50%; border:1px solid var(--hair-2); background:#fff; display:grid; place-content:center; transition:background .2s}
+  .back:hover{background:var(--sand)}
+  .back svg{width:20px; height:20px}
+  @media (max-width:959px){
+    .nav{position:fixed; left:0; right:0; bottom:0; z-index:25; margin:0; padding:12px 16px calc(12px + env(safe-area-inset-bottom)); background:#fff; border-top:1px solid var(--hair)}
+    .nav .flow{flex:1; justify-content:center}
+    .saved{display:none}
+  }
+
+  /* Bouton principal : pilule bordée, cercle noir qui se déploie au survol */
+  .flow{position:relative; overflow:hidden; isolation:isolate; display:inline-flex; align-items:center; justify-content:center; height:52px; padding:0 54px 0 28px; border:1.5px solid var(--ink); border-radius:980px; background:#fff; color:var(--ink);
+    font-size:16px; font-weight:600; white-space:nowrap; transition:border-radius .8s var(--ease), color .45s var(--ease)}
+  .flow .circle{position:absolute; left:50%; top:50%; z-index:-1; width:24px; height:24px; margin:-12px 0 0 -12px; border-radius:50%; background:var(--ink); transform:scale(0); transition:transform .8s var(--ease)}
+  .flow .lbl{transition:transform .8s var(--spring)}
+  .flow .ar{position:absolute; top:50%; width:18px; height:18px; margin-top:-9px; transition:transform .8s var(--ease), opacity .45s}
+  .flow .ar svg{width:18px; height:18px}
+  .flow .ar-r{right:22px}
+  .flow .ar-l{left:20px; opacity:0; transform:translateX(-36px); color:var(--yel)}
+  @media (hover:hover){
+    .flow:hover{border-radius:14px; color:#fff}
+    .flow:hover .circle{transform:scale(22)}
+    .flow:hover .lbl{transform:translateX(12px)}
+    .flow:hover .ar-r{opacity:0; transform:translateX(36px)}
+    .flow:hover .ar-l{opacity:1; transform:none}
+  }
+  @media (hover:none){ .flow{background:var(--ink); color:#fff} .flow .ar-r{color:var(--yel)} }
+  .flow:disabled{opacity:.6; cursor:default}
+
+  footer{text-align:center; color:var(--silver); font-size:13px; padding:28px 20px 120px}
+  @media (min-width:960px){ footer{padding:16px 20px 32px} }
+
+  @media (prefers-reduced-motion:reduce){
+    *, *::before, *::after{animation-duration:.01ms !important; animation-delay:0s !important; animation-iteration-count:1 !important; transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body class="intro">
+
+<header class="top">
+  <div class="top-in">
+    <span class="tlogo" data-logo></span>
+    <span class="tsep" aria-hidden="true"></span>
+    <span class="ttl">Votre nouveau site et vos publicités</span>
+    <span class="prog" aria-hidden="true"><span class="prog-t" id="stepname"></span><span class="segs" id="segs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span>
+  </div>
+</header>
+
+<div class="stage">
+  <div class="photo" id="photo"><div class="cap" id="cap"><p></p></div></div>
+
+  <main class="main">
+    <div class="inner">
+
+      <!-- Accueil -->
+      <section class="screen" id="intro" data-photo="accueil" data-cap="Plafonds, murs, sols&nbsp;: le site doit montrer le métier tel qu’il est.">
+        <div class="brand" data-logo></div>
+        <p class="with">Préparé avec LinkedIA</p>
+        <h1 class="h1" tabindex="-1"><span class="mask"><span>Refaisons</span></span><span class="mask"><span>votre site<span class="yl">.</span></span></span></h1>
+        <p class="lead">J’ai relu tout lk-platrerie.fr&nbsp;: vos métiers, vos textes, vos photos. Ce qui y figure déjà est <b>coché d’avance</b>&nbsp;: vous corrigez, vous enlevez, vous ajoutez. On prépare aussi vos publicités. Comptez une dizaine de minutes, tout s’enregistre au fur et à mesure.</p>
+        <div class="cta">
+          <button type="button" class="flow" id="start"><span class="circle"></span><i class="ar ar-l" data-i="arrow-r"></i><span class="lbl">Commencer</span><i class="ar ar-r" data-i="arrow-r"></i></button>
+          <span class="small" id="resumeNote">Vous pouvez vous arrêter et reprendre plus tard.</span>
+        </div>
+        <p class="path-h">Au programme</p>
+        <ol class="path" id="path">
+          <li><span class="ic" data-i="tools"></span>Vos métiers</li>
+          <li><span class="ic" data-i="pin"></span>Votre secteur</li>
+          <li><span class="ic" data-i="camera"></span>Vos chantiers</li>
+          <li><span class="ic" data-i="users"></span>Votre entreprise</li>
+          <li><span class="ic" data-i="palette"></span>Le style</li>
+          <li><span class="ic" data-i="layout"></span>Le contenu du site</li>
+          <li><span class="ic" data-i="megaphone"></span>Vos publicités</li>
+          <li><span class="ic" data-i="flag"></span>Pour finir</li>
+        </ol>
+      </section>
+
+      <form id="f" novalidate>
+
+        <!-- 1. Métiers -->
+        <section class="step" data-k="metiers" data-title="Vos métiers" data-photo="metiers" data-cap="Une bande bien faite ne se voit plus&nbsp;: c’est au site de montrer le travail.">
+          <p class="eyebrow">Vos métiers</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>Qu’est-ce qu’on montre de <span class="nw">votre métier&nbsp;?</span></span></span></h2>
+          <p class="lead">Tout ce qui figure sur votre site actuel est déjà coché. Décochez ce que vous ne faites plus, ajoutez le reste.</p>
+          <div class="qs">
+            <div class="q">
+              <span class="ql">Les travaux que vous réalisez</span>
+              <div class="cards c2" data-g="Travaux réalisés">
+                <label class="card"><input type="checkbox" name="prest" value="Plâtrerie et plaquisterie" checked><span class="ic" data-i="wall"></span><span class="t"><b>Plâtrerie et plaquisterie<span class="badge was">Site actuel</span></b><small>Cloisons, doublages, plafonds, rampants</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Isolation thermique" checked><span class="ic" data-i="thermo"></span><span class="t"><b>Isolation thermique<span class="badge was">Site actuel</span></b><small>Murs par l’intérieur, plafonds, combles</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Isolation acoustique" checked><span class="ic" data-i="sound"></span><span class="t"><b>Isolation acoustique<span class="badge was">Site actuel</span></b><small>Faux plafonds acoustiques, cloisons phoniques</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Aménagement de combles et de granges" checked><span class="ic" data-i="roof"></span><span class="t"><b>Combles et granges<span class="badge was">Site actuel</span></b><small>Une pièce de plus sous le toit</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Revêtements de sol" checked><span class="ic" data-i="floor"></span><span class="t"><b>Revêtements de sol<span class="badge was">Site actuel</span></b><small>Parquet massif, stratifié, vinyle, moquette</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Escaliers" checked><span class="ic" data-i="stairs"></span><span class="t"><b>Escaliers<span class="badge was">Site actuel</span></b><small>Habillage et rénovation des marches</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Peinture et revêtements muraux" checked><span class="ic" data-i="brush"></span><span class="t"><b>Peinture et murs<span class="badge was">Site actuel</span></b><small>Préparation, peinture, papier peint, décoration</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Carrelage mural et faïence" checked><span class="ic" data-i="tiles"></span><span class="t"><b>Carrelage mural<span class="badge was">Site actuel</span></b><small>Faïence de salle de bains et de cuisine</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Façades et enduits" checked><span class="ic" data-i="facade"></span><span class="t"><b>Façades et enduits<span class="badge was">Site actuel</span></b><small>Revêtement mural extérieur, ravalement</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="prest" value="Étude et maîtrise d’œuvre" checked><span class="ic" data-i="plan"></span><span class="t"><b>Étude et maîtrise d’œuvre<span class="badge was">Site actuel</span></b><small>Métré, descriptif, chiffrage, suivi de chantier</small></span><span class="tick"></span></label>
+                <label class="card wide"><input type="checkbox" name="prest" value="Autre"><span class="ic" data-i="plus"></span><span class="t"><b>Autre chose</b><small>Plafonds suspendus, cloisons coupe-feu, staff, menuiserie intérieure…</small></span><span class="tick"></span></label>
+              </div>
+              <label class="fld sub"><span>Précisez, si besoin</span><input type="text" id="prest_autre" data-l="Autres travaux" placeholder="ex. plafonds tendus, cloisons coupe-feu"></label>
+            </div>
+
+            <div class="q">
+              <span class="ql">Votre métier phare</span>
+              <p class="hint">Celui qu’on voit en premier en ouvrant le site, et sur lequel on met le paquet.</p>
+              <div class="chips" data-g="Métier phare">
+                <label class="chip" data-p="Plâtrerie et plaquisterie"><input type="radio" name="phare" value="Plâtrerie et plaquisterie" checked>Plâtrerie</label>
+                <label class="chip" data-p="Isolation thermique"><input type="radio" name="phare" value="Isolation thermique">Isolation thermique</label>
+                <label class="chip" data-p="Isolation acoustique"><input type="radio" name="phare" value="Isolation acoustique">Isolation acoustique</label>
+                <label class="chip" data-p="Aménagement de combles et de granges"><input type="radio" name="phare" value="Aménagement de combles et de granges">Combles et granges</label>
+                <label class="chip" data-p="Revêtements de sol"><input type="radio" name="phare" value="Revêtements de sol">Sols</label>
+                <label class="chip" data-p="Escaliers"><input type="radio" name="phare" value="Escaliers">Escaliers</label>
+                <label class="chip" data-p="Peinture et revêtements muraux"><input type="radio" name="phare" value="Peinture et revêtements muraux">Peinture et murs</label>
+                <label class="chip" data-p="Carrelage mural et faïence"><input type="radio" name="phare" value="Carrelage mural et faïence">Carrelage mural</label>
+                <label class="chip" data-p="Façades et enduits"><input type="radio" name="phare" value="Façades et enduits">Façades</label>
+                <label class="chip" data-p="Étude et maîtrise d’œuvre"><input type="radio" name="phare" value="Étude et maîtrise d’œuvre">Étude et maîtrise d’œuvre</label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Les clients que vous voulez attirer</span>
+              <p class="hint">Coché d’après votre site actuel&nbsp;: «&nbsp;reconnue par les architectes, maîtres d’œuvre et promoteurs&nbsp;», marchés publics et privés.</p>
+              <div class="chips" data-g="Clients visés">
+                <label class="chip"><input type="checkbox" name="cible" value="Particuliers en rénovation" checked>Particuliers en rénovation</label>
+                <label class="chip"><input type="checkbox" name="cible" value="Particuliers en construction neuve">Particuliers en construction neuve</label>
+                <label class="chip"><input type="checkbox" name="cible" value="Constructeurs de maisons">Constructeurs de maisons</label>
+                <label class="chip"><input type="checkbox" name="cible" value="Promoteurs" checked>Promoteurs</label>
+                <label class="chip"><input type="checkbox" name="cible" value="Architectes et maîtres d’œuvre" checked>Architectes et maîtres d’œuvre</label>
+                <label class="chip"><input type="checkbox" name="cible" value="Marchés publics" checked>Marchés publics</label>
+                <label class="chip"><input type="checkbox" name="cible" value="Commerces et bureaux">Commerces et bureaux</label>
+                <label class="chip"><input type="checkbox" name="cible" value="Syndics et bailleurs">Syndics et bailleurs</label>
+              </div>
+            </div>
+
+            <label class="fld"><span>Les demandes que vous ne voulez plus recevoir</span><input type="text" id="refus" data-l="Demandes à éviter" placeholder="ex. petites retouches, chantiers à plus d’une heure"></label>
+          </div>
+        </section>
+
+        <!-- 2. Secteur -->
+        <section class="step" data-k="secteur" data-title="Votre secteur" data-photo="secteur" data-cap="Le bon chantier, c’est aussi celui qui n’est pas à une heure de route.">
+          <p class="eyebrow">Votre secteur</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>Où sont vos chantiers <span class="nw">aujourd’hui&nbsp;?</span></span></span></h2>
+          <div class="qs">
+            <p class="note info"><i data-i="info"></i><span>Votre site parle encore de <b>Brunstatt et de Mulhouse</b>, mais votre siège est à <b>Saint-Maurice-de-Beynost</b> (Ain) depuis le 17&nbsp;juin 2026. Le nouveau site doit viser le bon secteur.</span></p>
+
+            <div class="q">
+              <span class="ql">D’où partent vos équipes&nbsp;?</span>
+              <div class="cards" data-g="Base des équipes">
+                <label class="card"><input type="radio" name="base" value="Saint-Maurice-de-Beynost (Ain)" checked><span class="ic" data-i="pin"></span><span class="t"><b>Saint-Maurice-de-Beynost<span class="badge reg">Siège depuis juin 2026</span></b><small>Ain, sur la Côtière, à 15&nbsp;km de Lyon</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="base" value="Brunstatt (Haut-Rhin)"><span class="ic" data-i="pin"></span><span class="t"><b>Brunstatt<span class="badge was">Site actuel</span></b><small>Haut-Rhin, aux portes de Mulhouse</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="base" value="Les deux secteurs"><span class="ic" data-i="route"></span><span class="t"><b>Les deux secteurs</b><small>Des chantiers dans l’Ain et autour de Lyon, d’autres en Alsace</small></span><span class="tick"></span></label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Votre rayon d’intervention</span>
+              <div class="amount"><output id="rayonOut">30&nbsp;km</output><span id="rayonSub">autour de votre base</span></div>
+              <div class="range"><input type="range" id="rayon_range" min="5" max="60" step="5" value="30" aria-label="Rayon d’intervention en kilomètres"></div>
+              <div class="range-l"><span>5&nbsp;km</span><span>60&nbsp;km</span></div>
+              <input type="hidden" id="rayon_val" data-l="Rayon d’intervention">
+              <div class="radar" aria-hidden="true">
+                <div class="radar-h"><b><i></i><span id="mapName">Saint-Maurice-de-Beynost</span></b><span class="tabs" id="mapTabs" hidden><button type="button" data-map="lyon" aria-pressed="true">Ain · Lyon</button><button type="button" data-map="als" aria-pressed="false">Alsace</button></span></div>
+                <div class="radar-in">
+                  <svg viewBox="-150 -150 300 300" id="map">
+                    <g id="mapRivers"></g>
+                    <circle class="ring" r="34.5"/><circle class="ring" r="69"/><circle class="ring" r="103.5"/><circle class="ring" r="138"/>
+                    <text class="ring-l" text-anchor="end" x="-3" y="-36">15 km</text><text class="ring-l" text-anchor="end" x="-3" y="-71">30 km</text><text class="ring-l" text-anchor="end" x="-3" y="-105.5">45 km</text><text class="ring-l" text-anchor="end" x="-3" y="-140">60 km</text>
+                    <circle class="rz" id="rz" r="138"/>
+                    <g id="mapTowns"></g>
+                    <circle class="pin" r="5.5"/><circle class="pin-c" r="1.8"/>
+                  </svg>
+                </div>
+                <p class="dots-cap" id="zoneCap"></p>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Les villes à citer sur le site</span>
+              <p class="hint">Ce sont elles que Google associera à votre nom. Cochez celles où vous voulez des chantiers.</p>
+              <div class="chips" data-g="Villes citées" id="cities">
+                <label class="chip" data-zone="lyon" data-t="Saint-Maurice-de-Beynost"><input type="checkbox" name="ville" value="Saint-Maurice-de-Beynost" checked>Saint-Maurice-de-Beynost</label>
+                <label class="chip" data-zone="lyon" data-t="Miribel"><input type="checkbox" name="ville" value="Miribel">Miribel</label>
+                <label class="chip" data-zone="lyon" data-t="Beynost"><input type="checkbox" name="ville" value="Beynost">Beynost</label>
+                <label class="chip" data-zone="lyon" data-t="Montluel"><input type="checkbox" name="ville" value="Montluel">Montluel</label>
+                <label class="chip" data-zone="lyon" data-t="Neyron"><input type="checkbox" name="ville" value="Neyron">Neyron</label>
+                <label class="chip" data-zone="lyon" data-t="Dagneux"><input type="checkbox" name="ville" value="Dagneux">Dagneux</label>
+                <label class="chip" data-zone="lyon" data-t="Rillieux-la-Pape"><input type="checkbox" name="ville" value="Rillieux-la-Pape">Rillieux-la-Pape</label>
+                <label class="chip" data-zone="lyon" data-t="Lyon"><input type="checkbox" name="ville" value="Lyon">Lyon</label>
+                <label class="chip" data-zone="lyon" data-t="Villeurbanne"><input type="checkbox" name="ville" value="Villeurbanne">Villeurbanne</label>
+                <label class="chip" data-zone="lyon" data-t="Vaulx-en-Velin"><input type="checkbox" name="ville" value="Vaulx-en-Velin">Vaulx-en-Velin</label>
+                <label class="chip" data-zone="lyon" data-t="Décines-Charpieu"><input type="checkbox" name="ville" value="Décines-Charpieu">Décines-Charpieu</label>
+                <label class="chip" data-zone="lyon" data-t="Meyzieu"><input type="checkbox" name="ville" value="Meyzieu">Meyzieu</label>
+                <label class="chip" data-zone="lyon" data-t="Caluire-et-Cuire"><input type="checkbox" name="ville" value="Caluire-et-Cuire">Caluire-et-Cuire</label>
+                <label class="chip" data-zone="lyon" data-t="Bron"><input type="checkbox" name="ville" value="Bron">Bron</label>
+                <label class="chip" data-zone="lyon" data-t="Genas"><input type="checkbox" name="ville" value="Genas">Genas</label>
+                <label class="chip" data-zone="lyon" data-t="Meximieux"><input type="checkbox" name="ville" value="Meximieux">Meximieux</label>
+                <label class="chip" data-zone="lyon"><input type="checkbox" name="ville" value="Toute la Côtière de l’Ain">Toute la Côtière de l’Ain</label>
+                <label class="chip" data-zone="lyon"><input type="checkbox" name="ville" value="Tout l’Est lyonnais">Tout l’Est lyonnais</label>
+                <label class="chip" data-zone="als" data-t="Brunstatt-Didenheim"><input type="checkbox" name="ville" value="Brunstatt-Didenheim" checked>Brunstatt-Didenheim</label>
+                <label class="chip" data-zone="als" data-t="Mulhouse"><input type="checkbox" name="ville" value="Mulhouse" checked>Mulhouse</label>
+                <label class="chip" data-zone="als" data-t="Riedisheim"><input type="checkbox" name="ville" value="Riedisheim">Riedisheim</label>
+                <label class="chip" data-zone="als" data-t="Rixheim"><input type="checkbox" name="ville" value="Rixheim">Rixheim</label>
+                <label class="chip" data-zone="als" data-t="Illzach"><input type="checkbox" name="ville" value="Illzach">Illzach</label>
+                <label class="chip" data-zone="als" data-t="Kingersheim"><input type="checkbox" name="ville" value="Kingersheim">Kingersheim</label>
+                <label class="chip" data-zone="als" data-t="Wittenheim"><input type="checkbox" name="ville" value="Wittenheim">Wittenheim</label>
+                <label class="chip" data-zone="als" data-t="Pfastatt"><input type="checkbox" name="ville" value="Pfastatt">Pfastatt</label>
+                <label class="chip" data-zone="als" data-t="Altkirch"><input type="checkbox" name="ville" value="Altkirch">Altkirch</label>
+                <label class="chip" data-zone="als" data-t="Cernay"><input type="checkbox" name="ville" value="Cernay">Cernay</label>
+                <label class="chip" data-zone="als" data-t="Thann"><input type="checkbox" name="ville" value="Thann">Thann</label>
+                <label class="chip" data-zone="als" data-t="Guebwiller"><input type="checkbox" name="ville" value="Guebwiller">Guebwiller</label>
+                <label class="chip" data-zone="als" data-t="Saint-Louis"><input type="checkbox" name="ville" value="Saint-Louis">Saint-Louis</label>
+                <label class="chip" data-zone="als" data-t="Colmar"><input type="checkbox" name="ville" value="Colmar">Colmar</label>
+                <label class="chip" data-zone="als"><input type="checkbox" name="ville" value="Le Sundgau">Le Sundgau</label>
+                <label class="chip" data-zone="als"><input type="checkbox" name="ville" value="Tout le Haut-Rhin">Tout le Haut-Rhin</label>
+              </div>
+              <button type="button" class="mini-btn" id="pickCities"><i data-i="target"></i><span>Cocher les villes de mon rayon</span></button>
+            </div>
+
+            <div class="q" id="germanQ" hidden>
+              <span class="ql">Une version du site en allemand, pour la Suisse et l’Allemagne voisines&nbsp;?</span>
+              <div class="seg" data-g="Version en allemand">
+                <label><input type="radio" name="allemand" value="Non">Non</label>
+                <label><input type="radio" name="allemand" value="Oui">Oui</label>
+                <label><input type="radio" name="allemand" value="À voir">À voir</label>
+              </div>
+            </div>
+
+            <label class="fld"><span>Une remarque sur votre secteur&nbsp;?</span><input type="text" id="secteur_note" data-l="Remarque sur le secteur" placeholder="ex. je garde quelques clients en Alsace"></label>
+          </div>
+        </section>
+
+        <!-- 3. Chantiers -->
+        <section class="step" data-k="chantiers" data-title="Vos chantiers" data-photo="chantiers" data-cap="Vos photos de chantier valent mieux que n’importe quelle image de banque.">
+          <p class="eyebrow">Vos chantiers</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>Comment montrer <span class="nw">vos chantiers&nbsp;?</span></span></span></h2>
+          <div class="qs">
+            <div class="q">
+              <span class="ql">Un chantier, du début à la fin</span>
+              <div class="etapes" id="etapes" aria-hidden="true">
+                <img src="img/e1.webp" alt="" class="on" decoding="async"><img src="img/e2.webp" alt="" decoding="async"><img src="img/e3.webp" alt="" decoding="async">
+                <span class="et-n" id="etN">Étape 1 sur 3</span>
+              </div>
+              <div class="et-tabs" id="etTabs">
+                <button type="button" aria-pressed="true"><small>Étape 1</small>Ossature et isolant</button>
+                <button type="button" aria-pressed="false"><small>Étape 2</small>Plaques</button>
+                <button type="button" aria-pressed="false"><small>Étape 3</small>Bandes et finitions</button>
+              </div>
+              <p class="dots-cap">Une de vos cloisons, photographiée à trois moments. Sur le site, ça montre le savoir-faire mieux qu’un long texte.</p>
+            </div>
+
+            <div class="q">
+              <span class="ql">Sur le site, vos chantiers sont présentés…</span>
+              <div class="cards" data-g="Présentation des chantiers">
+                <label class="card"><input type="radio" name="presentation" value="Chantier par chantier, avec les étapes"><span class="ic" data-i="layers"></span><span class="t"><b>Chantier par chantier, avec les étapes<span class="badge">Conseillé</span></b><small>Une fiche par chantier&nbsp;: la commune, les travaux, de 3 à 8 photos.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="presentation" value="En galerie, par métier"><span class="ic" data-i="grid"></span><span class="t"><b>En galerie, par métier<span class="badge was">Comme aujourd’hui</span></b><small>Isolation, plâtrerie, sols, murs&nbsp;: une galerie par rubrique.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="presentation" value="En avant / après"><span class="ic" data-i="compare"></span><span class="t"><b>En avant / après</b><small>Deux photos l’une sur l’autre, on glisse pour comparer.</small></span><span class="tick"></span></label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Les photos de votre site actuel</span>
+              <p class="hint">Près de 80 photos, prises entre 2019 et 2023.</p>
+              <div class="seg" data-g="Photos du site actuel">
+                <label><input type="radio" name="anciennes" value="On garde les meilleures">Les meilleures</label>
+                <label><input type="radio" name="anciennes" value="On garde tout">Tout</label>
+                <label><input type="radio" name="anciennes" value="On repart de zéro">Aucune</label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Des photos plus récentes&nbsp;?</span>
+              <div class="chips" data-g="Photos récentes">
+                <label class="chip"><input type="radio" name="recentes" value="Oui, plein sur mon téléphone">Oui, plein sur mon téléphone</label>
+                <label class="chip"><input type="radio" name="recentes" value="Quelques-unes">Quelques-unes</label>
+                <label class="chip"><input type="radio" name="recentes" value="Pas vraiment, il faudra en faire">Pas vraiment, il faudra en faire</label>
+              </div>
+              <span class="ql sm">Pour me les envoyer</span>
+              <div class="chips" data-g="Envoi des photos">
+                <label class="chip"><input type="radio" name="envoi" value="WhatsApp">WhatsApp</label>
+                <label class="chip"><input type="radio" name="envoi" value="Google Photos">Google Photos</label>
+                <label class="chip"><input type="radio" name="envoi" value="E-mail ou WeTransfer">E-mail ou WeTransfer</label>
+                <label class="chip"><input type="radio" name="envoi" value="Clé USB">Clé USB</label>
+              </div>
+              <p class="note">Des photos de téléphone suffisent, même prises vite entre deux tâches&nbsp;: je recadre et je règle la lumière.</p>
+            </div>
+
+            <div class="q">
+              <span class="ql">Sous chaque chantier, on indique</span>
+              <div class="chips" data-g="Infos par chantier">
+                <label class="chip"><input type="checkbox" name="infos" value="La commune" checked>La commune</label>
+                <label class="chip"><input type="checkbox" name="infos" value="Les travaux réalisés" checked>Les travaux réalisés</label>
+                <label class="chip"><input type="checkbox" name="infos" value="La surface">La surface</label>
+                <label class="chip"><input type="checkbox" name="infos" value="La durée">La durée</label>
+                <label class="chip"><input type="checkbox" name="infos" value="Les matériaux">Les matériaux</label>
+                <label class="chip"><input type="checkbox" name="infos" value="Le type de client">Le type de client</label>
+                <label class="chip"><input type="checkbox" name="infos" value="Un mot du client">Un mot du client</label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Entreprise -->
+        <section class="step" data-k="entreprise" data-title="Votre entreprise" data-photo="entreprise" data-cap="Derrière un plafond bien droit, il y a une équipe qui connaît ses DTU.">
+          <p class="eyebrow">Votre entreprise</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>Qu’est-ce qui fait <span class="nw">la différence LK&nbsp;?</span></span></span></h2>
+          <div class="qs">
+            <div class="q">
+              <span class="ql">Qui présente-t-on sur la page Entreprise&nbsp;?</span>
+              <p class="hint">Sur le site actuel&nbsp;: «&nbsp;dirigée par Mr Llabjani&nbsp;». Au registre du commerce&nbsp;: Laurent Halimi, président.</p>
+              <div class="cards c2" data-g="Présenté sur la page Entreprise">
+                <label class="card"><input type="radio" name="dirigeant" value="Laurent Halimi, président"><span class="ic" data-i="user"></span><span class="t"><b>Laurent Halimi<span class="badge reg">Au registre</span></b><small>Président</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="dirigeant" value="M. Llabjani, comme aujourd’hui"><span class="ic" data-i="user"></span><span class="t"><b>M. Llabjani<span class="badge was">Site actuel</span></b><small>Comme aujourd’hui</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="dirigeant" value="Les deux"><span class="ic" data-i="users"></span><span class="t"><b>Les deux</b><small>Chacun avec son rôle</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="dirigeant" value="Pas de nom, on parle de l’équipe"><span class="ic" data-i="team"></span><span class="t"><b>Pas de nom</b><small>On parle de l’équipe</small></span><span class="tick"></span></label>
+              </div>
+            </div>
+
+            <label class="fld"><span>Votre parcours, en deux ou trois phrases</span><small>C’est le fil du site actuel&nbsp;: gardez-le, ou racontez-le autrement.</small><textarea id="parcours" data-l="Parcours à raconter" placeholder="Plâtrier de métier, puis économiste de la construction, conducteur de travaux et maître d’œuvre…"></textarea></label>
+
+            <div class="q">
+              <span class="ql">Vos chiffres clés</span>
+              <p class="hint">Laissez à zéro ce que vous ne voulez pas afficher.</p>
+              <div class="caps">
+                <div class="capr"><span><i data-i="calendar"></i>Année de création</span><div class="stp" data-step="1"><button type="button" class="stp-b" data-d="-1" aria-label="Un an de moins"></button><input type="number" id="k_annee" min="0" inputmode="numeric" value="2019" data-l="Année de création" aria-label="Année de création"><button type="button" class="stp-b" data-d="1" aria-label="Un an de plus"></button></div></div>
+                <div class="capr"><span><i data-i="users"></i>Équipes sur les chantiers</span><div class="stp" data-step="1"><button type="button" class="stp-b" data-d="-1" aria-label="Une équipe de moins"></button><input type="number" id="k_equipes" min="0" inputmode="numeric" value="4" data-l="Équipes" aria-label="Nombre d’équipes"><button type="button" class="stp-b" data-d="1" aria-label="Une équipe de plus"></button></div></div>
+                <div class="capr"><span><i data-i="user"></i>Personnes en tout</span><div class="stp" data-step="1"><button type="button" class="stp-b" data-d="-1" aria-label="Une personne de moins"></button><input type="number" id="k_pers" min="0" inputmode="numeric" placeholder="0" data-l="Personnes dans l’entreprise" aria-label="Nombre de personnes"><button type="button" class="stp-b" data-d="1" aria-label="Une personne de plus"></button></div></div>
+                <div class="capr"><span><i data-i="house"></i>Chantiers réalisés</span><div class="stp" data-step="10"><button type="button" class="stp-b" data-d="-1" aria-label="Dix chantiers de moins"></button><input type="number" id="k_chantiers" min="0" inputmode="numeric" placeholder="0" data-l="Chantiers réalisés" aria-label="Nombre de chantiers réalisés"><button type="button" class="stp-b" data-d="1" aria-label="Dix chantiers de plus"></button></div></div>
+                <div class="capr"><span><i data-i="tools"></i>Vos années de métier</span><div class="stp" data-step="1"><button type="button" class="stp-b" data-d="-1" aria-label="Un an de moins"></button><input type="number" id="k_metier" min="0" inputmode="numeric" placeholder="0" data-l="Années de métier" aria-label="Années de métier"><button type="button" class="stp-b" data-d="1" aria-label="Un an de plus"></button></div></div>
+              </div>
+              <p class="kpis-l">Aperçu sur le site</p>
+              <div class="kpis" id="kpis" aria-hidden="true"></div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Ce qui vous distingue</span>
+              <p class="hint">Les six premiers viennent de votre site actuel.</p>
+              <div class="chips" data-g="Atouts">
+                <label class="chip"><input type="checkbox" name="atouts" value="Bureau d’études intégré (devis, plans, suivi)" checked>Bureau d’études intégré</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Plâtrier de métier devenu maître d’œuvre" checked>Plâtrier devenu maître d’œuvre</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Des équipes qualifiées" checked>Des équipes qualifiées</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Marchés publics et privés" checked>Marchés publics et privés</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Reconnu par les architectes et promoteurs" checked>Reconnu par les architectes</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Normes, DTU et prescriptions fabricants respectés" checked>Normes et DTU respectés</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Devis détaillé et gratuit">Devis détaillé et gratuit</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Délais tenus">Délais tenus</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Chantier propre">Chantier propre</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Un seul interlocuteur">Un seul interlocuteur</label>
+                <label class="chip"><input type="checkbox" name="atouts" value="Garantie décennale">Garantie décennale</label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Votre qualification RGE</span>
+              <p class="hint">L’annuaire officiel des entreprises indique que LK Plâtrerie est RGE.</p>
+              <div class="seg" data-g="RGE">
+                <label><input type="radio" name="rge" value="Oui, à jour">Oui, à jour</label>
+                <label><input type="radio" name="rge" value="Plus maintenant">Plus maintenant</label>
+                <label><input type="radio" name="rge" value="Je ne sais plus">Je ne sais plus</label>
+              </div>
+              <p class="note ok" id="rgeNote" hidden>On l’affiche, et la page Isolation peut expliquer les aides auxquelles vos clients ont droit (MaPrimeRénov’, primes énergie).</p>
+            </div>
+
+            <div class="q">
+              <span class="ql">Des visages sur le site&nbsp;?</span>
+              <p class="hint">Pour un artisan, un visage rassure plus qu’un logo.</p>
+              <div class="chips" data-g="Photos de personnes">
+                <label class="chip"><input type="radio" name="visages" value="Votre photo et votre parcours">Votre photo</label>
+                <label class="chip"><input type="radio" name="visages" value="Une photo de l’équipe">L’équipe</label>
+                <label class="chip"><input type="radio" name="visages" value="Seulement les chantiers">Seulement les chantiers</label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Style -->
+        <section class="step" data-k="style" data-title="Le style" data-photo="style" data-cap="Le site doit vous ressembler, pas ressembler à tous les autres.">
+          <p class="eyebrow">Le style</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>À quoi doit ressembler <span class="nw">le site&nbsp;?</span></span></span></h2>
+          <p class="lead">Quatre directions, dessinées avec vos photos. Ce n’est pas encore le site&nbsp;: juste l’ambiance.</p>
+          <div class="qs">
+            <div class="styles" data-g="Style choisi">
+              <label class="sty"><input type="radio" name="style" value="A · Noir et jaune">
+                <span class="ms ms-a" aria-hidden="true"><img src="img/s-cloison2.webp" alt="">
+                  <span class="ms-nav"><i class="ms-logo"></i><em>LK PLÂTRERIE</em><span class="ms-links"><i></i><i></i><i></i></span><span class="ms-btn">Devis</span></span>
+                  <span class="ms-hero"><span class="ms-k">Plafonds · Murs · Sols</span><span class="ms-h">Plâtrerie<br>&amp; isolation</span><span class="ms-cta">Demander un devis</span></span>
+                </span>
+                <span class="t"><b>A · Noir et jaune</b><small>Les couleurs de votre logo et de vos t-shirts. Fort&nbsp;: on retient LK tout de suite.</small><span class="tick"></span></span>
+              </label>
+              <label class="sty"><input type="radio" name="style" value="B · Blanc plâtre">
+                <span class="ms ms-b" aria-hidden="true"><img src="img/s-parquet.webp" alt="">
+                  <span class="ms-nav"><i class="ms-logo"></i><em>LK PLÂTRERIE</em><span class="ms-links"><i></i><i></i><i></i></span><span class="ms-btn">Devis</span></span>
+                  <span class="ms-hero"><span class="ms-k">● LK Plâtrerie</span><span class="ms-h">Des intérieurs finis au millimètre.</span><span class="ms-cta">Voir nos chantiers</span></span>
+                </span>
+                <span class="t"><b>B · Blanc plâtre</b><small>Beaucoup d’air, de grandes photos, le jaune en touche. Élégant, parle aux particuliers.</small><span class="tick"></span></span>
+              </label>
+              <label class="sty"><input type="radio" name="style" value="C · Bureau d’études">
+                <span class="ms ms-c" aria-hidden="true"><img src="img/s-acoustique.webp" alt="">
+                  <span class="ms-nav"><i class="ms-logo"></i><em>LK PLÂTRERIE</em><span class="ms-links"><i></i><i></i><i></i></span><span class="ms-btn">Devis</span></span>
+                  <span class="ms-hero"><span class="ms-k">Bureau d’études intégré</span><span class="ms-h">Étudié, chiffré, posé.</span><span class="ms-dim"><em>4,20 m</em></span><span class="ms-cta">Nous consulter</span></span>
+                </span>
+                <span class="t"><b>C · Bureau d’études</b><small>Bleu nuit, traits de plan et cotes. Sérieux, pour les architectes et les marchés publics.</small><span class="tick"></span></span>
+              </label>
+              <label class="sty"><input type="radio" name="style" value="D · Chaleureux">
+                <span class="ms ms-d" aria-hidden="true"><img src="img/s-grange.webp" alt="">
+                  <span class="ms-nav"><i class="ms-logo"></i><em>LK PLÂTRERIE</em><span class="ms-links"><i></i><i></i><i></i></span><span class="ms-btn">Devis</span></span>
+                  <span class="ms-hero"><span class="ms-k">Rénovation intérieure</span><span class="ms-h">Votre maison, en mieux.</span><span class="ms-cta">Parlons de votre projet</span></span>
+                </span>
+                <span class="t"><b>D · Chaleureux</b><small>Tons sable et bois, formes arrondies. Doux, pour la rénovation de maisons.</small><span class="tick"></span></span>
+              </label>
+            </div>
+            <label class="fld"><span>Un commentaire sur votre choix&nbsp;?</span><input type="text" id="style_note" data-l="Commentaire sur le style" placeholder="ex. le A, mais avec plus de blanc"></label>
+
+            <div class="q">
+              <span class="ql">Votre logo</span>
+              <div class="logo-q"><img src="img/logo.png" alt="Logo actuel de LK Plâtrerie"><span>Sur le site actuel, votre logo n’existe qu’en petite image (225&nbsp;pixels). Pour un camion, un panneau de chantier ou un t-shirt, il faut une version nette à toutes les tailles.</span></div>
+              <div class="cards" data-g="Logo">
+                <label class="card"><input type="radio" name="logo" value="On le redessine au propre"><span class="ic" data-i="pen"></span><span class="t"><b>On le redessine au propre<span class="badge">Conseillé</span></b><small>Même dessin, même jaune, en version vectorielle.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="logo" value="J’ai le fichier d’origine"><span class="ic" data-i="file"></span><span class="t"><b>J’ai le fichier d’origine</b><small>Je vous l’envoie, on l’utilise tel quel.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="logo" value="On le garde tel quel"><span class="ic" data-i="check"></span><span class="t"><b>On le garde tel quel</b><small>L’image actuelle suffit pour le site.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="radio" name="logo" value="Un nouveau logo"><span class="ic" data-i="sparkle"></span><span class="t"><b>Un nouveau logo</b><small>On repart d’une page blanche.</small></span><span class="tick"></span></label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Les couleurs</span>
+              <div class="seg" data-g="Couleurs">
+                <label><input type="radio" name="couleurs" value="Le jaune et le noir du logo">Jaune et noir</label>
+                <label><input type="radio" name="couleurs" value="Autre chose">Autre chose</label>
+                <label><input type="radio" name="couleurs" value="Je vous fais confiance">Je vous fais confiance</label>
+              </div>
+            </div>
+
+            <div class="grid2">
+              <label class="fld"><span>Un site que vous trouvez réussi</span><input type="text" id="site_aime" data-l="Site apprécié" placeholder="un concurrent, ou n’importe quel secteur"></label>
+              <label class="fld"><span>Ce que vous ne voulez surtout pas</span><input type="text" id="pas_ca" data-l="À éviter" placeholder="ex. trop de texte, des photos de banque"></label>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Contenu du site -->
+        <section class="step" data-k="site" data-title="Le contenu du site" data-photo="site" data-cap="Une page par métier&nbsp;: c’est comme ça qu’on vous trouve sur Google.">
+          <p class="eyebrow">Le contenu du site</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>Qu’est-ce qu’on <span class="nw">met dedans&nbsp;?</span></span></span></h2>
+          <div class="qs">
+            <div class="q">
+              <span class="ql">Les pages</span>
+              <p class="hint">L’accueil, le contact et les mentions légales sont prévus d’office.</p>
+              <div class="cards c2" data-g="Pages">
+                <label class="card wide"><input type="checkbox" name="pages" value="Une page par métier" checked><span class="ic" data-i="layers"></span><span class="t"><b>Une page par métier<span class="badge">Conseillé</span></b><small>C’est ce qui vous fait remonter sur Google pour «&nbsp;plaquiste Miribel&nbsp;» ou «&nbsp;isolation intérieure Lyon&nbsp;».</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="pages" value="Nos réalisations" checked><span class="ic" data-i="camera"></span><span class="t"><b>Nos réalisations<span class="badge was">Site actuel</span></b><small>Vos chantiers en photos.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="pages" value="L’entreprise" checked><span class="ic" data-i="users"></span><span class="t"><b>L’entreprise<span class="badge was">Site actuel</span></b><small>Votre parcours, l’équipe, la méthode.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="pages" value="Bureau d’études et maîtrise d’œuvre"><span class="ic" data-i="plan"></span><span class="t"><b>Bureau d’études</b><small>Pour qui veut un projet étudié, chiffré et suivi.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="pages" value="Espace professionnels"><span class="ic" data-i="brief"></span><span class="t"><b>Espace professionnels</b><small>Références, attestations, capacité des équipes.</small></span><span class="tick"></span></label>
+                <label class="card" id="pageAides"><input type="checkbox" name="pages" value="Les aides à l’isolation"><span class="ic" data-i="euro"></span><span class="t"><b>Les aides à l’isolation</b><small>Expliquées simplement, puisque vous êtes RGE.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="pages" value="Avis clients"><span class="ic" data-i="star"></span><span class="t"><b>Avis clients</b><small>Vos avis Google, affichés sur le site.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="pages" value="Recrutement"><span class="ic" data-i="userplus"></span><span class="t"><b>Recrutement</b><small>Plaquistes, peintres, apprentis.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="pages" value="Questions fréquentes"><span class="ic" data-i="help"></span><span class="t"><b>Questions fréquentes</b><small>Délais, déroulé d’un chantier, aides&nbsp;: ce qu’on vous demande au téléphone.</small></span><span class="tick"></span></label>
+              </div>
+              <div class="tree" id="tree" aria-hidden="true"></div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Le formulaire de demande de devis</span>
+              <p class="hint">Moins il y a de champs, plus vous recevez de demandes. Votre site actuel demande le nom, l’e-mail, le téléphone et un message.</p>
+              <div class="chips" data-g="Champs du formulaire">
+                <label class="chip"><input type="checkbox" name="champs" value="Nom" checked>Nom</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Téléphone" checked>Téléphone</label>
+                <label class="chip"><input type="checkbox" name="champs" value="E-mail" checked>E-mail</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Commune du chantier">Commune du chantier</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Type de travaux">Type de travaux</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Surface approximative">Surface approximative</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Particulier ou professionnel">Particulier ou pro</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Délai souhaité">Délai souhaité</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Photos du chantier">Photos du chantier</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Plans (pour les pros)">Plans (pour les pros)</label>
+                <label class="chip"><input type="checkbox" name="champs" value="Message" checked>Message</label>
+              </div>
+              <span class="ql sm">Les boutons pour vous joindre</span>
+              <div class="chips" data-g="Boutons de contact">
+                <label class="chip"><input type="checkbox" name="boutons" value="Appeler, toujours visible sur téléphone" checked>Appeler, toujours visible</label>
+                <label class="chip"><input type="checkbox" name="boutons" value="WhatsApp, pour recevoir des photos">WhatsApp</label>
+                <label class="chip"><input type="checkbox" name="boutons" value="Prendre rendez-vous pour un métré">Rendez-vous pour un métré</label>
+              </div>
+              <div class="phone" aria-hidden="true"><div class="phone-in" id="fm"></div></div>
+              <p class="note warn fx" id="isoNote" hidden><i data-i="info"></i><span><b>Isolation thermique&nbsp;:</b> la loi interdit de rappeler quelqu’un qui a seulement laissé son numéro. Le formulaire lui fait donc demander une visite technique, ce qui vous autorise à l’appeler pour l’organiser. C’est prévu dans l’aperçu.</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Publicités -->
+        <section class="step" data-k="pubs" data-title="Vos publicités" data-photo="pubs" data-cap="La pub montre vos chantiers aux propriétaires de votre secteur, pas à toute la France.">
+          <p class="eyebrow">Vos publicités</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>Que doit vous apporter <span class="nw">la publicité&nbsp;?</span></span></span></h2>
+          <p class="lead">Facebook et Instagram, montrés seulement aux gens de votre secteur. Les visuels, c’est moi qui les fais&nbsp;: avec vos photos, et avec l’IA quand c’est utile.</p>
+          <div class="qs">
+            <div class="q">
+              <span class="ql">L’objectif</span>
+              <div class="cards" data-g="Objectif des publicités">
+                <label class="card"><input type="checkbox" name="objectif" value="Des demandes de devis"><span class="ic" data-i="target"></span><span class="t"><b>Des demandes de devis</b><small>Des particuliers de votre secteur qui ont un projet.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="objectif" value="Se faire connaître dans le secteur"><span class="ic" data-i="eye"></span><span class="t"><b>Se faire connaître</b><small id="objNew">Utile quand on s’installe dans un nouveau secteur.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="objectif" value="Recruter"><span class="ic" data-i="userplus"></span><span class="t"><b>Recruter</b><small>Plaquistes, peintres, apprentis.</small></span><span class="tick"></span></label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Les travaux à mettre en pub</span>
+              <p class="hint">Un ou deux pour démarrer&nbsp;: on concentre le budget, on mesure, puis on élargit.</p>
+              <div class="chips" data-g="Travaux en pub">
+                <label class="chip" data-p="Plâtrerie et plaquisterie"><input type="checkbox" name="pubtrav" value="Plâtrerie et plaquisterie">Plâtrerie</label>
+                <label class="chip" data-p="Isolation thermique"><input type="checkbox" name="pubtrav" value="Isolation thermique">Isolation thermique</label>
+                <label class="chip" data-p="Isolation acoustique"><input type="checkbox" name="pubtrav" value="Isolation acoustique">Isolation acoustique</label>
+                <label class="chip" data-p="Aménagement de combles et de granges"><input type="checkbox" name="pubtrav" value="Aménagement de combles et de granges">Combles et granges</label>
+                <label class="chip" data-p="Revêtements de sol"><input type="checkbox" name="pubtrav" value="Revêtements de sol">Sols</label>
+                <label class="chip" data-p="Escaliers"><input type="checkbox" name="pubtrav" value="Escaliers">Escaliers</label>
+                <label class="chip" data-p="Peinture et revêtements muraux"><input type="checkbox" name="pubtrav" value="Peinture et revêtements muraux">Peinture et murs</label>
+                <label class="chip" data-p="Carrelage mural et faïence"><input type="checkbox" name="pubtrav" value="Carrelage mural et faïence">Carrelage mural</label>
+                <label class="chip" data-p="Façades et enduits"><input type="checkbox" name="pubtrav" value="Façades et enduits">Façades</label>
+                <label class="chip" data-p="Étude et maîtrise d’œuvre"><input type="checkbox" name="pubtrav" value="Étude et maîtrise d’œuvre">Étude et maîtrise d’œuvre</label>
+              </div>
+            </div>
+
+            <div class="adprev" aria-hidden="true">
+              <p class="prev-l">Aperçu de votre carrousel</p>
+              <div class="ig">
+                <div class="ig-h"><span class="ig-av"><img src="img/logo.png" alt=""></span><span class="ig-who"><b>lk_platrerie</b><small>Sponsorisé</small></span><span class="ig-more"><i></i><i></i><i></i></span></div>
+                <div class="ig-view">
+                  <div class="ig-track" id="igTrack"></div>
+                  <span class="ig-n" id="igN">1/1</span>
+                  <button type="button" class="ig-arr l" id="igPrev" tabindex="-1" aria-label="Image précédente"><i data-i="chev-l"></i></button>
+                  <button type="button" class="ig-arr r" id="igNext" tabindex="-1" aria-label="Image suivante"><i data-i="chev-r"></i></button>
+                </div>
+                <div class="ig-cta"><span id="igCta">Demander un devis</span><i data-i="chev-r"></i></div>
+                <div class="ig-act"><i data-i="heart"></i><i data-i="comment"></i><i data-i="send"></i><span class="ig-dots" id="igDots"></span><i class="bm" data-i="bookmark"></i></div>
+                <p class="ig-txt" id="igTxt"></p>
+                <div class="ig-fr" id="igFr" hidden><b>France Rénov’</b><span>Le service public vous informe gratuitement pour préparer votre projet de rénovation énergétique · <span class="nw">france-renov.gouv.fr</span></span></div>
+              </div>
+              <p class="fb-note">Faites défiler les images. L’aperçu suit vos réponses&nbsp;: travaux, formats, offre et secteur.</p>
+            </div>
+
+            <div class="q">
+              <span class="ql">Les formats</span>
+              <div class="cards c2" data-g="Formats de pub">
+                <label class="card"><input type="checkbox" name="format" value="Carrousel de vos chantiers" checked><span class="ic" data-i="grid"></span><span class="t"><b>Carrousel de chantiers<span class="badge">Conseillé</span></b><small>Vos vraies photos, 3 à 5 images qu’on fait défiler.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="format" value="Les étapes du chantier"><span class="ic" data-i="layers"></span><span class="t"><b>Les étapes du chantier</b><small>Ossature, plaques, finitions&nbsp;: le métier se voit.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="format" value="Vidéo courte"><span class="ic" data-i="video"></span><span class="t"><b>Vidéo courte</b><small>Vous filmez 15 secondes au téléphone, je monte avec sous-titres et musique.</small></span><span class="tick"></span></label>
+                <label class="card"><input type="checkbox" name="format" value="Visuels générés par l’IA"><span class="ic" data-i="sparkle"></span><span class="t"><b>Visuels générés par l’IA</b><small>Montrer le résultat avant les travaux, à partir d’une vraie photo.</small></span><span class="tick"></span></label>
+                <label class="card wide"><input type="checkbox" name="format" value="Avis client en image"><span class="ic" data-i="quote"></span><span class="t"><b>Avis client en image</b><small>Un vrai avis Google, mis en forme.</small></span><span class="tick"></span></label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">L’IA, sur une de vos photos</span>
+              <div class="ba" id="ba" tabindex="0" role="slider" aria-label="Comparer la photo d’origine et la projection IA" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <img src="img/ia-apres.webp" alt="" decoding="async"><img class="ba-b" src="img/ia-avant.webp" alt="" decoding="async">
+                <span class="ba-t l">Votre chantier</span><span class="ba-t r">Projection IA</span>
+                <span class="ba-line"></span><span class="ba-k"><i data-i="chev-l"></i><i data-i="chev-r"></i></span>
+              </div>
+              <p class="dots-cap">À gauche, des combles bruts photographiés sur un de vos chantiers. À droite, la même pièce une fois finie, imaginée par l’IA en quelques minutes. Glissez pour comparer. En pub, une projection est toujours présentée comme telle, jamais comme un chantier réalisé.</p>
+            </div>
+
+            <div class="q">
+              <span class="ql">L’offre mise en avant</span>
+              <div class="chips" data-g="Offre">
+                <label class="chip"><input type="radio" name="offre" value="Devis gratuit">Devis gratuit</label>
+                <label class="chip"><input type="radio" name="offre" value="Visite et métré offerts">Visite et métré offerts</label>
+                <label class="chip"><input type="radio" name="offre" value="Étude du projet offerte">Étude du projet offerte</label>
+                <label class="chip"><input type="radio" name="offre" value="Pas d’offre particulière">Pas d’offre particulière</label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Budget de publicité par mois</span>
+              <div class="amount"><output id="amount">500&nbsp;€</output><span id="amountSub">par mois · faites glisser pour choisir</span></div>
+              <div class="range"><input type="range" id="budget_range" min="150" max="2000" step="50" value="500" aria-label="Budget de publicité par mois"></div>
+              <div class="range-l"><span>150&nbsp;€</span><span>2&nbsp;000&nbsp;€</span></div>
+              <input type="hidden" id="budget_val" data-l="Budget pub par mois">
+              <div class="chips free-row" data-g="Budget"><label class="chip"><input type="checkbox" id="budget_free" name="budget_libre" value="À définir ensemble">À définir ensemble</label></div>
+              <div class="est" id="est"><b id="estN"></b><span id="estSub"></span></div>
+              <p class="dots-cap" id="estCap"></p>
+            </div>
+
+            <div class="q">
+              <span class="ql">Vos pages Facebook et Instagram</span>
+              <p class="hint">Les pubs partent de vos pages (lk.platrerie sur Facebook, lk_platrerie sur Instagram)&nbsp;: il me faudra juste un accès.</p>
+              <div class="seg" data-g="Pages Facebook et Instagram">
+                <label><input type="radio" name="reseaux" value="Je les gère">Je les gère</label>
+                <label><input type="radio" name="reseaux" value="Elles dorment">Elles dorment</label>
+                <label><input type="radio" name="reseaux" value="Je n’ai plus l’accès">Plus d’accès</label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">On démarre les pubs…</span>
+              <div class="chips" data-g="Démarrage des pubs">
+                <label class="chip"><input type="radio" name="demarrage" value="Dès que le site est en ligne">Dès que le site est en ligne</label>
+                <label class="chip"><input type="radio" name="demarrage" value="Tout de suite">Tout de suite</label>
+                <label class="chip"><input type="radio" name="demarrage" value="Plus tard">Plus tard</label>
+              </div>
+              <p class="note warn fx" id="isoPub" hidden><i data-i="info"></i><span><b>Isolation thermique&nbsp;:</b> chaque publicité porte la mention France Rénov’ (obligatoire depuis le 1<sup>er</sup>&nbsp;octobre 2026) et mène à une demande de visite technique, jamais à un rappel. C’est prévu.</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. Pour finir -->
+        <section class="step" data-k="fin" data-title="Pour finir" data-photo="fin" data-cap="Dernière ligne droite&nbsp;: les coordonnées, et on lance le chantier.">
+          <p class="eyebrow">Pour finir</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>Les dernières <span class="nw">infos pratiques</span></span></span></h2>
+          <div class="qs">
+            <div class="grid2">
+              <label class="fld"><span>Téléphone affiché</span><input type="tel" id="tel" data-l="Téléphone affiché" value="06 58 27 74 36" autocomplete="tel"></label>
+              <label class="fld"><span>E-mail qui reçoit les demandes</span><input type="email" id="mail_dem" data-l="E-mail qui reçoit les demandes" placeholder="contact@lk-platrerie.fr" autocomplete="email"></label>
+            </div>
+            <p class="note" style="margin-top:-24px">Vous avez déjà une messagerie sur votre domaine, chez IONOS&nbsp;: autant s’en servir.</p>
+
+            <div class="q">
+              <span class="ql">L’adresse sur le site</span>
+              <p class="hint">Siège enregistré&nbsp;: 1 chemin de Thil, Saint-Maurice-de-Beynost. Si c’est aussi votre domicile, la ville suffit.</p>
+              <div class="seg" data-g="Adresse affichée">
+                <label><input type="radio" name="adresse" value="L’adresse complète">Complète</label>
+                <label><input type="radio" name="adresse" value="La ville seulement">La ville</label>
+                <label><input type="radio" name="adresse" value="Rien, juste le secteur">Rien</label>
+              </div>
+            </div>
+
+            <label class="fld"><span>Vos horaires</span><input type="text" id="horaires" data-l="Horaires" placeholder="ex. du lundi au vendredi, 7 h 30 – 17 h 30"></label>
+
+            <div class="q">
+              <span class="ql">Votre nom de domaine</span>
+              <p class="hint">lk-platrerie.fr est chez IONOS, payé jusqu’au 10&nbsp;mai 2027. On le garde&nbsp;: c’est lui qui porte votre ancienneté sur Google.</p>
+              <div class="seg" data-g="Accès au compte IONOS">
+                <label><input type="radio" name="ionos" value="J’ai les codes">J’ai les codes</label>
+                <label><input type="radio" name="ionos" value="Je ne les ai plus">Je ne les ai plus</label>
+                <label><input type="radio" name="ionos" value="Je ne sais pas">Je ne sais pas</label>
+              </div>
+            </div>
+
+            <div class="q">
+              <span class="ql">Votre fiche Google (Google Maps)</span>
+              <p class="hint">Après un déménagement, elle doit passer à la nouvelle adresse, sinon Google continue d’envoyer les clients vers Brunstatt.</p>
+              <div class="seg" data-g="Fiche Google">
+                <label><input type="radio" name="fiche" value="J’en ai une">J’en ai une</label>
+                <label><input type="radio" name="fiche" value="Non">Non</label>
+                <label><input type="radio" name="fiche" value="Je ne sais pas">Je ne sais pas</label>
+              </div>
+            </div>
+
+            <label class="fld"><span>En ligne pour quand, idéalement&nbsp;?</span><input type="date" id="date_ligne" data-l="Mise en ligne souhaitée"></label>
+            <label class="fld"><span>Autre chose à me dire&nbsp;?</span><textarea id="autre" data-l="Autre chose" placeholder="Une idée, une inquiétude, un chantier dont vous êtes fier…"></textarea></label>
+          </div>
+        </section>
+
+        <!-- Récapitulatif -->
+        <section class="step" data-k="recap" data-title="Récapitulatif" data-photo="accueil" data-cap="Tout part de vos réponses." data-recap>
+          <p class="eyebrow">Récapitulatif</p>
+          <h2 class="h" tabindex="-1"><span class="mask"><span>Tout est bon&nbsp;?</span></span></h2>
+          <p class="lead">Vérifiez, puis envoyez&nbsp;: je reviens vers vous avec une première maquette.</p>
+          <div class="qs">
+            <div class="recap" id="recap"></div>
+            <div class="grid2">
+              <label class="fld"><span>Votre nom</span><input type="text" id="s_nom" autocomplete="name" value="Laurent Halimi"></label>
+              <label class="fld"><span>Votre e-mail</span><input type="email" id="s_mail" autocomplete="email"></label>
+            </div>
+            <input type="text" class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="msg" id="msg" role="status"></p>
+          </div>
+        </section>
+
+        <div class="done" id="done" hidden>
+          <svg class="check" viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="34"/><path d="M23 37l9 9 17-19"/></svg>
+          <h2 class="h" tabindex="-1">Merci, c’est bien reçu.</h2>
+          <p class="lead">Vos réponses restent enregistrées sur cet appareil. La suite&nbsp;:</p>
+          <ol class="next-l">
+            <li><span class="ic" data-i="layout"></span><span><b>Une maquette de l’accueil</b><small>Dans le style choisi, avec vos photos.</small></span></li>
+            <li><span class="ic" data-i="camera"></span><span><b>Le tri de vos photos</b><small>Je garde les meilleures, je recadre, je classe par chantier.</small></span></li>
+            <li><span class="ic" data-i="megaphone"></span><span><b>Vos premières publicités</b><small>Le carrousel, à valider avant toute diffusion.</small></span></li>
+          </ol>
+        </div>
+      </form>
+
+      <div class="nav" id="nav" hidden>
+        <button type="button" class="back" id="prev" aria-label="Étape précédente"><i data-i="arrow-l"></i></button>
+        <span class="saved" id="saved" aria-live="polite"></span>
+        <button type="button" class="flow" id="next"><span class="circle"></span><i class="ar ar-l" data-i="arrow-r"></i><span class="lbl">Continuer</span><i class="ar ar-r" data-i="arrow-r"></i></button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer>LinkedIA · 06 65 14 14 33 · contact@linkeedia.fr</footer>
+
+<script>
+/* ====== Client ====== */
+var CLIENT = "LK Plâtrerie";
+var LOGO = "img/logo.png";
+
+(function () {
+  'use strict';
+  var ENDPOINT = 'https://linkedia-contact.halimjeremy.workers.dev';
+  var KEY = 'linkedia-site-lk-platrerie';
+  var CPL = { bas: 20, haut: 45 }; // repère prudent : publicité par demande de devis, en euros
+
+  var $ = function (id) { return document.getElementById(id); };
+  var each = function (list, fn) { Array.prototype.forEach.call(list, fn); };
+  var form = $('f'), intro = $('intro'), done = $('done'), nav = $('nav'), prev = $('prev'), next = $('next'), msg = $('msg');
+  var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NB = ' ';
+  var fmt0 = new Intl.NumberFormat('fr-FR');
+  var nf = { format: function (v) { return fmt0.format(v).replace(/\s/g, NB); } };
+  var cur = -1, resume = 0;
+
+  document.title = 'Votre nouveau site — ' + CLIENT + ' · LinkedIA';
+
+  /* ---------- Icônes et logo ---------- */
+  var ICONS = {
+    'arrow-r': '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    'arrow-l': '<path d="M19 12H5M11 18l-6-6 6-6"/>',
+    'chev-r': '<path d="M9.5 6l6 6-6 6"/>',
+    'chev-l': '<path d="M14.5 6l-6 6 6 6"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    plus: '<circle cx="12" cy="12" r="8.5"/><path d="M12 8v8M8 12h8"/>',
+    info: '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.9v.1"/>',
+    tools: '<path d="M14.7 6.3a4 4 0 0 0-5.3 5.3l-5.6 5.6a1.9 1.9 0 0 0 2.7 2.7l5.6-5.6a4 4 0 0 0 5.3-5.3l-2.4 2.4-2.6-.3-.3-2.6z"/>',
+    pin: '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+    route: '<circle cx="6" cy="18" r="2.3"/><circle cx="18" cy="6" r="2.3"/><path d="M8.3 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.7"/>',
+    camera: '<path d="M4 7.5h3l1.5-2h7l1.5 2h3a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/>',
+    users: '<circle cx="9" cy="8.5" r="3.3"/><path d="M3 19.5c.6-3.3 3-5 6-5s5.4 1.7 6 5"/><path d="M15.5 5.6a3.2 3.2 0 0 1 0 6M17.5 14.8c1.8.6 3 2.1 3.4 4.7"/>',
+    user: '<circle cx="12" cy="8.3" r="3.6"/><path d="M5 20c.7-3.8 3.4-5.8 7-5.8s6.3 2 7 5.8"/>',
+    team: '<circle cx="12" cy="7.5" r="2.8"/><circle cx="5.5" cy="10" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/><path d="M7.5 19.5c.4-3.2 2.2-4.8 4.5-4.8s4.1 1.6 4.5 4.8M2.5 18.5c.3-2.2 1.4-3.4 3-3.4M21.5 18.5c-.3-2.2-1.4-3.4-3-3.4"/>',
+    userplus: '<circle cx="9" cy="8.5" r="3.3"/><path d="M3 19.5c.6-3.3 3-5 6-5s5.4 1.7 6 5M18 8v6M15 11h6"/>',
+    palette: '<path d="M12 3.5a8.5 8.5 0 0 0 0 17c1.2 0 1.8-.8 1.8-1.7 0-1.3-1.1-1.6-1.1-2.7 0-1 .8-1.6 1.8-1.6h2.1a3.9 3.9 0 0 0 3.9-3.9C20.5 6.9 16.7 3.5 12 3.5z"/><circle cx="7.8" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.8" r="1"/>',
+    layout: '<rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 8.5h17M9.5 8.5V20"/>',
+    megaphone: '<path d="M4 10v4h3l8 4.5v-13L7 10z"/><path d="M7 14l1.5 5.5h2.5L10 15.5M18.5 9.5a3.5 3.5 0 0 1 0 5"/>',
+    flag: '<path d="M5 21V4M5 4.5h11l-2 3.5 2 3.5H5"/>',
+    wall: '<rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M9.2 3.5v17M14.8 3.5v17"/><path d="M5.8 7.5h1.2M5.8 16.5h1.2M17 12h1.2"/>',
+    thermo: '<path d="M10 14.3V5.2a2 2 0 0 1 4 0v9.1a4 4 0 1 1-4 0z"/><path d="M12 9.5v6.5"/><path d="M17 6h3M17 9.5h2"/>',
+    sound: '<path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
+    roof: '<path d="M2.5 12.5L12 4.5l9.5 8"/><path d="M5 10.5v9h14v-9"/><path d="M9.5 19.5v-4.5h5v4.5"/><path d="M10.5 10.5h3"/>',
+    floor: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M3.5 14.5h17M9 4.5v5M15.5 9.5v5M7 14.5v5M14 14.5v5"/>',
+    stairs: '<path d="M3.5 20.5h4.2v-4.2h4.2v-4.2h4.2V7.9h4.4"/><path d="M14 3.5l6.5 3"/>',
+    brush: '<rect x="4" y="3.5" width="13" height="5" rx="1.5"/><path d="M17 6h2.5v5H11v3"/><rect x="9.5" y="14" width="3" height="6.5" rx="1"/>',
+    tiles: '<rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M3.5 9.2h17M3.5 14.8h17M9.2 3.5v17M14.8 3.5v17"/>',
+    facade: '<path d="M3.5 20.5h17M5 20.5V9l7-5.5L19 9v11.5"/><path d="M9.5 20.5v-5h5v5M8.3 11.3h2.2M13.5 11.3h2.2"/>',
+    plan: '<path d="M4 20.5h16"/><path d="M5.5 17V5.5h9l4 4V17z"/><path d="M14.5 5.5v4h4M8.5 13.5h7M8.5 10h3"/>',
+    layers: '<path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8z"/><path d="M3.5 12l8.5 4.5 8.5-4.5M3.5 16l8.5 4.5 8.5-4.5"/>',
+    grid: '<rect x="3.5" y="3.5" width="7.2" height="7.2" rx="1.4"/><rect x="13.3" y="3.5" width="7.2" height="7.2" rx="1.4"/><rect x="3.5" y="13.3" width="7.2" height="7.2" rx="1.4"/><rect x="13.3" y="13.3" width="7.2" height="7.2" rx="1.4"/>',
+    compare: '<rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M12 2.5v19"/><path d="M8.5 10l-2 2 2 2M15.5 10l2 2-2 2"/>',
+    calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    house: '<path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/>',
+    pen: '<path d="M4 20l1-4.5L16 4.5a2.1 2.1 0 0 1 3 3L8 18.5z"/><path d="M14 6.5l3 3"/>',
+    file: '<path d="M6.5 3.5h7l4.5 4.5v12.5h-11.5z"/><path d="M13.5 3.5V8H18M9.5 13h5M9.5 16.5h5"/>',
+    sparkle: '<path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2-5.2-1.8 5.2-1.8z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/>',
+    brief: '<rect x="3.5" y="7" width="17" height="13" rx="2"/><path d="M8.5 7V5.5a1.5 1.5 0 0 1 1.5-1.5h4a1.5 1.5 0 0 1 1.5 1.5V7M3.5 12.5h17"/>',
+    euro: '<path d="M17.5 6.5A6.5 6.5 0 1 0 17.5 17.5"/><path d="M4.5 10.3h9M4.5 13.7h9"/>',
+    star: '<path d="M12 3.8l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/>',
+    help: '<circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 0 1 4.9.6c0 1.7-2.5 2.1-2.5 3.9M12 17v.1"/>',
+    target: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9"/>',
+    eye: '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+    video: '<rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/>',
+    quote: '<path d="M9.5 7.5H6a1.5 1.5 0 0 0-1.5 1.5v3A1.5 1.5 0 0 0 6 13.5h3v1.5a3 3 0 0 1-3 3M19.5 7.5H16a1.5 1.5 0 0 0-1.5 1.5v3a1.5 1.5 0 0 0 1.5 1.5h3v1.5a3 3 0 0 1-3 3"/>',
+    phone: '<path d="M5 3.5h3.5l2 5-2.5 1.6a11 11 0 0 0 5.9 5.9l1.6-2.5 5 2v3.5a2 2 0 0 1-2 2A17 17 0 0 1 3 5.5a2 2 0 0 1 2-2z"/>',
+    whatsapp: '<path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5z"/><path d="M9.2 8.6c.1 3.2 2.4 5.9 6.2 6.2l.9-1.4-1.9-1-.9.9c-1.1-.4-2.4-1.7-2.8-2.8l.9-.9-1-1.9z"/>',
+    heart: '<path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/>',
+    comment: '<path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5z"/>',
+    send: '<path d="M21 3.5L10 14M21 3.5l-6.5 17-4.5-6.5-6.5-4.5z"/>',
+    bookmark: '<path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/>',
+    play: '<path d="M8 5.5v13l10.5-6.5z"/>'
+  };
+  function icon(n) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[n] || '') + '</svg>'; }
+  function paint(root) { each((root || document).querySelectorAll('[data-i]'), function (el) { el.innerHTML = icon(el.getAttribute('data-i')); }); }
+  paint();
+  each(document.querySelectorAll('[data-logo]'), function (el) {
+    el.innerHTML = '<span class="wm" role="img"><img class="wm-img" src="' + LOGO + '" alt=""><span class="wm-t"></span></span>';
+    el.querySelector('.wm').setAttribute('aria-label', CLIENT);
+    el.querySelector('.wm-t').textContent = CLIENT;
+  });
+  each(document.querySelectorAll('.qs'), function (qs) { each(qs.children, function (el, k) { el.style.setProperty('--i', k); }); });
+
+  /* ---------- Photos du panneau ---------- */
+  var photo = $('photo'), capBox = $('cap'), capP = capBox.querySelector('p'), imgs = {};
+  function img(name) {
+    if (!imgs[name]) { var im = new Image(); im.alt = ''; im.decoding = 'async'; im.src = 'img/' + name + '.webp'; imgs[name] = im; }
+    return imgs[name];
+  }
+  function clean(keep) { each(photo.querySelectorAll('img.on'), function (o) { if (o !== keep) o.classList.remove('on', 'under', 'in'); }); }
+  function setPhoto(name, cap) {
+    var im = img(name);
+    if (!im.parentNode) photo.insertBefore(im, capBox);
+    if (!(im.classList.contains('on') && !im.classList.contains('under'))) {
+      var shown = photo.querySelectorAll('img.on');
+      each(shown, function (o) { if (o !== im) o.classList.add('under'); });
+      im.classList.remove('under');
+      im.classList.add('on');
+      if (!reduce && shown.length) {
+        im.classList.remove('in'); void im.offsetWidth; im.classList.add('in');
+        clearTimeout(im._t);
+        im._t = setTimeout(function () { im.classList.remove('in'); if (!im.classList.contains('under')) clean(im); }, 1150);
+      } else clean(im);
+    }
+    var t = cap.replace(/&nbsp;/g, NB);
+    if (capP.textContent !== t) {
+      capP.textContent = t;
+      if (!reduce) { capP.classList.remove('swap'); void capP.offsetWidth; capP.classList.add('swap'); }
+    }
+  }
+
+  /* ---------- Compteurs + / − (maintenir pour aller vite) ---------- */
+  each(form.querySelectorAll('.stp'), function (st) {
+    var inp = st.querySelector('input'), by = Number(st.getAttribute('data-step')) || 1, timer, rep;
+    function bump(d) {
+      var v = parseInt(inp.value, 10) || 0;
+      if (d < 0 && v <= 0) return;
+      inp.value = Math.max(0, v + d * by);
+      if (!reduce) { inp.style.setProperty('--dy', d > 0 ? '35%' : '-35%'); inp.classList.remove('bump'); void inp.offsetWidth; inp.classList.add('bump'); }
+      inp.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    function stop() { clearTimeout(timer); clearInterval(rep); }
+    each(st.querySelectorAll('.stp-b'), function (b) {
+      var d = Number(b.getAttribute('data-d'));
+      b.addEventListener('pointerdown', function (e) {
+        if (e.button) return;
+        bump(d);
+        timer = setTimeout(function () { rep = setInterval(function () { bump(d); }, 90); }, 420);
+      });
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) { b.addEventListener(ev, stop); });
+      b.addEventListener('click', function (e) { if (e.detail === 0) bump(d); });
+      b.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    });
+  });
+
+  /* ---------- Outils ---------- */
+  function picked(name) { return Array.prototype.map.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (e) { return e.value; }); }
+  function one(name) { return (form.querySelector('input[name="' + name + '"]:checked') || {}).value; }
+  function has(name, v) { return picked(name).indexOf(v) >= 0; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function num(id) { return Math.max(0, parseInt($(id).value, 10) || 0); }
+  function euros(v) { return nf.format(v) + NB + '€'; }
+  function pctOf(el, x) { var a = Number(el.min), b = Number(el.max); return Math.max(0, Math.min(100, (x - a) / (b - a) * 100)) + '%'; }
+  function slug(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[’']/g, '-').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+
+  /* ---------- Les métiers ---------- */
+  var PREST = {
+    'Plâtrerie et plaquisterie': { short: 'Plâtrerie', slug: 'platrerie', hook: 'Cloisons, doublages, plafonds' + NB + ': posés droit, finis net.', imgs: [['s-cloison', 'Cloisons et doublages'], ['s-bandes', 'Bandes et enduits, prêts à peindre'], ['s-plafond', 'Plafonds']] },
+    'Isolation thermique': { short: 'Isolation', slug: 'isolation-thermique', hook: 'Une maison bien isolée, c’est moins de chauffage et plus de confort.', imgs: [['s-laine', 'Isolation des rampants'], ['s-isoplafond', 'Isolation des plafonds']] },
+    'Isolation acoustique': { short: 'Acoustique', slug: 'isolation-acoustique', hook: 'Le calme, ça se pose aussi.', imgs: [['s-acoustique', 'Faux plafond acoustique'], ['s-plafond', 'Plafonds']] },
+    'Aménagement de combles et de granges': { short: 'Combles', slug: 'amenagement-combles', hook: 'Sous votre toit, il y a une pièce de plus.', imgs: [['s-grange', 'Aménagement d’une grange'], ['s-combles', 'Combles en cours d’aménagement']] },
+    'Revêtements de sol': { short: 'Sols', slug: 'revetements-sol', hook: 'Parquet, stratifié, vinyle' + NB + ': posé net, jusqu’aux plinthes.', imgs: [['s-parquet', 'Parquet posé'], ['s-pose-sol', 'Pose en cours']] },
+    'Escaliers': { short: 'Escaliers', slug: 'escaliers', hook: 'Votre escalier, comme neuf.', imgs: [['s-escalier', 'Escalier rénové'], ['s-escalier-ponce', 'Ponçage des marches']] },
+    'Peinture et revêtements muraux': { short: 'Peinture', slug: 'peinture', hook: 'Des murs prêts à vivre, sans traces ni reprises.', imgs: [['s-peinture', 'Revêtement mural'], ['s-finition', 'Finitions']] },
+    'Carrelage mural et faïence': { short: 'Faïence', slug: 'carrelage-mural', hook: 'Faïence et carrelage mural, coupes au millimètre.', imgs: [['s-carrelage', 'Faïence de salle de bains'], ['s-peinture', 'Pose de carreaux']] },
+    'Façades et enduits': { short: 'Façades', slug: 'facades', hook: 'Une façade refaite, une maison qui change d’allure.', imgs: [['s-facade-apres', 'Façades enduites'], ['s-facade-avant', 'Avant les travaux']] },
+    'Étude et maîtrise d’œuvre': { short: 'Bureau d’études', slug: 'etude-maitrise-oeuvre', hook: 'Métré, descriptif, chiffrage' + NB + ': votre projet étudié avant le premier coup de visseuse.', imgs: [['s-plateau', 'Plateau livré'], ['s-panneau', 'Panneau de chantier']] }
+  };
+  // Les pastilles « métier phare » et « travaux en pub » ne montrent que les métiers cochés
+  function syncPrest() {
+    var sel = picked('prest');
+    each(form.querySelectorAll('[data-p]'), function (el) {
+      var hide = sel.indexOf(el.getAttribute('data-p')) < 0;
+      el.hidden = hide;
+      var box = el.querySelector('input');
+      if (hide && box && box.checked) box.checked = false;
+    });
+  }
+
+  /* ---------- Le secteur : deux bases possibles, carte à l'échelle ---------- */
+  // [nom, latitude, longitude, ville principale (étiquette), position de l'étiquette : r droite, l gauche, t dessus, b dessous]
+  var MAPS = {
+    lyon: { name: 'Saint-Maurice-de-Beynost', lat: 45.8297, lon: 4.9781, area: 'dans l’Ain et l’Est lyonnais',
+      towns: [['Lyon', 45.764, 4.8357, 1, 'l'], ['Villeurbanne', 45.7719, 4.8902], ['Vaulx-en-Velin', 45.7786, 4.9206], ['Décines-Charpieu', 45.7694, 4.9592], ['Meyzieu', 45.7667, 5.0036, 1, 'r'], ['Rillieux-la-Pape', 45.8214, 4.8983], ['Caluire-et-Cuire', 45.7953, 4.8467], ['Miribel', 45.8256, 4.9542], ['Neyron', 45.8156, 4.9364], ['Beynost', 45.8361, 5.0006], ['Montluel', 45.8517, 5.0567, 1, 'r'], ['Dagneux', 45.8519, 5.0753], ['La Boisse', 45.8433, 5.0353], ['Thil', 45.8156, 5.0228], ['Jonage', 45.7958, 5.0464], ['Pusignan', 45.7553, 5.0675], ['Genas', 45.7317, 5.0019], ['Bron', 45.7386, 4.9128], ['Chassieu', 45.7372, 4.9706], ['Saint-Priest', 45.6967, 4.9439, 1, 'r'], ['Vénissieux', 45.6975, 4.8858], ['Écully', 45.7747, 4.7775], ['Oullins', 45.7142, 4.8075], ['Neuville-sur-Saône', 45.8758, 4.8411, 1, 'l', 'Neuville'], ['Trévoux', 45.9406, 4.775, 1, 'l'], ['Villars-les-Dombes', 45.9967, 5.0303, 1, 't', 'Villars'], ['Meximieux', 45.905, 5.195, 1, 'r'], ['Lagnieu', 45.9031, 5.3456], ['Ambérieu-en-Bugey', 45.9581, 5.3594, 1, 'r', 'Ambérieu'], ['Villefranche-sur-Saône', 45.9897, 4.7186, 1, 'l', 'Villefranche'], ['Bourg-en-Bresse', 46.2052, 5.2255, 1, 'b'], ['Crémieu', 45.7247, 5.2494, 1, 'r'], ['Bourgoin-Jallieu', 45.5861, 5.2736, 1, 'b', 'Bourgoin'], ['Vienne', 45.5253, 4.8744, 1, 'b']],
+      rivers: [['Rhône', [[45.903, 5.346], [45.86, 5.25], [45.80, 5.21], [45.81, 5.08], [45.815, 5.0], [45.825, 4.955], [45.80, 4.90], [45.775, 4.855], [45.75, 4.838], [45.72, 4.822], [45.66, 4.80], [45.59, 4.77], [45.525, 4.87], [45.42, 4.83]], [45.62, 4.775]], ['Saône', [[46.16, 4.79], [46.08, 4.76], [45.99, 4.735], [45.94, 4.77], [45.875, 4.84], [45.82, 4.84], [45.775, 4.828], [45.75, 4.83]], [46.13, 4.775]]],
+      labels: [['AIN', 46.09, 5.48], ['ISÈRE', 45.62, 5.43]] },
+    als: { name: 'Brunstatt', lat: 47.7225, lon: 7.3236, area: 'autour de Mulhouse',
+      towns: [['Mulhouse', 47.7508, 7.3359, 1, 'r'], ['Riedisheim', 47.7486, 7.3683], ['Rixheim', 47.7486, 7.405], ['Illzach', 47.7808, 7.3467], ['Kingersheim', 47.7917, 7.3264], ['Wittenheim', 47.8086, 7.3369], ['Pfastatt', 47.7697, 7.3017], ['Lutterbach', 47.7603, 7.2817], ['Habsheim', 47.7311, 7.4183], ['Zillisheim', 47.695, 7.2964], ['Sierentz', 47.6589, 7.4536], ['Ottmarsheim', 47.7861, 7.5072], ['Dannemarie', 47.6311, 7.1239], ['Soultz', 47.8875, 7.2297], ['Altkirch', 47.6236, 7.2397, 1, 'l'], ['Cernay', 47.8067, 7.1767, 1, 'b'], ['Thann', 47.8078, 7.1033, 1, 't'], ['Ensisheim', 47.8656, 7.3522, 1, 'r'], ['Guebwiller', 47.9097, 7.2108, 1, 'l'], ['Saint-Louis', 47.59, 7.56, 1, 'r'], ['Colmar', 48.0794, 7.3585, 1, 'r'], ['Belfort', 47.6397, 6.8638, 1, 'b'], ['Masevaux', 47.7742, 6.9958, 1, 'l'], ['Ferrette', 47.4944, 7.3133, 1, 'b']],
+      rivers: [['Rhin', [[47.555, 7.60], [47.585, 7.585], [47.65, 7.535], [47.72, 7.525], [47.79, 7.535], [47.86, 7.555], [47.95, 7.575], [48.05, 7.58], [48.13, 7.59]], [47.98, 7.592]], ['Ill', [[47.45, 7.25], [47.55, 7.255], [47.62, 7.245], [47.70, 7.30], [47.745, 7.33], [47.80, 7.345], [47.87, 7.355], [47.95, 7.37], [48.08, 7.385], [48.13, 7.39]], [47.52, 7.262]]],
+      labels: [['ALLEMAGNE', 47.83, 7.80], ['SUISSE', 47.5, 7.54]] }
+  };
+  var PXKM = 138 / 60, mapView = 'lyon';
+  function proj(M, la, lo) { return [(lo - M.lon) * 111.32 * Math.cos(M.lat * Math.PI / 180) * PXKM, -(la - M.lat) * 111.2 * PXKM]; }
+  function baseKey() { var b = one('base') || ''; return /Brunstatt/.test(b) ? 'als' : /deux/.test(b) ? 'both' : 'lyon'; }
+  function zones() { var k = baseKey(); return k === 'both' ? ['lyon', 'als'] : [k]; }
+  function drawMap() {
+    var M = MAPS[mapView], t = '', r = '';
+    M.rivers.forEach(function (rv) {
+      r += '<path class="riv" d="' + rv[1].map(function (p, i) { var q = proj(M, p[0], p[1]); return (i ? 'L' : 'M') + q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join('') + '"/>';
+      var l = proj(M, rv[2][0], rv[2][1]);
+      r += '<text class="riv-l" x="' + (l[0] + 4).toFixed(1) + '" y="' + l[1].toFixed(1) + '">' + rv[0] + '</text>';
+    });
+    M.labels.forEach(function (lb) { var q = proj(M, lb[1], lb[2]); r += '<text class="ctry" text-anchor="middle" x="' + q[0].toFixed(1) + '" y="' + q[1].toFixed(1) + '">' + lb[0] + '</text>'; });
+    M.towns.forEach(function (tw, k) {
+      var q = proj(M, tw[1], tw[2]), x = q[0].toFixed(1), y = q[1].toFixed(1);
+      t += '<circle class="vg" data-k="' + k + '" r="' + (tw[3] ? 3 : 2) + '" cx="' + x + '" cy="' + y + '"/>';
+      if (tw[3]) {
+        var a = tw[4], lx = q[0], ly = q[1] + 3, anc = 'start';
+        if (a === 'r') lx += 5.5; else if (a === 'l') { lx -= 5.5; anc = 'end'; } else if (a === 't') { ly = q[1] - 6; anc = 'middle'; } else { ly = q[1] + 12; anc = 'middle'; }
+        t += '<text class="tl" data-k="' + k + '" text-anchor="' + anc + '" x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '">' + esc(tw[5] || tw[0]) + '</text>';
+      }
+    });
+    $('mapRivers').innerHTML = r;
+    $('mapTowns').innerHTML = t;
+    $('mapName').textContent = M.name;
+    each($('mapTabs').children, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-map') === mapView)); });
+  }
+  function dist(M, la, lo) { var q = proj(M, la, lo); return Math.sqrt(q[0] * q[0] + q[1] * q[1]) / PXKM; }
+  function renderZone() {
+    var rr = $('rayon_range'), km = Number(rr.value), M = MAPS[mapView];
+    rr.style.setProperty('--p', pctOf(rr, km));
+    $('rz').style.transform = 'scale(' + (km / 60) + ')';
+    var inside = [];
+    M.towns.forEach(function (tw, k) {
+      var ok = dist(M, tw[1], tw[2]) <= km;
+      if (ok) inside.push(tw);
+      each($('mapTowns').querySelectorAll('[data-k="' + k + '"]'), function (el) { el.classList.toggle('in', ok); });
+    });
+    $('rayonOut').textContent = km + NB + 'km';
+    $('rayonSub').textContent = $('rayon_val').value ? 'autour de votre base' : 'autour de votre base · faites glisser pour choisir';
+    inside.sort(function (a, b) { return (b[3] || 0) - (a[3] || 0) || M.towns.indexOf(a) - M.towns.indexOf(b); });
+    var main = inside.slice(0, 3).map(function (tw) { return tw[0]; }), rest = inside.length - main.length;
+    $('zoneCap').innerHTML = inside.length
+      ? 'Votre site et vos pubs viseront ce cercle&nbsp;: <b>' + esc(main.join(', ')) + '</b>' + (rest > 0 ? ' et ' + rest + ' autre' + (rest > 1 ? 's' : '') + ' commune' + (rest > 1 ? 's' : '') + ' de la carte.' : '.')
+      : 'Élargissez le cercle pour voir les communes couvertes.';
+  }
+  $('rayon_range').addEventListener('input', function () { $('rayon_val').value = this.value + ' km'; renderZone(); });
+  $('mapTabs').addEventListener('click', function (e) { var b = e.target.closest('[data-map]'); if (!b) return; mapView = b.getAttribute('data-map'); drawMap(); renderZone(); });
+  function syncZone() {
+    var z = zones();
+    if (z.indexOf(mapView) < 0) { mapView = z[0]; drawMap(); }
+    $('mapTabs').hidden = z.length < 2;
+    each($('cities').children, function (c) {
+      var hide = z.indexOf(c.getAttribute('data-zone')) < 0;
+      c.hidden = hide;
+    });
+    $('germanQ').hidden = z.indexOf('als') < 0;
+    $('objNew').textContent = z.indexOf('lyon') >= 0 ? 'Utile après votre arrivée dans l’Ain.' : 'Utile pour rappeler que LK est là.';
+  }
+  $('pickCities').addEventListener('click', function () {
+    var km = Number($('rayon_range').value), n = 0;
+    zones().forEach(function (zk) {
+      var M = MAPS[zk], at = {};
+      M.towns.forEach(function (tw) { at[tw[0]] = tw; });
+      at[M.name] = [M.name, M.lat, M.lon];
+      at['Brunstatt-Didenheim'] = ['Brunstatt-Didenheim', MAPS.als.lat, MAPS.als.lon];
+      each($('cities').querySelectorAll('[data-zone="' + zk + '"][data-t]'), function (c) {
+        var tw = at[c.getAttribute('data-t')], box = c.querySelector('input');
+        if (tw && dist(M, tw[1], tw[2]) <= km && !box.checked) { box.checked = true; n++; }
+      });
+    });
+    this.querySelector('span').textContent = n ? n + ' ville' + (n > 1 ? 's' : '') + ' cochée' + (n > 1 ? 's' : '') : 'Toutes les villes du rayon sont cochées';
+    var b = this; setTimeout(function () { b.querySelector('span').textContent = 'Cocher les villes de mon rayon'; }, 2200);
+    refresh(); save(true);
+  });
+
+  /* ---------- Un chantier en trois temps ---------- */
+  var etImgs = $('etapes').querySelectorAll('img'), etBtns = $('etTabs').querySelectorAll('button'), etI = 0, etTimer = null;
+  function etShow(i, auto) {
+    etI = i;
+    each(etImgs, function (im, k) { im.classList.toggle('on', k === i); });
+    each(etBtns, function (b, k) { b.style.setProperty('--dur', auto ? '2.8s' : '.35s'); b.setAttribute('aria-pressed', 'false'); });
+    void etBtns[i].offsetWidth;
+    etBtns[i].setAttribute('aria-pressed', 'true');
+    $('etN').textContent = 'Étape ' + (i + 1) + ' sur 3';
+  }
+  function etPlay() { etStop(); if (reduce) return; etShow(etI, true); etTimer = setInterval(function () { etShow((etI + 1) % 3, true); }, 2900); }
+  function etStop() { clearInterval(etTimer); etTimer = null; }
+  each(etBtns, function (b, k) { b.addEventListener('click', function () { etStop(); etShow(k, false); }); });
+
+  /* ---------- Avant / projection IA ---------- */
+  var ba = $('ba'), baX = 50, baDrag = false, baDone = false;
+  function baSet(x) { baX = Math.max(0, Math.min(100, x)); ba.style.setProperty('--x', baX + '%'); ba.setAttribute('aria-valuenow', Math.round(baX)); }
+  function baFrom(e) { var r = ba.getBoundingClientRect(); baSet((e.clientX - r.left) / r.width * 100); }
+  ba.addEventListener('pointerdown', function (e) { baDrag = true; baDone = true; baFrom(e); try { ba.setPointerCapture(e.pointerId); } catch (x) {} });
+  ba.addEventListener('pointermove', function (e) { if (baDrag) baFrom(e); });
+  ['pointerup', 'pointercancel'].forEach(function (ev) { ba.addEventListener(ev, function () { baDrag = false; }); });
+  ba.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); baDone = true; baSet(baX + (e.key === 'ArrowRight' ? 5 : -5)); }
+  });
+  function baHint() {
+    if (baDone || reduce) return;
+    var t0 = performance.now(), keys = [[0, 50], [600, 78], [1300, 26], [1900, 50]];
+    (function f(t) {
+      if (baDone) return;
+      var d = t - t0, k = 1;
+      while (k < keys.length - 1 && d > keys[k][0]) k++;
+      var a = keys[k - 1], b = keys[k], p = Math.min(1, Math.max(0, (d - a[0]) / (b[0] - a[0]))), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      baSet(a[1] + (b[1] - a[1]) * e);
+      if (d < keys[keys.length - 1][0]) requestAnimationFrame(f);
+    })(t0);
+  }
+
+  /* ---------- Aperçu du carrousel ---------- */
+  var OFFER = {
+    'Devis gratuit': { big: 'Devis gratuit', line: 'Devis gratuit et détaillé.', cta: 'Demander un devis' },
+    'Visite et métré offerts': { big: 'Visite et métré offerts', line: 'On passe, on mesure, on chiffre' + NB + ': c’est offert.', cta: 'Demander une visite' },
+    'Étude du projet offerte': { big: 'Étude offerte', line: 'Votre projet étudié par notre bureau d’études, sans frais.', cta: 'Demander une étude' },
+    'Pas d’offre particulière': { big: 'Parlons de votre projet', line: '', cta: 'Nous contacter' }
+  };
+  function pubKey() { var p = picked('pubtrav'); return p[0] || one('phare') || picked('prest').filter(function (x) { return PREST[x]; })[0] || 'Plâtrerie et plaquisterie'; }
+  function isoInPub() { var p = picked('pubtrav'); return p.length ? p.indexOf('Isolation thermique') >= 0 : pubKey() === 'Isolation thermique'; }
+  function area() { var z = zones(); return z.length > 1 ? 'dans l’Ain, l’Est lyonnais et le Haut-Rhin' : MAPS[z[0]].area; }
+  function slides() {
+    var key = pubKey(), P = PREST[key], second = picked('pubtrav')[1], out = [], f = picked('format');
+    var O = OFFER[one('offre')] || { big: 'Parlons de votre projet', line: '', cta: 'Demander un devis' };
+    // Ordre d'une vraie pub : l'accroche, les chantiers, la projection IA, les étapes, la vidéo, l'avis, puis l'offre.
+    // Chaque format coché garde sa place (10 images au plus, Instagram en accepte 20).
+    out.push({ img: P.imgs[0][0], tag: P.short, title: P.hook });
+    if (f.indexOf('Carrousel de vos chantiers') >= 0 || !f.length) {
+      P.imgs.slice(1, f.length >= 3 ? 2 : 3).forEach(function (im) { out.push({ img: im[0], tag: im[1], dk: 1 }); });
+      if (second && PREST[second]) out.push({ img: PREST[second].imgs[0][0], tag: PREST[second].short, title: PREST[second].hook });
+    }
+    if (f.indexOf('Visuels générés par l’IA') >= 0) {
+      out.push({ img: 's-combles-brut', tag: 'Aujourd’hui', dk: 1, title: 'Vos combles, aujourd’hui…' }, { img: 's-ia', tag: 'Projection IA', title: '…et une fois aménagés.', note: 'Illustration générée par IA' });
+    }
+    if (f.indexOf('Les étapes du chantier') >= 0) {
+      out.push({ img: 'e1', tag: '1/3 · Ossature et isolant', dk: 1 }, { img: 'e2', tag: '2/3 · Plaques', dk: 1 }, { img: 'e3', tag: '3/3 · Bandes et finitions', title: 'Du rail à la peinture, une seule équipe.' });
+    }
+    if (f.indexOf('Vidéo courte') >= 0) out.push({ img: 's-plafond', tag: 'Vidéo · 15 s', play: 1, title: 'Sur le chantier, en 15 secondes.' });
+    if (f.indexOf('Avis client en image') >= 0) out.push({ review: 1 });
+    out = out.slice(0, 10);
+    out.push({ end: 1, big: O.big, sub: (P.short === 'Bureau d’études' ? 'Étude, plâtrerie, isolation' : 'Plâtrerie, isolation, sols et murs') + ' ' + area() + '.', cta: isoInPub() ? 'Demander une visite technique' : O.cta });
+    return { list: out, O: O, P: P };
+  }
+  function slideHTML(s) {
+    if (s.end) return '<div class="ig-s yl"><span class="lg"><img src="' + LOGO + '" alt="">LK Plâtrerie</span><span><span class="big">' + esc(s.big) + '</span><span class="sub" style="display:block">' + esc(s.sub) + '</span></span><span class="btn">' + esc(s.cta) + '</span></div>';
+    if (s.review) return '<div class="ig-s yl"><span class="stars">★★★★★</span><span class="quote">«' + NB + 'Ici, un vrai avis de l’un de vos clients, tiré de Google.' + NB + '»</span><span class="lg"><img src="' + LOGO + '" alt="">Avis Google</span></div>';
+    return '<div class="ig-s"><img src="img/' + s.img + '.webp" alt="" decoding="async"><span class="tag' + (s.dk ? ' dk' : '') + '">' + esc(s.tag) + '</span>' +
+      (s.play ? '<span class="play">' + icon('play') + '</span>' : '') +
+      (s.title || s.note ? '<span class="ov">' + (s.title ? '<b>' + esc(s.title) + '</b>' : '') + (s.note ? '<small>' + esc(s.note) + '</small>' : '') + '</span>' : '') + '</div>';
+  }
+  var track = $('igTrack'), igI = 0;
+  function igSync() {
+    var w = track.clientWidth || 1, n = track.children.length;
+    igI = Math.max(0, Math.min(n - 1, Math.round(track.scrollLeft / w)));
+    $('igN').textContent = (igI + 1) + '/' + n;
+    each($('igDots').children, function (d, k) { d.classList.toggle('on', k === igI); });
+    $('igPrev').disabled = igI === 0;
+    $('igNext').disabled = igI >= n - 1;
+  }
+  track.addEventListener('scroll', function () { cancelAnimationFrame(track._r); track._r = requestAnimationFrame(igSync); }, { passive: true });
+  $('igPrev').addEventListener('click', function () { track.scrollBy({ left: -track.clientWidth, behavior: reduce ? 'auto' : 'smooth' }); });
+  $('igNext').addEventListener('click', function () { track.scrollBy({ left: track.clientWidth, behavior: reduce ? 'auto' : 'smooth' }); });
+  function renderCarousel() {
+    var S = slides(), html = S.list.map(slideHTML).join('');
+    if (track._h !== html) {
+      track._h = html;
+      track.innerHTML = html;
+      track.scrollLeft = 0;
+      $('igDots').innerHTML = S.list.map(function () { return '<i></i>'; }).join('');
+    }
+    var txt = '<b>lk_platrerie</b> ' + esc(S.P.hook) + ' Plâtrerie, isolation, sols et murs ' + esc(area()) + '.' + (S.O.line ? ' ' + esc(S.O.line) : '');
+    var t = $('igTxt');
+    if (t._h !== txt) { t._h = txt; t.innerHTML = txt; if (!reduce) { t.classList.remove('swap'); void t.offsetWidth; t.classList.add('swap'); } }
+    $('igCta').textContent = S.list[S.list.length - 1].cta;
+    $('igFr').hidden = !isoInPub();
+    $('isoPub').hidden = !isoInPub();
+    igSync();
+  }
+
+  /* ---------- Chiffres clés ---------- */
+  function renderKpis() {
+    var items = [], y = num('k_annee'), e = num('k_equipes'), p = num('k_pers'), c = num('k_chantiers'), m = num('k_metier');
+    if (y > 1900) items.push([String(y), 'année de création']);
+    if (e) items.push([nf.format(e), e > 1 ? 'équipes sur les chantiers' : 'équipe sur les chantiers']);
+    if (p) items.push([nf.format(p), p > 1 ? 'personnes' : 'personne']);
+    if (c) items.push([nf.format(c), 'chantiers réalisés']);
+    if (m) items.push([nf.format(m) + NB + 'ans', 'de métier']);
+    var box = $('kpis'), key = items.map(function (i) { return i[0] + i[1]; }).join('|');
+    if (box._k === key) return;
+    var old = (box._k || '').split('|');
+    box._k = key;
+    box.innerHTML = items.length
+      ? items.map(function (i) { return '<div' + (old.indexOf(i[0] + i[1]) < 0 && !reduce ? ' class="n"' : '') + '><b>' + esc(i[0]) + '</b><small>' + esc(i[1]) + '</small></div>'; }).join('')
+      : '<div><small>Aucun chiffre affiché</small></div>';
+  }
+
+  /* ---------- Plan du site ---------- */
+  function mainCity() {
+    var v = picked('ville').filter(function (x) { var c = $('cities').querySelector('input[value="' + x.replace(/"/g, '') + '"]'); return c && !c.closest('[hidden]') && !/^(Tout|Toute|Le )/.test(x); });
+    var pri = ['Lyon', 'Mulhouse', 'Villeurbanne', 'Colmar', 'Meyzieu', 'Miribel'];
+    for (var k = 0; k < pri.length; k++) if (v.indexOf(pri[k]) >= 0) return pri[k];
+    return v[0] || (zones()[0] === 'als' ? 'Mulhouse' : 'Lyon');
+  }
+  function renderTree() {
+    var pages = picked('pages'), rows = [['Accueil', '/', 'fix']], city = slug(mainCity());
+    if (pages.indexOf('Une page par métier') >= 0) {
+      var met = picked('prest').filter(function (x) { return PREST[x] && !(x === 'Étude et maîtrise d’œuvre' && pages.indexOf('Bureau d’études et maîtrise d’œuvre') >= 0); });
+      if (met.length) {
+        rows.push(['Métiers', '', 'grp']);
+        met.forEach(function (x) { rows.push([PREST[x].short, '/' + PREST[x].slug + '-' + city, 'sub']); });
+      }
+    }
+    var MAP = [['Nos réalisations', 'Réalisations', '/realisations'], ['L’entreprise', 'L’entreprise', '/entreprise'], ['Bureau d’études et maîtrise d’œuvre', 'Bureau d’études', '/bureau-etudes'],
+      ['Espace professionnels', 'Professionnels', '/professionnels'], ['Les aides à l’isolation', 'Aides à l’isolation', '/aides-isolation'], ['Avis clients', 'Avis clients', '/avis'],
+      ['Recrutement', 'Recrutement', '/recrutement'], ['Questions fréquentes', 'Questions fréquentes', '/questions-frequentes']];
+    MAP.forEach(function (m) { if (pages.indexOf(m[0]) >= 0 && (m[0] !== 'Les aides à l’isolation' || !$('pageAides').hidden)) rows.push([m[1], m[2], '']); });
+    rows.push(['Contact et devis', '/contact', 'fix'], ['Mentions légales', '/mentions-legales', 'fix']);
+    var count = rows.filter(function (r) { return r[2] !== 'grp'; }).length, box = $('tree');
+    var key = rows.map(function (r) { return r[0] + r[1]; }).join('|');
+    if (box._k === key) return;
+    var old = (box._k || '').split('|');
+    box._k = key;
+    box.innerHTML = '<div class="tree-h"><b>lk-platrerie.fr</b><small>' + count + ' pages</small></div><ul>' + rows.map(function (r) {
+      var cls = (r[2] + (box._first && old.indexOf(r[0] + r[1]) < 0 && !reduce ? ' n' : '')).trim();
+      return '<li' + (cls ? ' class="' + cls + '"' : '') + '><span class="lb">' + esc(r[0]) + '</span>' + (r[1] ? '<code>' + esc(r[1]) + '</code>' : '') + '</li>';
+    }).join('') + '</ul>';
+    box._first = true;
+  }
+
+  /* ---------- Formulaire de devis sur téléphone ---------- */
+  function renderForm() {
+    var ch = picked('champs'), b = picked('boutons'), iso = has('prest', 'Isolation thermique'), met = picked('prest').filter(function (x) { return PREST[x]; });
+    var rows = ch.map(function (c) {
+      if (c === 'Type de travaux') return '<span class="fm-row"><em>' + esc(c) + '</em><span class="fm-f sel"><b>' + esc(met[0] ? PREST[met[0]].short : 'Plâtrerie') + '</b></span></span>';
+      if (c === 'Particulier ou professionnel') return '<span class="fm-row"><em>Vous êtes</em><span class="fm-pills"><i>Particulier</i><i>Professionnel</i></span></span>';
+      if (c === 'Photos du chantier' || c === 'Plans (pour les pros)') return '<span class="fm-row"><em>' + esc(c) + '</em><span class="fm-f drop">+ Ajouter ' + (c === 'Photos du chantier' ? 'des photos' : 'un plan') + '</span></span>';
+      if (c === 'Message') return '<span class="fm-row"><em>Votre projet</em><span class="fm-f big"></span></span>';
+      return '<span class="fm-row"><em>' + esc(c) + '</em><span class="fm-f"></span></span>';
+    });
+    var shown = rows.slice(0, 7), more = rows.length - shown.length;
+    var bar = [];
+    if (b.indexOf('Appeler, toujours visible sur téléphone') >= 0) bar.push('<span>' + icon('phone') + 'Appeler</span>');
+    if (b.indexOf('WhatsApp, pour recevoir des photos') >= 0) bar.push('<span class="wa">' + icon('whatsapp') + 'WhatsApp</span>');
+    if (b.indexOf('Prendre rendez-vous pour un métré') >= 0) bar.push('<span class="rdv">' + icon('calendar') + 'Rendez-vous</span>');
+    var html = '<div class="fm-top"><img src="' + LOGO + '" alt="">LK Plâtrerie<i></i></div><p class="fm-h">' + (iso ? 'Votre projet, votre visite' : 'Votre demande de devis') + '</p>' +
+      (shown.length ? shown.join('') : '<p class="fm-more">Cochez au moins un champ.</p>') + (more > 0 ? '<p class="fm-more">+ ' + more + ' autre' + (more > 1 ? 's' : '') + ' champ' + (more > 1 ? 's' : '') + '</p>' : '') +
+      (iso ? '<span class="fm-chk"><i></i>Je demande une visite technique à mon domicile et j’accepte d’être contacté(e) pour l’organiser.</span>' : '') +
+      '<span class="fm-btn">' + (iso ? 'Demander ma visite' : 'Demander mon devis') + '</span>' + (bar.length ? '<span class="fm-bar">' + bar.join('') + '</span>' : '');
+    var box = $('fm');
+    if (box._h !== html) { box._h = html; box.innerHTML = html; }
+    $('isoNote').hidden = !iso;
+  }
+
+  /* ---------- RGE ---------- */
+  function syncRge() {
+    var r = one('rge');
+    $('rgeNote').hidden = r !== 'Oui, à jour';
+    var off = r === 'Plus maintenant', box = $('pageAides').querySelector('input');
+    $('pageAides').hidden = off;
+    if (off && box.checked) box.checked = false;
+  }
+
+  /* ---------- Budget ---------- */
+  var range = $('budget_range'), bval = $('budget_val'), bfree = $('budget_free');
+  function renderBudget() {
+    var v = Number(range.value), free = bfree.checked;
+    range.style.setProperty('--p', pctOf(range, v));
+    range.classList.toggle('off', free);
+    var out = $('amount');
+    out.textContent = free ? 'À définir ensemble' : euros(v);
+    out.classList.toggle('free', free);
+    $('amountSub').textContent = free ? '' : bval.value ? 'par mois' : 'par mois · faites glisser pour choisir';
+    $('est').hidden = free;
+    var lo = Math.max(1, Math.round(v / CPL.haut)), hi = Math.max(lo, Math.round(v / CPL.bas));
+    $('estN').textContent = '≈' + NB + lo + ' à ' + hi + ' demandes';
+    $('estSub').textContent = 'de devis par mois';
+    $('estCap').innerHTML = free ? 'On fixe le budget ensemble, après un premier mois de test.'
+      : '<b>Ordre de grandeur, pas une promesse.</b> Il suppose ' + CPL.bas + ' à ' + CPL.haut + NB + '€ de publicité par demande. Votre vrai coût est mesuré dès le premier mois, et on ajuste.';
+  }
+  range.addEventListener('input', function () { bfree.checked = false; bval.value = euros(Number(range.value)) + ' / mois'; renderBudget(); });
+  bfree.addEventListener('change', function () { bval.value = bfree.checked ? '' : bval.value; renderBudget(); });
+
+  function refresh() { syncPrest(); syncZone(); syncRge(); renderZone(); renderKpis(); renderTree(); renderForm(); renderCarousel(); renderBudget(); }
+
+  /* ---------- Sauvegarde sur l'appareil ---------- */
+  function fields() { return form.querySelectorAll('input:not(.hp), textarea'); }
+  function keyOf(el) { return el.id || (el.name + '|' + el.value); }
+  var savedEl = $('saved'), savedT;
+  function save(notify) {
+    var d = { _step: resume };
+    each(fields(), function (el) { d[keyOf(el)] = (el.type === 'checkbox' || el.type === 'radio') ? el.checked : el.value; });
+    try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+    if (notify) {
+      savedEl.textContent = 'Enregistré sur cet appareil';
+      savedEl.classList.add('show');
+      clearTimeout(savedT);
+      savedT = setTimeout(function () { savedEl.classList.remove('show'); }, 1800);
+    }
+  }
+  function load() {
+    var d;
+    try { d = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { d = {}; }
+    each(fields(), function (el) {
+      var k = keyOf(el);
+      if (!(k in d)) return;
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!d[k];
+      else el.value = d[k];
+    });
+    return typeof d._step === 'number' ? Math.max(0, Math.min(d._step, steps.length - 1)) : 0;
+  }
+
+  /* ---------- Récapitulatif ---------- */
+  function blocks() {
+    var out = [];
+    steps.forEach(function (sec, i) {
+      if (sec.hasAttribute('data-recap')) return;
+      var lines = [];
+      each(sec.querySelectorAll('[data-l], [data-g]'), function (el) {
+        if (el.closest('[hidden]')) return;
+        if (el.hasAttribute('data-l')) {
+          var v = el.value.trim();
+          if (v && v !== '0') lines.push([el.getAttribute('data-l'), v]);
+        } else {
+          var vals = Array.prototype.filter.call(el.querySelectorAll('input:checked'), function (x) { return !x.closest('[hidden]'); }).map(function (x) { return x.value; });
+          if (vals.length) lines.push([el.getAttribute('data-g'), vals.join(', ')]);
+        }
+      });
+      out.push({ i: i, title: sec.getAttribute('data-title'), lines: lines });
+    });
+    return out;
+  }
+  function renderRecap() {
+    $('recap').innerHTML = blocks().map(function (b) {
+      return '<section><h3>' + esc(b.title) + '<button type="button" data-go="' + b.i + '">Modifier</button></h3>' +
+        (b.lines.length
+          ? '<dl>' + b.lines.map(function (l) { return '<div><dt>' + esc(l[0]) + '</dt><dd>' + esc(l[1]) + '</dd></div>'; }).join('') + '</dl>'
+          : '<p class="empty">Rien de renseigné</p>') + '</section>';
+    }).join('');
+  }
+  $('recap').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-go]');
+    if (b) show(Number(b.getAttribute('data-go')));
+  });
+
+  /* ---------- Navigation ---------- */
+  var segs = Array.prototype.slice.call($('segs').children);
+  function lbl(text) { next.querySelector('.lbl').textContent = text; }
+  function show(i, opts) {
+    opts = opts || {};
+    cur = i;
+    document.body.classList.toggle('intro', i < 0);
+    intro.hidden = i >= 0;
+    nav.hidden = i < 0;
+    steps.forEach(function (s, j) { s.classList.toggle('on', j === i); });
+    var sec = i < 0 ? intro : steps[i], k = i < 0 ? '' : sec.getAttribute('data-k');
+    setPhoto(sec.getAttribute('data-photo'), sec.getAttribute('data-cap'));
+    var after = steps[i + 1];
+    if (after) img(after.getAttribute('data-photo'));
+    segs.forEach(function (s, j) { s.classList.toggle('on', j <= i); });
+    if (k === 'chantiers') etPlay(); else etStop();
+    if (k === 'pubs') { renderCarousel(); track.scrollLeft = 0; igSync(); setTimeout(baHint, 900); }
+    if (i >= 0) {
+      resume = i;
+      var last = i === steps.length - 1;
+      lbl(last ? 'Envoyer mes réponses' : i === steps.length - 2 ? 'Voir le récapitulatif' : 'Continuer');
+      $('stepname').textContent = sec.getAttribute('data-title');
+      if (last) renderRecap();
+      save();
+    } else markPath();
+    if (opts.focus !== false) {
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      var h = sec.querySelector('.h, .h1');
+      if (h) h.focus({ preventScroll: true });
+    }
+  }
+  function markPath() {
+    each($('path').children, function (li, j) { li.classList.toggle('done', j < resume); });
+    if (resume > 0) {
+      $('start').querySelector('.lbl').textContent = 'Reprendre';
+      $('resumeNote').textContent = 'Vous en étiez à «' + NB + steps[resume].getAttribute('data-title') + NB + '».';
+    }
+  }
+  $('start').addEventListener('click', function () { show(resume); });
+  prev.addEventListener('click', function () { show(cur - 1); });
+  next.addEventListener('click', function () { if (cur < steps.length - 1) show(cur + 1); else send(); });
+
+  var typing;
+  form.addEventListener('input', function (e) {
+    var id = e.target.id;
+    if (/^k_/.test(id)) renderKpis();
+    clearTimeout(typing);
+    typing = setTimeout(function () { save(true); }, 350);
+  });
+  form.addEventListener('change', function () { refresh(); save(true); });
+
+  /* ---------- Envoi (plusieurs e-mails numérotés si c'est long) ---------- */
+  function parts() {
+    var res = [], acc = '';
+    blocks().forEach(function (b) {
+      if (!b.lines.length) return;
+      var txt = '== ' + b.title.toUpperCase() + ' ==\n' + b.lines.map(function (l) { return '- ' + l[0] + ' : ' + l[1]; }).join('\n');
+      while (txt.length > 3700) { if (acc) { res.push(acc); acc = ''; } res.push(txt.slice(0, 3700)); txt = txt.slice(3700); }
+      if (acc && (acc + '\n\n' + txt).length > 3700) { res.push(acc); acc = txt; } else acc = acc ? acc + '\n\n' + txt : txt;
+    });
+    if (acc) res.push(acc);
+    return res.length ? res : ['(aucune réponse)'];
+  }
+  var busy = false;
+  function send() {
+    if (busy) return;
+    var nom = $('s_nom').value.trim(), mail = $('s_mail').value.trim();
+    msg.className = 'msg';
+    if (!nom || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+      msg.className = 'msg ko';
+      msg.textContent = 'Indiquez votre nom et un e-mail valide pour envoyer.';
+      (nom ? $('s_mail') : $('s_nom')).focus();
+      return;
+    }
+    busy = true;
+    next.disabled = true;
+    lbl('Envoi…');
+    var list = parts(), chain = Promise.resolve();
+    list.forEach(function (txt, i) {
+      chain = chain.then(function () {
+        return fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: nom,
+            email: mail,
+            type: 'Questionnaire site + pubs ' + CLIENT + (list.length > 1 ? ' (' + (i + 1) + '/' + list.length + ')' : ''),
+            msg: txt,
+            website: $('website').value
+          })
+        }).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); });
+      });
+    });
+    chain.then(function () {
+      steps.forEach(function (s) { s.classList.remove('on'); });
+      nav.hidden = true;
+      done.hidden = false;
+      segs.forEach(function (s) { s.classList.add('on'); });
+      $('stepname').textContent = 'Envoyé';
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      done.querySelector('.h').focus({ preventScroll: true });
+    }).catch(function () {
+      busy = false;
+      next.disabled = false;
+      lbl('Envoyer mes réponses');
+      msg.className = 'msg ko';
+      msg.innerHTML = 'L’envoi n’a pas abouti. Réessayez, ou écrivez-moi à <a href="mailto:contact@linkeedia.fr">contact@linkeedia.fr</a>. Vos réponses restent enregistrées.';
+    });
+  }
+
+  /* ---------- Démarrage ---------- */
+  resume = load();
+  $('date_ligne').min = new Date().toISOString().slice(0, 10);
+  syncZone();
+  drawMap();
+  refresh();
+  show(-1, { focus: false });
+})();
+</script>
+</body>
+</html>
